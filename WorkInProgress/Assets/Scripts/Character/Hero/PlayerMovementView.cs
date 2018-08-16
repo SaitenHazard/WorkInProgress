@@ -7,15 +7,25 @@ public class PlayerMovementView : CharacterMovementView
     override protected void Update()
     {
         base.Update();
-        UpdateAttack();
+        StartCoroutine(UpdateAttack());
     }
-    
-    private void UpdateAttack()
+
+    private void FixedUpdate()
     {
-        if (m_MovementModel.GetAttackFlag() == true)
+        //UpdateAttack();
+    }
+
+    private IEnumerator UpdateAttack()
+    {
+        if (PlayerAttributes.instance.IsAttackState() == true)
         {
-            m_MovementModel.SetAttackFlag(false);
+            PlayerAttributes.instance.SetAttackState(false);
             animator.SetTrigger("Attack");
+            //Debug.Log(PlayerAttributes.instance.IsWalkFrozen());
+            //yield return null;
+            yield return new WaitForSeconds(0.2f);
+            PlayerAttributes.instance.setWalkStateFrozen(false);
+            //yield return new WaitForSeconds(1.0f);
         }
     }
 }

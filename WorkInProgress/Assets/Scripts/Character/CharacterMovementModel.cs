@@ -4,52 +4,27 @@ using UnityEngine;
 
 public class CharacterMovementModel : MonoBehaviour
 {
-    protected bool stopMovement;
-    private float m_speed;
+    protected float m_speed;
 
-    private Rigidbody2D m_Body;
+    protected Rigidbody2D m_Body;
 
-    private Vector2 m_MovmentDirection;
+    protected Vector2 m_MovmentDirection;
     private Vector2 m_RecievedDirection;
     private Vector2 m_FacingDirection;
 
-    public void Awake()
-    {
-        stopMovement = false;
-
-        m_Body = GetComponent<Rigidbody2D>();
-        m_speed = gameObject.GetComponent<CharacterAttributes>().getSpeed();
-    }
-
-    protected void Update()
-    {
-        if (stopMovement == true)
-        {
-            return;
-        }
-
-        UpdateDirection();
-        ResetRecievedDirection();
-    }
-
-    private void FixedUpdate()
-    {
-        if (stopMovement == true)
-        {
-            return;
-        }
-
-        UpdateMovement();
-    }
-
-    private void ResetRecievedDirection()
+    protected void ResetRecievedDirection()
     {
         m_RecievedDirection = Vector2.zero;
     }
 
-    private void UpdateMovement()
+    virtual protected void UpdateMovement()
     {
-        if(m_MovmentDirection != Vector2.zero)
+        if (PlayerAttributes.instance.IsGameStateFrozen())
+        {
+            m_MovmentDirection = Vector2.zero;
+        }
+
+        if (m_MovmentDirection != Vector2.zero)
         {
             m_MovmentDirection.Normalize();
         }
@@ -57,12 +32,9 @@ public class CharacterMovementModel : MonoBehaviour
         m_Body.velocity = m_MovmentDirection * m_speed;
     }
 
-    private void UpdateDirection()
+    protected void UpdateDirection()
     {
         m_MovmentDirection = new Vector2(m_RecievedDirection.x, m_RecievedDirection.y);
-
-        if (stopMovement)
-            m_MovmentDirection = Vector2.zero;
 
         if (m_RecievedDirection != Vector2.zero)
         {
@@ -108,27 +80,7 @@ public class CharacterMovementModel : MonoBehaviour
         m_RecievedDirection = direction;
     }
 
-    virtual public void DoAction()
-    {
-
-    }
-
-    virtual public void DoAttack()
-    {
-
-    }
-
-    virtual public bool GetAttackFlag()
-    {
-        return false;
-    }
-
-    virtual public void SetAttackFlag(bool set)
-    {
-
-    }
-
-    virtual public void AttactAnimationListener()
+    public virtual void DoAction()
     {
 
     }

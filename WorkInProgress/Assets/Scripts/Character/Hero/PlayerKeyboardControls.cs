@@ -11,17 +11,21 @@ public class PlayerKeyboardControls : PlayerBaseControl
 
     private void Update()
     {
+        if (PlayerAttributes.instance.IsGameStateFrozen() ||
+            PlayerAttributes.instance.IsWalkFrozen())
+        {
+            return;
+        }
+
         UpdateDirection();
         UpdateAction();
     }
 
     private void UpdateDirection()
     {
-        if (PlayerAttributes.instance.IsGameStateFrozen()) return;
-
         Vector2 newDirection = Vector2.zero;
 
-        if(Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             newDirection.y = 1;
         }

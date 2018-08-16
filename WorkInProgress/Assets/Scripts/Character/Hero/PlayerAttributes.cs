@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerAttributes : CharacterAttributes {
 
-    bool m_freezeGameState = false;    
-
     public static PlayerAttributes instance;
+    public bool attackState = false;
 
     protected void Awake()
     {
@@ -15,13 +14,13 @@ public class PlayerAttributes : CharacterAttributes {
         instance = this;
     }
 
-    public bool IsGameStateFrozen()
+    public void SetAttackState(bool state)
     {
-        return m_freezeGameState;
+        attackState = state;
     }
 
-    public void setFreezeGameState(bool freezeGameState)
+    public bool IsAttackState()
     {
-        m_freezeGameState = freezeGameState;
+        return attackState;
     }
 }

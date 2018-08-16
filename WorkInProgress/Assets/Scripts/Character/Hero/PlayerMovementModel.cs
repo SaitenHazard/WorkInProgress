@@ -4,18 +4,35 @@ using UnityEngine;
 
 public class PlayerMovementModel : CharacterMovementModel
 {
-    private bool attackFlag;
-
-    private void Awake()
+    public void Awake()
     {
-        base.Awake();
-
-        attackFlag = false;
+        m_Body = GetComponent<Rigidbody2D>();
+        m_speed = gameObject.GetComponent<CharacterAttributes>().getSpeed();
     }
 
-    public override void AttactAnimationListener()
+    protected void Update()
     {
-        SetAttackFlag(false);
+        if (PlayerAttributes.instance.IsGameStateFrozen() ||
+            PlayerAttributes.instance.IsWalkFrozen())
+            return;
+
+        UpdateDirection();
+        ResetRecievedDirection();
+    }
+
+    protected void FixedUpdate()
+    {
+        UpdateMovement();
+    }
+
+    override protected void UpdateMovement()
+    {
+        if (PlayerAttributes.instance.IsWalkFrozen())
+        {
+            m_MovmentDirection = Vector2.zero;
+        }
+
+        base.UpdateMovement();
     }
 
     override public void DoAction()
@@ -24,22 +41,12 @@ public class PlayerMovementModel : CharacterMovementModel
 
         if (interactableInProximity == null)
         {
-            SetAttackFlag(true);
+            PlayerAttributes.instance.setWalkStateFrozen(true);
+            PlayerAttributes.instance.SetAttackState(true);
             return;
         }
 
         interactableInProximity.OnInteract();
-    }
-
-    override public void SetAttackFlag(bool set)
-    {
-        attackFlag = set;
-        stopMovement = set;
-    }
-
-    override public bool GetAttackFlag()
-    {
-        return attackFlag;
     }
 
     private InteractableBase FindInteractableInProximity()
@@ -80,8 +87,8 @@ public class PlayerMovementModel : CharacterMovementModel
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
 
         return Physics2D.OverlapAreaAll(
-                     (Vector2)transform.position + boxCollider.offset + boxCollider.size * 0.6f,
-                     (Vector2)transform.position + boxCollider.offset - boxCollider.size * 0.6f
-                );
+            (Vector2)transform.position + boxCollider.offset + boxCollider.size * 0.6f,
+            (Vector2)transform.position + boxCollider.offset - boxCollider.size * 0.6f
+        );
     }
 }

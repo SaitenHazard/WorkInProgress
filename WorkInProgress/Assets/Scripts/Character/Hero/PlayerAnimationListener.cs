@@ -17,4 +17,9 @@ public class PlayerAnimationListener : CharacterAnimationListener
         else
             spriteRenderer.sortingOrder = 0;
     }
+
+    private void attackFinished()
+    {
+        PlayerAttributes.instance.setWalkStateFrozen(false);
+    }
 }
