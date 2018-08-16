@@ -85,7 +85,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     }
 
-    protected virtual void GetHit()
+    public virtual void GetHit()
     {
 
     }

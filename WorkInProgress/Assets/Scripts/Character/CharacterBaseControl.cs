@@ -49,7 +49,7 @@ public class CharacterBaseControl : MonoBehaviour
         m_movementModel.SetDirection(direction);
     }
 
-    public void Hit()
+    public void DoHit()
     {
         m_attributes.SetHitState(true);
         m_attributes.setWalkStateFrozen(false);
