@@ -8,7 +8,6 @@ public class JellyAIWalkControl : CharacterBaseControl
 
     private void Start()
     {
-        Debug.Log("in");
         StartCoroutine(WalKCycle());
     }
 
@@ -74,11 +73,11 @@ public class JellyAIWalkControl : CharacterBaseControl
         SetDirection(newDirection);
     }
 
-    void UpdateAction()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            //OnActionPressed();
-        }
-    }
+    //void UpdateAction()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.D))
+    //    {
+    //        OnActionPressed();
+    //    }
+    //}
 }

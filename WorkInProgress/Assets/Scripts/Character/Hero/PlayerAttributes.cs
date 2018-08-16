@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class PlayerAttributes : CharacterAttributes {
 
+    protected bool m_freezeGameState = false;
     public static PlayerAttributes instance;
-    public bool attackState = false;
 
     protected void Awake()
     {
         base.Awake();
-
         instance = this;
     }
 
-    public void SetAttackState(bool state)
+    public bool IsGameStateFrozen()
     {
-        attackState = state;
+        return m_freezeGameState;
     }
 
-    public bool IsAttackState()
+    public void setFreezeGameState(bool freezeGameState)
     {
-        return attackState;
+        m_freezeGameState = freezeGameState;
     }
 }

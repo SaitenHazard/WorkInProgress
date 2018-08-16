@@ -156,6 +156,36 @@ Prefab:
       propertyPath: m_Name
       value: JellyWalkCycle
       objectReference: {fileID: 0}
+    - target: {fileID: 61651817342209452, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61651817342209452, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 61651817342209452, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 61651817342209452, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 114786043709071978, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: health
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 61651817342209452, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
   m_IsPrefabParent: 0
@@ -198,9 +228,35 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1581193771981420, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581193771981420, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+      propertyPath: m_TagString
+      value: Punch
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &889473837 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1933071818295508, guid: 3dee6758fc619404683e113baf5045e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 8232378}
+--- !u!114 &889473838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 889473837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c079890b7d8e0546b8c8117d602920d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 0
+  MovementModel: {fileID: 0}
 --- !u!1 &914762442
 GameObject:
   m_ObjectHideFlags: 0

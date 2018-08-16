@@ -25,6 +25,12 @@ public class PlayerMovementModel : CharacterMovementModel
         UpdateMovement();
     }
 
+    protected override void GetHit()
+    {
+        PlayerAttributes.instance.setWalkStateFrozen(true);
+        PlayerAttributes.instance.SetAttackState(true);
+    }
+
     override protected void UpdateMovement()
     {
         if (PlayerAttributes.instance.IsWalkFrozen())

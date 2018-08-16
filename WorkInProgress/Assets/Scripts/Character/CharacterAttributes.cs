@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class CharacterAttributes : MonoBehaviour {
 
-    public bool m_freezeGameState = false;
     public bool m_WalkFrozen = false;
 
     public float speed;
     public float bubbleSpeechHeight;
+    public int health;
+
+    protected bool attackState = false;
+    protected bool hitState = false;
 
     protected void Awake()
     {
+
     }
 
     public float getSpeed()
@@ -31,14 +35,14 @@ public class CharacterAttributes : MonoBehaviour {
         return positon;
     }
 
+    public void TakeDamage(int damage)
+    {
+        health = health - damage;
+    }
+
     public bool IsWalkFrozen()
     {
         return m_WalkFrozen;
-    }
-
-    public bool IsGameStateFrozen()
-    {
-        return m_freezeGameState;
     }
 
     public void setWalkStateFrozen(bool walkState)
@@ -46,8 +50,23 @@ public class CharacterAttributes : MonoBehaviour {
         m_WalkFrozen = walkState;
     }
 
-    public void setFreezeGameState(bool freezeGameState)
+    public void SetAttackState(bool state)
     {
-        m_freezeGameState = freezeGameState;
+        attackState = state;
+    }
+
+    public bool IsAttackState()
+    {
+        return attackState;
+    }
+
+    public void SetHitState(bool state)
+    {
+        hitState = state;
+    }
+
+    public bool IsHitState()
+    {
+        return hitState;
     }
 }
