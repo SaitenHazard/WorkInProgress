@@ -13,10 +13,22 @@ public class CharacterMovementModel : MonoBehaviour
     private Vector2 m_RecievedDirection;
     private Vector2 m_FacingDirection;
 
+    virtual protected void Awake()
+    {
+        Debug.Log("in");
+        m_Attributes = GetComponent<CharacterAttributes>();
+        m_Body = GetComponent<Rigidbody2D>();
+        m_speed = m_Attributes.getSpeed();
+    }
+
+    virtual protected void Start()
+    {
+
+    }
+
     protected void ResetRecievedDirection()
     {
         m_RecievedDirection = Vector2.zero;
-        m_Attributes = gameObject.GetComponent<CharacterAttributes>();
     }
 
     virtual protected void UpdateMovement()
@@ -58,11 +70,13 @@ public class CharacterMovementModel : MonoBehaviour
                 }
             }
 
-            if (m_Attributes.IsHitState())
-                m_FacingDirection = m_Attributes.GetAttackDirection();
+            //Debug.Log(m_Attributes);
 
-            m_FacingDirection = facingDirection;
-            m_Attributes.SetDirections(facingDirection);
+            //if (m_Attributes.IsHitState())
+                //m_FacingDirection = m_Attributes.GetAttackDirection();
+
+            //m_FacingDirection = facingDirection;
+            //m_Attributes.SetDirections(facingDirection);
         }
     }
 

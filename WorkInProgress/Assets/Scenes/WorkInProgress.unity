@@ -154,7 +154,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1763049945981194, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
       propertyPath: m_Name
-      value: JellyWalkCycle
+      value: Jelly
       objectReference: {fileID: 0}
     - target: {fileID: 61651817342209452, guid: 3dee6758fc619404683e113baf5045e4,
         type: 2}
@@ -186,6 +186,11 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114396625186345606, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: m_Attributes
+      value: 
+      objectReference: {fileID: 2052096603}
     m_RemovedComponents:
     - {fileID: 61884187976660860, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
@@ -487,7 +492,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -7, y: -1, z: 0}
-  m_Size: {x: 7, y: 5, z: 1}
+  m_Size: {x: 13, y: 5, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -662,7 +667,7 @@ Tilemap:
   - first: {x: -4, y: 1, z: 0}
     second:
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 7
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -680,7 +685,7 @@ Tilemap:
   - first: {x: -5, y: 2, z: 0}
     second:
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -718,19 +723,27 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 9fa4ba89b88dd82479a5a02f377f9984, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: cdb79bb603a3f8543aafd9d0ce71429f, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: 21300004, guid: d8292fa330659aa42b32eac61ea3116c, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300006, guid: d8292fa330659aa42b32eac61ea3116c, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300012, guid: d8292fa330659aa42b32eac61ea3116c, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300014, guid: d8292fa330659aa42b32eac61ea3116c, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 21300008, guid: d8292fa330659aa42b32eac61ea3116c, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 21300010, guid: d8292fa330659aa42b32eac61ea3116c, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300012, guid: d8292fa330659aa42b32eac61ea3116c, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300006, guid: d8292fa330659aa42b32eac61ea3116c, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 12
     m_Data:
@@ -756,7 +769,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -7, y: -1, z: 0}
-  m_Size: {x: 7, y: 4, z: 1}
+  m_Size: {x: 13, y: 4, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -777,6 +790,10 @@ Tilemap:
     e32: 0
     e33: 1
   m_TileRefreshArray:
+  - serializedVersion: 1
+    m_DirtyIndex: 0
+  - serializedVersion: 1
+    m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
   - serializedVersion: 1
@@ -964,3 +981,9 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
+--- !u!114 &2052096603 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114786043709071978, guid: 3dee6758fc619404683e113baf5045e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 8232378}
+  m_Script: {fileID: 11500000, guid: ce1b58d57ea141642ac711c56e72d922, type: 3}

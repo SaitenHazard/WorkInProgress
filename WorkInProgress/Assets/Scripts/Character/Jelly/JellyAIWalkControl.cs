@@ -6,7 +6,7 @@ public class JellyAIWalkControl : CharacterBaseControl
 {
     public float steps;
 
-    private void Start()
+    override protected void Start()
     {
         //StartCoroutine(WalKCycle());
     }
@@ -14,7 +14,6 @@ public class JellyAIWalkControl : CharacterBaseControl
     private void Update()
     {
         //Debug.Log("in");
-        //StartCoroutine("WalKCycle");
     }
 
     IEnumerator WalKCycle()
