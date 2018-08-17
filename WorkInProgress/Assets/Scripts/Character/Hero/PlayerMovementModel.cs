@@ -17,12 +17,8 @@ public class PlayerMovementModel : CharacterMovementModel
             return;
 
         UpdateDirection();
-        ResetRecievedDirection();
-    }
-
-    protected void FixedUpdate()
-    {
         UpdateMovement();
+        ResetRecievedDirection();
     }
 
     override protected void UpdateMovement()

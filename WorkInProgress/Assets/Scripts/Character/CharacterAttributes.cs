@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterAttributes : MonoBehaviour {
 
-    public bool m_WalkFrozen = false;
+    protected bool m_WalkFrozen = false;
 
     public float speed;
     public float bubbleSpeechHeight;
