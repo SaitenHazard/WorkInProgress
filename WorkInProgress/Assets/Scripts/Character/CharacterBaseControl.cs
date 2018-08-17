@@ -52,7 +52,5 @@ public class CharacterBaseControl : MonoBehaviour
     public void DoHit()
     {
         m_attributes.SetHitState(true);
-        m_attributes.setWalkStateFrozen(false);
-        m_attributes.SetAttackState(false);
     }
 }

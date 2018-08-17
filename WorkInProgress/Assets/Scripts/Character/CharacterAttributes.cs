@@ -13,9 +13,32 @@ public class CharacterAttributes : MonoBehaviour {
     protected bool attackState = false;
     protected bool hitState = false;
 
+    protected Vector2 attackDirection;
+    protected Vector2 facingDirection;
+
     protected void Awake()
     {
 
+    }
+
+    public void SetAttackDirection(Vector2 direction)
+    {
+        attackDirection = direction;
+    }
+
+    public Vector2 GetAttackDirection()
+    {
+        return attackDirection;
+    }
+
+    public void SetDirections(Vector2 direction)
+    {
+        facingDirection = direction;
+    }
+
+    public Vector2 GetFacingDirection()
+    {
+        return facingDirection;
     }
 
     public float getSpeed()

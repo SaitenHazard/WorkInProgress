@@ -8,7 +8,7 @@ public class JellyAIWalkControl : CharacterBaseControl
 
     private void Start()
     {
-        StartCoroutine(WalKCycle());
+        //StartCoroutine(WalKCycle());
     }
 
     private void Update()
