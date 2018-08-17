@@ -38,10 +38,11 @@ GameObject:
   - component: {fileID: 4751813810705010}
   - component: {fileID: 114786043709071978}
   - component: {fileID: 114698047018853190}
-  - component: {fileID: 114396625186345606}
+  - component: {fileID: 114898378657718850}
+  - component: {fileID: 114132014602334926}
   - component: {fileID: 114571626745187096}
   - component: {fileID: 50853889480544678}
-  - component: {fileID: 61884187976660860}
+  - component: {fileID: 61702767297927752}
   m_Layer: 0
   m_Name: Jelly
   m_TagString: Untagged
@@ -57,7 +58,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4376739130340722}
-  - component: {fileID: 61651817342209452}
+  - component: {fileID: 114305315076348664}
+  - component: {fileID: 58814417348335460}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: Untagged
@@ -126,8 +128,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61651817342209452
-BoxCollider2D:
+--- !u!58 &58814417348335460
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -135,35 +137,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0006120354, y: -0.03247714}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.03}
   serializedVersion: 2
-  m_Size: {x: 0.49514428, y: 0.42525268}
-  m_EdgeRadius: 0
---- !u!61 &61884187976660860
+  m_Radius: 0.33
+--- !u!61 &61702767297927752
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763049945981194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0006120354, y: -0.03247714}
+  m_Offset: {x: 0.0023432672, y: -0.03214103}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -174,7 +166,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.49514428, y: 0.42525268}
+  m_Size: {x: 0.5015821, y: 0.45305812}
   m_EdgeRadius: 0
 --- !u!95 &95426254535522436
 Animator:
@@ -193,7 +185,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114396625186345606
+--- !u!114 &114132014602334926
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -201,7 +193,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1763049945981194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d73cd3e207f8c6a4283ec5facbf743c6, type: 3}
+  m_Script: {fileID: 11500000, guid: a450fc96b898b6d49bf988cde8f4241e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114305315076348664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933071818295508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c079890b7d8e0546b8c8117d602920d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114571626745187096
@@ -238,10 +241,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1b58d57ea141642ac711c56e72d922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_freezeGameState: 0
   m_WalkFrozen: 0
   speed: 1.5
   bubbleSpeechHeight: 2
+  health: 2
+--- !u!114 &114898378657718850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763049945981194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d73cd3e207f8c6a4283ec5facbf743c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212967625440947654
 SpriteRenderer:
   m_ObjectHideFlags: 1

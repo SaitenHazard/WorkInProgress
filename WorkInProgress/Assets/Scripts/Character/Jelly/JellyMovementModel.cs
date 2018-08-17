@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class JellyMovementModel : CharacterMovementModel
 {
+    private void Start()
+    {
+        Debug.Log(m_Attributes);
+    }
+
     protected void Update()
     {
         if (PlayerAttributes.instance.IsGameStateFrozen())

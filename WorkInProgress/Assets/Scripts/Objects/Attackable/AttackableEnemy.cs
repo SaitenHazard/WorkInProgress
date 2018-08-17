@@ -12,9 +12,9 @@ public class AttackableEnemy : AttackableBase
         m_attributes = gameObject.GetComponentInParent<CharacterAttributes>();
     }
 
-    public override void OnHit(Collider2D hitCollider)
-    { 
-        if (hitCollider.tag == "punch")
+    public void OnTriggerEnter2D (Collider2D hitCollider)
+    {
+        if (hitCollider.gameObject.tag == "Punch")
         {
             CharacterAttributes attackerAttributes = hitCollider.gameObject.GetComponentInParent<CharacterAttributes>();
             m_attributes.SetAttackDirection(attackerAttributes.GetFacingDirection());

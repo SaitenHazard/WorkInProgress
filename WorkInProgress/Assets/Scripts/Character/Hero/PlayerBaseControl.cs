@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBaseControl : CharacterBaseControl {
     
-    protected void OnActionPressed()
+    override public void OnActionPressed()
     {
         m_movementModel.DoAction();
     }

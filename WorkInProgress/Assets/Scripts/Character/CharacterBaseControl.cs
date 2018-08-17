@@ -52,5 +52,38 @@ public class CharacterBaseControl : MonoBehaviour
     public void DoHit()
     {
         m_attributes.SetHitState(true);
+        m_movementView.DoHit();
+    }
+
+    virtual public void UpdateDirection(Directions dir)
+    {
+        Vector2 newDirection = Vector2.zero;
+
+        if (dir == Directions.Up)
+        {
+            newDirection.y = 1;
+        }
+
+        if (dir == Directions.Down)
+        {
+            newDirection.y = -1;
+        }
+
+        if (dir == Directions.Left)
+        {
+            newDirection.x = -1;
+        }
+
+        if (dir == Directions.Right)
+        {
+            newDirection.x = 1;
+        }
+
+        SetDirection(newDirection);
+    }
+
+    virtual public void OnActionPressed()
+    {
+
     }
 }

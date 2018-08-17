@@ -41,6 +41,6 @@ public class CharacterMovementView : MonoBehaviour
 
     virtual public void DoHit()
     {
-        animator.SetBool("Hit", m_MovementModel.IsMoving());
+        animator.SetBool("Hit", true);
     }
 }
