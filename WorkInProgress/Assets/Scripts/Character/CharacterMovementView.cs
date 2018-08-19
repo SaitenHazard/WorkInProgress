@@ -15,6 +15,7 @@ public class CharacterMovementView : MonoBehaviour
 
     virtual protected void Update()
     {
+        UpdateHit();
         UpdateDirection();
     }
 
@@ -31,16 +32,15 @@ public class CharacterMovementView : MonoBehaviour
             }
         }
 
-        animator.SetBool("Walk", m_MovementModel.IsMoving());
+        animator.SetBool("Walk", m_MovementModel.IsMoving()); 
     }
 
-    virtual public void DoAttack()
+    private void UpdateHit()
     {
-
+        animator.SetBool("Hit", m_MovementModel.IsPushBack());
     }
 
-    virtual public void DoHit()
+    public void DoHit(bool hit)
     {
-        animator.SetBool("Hit", true);
     }
 }

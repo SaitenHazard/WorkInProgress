@@ -52,10 +52,15 @@ public class CharacterBaseControl : MonoBehaviour
         m_movementModel.SetDirection(direction);
     }
 
+    public void StopHit()
+    {
+        m_movementView.DoHit(false);
+    }
+
     public void DoHit()
     {
         m_attributes.SetHitState(true);
-        m_movementView.DoHit();
+        m_movementView.DoHit(true);
     }
 
     virtual public void UpdateDirection(Directions dir)

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class CharacterMovementModel : MonoBehaviour
 {
-    protected float m_speed;
+    private float m_speed;
+    private float pushBackSpeed = 3f;
 
-    protected Rigidbody2D m_Body;
-    protected CharacterAttributes m_Attributes;
+    private Rigidbody2D m_Body;
+    private CharacterAttributes m_Attributes;
 
-    protected Vector2 m_MovmentDirection;
+    private Vector2 m_MovmentDirection;
     private Vector2 m_RecievedDirection;
-    private Vector2 m_FacingDirection;
+    public Vector2 m_FacingDirection;
 
     private bool doPushBack = false;
 
@@ -37,23 +38,55 @@ public class CharacterMovementModel : MonoBehaviour
             doPushBack = true;
             StartCoroutine(pushBack());
             m_Attributes.SetHitState(false);
-            return;
         }
+    }
+
+    public bool IsPushBack()
+    {
+        return doPushBack;
     }
 
     private IEnumerator pushBack()
     {
         for (float time = Time.time; (Time.time - time) <= m_Attributes.GetPushBackTime();)
         {
-            UpdateDirection();
-            UpdateMovement();
             yield return null;
         }
 
         doPushBack = false;
     }
 
-    protected void UpdateDirection()
+    private void SetPushBackDirection()
+    {
+        Vector2 facingDirection = new Vector2();
+
+        if (doPushBack)
+        {
+            m_MovmentDirection = m_Attributes.GetAttackDirection();
+            Debug.Log(m_MovmentDirection);
+
+            if (m_MovmentDirection.x == 1)
+            {
+                facingDirection.x = -1;
+            }
+            else if (m_MovmentDirection.x == -1)
+            {
+                facingDirection.x = 1;
+            }
+            else if (m_MovmentDirection.y == 1)
+            {
+                facingDirection.y = -1;
+            }
+            else
+            {
+                facingDirection.y = 1;
+            }
+        }
+
+        m_FacingDirection = facingDirection;
+    }
+
+    private void SetMovementDirection()
     {
         m_MovmentDirection = new Vector2(m_RecievedDirection.x, m_RecievedDirection.y);
 
@@ -75,18 +108,20 @@ public class CharacterMovementModel : MonoBehaviour
                 {
                     facingDirection.x = 0;
                 }
-            }
-            
-            m_FacingDirection = facingDirection;
 
-            if (doPushBack)
-            {
-                Debug.Log("in");
-                m_FacingDirection = m_Attributes.GetAttackDirection();
+                m_FacingDirection = facingDirection;
             }
-
-            m_Attributes.SetDirections(facingDirection);
         }
+    }
+
+    private void UpdateDirection()
+    {
+        SetMovementDirection();
+
+        if (doPushBack == true)
+            SetPushBackDirection();
+
+        m_Attributes.SetDirections(m_FacingDirection);
     }
 
     protected void ResetRecievedDirection()
@@ -103,14 +138,19 @@ public class CharacterMovementModel : MonoBehaviour
         }
 
         if (doPushBack)
-            m_MovmentDirection = m_Attributes.GetAttackDirection();
+        {
+            m_MovmentDirection = GetFacingDirection();
+        }
 
         if (m_MovmentDirection != Vector2.zero)
         {
             m_MovmentDirection.Normalize();
         }
 
-        m_Body.velocity = m_MovmentDirection * m_speed;
+        if (doPushBack)
+            m_Body.velocity = m_MovmentDirection * pushBackSpeed;
+        else
+            m_Body.velocity = m_MovmentDirection * m_speed;
     }
 
     public Vector2 GetFacingDirection()

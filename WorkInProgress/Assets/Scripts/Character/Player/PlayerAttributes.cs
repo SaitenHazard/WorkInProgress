@@ -6,6 +6,7 @@ public class PlayerAttributes : CharacterAttributes {
 
     private bool attackState = false;
     private bool m_freezeGameState = false;
+    private float pushBackSpeed = 2.0f;
 
     public static PlayerAttributes instance;
 

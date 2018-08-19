@@ -157,6 +157,16 @@ Prefab:
       propertyPath: pushBackTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114305315076348664, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: health
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114305315076348664, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: pushBackTime
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61702767297927752, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3dee6758fc619404683e113baf5045e4, type: 2}

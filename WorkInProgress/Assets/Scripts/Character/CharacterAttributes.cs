@@ -8,17 +8,28 @@ public class CharacterAttributes : MonoBehaviour {
 
     public float speed;
     public float bubbleSpeechHeight;
-    public int health;
-    public float pushBackTime;
+
+    private int health;
+    private float pushBackTime;
 
     private bool hitState = false;
 
-    private Vector2 attackDirection;
-    private Vector2 facingDirection;
+    public Vector2 attackDirection;
+    public Vector2 facingDirection;
 
     public float GetPushBackTime()
     {
         return pushBackTime;
+    }
+
+    public void SetPushBackTime(float time)
+    {
+        pushBackTime = time;
+    }
+
+    public void SetHealth(int m_health)
+    {
+        health = m_health;
     }
 
     public void SetSpeed(float m_speed)
