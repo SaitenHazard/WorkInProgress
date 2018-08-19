@@ -4,40 +4,12 @@ using UnityEngine;
 
 public class PlayerMovementModel : CharacterMovementModel
 {
-    public void Awake()
-    {
-        m_Body = GetComponent<Rigidbody2D>();
-        m_speed = gameObject.GetComponent<CharacterAttributes>().getSpeed();
-    }
-
-    protected void Update()
-    {
-        if (PlayerAttributes.instance.IsGameStateFrozen() ||
-            PlayerAttributes.instance.IsWalkFrozen())
-            return;
-
-        UpdateDirection();
-        UpdateMovement();
-        ResetRecievedDirection();
-    }
-
-    override protected void UpdateMovement()
-    {
-        if (PlayerAttributes.instance.IsWalkFrozen())
-        {
-            m_MovmentDirection = Vector2.zero;
-        }
-
-        base.UpdateMovement();
-    }
-
     override public void DoAction()
     {
         InteractableBase interactableInProximity = FindInteractableInProximity();
 
         if (interactableInProximity == null)
         {
-            PlayerAttributes.instance.setWalkStateFrozen(true);
             PlayerAttributes.instance.SetAttackState(true);
             return;
         }

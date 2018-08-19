@@ -10,8 +10,7 @@ public class CharacterAttributes : MonoBehaviour {
     public float bubbleSpeechHeight;
     public int health;
 
-    protected bool attackState = false;
-    protected bool hitState = false;
+    public bool hitState = false;
 
     protected Vector2 attackDirection;
     protected Vector2 facingDirection;
@@ -19,6 +18,11 @@ public class CharacterAttributes : MonoBehaviour {
     protected void Awake()
     {
 
+    }
+
+    public void SetSpeed(float m_speed)
+    {
+        speed = m_speed;
     }
 
     public void SetAttackDirection(Vector2 direction)
@@ -71,16 +75,6 @@ public class CharacterAttributes : MonoBehaviour {
     public void setWalkStateFrozen(bool walkState)
     {
         m_WalkFrozen = walkState;
-    }
-
-    public void SetAttackState(bool state)
-    {
-        attackState = state;
-    }
-
-    public bool IsAttackState()
-    {
-        return attackState;
     }
 
     public void SetHitState(bool state)

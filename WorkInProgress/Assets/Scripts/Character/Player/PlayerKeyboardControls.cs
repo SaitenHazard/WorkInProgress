@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerKeyboardControls : MonoBehaviour
 {
     private CharacterBaseControl m_BaseControl;
+    private PlayerActions m_playerActions;
 
     private void Awake()
     {
         m_BaseControl = GetComponent<CharacterBaseControl>();
+        m_playerActions = GetComponent<PlayerActions>();
     }
 
     private void Start()
@@ -59,7 +61,7 @@ public class PlayerKeyboardControls : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
-            m_BaseControl.OnActionPressed();
+            m_playerActions.OnActionPressed();
         }
     }
 }

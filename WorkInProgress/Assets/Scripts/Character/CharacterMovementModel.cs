@@ -19,16 +19,18 @@ public class CharacterMovementModel : MonoBehaviour
         m_Body = GetComponent<Rigidbody2D>();
         m_speed = m_Attributes.getSpeed();
 
-        //this Returns the correct component of the corrent game object.
         Debug.Log(m_Attributes);
     }
 
-    //this function is called from the class which inherits from this class
+    private void Update()
+    {
+        UpdateDirection();
+        UpdateMovement();
+        ResetRecievedDirection();
+    }
+
     protected void UpdateDirection()
     {
-        //this Returns NULL
-        Debug.Log(m_Attributes);
-
         m_MovmentDirection = new Vector2(m_RecievedDirection.x, m_RecievedDirection.y);
 
         if (m_RecievedDirection != Vector2.zero)
@@ -51,11 +53,18 @@ public class CharacterMovementModel : MonoBehaviour
                 }
             }
 
-            //if (m_Attributes.IsHitState())
-            //m_FacingDirection = m_Attributes.GetAttackDirection();
+            if(gameObject.name == "Jelly")
+                Debug.Log(gameObject.name);
 
-            m_FacingDirection = facingDirection;
-            //m_Attributes.SetDirections(facingDirection);
+            if (m_Attributes.IsHitState())
+            {
+                m_FacingDirection = m_Attributes.GetAttackDirection();
+                Debug.Log("in");
+            }
+            else
+                m_FacingDirection = facingDirection;
+
+            m_Attributes.SetDirections(facingDirection);
         }
     }
 
@@ -64,14 +73,10 @@ public class CharacterMovementModel : MonoBehaviour
         m_RecievedDirection = Vector2.zero;
     }
 
-    private void UpdateHit()
+    protected void UpdateMovement()
     {
-
-    }
-
-    virtual protected void UpdateMovement()
-    {
-        if (PlayerAttributes.instance.IsGameStateFrozen())
+        if (PlayerAttributes.instance.IsGameStateFrozen()
+            || m_Attributes.IsWalkFrozen())
         {
             m_MovmentDirection = Vector2.zero;
         }
@@ -83,8 +88,6 @@ public class CharacterMovementModel : MonoBehaviour
 
         m_Body.velocity = m_MovmentDirection * m_speed;
     }
-
-    
 
     public Vector2 GetFacingDirection()
     {

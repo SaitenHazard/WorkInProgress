@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterBaseControl : MonoBehaviour
 {
+    public float walkSpeed;
+
     protected CharacterMovementModel m_movementModel;
     protected CharacterMovementView m_movementView;
     protected CharacterAttributes m_attributes;
@@ -13,6 +15,7 @@ public class CharacterBaseControl : MonoBehaviour
         m_movementModel = gameObject.GetComponent<CharacterMovementModel>();
         m_movementView = gameObject.GetComponent<CharacterMovementView>();
         m_attributes = gameObject.GetComponent<CharacterAttributes>();
+        m_attributes.SetSpeed(walkSpeed);
     }
 
     protected Vector2 GetDiagonalizedDirection(Vector2 direction, float threshold)

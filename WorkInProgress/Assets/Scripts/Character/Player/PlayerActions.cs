@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementView : CharacterMovementView
-{
-    override protected void Update()
+public class PlayerActions : MonoBehaviour {
+    Animator animator;
+    CharacterMovementModel m_movementModel;
+
+    private void Awake()
     {
-        base.Update();
+        animator = GetComponentInChildren<Animator>();
+        m_movementModel = GetComponent<CharacterMovementModel>();
+    }
+
+    private void Update()
+    {
         StartCoroutine(UpdateAttack());
     }
 
-    private void FixedUpdate()
+    public void OnActionPressed()
     {
-        //UpdateAttack();
+        m_movementModel.DoAction();
     }
 
     private IEnumerator UpdateAttack()
@@ -21,11 +28,8 @@ public class PlayerMovementView : CharacterMovementView
         {
             PlayerAttributes.instance.SetAttackState(false);
             animator.SetTrigger("Attack");
-            //Debug.Log(PlayerAttributes.instance.IsWalkFrozen());
-            //yield return null;
             yield return new WaitForSeconds(0.2f);
             PlayerAttributes.instance.setWalkStateFrozen(false);
-            //yield return new WaitForSeconds(1.0f);
         }
     }
 }
