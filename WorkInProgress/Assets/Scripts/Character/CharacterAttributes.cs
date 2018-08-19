@@ -9,15 +9,16 @@ public class CharacterAttributes : MonoBehaviour {
     public float speed;
     public float bubbleSpeechHeight;
     public int health;
+    public float pushBackTime;
 
-    public bool hitState = false;
+    private bool hitState = false;
 
-    protected Vector2 attackDirection;
-    protected Vector2 facingDirection;
+    private Vector2 attackDirection;
+    private Vector2 facingDirection;
 
-    protected void Awake()
+    public float GetPushBackTime()
     {
-
+        return pushBackTime;
     }
 
     public void SetSpeed(float m_speed)

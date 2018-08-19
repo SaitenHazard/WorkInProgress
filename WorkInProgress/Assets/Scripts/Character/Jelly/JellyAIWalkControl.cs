@@ -16,7 +16,7 @@ public class JellyAIWalkControl : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(WalKCycle());
+        //StartCoroutine(WalKCycle());
     }
 
     private void Update()

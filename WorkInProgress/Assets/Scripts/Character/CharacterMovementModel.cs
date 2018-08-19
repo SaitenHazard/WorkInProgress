@@ -13,20 +13,44 @@ public class CharacterMovementModel : MonoBehaviour
     private Vector2 m_RecievedDirection;
     private Vector2 m_FacingDirection;
 
+    private bool doPushBack = false;
+
     protected void Awake()
     {
         m_Attributes = GetComponent<CharacterAttributes>();
         m_Body = GetComponent<Rigidbody2D>();
         m_speed = m_Attributes.getSpeed();
-
-        Debug.Log(m_Attributes);
     }
 
     private void Update()
     {
+        UpdateHit();
         UpdateDirection();
         UpdateMovement();
         ResetRecievedDirection();
+    }
+
+    protected void UpdateHit()
+    {
+        if (m_Attributes.IsHitState())
+        {
+            doPushBack = true;
+            StartCoroutine(pushBack());
+            m_Attributes.SetHitState(false);
+            return;
+        }
+    }
+
+    private IEnumerator pushBack()
+    {
+        for (float time = Time.time; (Time.time - time) <= m_Attributes.GetPushBackTime();)
+        {
+            UpdateDirection();
+            UpdateMovement();
+            yield return null;
+        }
+
+        doPushBack = false;
     }
 
     protected void UpdateDirection()
@@ -52,17 +76,14 @@ public class CharacterMovementModel : MonoBehaviour
                     facingDirection.x = 0;
                 }
             }
+            
+            m_FacingDirection = facingDirection;
 
-            if(gameObject.name == "Jelly")
-                Debug.Log(gameObject.name);
-
-            if (m_Attributes.IsHitState())
+            if (doPushBack)
             {
-                m_FacingDirection = m_Attributes.GetAttackDirection();
                 Debug.Log("in");
+                m_FacingDirection = m_Attributes.GetAttackDirection();
             }
-            else
-                m_FacingDirection = facingDirection;
 
             m_Attributes.SetDirections(facingDirection);
         }
@@ -80,6 +101,9 @@ public class CharacterMovementModel : MonoBehaviour
         {
             m_MovmentDirection = Vector2.zero;
         }
+
+        if (doPushBack)
+            m_MovmentDirection = m_Attributes.GetAttackDirection();
 
         if (m_MovmentDirection != Vector2.zero)
         {

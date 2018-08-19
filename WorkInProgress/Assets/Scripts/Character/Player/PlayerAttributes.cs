@@ -9,9 +9,8 @@ public class PlayerAttributes : CharacterAttributes {
 
     public static PlayerAttributes instance;
 
-    protected void Awake()
+    private void Awake()
     {
-        base.Awake();
         instance = this;
     }
 
