@@ -1,27 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class CharacterBaseControl : MonoBehaviour
 {
-    public float walkSpeed;
+    CharacterMovementModel m_movementModel;
+    CharacterMovementView m_movementView;
 
-    protected CharacterMovementModel m_movementModel;
-    protected CharacterMovementView m_movementView;
-    protected CharacterAttributes m_attributes;
-
-    protected void Awake()
+    void Awake()
     {
-        m_movementModel = gameObject.GetComponent<CharacterMovementModel>();
-        m_movementView = gameObject.GetComponent<CharacterMovementView>();
-        m_attributes = gameObject.GetComponent<CharacterAttributes>();
-        m_attributes.SetSpeed(walkSpeed);
+        m_movementModel = GetComponent<CharacterMovementModel>();
+        m_movementView = GetComponent<CharacterMovementView>();
     }
 
     protected Vector2 GetDiagonalizedDirection(Vector2 direction, float threshold)
     {
-
-        if(Mathf.Abs(direction.x) < threshold)
+        if (Mathf.Abs(direction.x) < threshold)
         {
             direction.x = 0;
         }
@@ -30,9 +23,9 @@ public class CharacterBaseControl : MonoBehaviour
             direction.x = Mathf.Sign(direction.x);
         }
 
-        if(Mathf.Abs(direction.y) < threshold)
+        if (Mathf.Abs(direction.y) < threshold)
         {
-            direction.y = Mathf.Sign(direction.y);
+            direction.y = 0;
         }
         else
         {
@@ -42,7 +35,7 @@ public class CharacterBaseControl : MonoBehaviour
         return direction;
     }
 
-    public void SetDirection(Vector2 direction)
+    protected void SetDirection(Vector2 direction)
     {
         if (m_movementModel == null)
         {
@@ -50,48 +43,5 @@ public class CharacterBaseControl : MonoBehaviour
         }
 
         m_movementModel.SetDirection(direction);
-    }
-
-    public void StopHit()
-    {
-        m_movementView.DoHit(false);
-    }
-
-    public void DoHit()
-    {
-        m_attributes.SetHitState(true);
-        m_movementView.DoHit(true);
-    }
-
-    virtual public void UpdateDirection(Directions dir)
-    {
-        Vector2 newDirection = Vector2.zero;
-
-        if (dir == Directions.Up)
-        {
-            newDirection.y = 1;
-        }
-
-        if (dir == Directions.Down)
-        {
-            newDirection.y = -1;
-        }
-
-        if (dir == Directions.Left)
-        {
-            newDirection.x = -1;
-        }
-
-        if (dir == Directions.Right)
-        {
-            newDirection.x = 1;
-        }
-
-        SetDirection(newDirection);
-    }
-
-    virtual public void OnActionPressed()
-    {
-
     }
 }

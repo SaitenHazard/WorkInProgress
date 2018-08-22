@@ -30,7 +30,7 @@ public class AttackableEnemy : AttackableBase
             CharacterAttributes attackerAttributes = hitCollider.gameObject.GetComponentInParent<CharacterAttributes>();
             m_attributes.SetAttackDirection(attackerAttributes.GetFacingDirection());
 
-            m_baseControl.DoHit();
+            //m_baseControl.DoHit();
         }
     }
 }

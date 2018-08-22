@@ -19,7 +19,7 @@ public class PlayerActions : MonoBehaviour {
 
     public void OnActionPressed()
     {
-        m_movementModel.DoAction();
+        //m_movementModel.DoAction();
     }
 
     private IEnumerator UpdateAttack()

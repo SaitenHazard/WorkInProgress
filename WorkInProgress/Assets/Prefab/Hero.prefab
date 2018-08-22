@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbaae4f977b4d8449df6fa7b73d2338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FacingDirection: {x: 0, y: 0}
 --- !u!114 &114261366197712096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -319,8 +320,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   bubbleSpeechHeight: 0
-  health: 0
-  hitState: 0
+  attackDirection: {x: 0, y: 0}
+  facingDirection: {x: 0, y: 0}
 --- !u!114 &114300920500393122
 MonoBehaviour:
   m_ObjectHideFlags: 1

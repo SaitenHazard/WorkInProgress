@@ -1,98 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+using System.Runtime.Remoting.Messaging;
 
 public class CharacterMovementModel : MonoBehaviour
 {
-    private float m_speed;
-    private float pushBackSpeed = 3f;
+    private float Speed;
+
+    private Vector3 m_MovementDirection;
+    private Vector3 m_FacingDirection;
 
     private Rigidbody2D m_Body;
-    private CharacterAttributes m_Attributes;
 
-    private Vector2 m_MovmentDirection;
-    private Vector2 m_RecievedDirection;
-    public Vector2 m_FacingDirection;
+    private float m_LastFreezeTime;
 
-    private bool doPushBack = false;
+    Vector2 m_ReceivedDirection;
 
-    protected void Awake()
+    CharacterAttributes m_Attributes;
+
+    void Awake()
     {
         m_Attributes = GetComponent<CharacterAttributes>();
         m_Body = GetComponent<Rigidbody2D>();
-        m_speed = m_Attributes.getSpeed();
+        Speed = m_Attributes.GetSpeed();
     }
 
-    private void Update()
+    void Update()
     {
-        UpdateHit();
         UpdateDirection();
+        ResetReceivedDirection();
+    }
+
+    void FixedUpdate()
+    {
         UpdateMovement();
-        ResetRecievedDirection();
     }
 
-    protected void UpdateHit()
+    void ResetReceivedDirection()
     {
-        if (m_Attributes.IsHitState())
+        m_ReceivedDirection = Vector2.zero;
+    }
+
+    void UpdateDirection()
+    {
+        m_MovementDirection = new Vector3(m_ReceivedDirection.x, m_ReceivedDirection.y, 0);
+
+        if (m_ReceivedDirection != Vector2.zero)
         {
-            doPushBack = true;
-            StartCoroutine(pushBack());
-            m_Attributes.SetHitState(false);
-        }
-    }
-
-    public bool IsPushBack()
-    {
-        return doPushBack;
-    }
-
-    private IEnumerator pushBack()
-    {
-        for (float time = Time.time; (Time.time - time) <= m_Attributes.GetPushBackTime();)
-        {
-            yield return null;
-        }
-
-        doPushBack = false;
-    }
-
-    private void SetPushBackDirection()
-    {
-        Vector2 facingDirection = new Vector2();
-
-        if (doPushBack)
-        {
-            m_MovmentDirection = m_Attributes.GetAttackDirection();
-            Debug.Log(m_MovmentDirection);
-
-            if (m_MovmentDirection.x == 1)
-            {
-                facingDirection.x = -1;
-            }
-            else if (m_MovmentDirection.x == -1)
-            {
-                facingDirection.x = 1;
-            }
-            else if (m_MovmentDirection.y == 1)
-            {
-                facingDirection.y = -1;
-            }
-            else
-            {
-                facingDirection.y = 1;
-            }
-        }
-
-        m_FacingDirection = facingDirection;
-    }
-
-    private void SetMovementDirection()
-    {
-        m_MovmentDirection = new Vector2(m_RecievedDirection.x, m_RecievedDirection.y);
-
-        if (m_RecievedDirection != Vector2.zero)
-        {
-            Vector2 facingDirection = m_MovmentDirection;
+            Vector3 facingDirection = m_MovementDirection;
 
             if (facingDirection.x != 0 && facingDirection.y != 0)
             {
@@ -108,59 +62,22 @@ public class CharacterMovementModel : MonoBehaviour
                 {
                     facingDirection.x = 0;
                 }
-
-                m_FacingDirection = facingDirection;
             }
+
+            m_FacingDirection = facingDirection;
         }
     }
 
-    private void UpdateDirection()
+    void UpdateMovement()
     {
-        SetMovementDirection();
-
-        if (doPushBack == true)
-            SetPushBackDirection();
-
-        m_Attributes.SetDirections(m_FacingDirection);
-    }
-
-    protected void ResetRecievedDirection()
-    {
-        m_RecievedDirection = Vector2.zero;
-    }
-
-    protected void UpdateMovement()
-    {
-        if (PlayerAttributes.instance.IsGameStateFrozen()
-            || m_Attributes.IsWalkFrozen())
+        if (m_MovementDirection != Vector3.zero)
         {
-            m_MovmentDirection = Vector2.zero;
+            m_MovementDirection.Normalize();
         }
 
-        if (doPushBack)
-        {
-            m_MovmentDirection = GetFacingDirection();
-        }
+        float speed = Speed;
 
-        if (m_MovmentDirection != Vector2.zero)
-        {
-            m_MovmentDirection.Normalize();
-        }
-
-        if (doPushBack)
-            m_Body.velocity = m_MovmentDirection * pushBackSpeed;
-        else
-            m_Body.velocity = m_MovmentDirection * m_speed;
-    }
-
-    public Vector2 GetFacingDirection()
-    {
-        return m_FacingDirection;
-    }
-
-    public bool IsMoving()
-    {
-        return m_MovmentDirection != Vector2.zero;
+        m_Body.velocity = m_MovementDirection * speed;
     }
 
     public void SetDirection(Vector2 direction)
@@ -170,16 +87,21 @@ public class CharacterMovementModel : MonoBehaviour
             return;
         }
 
-        m_RecievedDirection = direction;
+        m_ReceivedDirection = direction;
     }
 
-    public virtual void DoAction()
+    public Vector3 GetDirection()
     {
-
+        return m_MovementDirection;
     }
 
-    public void GetHit()
+    public Vector3 GetFacingDirection()
     {
-        
+        return m_FacingDirection;
+    }
+
+    public bool IsMoving()
+    {
+        return m_MovementDirection != Vector3.zero;
     }
 }

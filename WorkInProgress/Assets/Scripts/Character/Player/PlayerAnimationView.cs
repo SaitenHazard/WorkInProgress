@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JellyAIWalkControl : MonoBehaviour
+public class PlayerAnimationView : CharacterMovementView
 {
-    
+	
 }

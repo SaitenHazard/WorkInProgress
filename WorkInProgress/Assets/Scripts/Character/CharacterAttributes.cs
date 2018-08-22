@@ -6,7 +6,7 @@ public class CharacterAttributes : MonoBehaviour {
 
     protected bool m_WalkFrozen = false;
 
-    public float speed;
+    public float Speed;
     public float bubbleSpeechHeight;
 
     private int health;
@@ -34,7 +34,7 @@ public class CharacterAttributes : MonoBehaviour {
 
     public void SetSpeed(float m_speed)
     {
-        speed = m_speed;
+        Speed = m_speed;
     }
 
     public void SetAttackDirection(Vector2 direction)
@@ -57,9 +57,9 @@ public class CharacterAttributes : MonoBehaviour {
         return facingDirection;
     }
 
-    public float getSpeed()
+    public float GetSpeed()
     {
-        return speed;
+        return Speed;
     }
 
     public float getBubbleSpeechHeight()
