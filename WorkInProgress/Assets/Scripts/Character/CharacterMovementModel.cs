@@ -6,8 +6,8 @@ public class CharacterMovementModel : MonoBehaviour
 {
     public float Speed;
 
-    protected Vector3 m_MovementDirection;
-    protected Vector3 m_FacingDirection;
+    protected Vector2 m_MovementDirection;
+    protected Vector2 m_FacingDirection;
     protected bool movementFrozen;
 
     protected Rigidbody2D m_Body;
@@ -69,7 +69,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     void UpdateMovement()
     {
-        if (m_MovementDirection != Vector3.zero)
+        if (m_MovementDirection != Vector2.zero)
         {
             m_MovementDirection.Normalize();
         }
@@ -104,7 +104,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     public bool IsMoving()
     {
-        return m_MovementDirection != Vector3.zero;
+        return m_MovementDirection != Vector2.zero;
     }
 
     public void SetMovementFrozen(bool frozen)
@@ -115,5 +115,40 @@ public class CharacterMovementModel : MonoBehaviour
     virtual public void DoAttack()
     {
 
+    }
+
+    public void GetHit(Vector2 attackDirection, float pushBackTime)
+    {
+        m_FacingDirection = attackDirection;
+        SetMovementFrozen(true);
+
+        StartCoroutine(DoPushBack(pushBackTime));
+    }
+
+    private IEnumerator DoPushBack(float pushBackTime)
+    {
+        m_MovementDirection = m_FacingDirection;
+
+        yield return new WaitForSeconds(pushBackTime);
+
+        ReverseFacingDirection();
+
+        SetMovementFrozen(false);
+    }
+
+    private Vector2 ReverseFacingDirection()
+    {
+        Vector2 newDirection = Vector2.zero;
+
+        if (m_FacingDirection.x == 1)
+            m_FacingDirection.x = -1;
+        else if (m_FacingDirection.x == -1)
+            m_FacingDirection.x = 1;
+        else if (m_FacingDirection.y == 1)
+            m_FacingDirection.y = -1;
+        else
+            m_FacingDirection.y = 1;
+
+        return newDirection;
     }
 }

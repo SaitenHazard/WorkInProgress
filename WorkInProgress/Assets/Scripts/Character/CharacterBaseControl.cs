@@ -44,4 +44,9 @@ public class CharacterBaseControl : MonoBehaviour
 
         m_movementModel.SetDirection(direction);
     }
+
+    protected void DoHit(Vector2 hitDirection)
+    {
+
+    }
 }

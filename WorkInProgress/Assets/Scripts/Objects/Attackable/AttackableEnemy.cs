@@ -6,31 +6,23 @@ public class AttackableEnemy : AttackableBase
     public int health;
     public float pushBackTime;
 
-    private CharacterBaseControl m_baseControl;
-    private CharacterAttributes m_attributes;
+    private CharacterMovementModel m_movementModel;
 
     private void Awake()
     {
-        m_baseControl = gameObject.GetComponentInParent<CharacterBaseControl>();
-        m_attributes = gameObject.GetComponentInParent<CharacterAttributes>();
-
-        SetAttackable();
-    }
-
-    private void SetAttackable()
-    {
-        m_attributes.SetHealth(health);
-        m_attributes.SetPushBackTime(pushBackTime);
+        m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
     }
 
     public void OnTriggerEnter2D (Collider2D hitCollider)
     {
-        if (hitCollider.gameObject.tag == "Punch")
-        {
-            CharacterAttributes attackerAttributes = hitCollider.gameObject.GetComponentInParent<CharacterAttributes>();
-            m_attributes.SetAttackDirection(attackerAttributes.GetFacingDirection());
+        GameObject Object = hitCollider.gameObject;
 
-            //m_baseControl.DoHit();
+        if (Object.tag == "Punch")
+        {
+            CharacterMovementModel attackerModel = 
+                Object.GetComponentInParent<CharacterMovementModel>();
+
+            m_movementModel.GetHit(attackerModel.GetFacingDirection(), pushBackTime);
         }
     }
 }
