@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class PlayerAnimationView : CharacterMovementView
 {
-	
+    override public void DoAttack()
+    {
+        Animator.SetTrigger("DoAttack");
+    }
 }

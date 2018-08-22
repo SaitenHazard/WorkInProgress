@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerAnimationListener : CharacterAnimationListener
 {
     public SpriteRenderer spriteRenderer;
+    public CharacterMovementModel m_movementModel;
 
     private void Start()
     {
+        m_movementModel = GetComponentInParent<CharacterMovementModel>();
     }
 
     private void flipSortingOrder(int priority)
@@ -20,6 +22,6 @@ public class PlayerAnimationListener : CharacterAnimationListener
 
     private void attackFinished()
     {
-        PlayerAttributes.instance.setWalkStateFrozen(false);
+        m_movementModel.SetMovementFrozen(false);
     }
 }

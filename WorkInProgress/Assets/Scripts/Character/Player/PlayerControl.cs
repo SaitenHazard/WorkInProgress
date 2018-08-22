@@ -16,7 +16,8 @@ public class PlayerControl : CharacterBaseControl
 
     private void OnAttackPressed()
     {
-        
+        m_movementView.DoAttack();
+        m_movementModel.DoAttack();
     }
 
     //KeybaordControls

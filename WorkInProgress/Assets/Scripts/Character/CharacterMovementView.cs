@@ -3,8 +3,8 @@ using System.Collections;
 
 public class CharacterMovementView : MonoBehaviour
 {
-    private Animator Animator;
-    private CharacterMovementModel m_MovementModel;
+    protected Animator Animator;
+    protected CharacterMovementModel m_MovementModel;
 
     protected void Awake()
     {
@@ -33,8 +33,8 @@ public class CharacterMovementView : MonoBehaviour
         Animator.SetBool("IsMoving", m_MovementModel.IsMoving());
     }
 
-    virtual public void UpdateAttack()
+    virtual public void DoAttack()
     {
-        Animator.SetTrigger("DoAttack");
+
     }
 }

@@ -27,9 +27,6 @@ public class PlayerAttributes : CharacterAttributes {
 
     public void SetAttackState(bool state)
     {
-        if (attackState == false)
-            setWalkStateFrozen(true);
-
         attackState = state;
     }
 

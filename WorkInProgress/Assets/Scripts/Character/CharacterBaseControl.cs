@@ -3,8 +3,8 @@ using System.Collections;
 
 public class CharacterBaseControl : MonoBehaviour
 {
-    CharacterMovementModel m_movementModel;
-    CharacterMovementView m_movementView;
+    protected CharacterMovementModel m_movementModel;
+    protected CharacterMovementView m_movementView;
 
     void Awake()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterAttributes : MonoBehaviour {
 
-    protected bool m_WalkFrozen = false;
+    protected bool movementFrozen = false;
 
     public float Speed;
     public float bubbleSpeechHeight;
@@ -14,8 +14,8 @@ public class CharacterAttributes : MonoBehaviour {
 
     private bool hitState = false;
 
-    public Vector2 attackDirection;
-    public Vector2 facingDirection;
+    private Vector2 attackDirection;
+    private Vector2 facingDirection;
 
     public float GetPushBackTime()
     {
@@ -79,14 +79,14 @@ public class CharacterAttributes : MonoBehaviour {
         health = health - damage;
     }
 
-    public bool IsWalkFrozen()
+    public bool IsMovementFrozen()
     {
-        return m_WalkFrozen;
+        return movementFrozen;
     }
 
-    public void setWalkStateFrozen(bool walkState)
+    public void setMovementFrozen(bool walkState)
     {
-        m_WalkFrozen = walkState;
+        movementFrozen = walkState;
     }
 
     public void SetHitState(bool state)

@@ -4,24 +4,20 @@ using System.Runtime.Remoting.Messaging;
 
 public class CharacterMovementModel : MonoBehaviour
 {
-    private float Speed;
+    public float Speed;
 
-    private Vector3 m_MovementDirection;
-    private Vector3 m_FacingDirection;
+    protected Vector3 m_MovementDirection;
+    protected Vector3 m_FacingDirection;
+    protected bool movementFrozen;
 
-    private Rigidbody2D m_Body;
+    protected Rigidbody2D m_Body;
 
-    private float m_LastFreezeTime;
-
-    Vector2 m_ReceivedDirection;
-
-    CharacterAttributes m_Attributes;
+    protected Vector2 m_ReceivedDirection;
+    protected CharacterAttributes m_Attributes;
 
     void Awake()
     {
-        m_Attributes = GetComponent<CharacterAttributes>();
         m_Body = GetComponent<Rigidbody2D>();
-        Speed = m_Attributes.GetSpeed();
     }
 
     void Update()
@@ -42,6 +38,9 @@ public class CharacterMovementModel : MonoBehaviour
 
     void UpdateDirection()
     {
+        if (movementFrozen == true)
+            return;
+
         m_MovementDirection = new Vector3(m_ReceivedDirection.x, m_ReceivedDirection.y, 0);
 
         if (m_ReceivedDirection != Vector2.zero)
@@ -77,6 +76,9 @@ public class CharacterMovementModel : MonoBehaviour
 
         float speed = Speed;
 
+        if (movementFrozen == true)
+            speed = 0f;
+
         m_Body.velocity = m_MovementDirection * speed;
     }
 
@@ -103,5 +105,15 @@ public class CharacterMovementModel : MonoBehaviour
     public bool IsMoving()
     {
         return m_MovementDirection != Vector3.zero;
+    }
+
+    public void SetMovementFrozen(bool frozen)
+    {
+        movementFrozen = frozen;
+    }
+
+    virtual public void DoAttack()
+    {
+
     }
 }
