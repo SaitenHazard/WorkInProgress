@@ -6,7 +6,7 @@ public class CharacterMovementModel : MonoBehaviour
 {
 
     protected Vector2 m_MovementDirection;
-    protected Vector2 m_FacingDirection;
+    public Vector2 m_FacingDirection;
     protected Vector2 m_ReceivedDirection;
 
     protected Rigidbody2D m_Body;
@@ -87,7 +87,6 @@ public class CharacterMovementModel : MonoBehaviour
 
         if (m_pushBackSpeed != 0f)
         {
-            Debug.Log("in");
             speed = m_pushBackSpeed;
         }
 
@@ -152,19 +151,23 @@ public class CharacterMovementModel : MonoBehaviour
         m_pushBackSpeed = 0f;
     }
 
-    private Vector2 ReverseFacingDirection()
+    private void ReverseFacingDirection()
     {
-        Vector2 newDirection = Vector2.zero;
+        Debug.Log("O: " + m_FacingDirection);
 
         if (m_FacingDirection.x == 1)
             m_FacingDirection.x = -1;
+
         else if (m_FacingDirection.x == -1)
             m_FacingDirection.x = 1;
+
         else if (m_FacingDirection.y == 1)
             m_FacingDirection.y = -1;
-        else
+
+        else if (m_FacingDirection.y == -1)
             m_FacingDirection.y = 1;
 
-        return newDirection;
+        UpdateDirection();
+        Debug.Log("R: " + m_FacingDirection);
     }
 }

@@ -14,16 +14,32 @@ public class AttackableEnemy : AttackableBase
         m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
     }
 
-    public void OnTriggerEnter2D (Collider2D hitCollider)
+    private void OnTriggerEnter2D (Collider2D hitCollider)
+    {
+        HitManager(hitCollider);
+    }
+
+    private void HitManager(Collider2D hitCollider)
     {
         GameObject Object = hitCollider.gameObject;
 
-        if (Object.tag == "Punch")
+        if (Object.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            CharacterMovementModel attackerModel = 
+            CharacterMovementModel attackerModel =
                 Object.GetComponentInParent<CharacterMovementModel>();
 
-            m_movementModel.GetHit(attackerModel.GetFacingDirection(), pushBackTime, pushBackSpeed);
+            m_movementModel.GetHit(attackerModel.GetFacingDirection(),
+                pushBackTime, pushBackSpeed);
+
+            HealthManager();
         }
+    }
+
+    private void HealthManager()
+    {
+        health -= 1;
+
+        if (health == 0)
+            Destroy(gameObject.transform.parent.gameObject);
     }
 }

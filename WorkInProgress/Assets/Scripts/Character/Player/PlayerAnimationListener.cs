@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAnimationListener : CharacterAnimationListener
 {
     public SpriteRenderer spriteRenderer;
-    public CharacterMovementModel m_movementModel;
+    private CharacterMovementModel m_movementModel;
 
     private void Start()
     {

@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4751813810705010}
-  - component: {fileID: 114786043709071978}
   - component: {fileID: 114698047018853190}
   - component: {fileID: 114007775857923254}
   - component: {fileID: 114132014602334926}
@@ -170,7 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4aaa746693a742b271a76370ca6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  m_FacingDirection: {x: 0, y: 0}
+  Speed: 1.5
 --- !u!114 &114132014602334926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,7 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  pushBackTime: 0.15
+  pushBackTime: 0.1
+  pushBackSpeed: 2.5
 --- !u!114 &114571626745187096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,19 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb3a106eae9a1d4693599d447a9b1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114786043709071978
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1763049945981194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1b58d57ea141642ac711c56e72d922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0
-  bubbleSpeechHeight: 2
 --- !u!212 &212967625440947654
 SpriteRenderer:
   m_ObjectHideFlags: 1
