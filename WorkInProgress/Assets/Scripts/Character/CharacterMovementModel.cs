@@ -4,7 +4,6 @@ using System.Runtime.Remoting.Messaging;
 
 public class CharacterMovementModel : MonoBehaviour
 {
-
     protected Vector2 m_MovementDirection;
     public Vector2 m_FacingDirection;
     protected Vector2 m_ReceivedDirection;
@@ -12,33 +11,47 @@ public class CharacterMovementModel : MonoBehaviour
     protected Rigidbody2D m_Body;
 
     protected float m_pushBackSpeed = 0f;
-    protected bool movementFrozen = false;
-    public float Speed;
+    public bool movementFrozen = false;
 
-    void Awake()
+    public float Speed;
+    private float recoilTime = 0.5f;
+
+    private void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         UpdateDirection();
         ResetReceivedDirection();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         UpdateMovement();
     }
 
-    void ResetReceivedDirection()
+    public float GetRecoilTime()
+    {
+        return recoilTime;
+    }
+
+    private void ResetReceivedDirection()
     {
         m_ReceivedDirection = Vector2.zero;
     }
 
-    void UpdateDirection()
+    private IEnumerator TemporaryFrozen(float time)
     {
-        if (movementFrozen == true)
+        SetMovementFrozen(true);
+        yield return new WaitForSeconds(time);
+        SetMovementFrozen(false);
+    }
+
+    private void UpdateDirection()
+    {
+        if (movementFrozen)
             return;
 
         m_MovementDirection = new Vector2(m_ReceivedDirection.x, m_ReceivedDirection.y);
@@ -73,17 +86,20 @@ public class CharacterMovementModel : MonoBehaviour
         }
     }
 
-    void UpdateMovement()
+    private void UpdateMovement()
     {
+        if (movementFrozen == true)
+        {
+            m_Body.velocity = Vector2.zero;
+            return;
+        }
+
         if (m_MovementDirection != Vector2.zero)
         {
             m_MovementDirection.Normalize();
         }
 
         float speed = Speed;
-
-        if (movementFrozen == true)
-            speed = 0f;
 
         if (m_pushBackSpeed != 0f)
         {
@@ -115,6 +131,11 @@ public class CharacterMovementModel : MonoBehaviour
 
     public bool IsMoving()
     {
+        if (movementFrozen == true)
+        {
+            return false;
+        }
+
         return m_MovementDirection != Vector2.zero;
     }
 
@@ -149,12 +170,27 @@ public class CharacterMovementModel : MonoBehaviour
 
         ReverseFacingDirection();
         m_pushBackSpeed = 0f;
+        HitRecoil();
+    }
+
+    private void HitRecoil()
+    {
+        AttackableEnemy attackableEnemy = GetComponentInChildren<AttackableEnemy>();
+
+        if (attackableEnemy == null)
+            return;
+
+        if (attackableEnemy.GetHealht() != 0)
+        {
+            StartCoroutine(TemporaryFrozen(recoilTime));
+            return;
+        }
+
+        SetMovementFrozen(true);
     }
 
     private void ReverseFacingDirection()
     {
-        Debug.Log("O: " + m_FacingDirection);
-
         if (m_FacingDirection.x == 1)
             m_FacingDirection.x = -1;
 
@@ -168,6 +204,5 @@ public class CharacterMovementModel : MonoBehaviour
             m_FacingDirection.y = 1;
 
         UpdateDirection();
-        Debug.Log("R: " + m_FacingDirection);
     }
 }
