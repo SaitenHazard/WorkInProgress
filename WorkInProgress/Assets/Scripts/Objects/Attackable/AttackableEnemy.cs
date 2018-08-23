@@ -5,6 +5,7 @@ public class AttackableEnemy : AttackableBase
 {
     public int health;
     public float pushBackTime;
+    public float pushBackSpeed;
 
     private CharacterMovementModel m_movementModel;
 
@@ -22,7 +23,7 @@ public class AttackableEnemy : AttackableBase
             CharacterMovementModel attackerModel = 
                 Object.GetComponentInParent<CharacterMovementModel>();
 
-            m_movementModel.GetHit(attackerModel.GetFacingDirection(), pushBackTime);
+            m_movementModel.GetHit(attackerModel.GetFacingDirection(), pushBackTime, pushBackSpeed);
         }
     }
 }

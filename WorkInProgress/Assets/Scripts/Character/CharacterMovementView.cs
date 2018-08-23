@@ -15,6 +15,12 @@ public class CharacterMovementView : MonoBehaviour
     protected void Update()
     {
         UpdateDirection();
+        UpdateHit();
+    }
+
+    protected void UpdateHit()
+    {
+        Animator.SetBool("GetHit", m_MovementModel.GetPushBackSpeed() != 0f);
     }
 
     protected void UpdateDirection()

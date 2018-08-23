@@ -4,16 +4,16 @@ using System.Runtime.Remoting.Messaging;
 
 public class CharacterMovementModel : MonoBehaviour
 {
-    public float Speed;
 
     protected Vector2 m_MovementDirection;
     protected Vector2 m_FacingDirection;
-    protected bool movementFrozen;
+    protected Vector2 m_ReceivedDirection;
 
     protected Rigidbody2D m_Body;
 
-    protected Vector2 m_ReceivedDirection;
-    protected CharacterAttributes m_Attributes;
+    protected float m_pushBackSpeed = 0f;
+    protected bool movementFrozen = false;
+    public float Speed;
 
     void Awake()
     {
@@ -41,7 +41,13 @@ public class CharacterMovementModel : MonoBehaviour
         if (movementFrozen == true)
             return;
 
-        m_MovementDirection = new Vector3(m_ReceivedDirection.x, m_ReceivedDirection.y, 0);
+        m_MovementDirection = new Vector2(m_ReceivedDirection.x, m_ReceivedDirection.y);
+
+        if (m_pushBackSpeed != 0f)
+        {
+            m_MovementDirection = m_FacingDirection;
+            return;
+        }
 
         if (m_ReceivedDirection != Vector2.zero)
         {
@@ -79,6 +85,12 @@ public class CharacterMovementModel : MonoBehaviour
         if (movementFrozen == true)
             speed = 0f;
 
+        if (m_pushBackSpeed != 0f)
+        {
+            Debug.Log("in");
+            speed = m_pushBackSpeed;
+        }
+
         m_Body.velocity = m_MovementDirection * speed;
     }
 
@@ -112,15 +124,20 @@ public class CharacterMovementModel : MonoBehaviour
         movementFrozen = frozen;
     }
 
+    public float GetPushBackSpeed()
+    {
+        return m_pushBackSpeed;
+    }
+
     virtual public void DoAttack()
     {
 
     }
 
-    public void GetHit(Vector2 attackDirection, float pushBackTime)
+    public void GetHit(Vector2 attackDirection, float pushBackTime, float pushBackSpeed)
     {
         m_FacingDirection = attackDirection;
-        SetMovementFrozen(true);
+        m_pushBackSpeed = pushBackSpeed;
 
         StartCoroutine(DoPushBack(pushBackTime));
     }
@@ -132,8 +149,7 @@ public class CharacterMovementModel : MonoBehaviour
         yield return new WaitForSeconds(pushBackTime);
 
         ReverseFacingDirection();
-
-        SetMovementFrozen(false);
+        m_pushBackSpeed = 0f;
     }
 
     private Vector2 ReverseFacingDirection()
