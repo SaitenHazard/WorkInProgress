@@ -11,8 +11,10 @@ public class Door : MonoBehaviour
         spriteDoor = GetComponentInChildren<SpriteRenderer>();
     }
 
-    private void  OnCollidion(Collider2D collider)
+    private void OnTriggerStay2D (Collider2D collider)
     {
+        Debug.Log("in");
+
         if(collider.gameObject.name == "Player")
         {
             CharacterMovementModel colliderMovementModel = collider.GetComponent<CharacterMovementModel>();
