@@ -281,6 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbaae4f977b4d8449df6fa7b73d2338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FacingDirection: {x: 0, y: 0}
+  movementFrozen: 0
   Speed: 1.5
 --- !u!114 &114011237569262760
 MonoBehaviour:

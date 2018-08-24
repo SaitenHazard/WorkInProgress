@@ -1,17 +1,22 @@
 fileFormatVersion: 2
-guid: 54ffbdc67b90a9544939ef5f58de14b2
-timeCreated: 1534090264
+guid: c4e53af8cb5a19a418061bf23ed46308
+timeCreated: 1535119418
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Trees_0
-    21300002: Trees_1
-    21300004: Trees_2
-    21300006: Trees_3
-    21300008: Trees_4
-    21300010: Trees_5
-    21300012: Trees_6
-    21300014: Trees_7
+    21300000: TileObjects_alpha_0
+    21300002: TileObjects_alpha_1
+    21300004: TileObjects_alpha_2
+    21300006: TileObjects_alpha_3
+    21300008: TileObjects_alpha_4
+    21300010: TileObjects_alpha_5
+    21300012: TileObjects_alpha_6
+    21300014: TileObjects_alpha_7
+    21300016: TileObjects_alpha_8
+    21300018: TileObjects_alpha_9
+    21300020: TileObjects_alpha_10
+    21300022: TileObjects_alpha_11
+    21300024: TileObjects_alpha_12
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -30,7 +35,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 1
+  isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -98,7 +103,63 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Trees_0
+      name: TileObjects_alpha_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TileObjects_alpha_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TileObjects_alpha_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TileObjects_alpha_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TileObjects_alpha_4
       rect:
         serializedVersion: 2
         x: 0
@@ -112,7 +173,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Trees_1
+      name: TileObjects_alpha_5
       rect:
         serializedVersion: 2
         x: 32
@@ -126,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Trees_2
+      name: TileObjects_alpha_6
       rect:
         serializedVersion: 2
         x: 64
@@ -140,7 +201,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Trees_3
+      name: TileObjects_alpha_7
       rect:
         serializedVersion: 2
         x: 96
@@ -154,49 +215,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Trees_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Trees_5
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Trees_6
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Trees_7
+      name: TileObjects_alpha_8
       rect:
         serializedVersion: 2
         x: 96
