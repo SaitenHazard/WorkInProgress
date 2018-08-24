@@ -38,16 +38,21 @@ public class AttackableEnemy : AttackableBase
             m_movementModel.GetHit(attackerModel.GetFacingDirection(),
                 pushBackTime, pushBackSpeed);
 
-            HealthManager();
+            DeductHealth();
+
+            if(health <= 0)
+                DoDestroy();
         }
     }
 
-    private void HealthManager()
+    private void DeductHealth()
     {
-        health -= 1;
+        DeductHealth(1);
+    }
 
-        if (health == 0)
-            DoDestroy();
+    private void DeductHealth(int deductor)
+    {
+        health -= deductor;
     }
 
     private void DoDestroy()

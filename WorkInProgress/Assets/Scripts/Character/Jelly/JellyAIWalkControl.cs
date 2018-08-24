@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JellyAIWalkControl : CharacterBaseControl
 {
+
     Vector2 newDirection;
 
     private void Start()
