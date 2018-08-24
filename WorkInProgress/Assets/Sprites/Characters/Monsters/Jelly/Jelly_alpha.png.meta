@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: ca85b981c6ed8dc49b98543d48bb6b3d
-timeCreated: 1534335720
+guid: eee6be351c8388b4693614d12be097da
+timeCreated: 1535101508
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Jelly 1_alpha_0
-    21300002: Jelly 1_alpha_1
-    21300004: Jelly 1_alpha_2
-    21300006: Jelly 1_alpha_3
-    21300008: Jelly 1_alpha_4
-    21300010: Jelly 1_alpha_5
-    21300012: Jelly 1_alpha_6
-    21300014: Jelly 1_alpha_7
-    21300016: Jelly 1_alpha_8
-    21300018: Jelly 1_alpha_9
-    21300020: Jelly 1_alpha_10
-    21300022: Jelly 1_alpha_11
-    21300024: Jelly 1_alpha_12
-    21300026: Jelly 1_alpha_13
-    21300028: Jelly 1_alpha_14
-    21300030: Jelly 1_alpha_15
+    21300000: Jelly_alpha_0
+    21300002: Jelly_alpha_1
+    21300004: Jelly_alpha_2
+    21300006: Jelly_alpha_3
+    21300008: Jelly_alpha_4
+    21300010: Jelly_alpha_5
+    21300012: Jelly_alpha_6
+    21300014: Jelly_alpha_7
+    21300016: Jelly_alpha_8
+    21300018: Jelly_alpha_9
+    21300020: Jelly_alpha_10
+    21300022: Jelly_alpha_11
+    21300024: Jelly_alpha_12
+    21300026: Jelly_alpha_13
+    21300028: Jelly_alpha_14
+    21300030: Jelly_alpha_15
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -106,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jelly 1_alpha_0
+      name: Jelly_alpha_0
       rect:
         serializedVersion: 2
         x: 0
@@ -120,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_1
+      name: Jelly_alpha_1
       rect:
         serializedVersion: 2
         x: 32
@@ -134,7 +134,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_2
+      name: Jelly_alpha_2
       rect:
         serializedVersion: 2
         x: 64
@@ -148,7 +148,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_3
+      name: Jelly_alpha_3
       rect:
         serializedVersion: 2
         x: 96
@@ -162,7 +162,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_4
+      name: Jelly_alpha_4
       rect:
         serializedVersion: 2
         x: 0
@@ -176,7 +176,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_5
+      name: Jelly_alpha_5
       rect:
         serializedVersion: 2
         x: 32
@@ -190,7 +190,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_6
+      name: Jelly_alpha_6
       rect:
         serializedVersion: 2
         x: 64
@@ -204,7 +204,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_7
+      name: Jelly_alpha_7
       rect:
         serializedVersion: 2
         x: 96
@@ -218,7 +218,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_8
+      name: Jelly_alpha_8
       rect:
         serializedVersion: 2
         x: 0
@@ -232,7 +232,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_9
+      name: Jelly_alpha_9
       rect:
         serializedVersion: 2
         x: 32
@@ -246,7 +246,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_10
+      name: Jelly_alpha_10
       rect:
         serializedVersion: 2
         x: 64
@@ -260,7 +260,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_11
+      name: Jelly_alpha_11
       rect:
         serializedVersion: 2
         x: 96
@@ -274,7 +274,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_12
+      name: Jelly_alpha_12
       rect:
         serializedVersion: 2
         x: 0
@@ -288,7 +288,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_13
+      name: Jelly_alpha_13
       rect:
         serializedVersion: 2
         x: 32
@@ -302,7 +302,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_14
+      name: Jelly_alpha_14
       rect:
         serializedVersion: 2
         x: 64
@@ -316,7 +316,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Jelly 1_alpha_15
+      name: Jelly_alpha_15
       rect:
         serializedVersion: 2
         x: 96
