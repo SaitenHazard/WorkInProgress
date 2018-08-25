@@ -1,16 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class Sight : MonoBehaviour {
+public class Sight : MonoBehaviour
+{
+    private SpeechBubble speechBubble;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Awake()
+    {
+        speechBubble = 
+            transform.parent.GetComponentInChildren<SpeechBubble>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        if(collider2D.gameObject.name == "Player")
+        {
+            SpeechBubble();
+        }
+    }
+
+    private void SpeechBubble()
+    {
+        speechBubble.PopSpeechBubble(enumSpeechBubbles.Question);
+    }
+
+    private void OnTriggerStay2D(Collider2D collider2D)
+    {
+        if (collider2D.gameObject.name == "Player")
+        {
+            float angleBetween =
+                Mathf.Atan2(transform.position.y - collider2D.transform.position.y, transform.position.x - collider2D.transform.position.x) * 180 / Mathf.PI;
+            Debug.Log(angleBetween);
+        }
+    }
+
+
 }

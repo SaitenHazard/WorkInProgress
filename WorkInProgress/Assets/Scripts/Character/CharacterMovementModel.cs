@@ -5,13 +5,13 @@ using System.Runtime.Remoting.Messaging;
 public class CharacterMovementModel : MonoBehaviour
 {
     protected Vector2 m_MovementDirection;
-    public Vector2 m_FacingDirection;
+    protected Vector2 m_FacingDirection;
     protected Vector2 m_ReceivedDirection;
 
     protected Rigidbody2D m_Body;
 
     protected float m_pushBackSpeed = 0f;
-    public bool movementFrozen = false;
+    protected bool movementFrozen = false;
 
     public float Speed;
     private float recoilTime = 0.5f;
@@ -142,6 +142,7 @@ public class CharacterMovementModel : MonoBehaviour
     public void SetMovementFrozen(bool frozen)
     {
         movementFrozen = frozen;
+        
     }
 
     public float GetPushBackSpeed()
