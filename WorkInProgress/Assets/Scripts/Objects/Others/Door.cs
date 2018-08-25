@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    SpriteRenderer spriteDoor;
+    public string warpScene;
+    public string warpPoint;
+    public Vector2 faceDirection;
+
+    private SpriteRenderer spriteDoor;
+    private CharacterMovementModel colliderMovementModel;
 
     private void Awake()
     {
@@ -13,15 +19,21 @@ public class Door : MonoBehaviour
 
     private void OnTriggerStay2D (Collider2D collider)
     {
-        Debug.Log("in");
-
         if(collider.gameObject.name == "Player")
         {
-            CharacterMovementModel colliderMovementModel = collider.GetComponent<CharacterMovementModel>();
+            colliderMovementModel = collider.GetComponent<CharacterMovementModel>();
             Vector2 facingDirection = colliderMovementModel.GetFacingDirection();
 
             if (facingDirection == new Vector2(0, 1))
+            {
                 spriteDoor.enabled = true;
+            }
         }
+    }
+
+    private void Warp()
+    {
+        colliderMovementModel.SetMovementFrozen(true);
+        WarpManager.Instance.Warp(warpScene, warpPoint, faceDirection);
     }
 }
