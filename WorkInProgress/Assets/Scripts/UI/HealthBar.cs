@@ -5,8 +5,7 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
     private RectTransform rectTransform;
-    private float maxWidth;
-    private float currentWidth;
+    private float width;
 
     public int maxHP;
     public int currentHP;
@@ -14,8 +13,7 @@ public class HealthBar : MonoBehaviour
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        maxWidth = rectTransform.rect.width;
-        currentWidth = maxWidth;
+        width = rectTransform.rect.width;
     }
 
     private void Update()
@@ -25,7 +23,7 @@ public class HealthBar : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        float newWidth = (maxWidth / maxHP) * currentHP;
+        float newWidth = (width / maxHP) * currentHP;
 
         rectTransform.sizeDelta = 
             new Vector2(newWidth, rectTransform.rect.height);

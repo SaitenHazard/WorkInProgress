@@ -26,7 +26,6 @@ public class SpeechBubble : MonoBehaviour
 
     public void PopSpeechBubble(enumSpeechBubbles bubble)
     {
-        Debug.Log("on");
         m_bubble = bubble;
         SelectBubble();
         StartCoroutine(Pop());
