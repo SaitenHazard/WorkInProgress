@@ -10,6 +10,8 @@ public class SpeechBubble : MonoBehaviour
     public Sprite questionBubble;
     public Sprite exclamatoinBubble;
 
+    private float defaultPopTime = 0.25f;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -28,7 +30,7 @@ public class SpeechBubble : MonoBehaviour
     {
         m_bubble = bubble;
         SelectBubble();
-        StartCoroutine(Pop());
+        Pop();
     }
 
     public void PopSpeechBubble(enumSpeechBubbles bubble, float time)
@@ -38,11 +40,9 @@ public class SpeechBubble : MonoBehaviour
         StartCoroutine(Pop(time));
     }
 
-    private IEnumerator Pop()
+    private void Pop()
     {
-        spriteRenderer.enabled = true;
-        yield return new WaitForSeconds(0.35f);
-        spriteRenderer.enabled = false;
+        StartCoroutine(Pop(defaultPopTime));
     }
 
     private IEnumerator Pop(float time)

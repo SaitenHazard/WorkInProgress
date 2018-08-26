@@ -54,37 +54,35 @@ public class Sight : MonoBehaviour
 
     private void SetDirectionTowardsPlayer()
     {
-        float angle = Mathf.Atan2(transform.position.y - PlayerInstant.Instance.transform.position.y, transform.position.x - PlayerInstant.Instance.transform.position.x) * 180 / Mathf.PI;
+        float angle = 
+            Mathf.Atan2(transform.position.y - 
+            PlayerInstant.Instance.transform.position.y, 
+            transform.position.x - PlayerInstant.Instance.transform.position.x) 
+            * 180 / Mathf.PI *-1;
 
-        //bottom-right
+        Debug.Log(angle);
+
         if (angle >= 22.5 && angle <= 67.5)
-            movementDirection = new Vector2(1, -1);
-
-        //bottom-left
-        if (angle >= 112.5 && angle <= 157.5)
-            movementDirection = new Vector2(-1, -1);
-
-        //top-right
-        if (angle <= -22.5 && angle >= -67.5)
-            movementDirection = new Vector2(1, 1);
-
-        //top-left
-        if (angle <= -112.5 && angle >= -157.5)
             movementDirection = new Vector2(-1, 1);
 
-        //bottom
-        if (angle >= 67.5 && angle <= 112.5)
-            movementDirection = new Vector2(0, -1);
+        if (angle >= 112.5 && angle <= 157.5)
+            movementDirection = new Vector2(1, 1);
 
-        //top
-        if (angle <= -67.5 && angle >= -112.5)
+        if (angle <= -22.5 && angle >= -67.5)
+            movementDirection = new Vector2(-1, -1);
+
+        if (angle <= -112.5 && angle >= -157.5)
+            movementDirection = new Vector2(1, -1);
+
+        if (angle >= 67.5 && angle <= 112.5)
             movementDirection = new Vector2(0, 1);
 
-        //left
-        if (angle <= 22.5 && angle >= -22.5)
+        if (angle <= -67.5 && angle >= -112.5)
+            movementDirection = new Vector2(0, -1);
+
+        if (angle <= 22.5 && angle >= 0  || angle >= -22.5 && angle <=0)
             movementDirection = new Vector2(-1, 0);
 
-        //right
         if (angle >= 157.5 && angle <= 180 || angle <= -157.5 && angle >= -180)
             movementDirection = new Vector2(1, 0);
     }
