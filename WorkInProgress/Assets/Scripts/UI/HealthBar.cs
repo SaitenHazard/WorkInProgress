@@ -28,8 +28,6 @@ public class HealthBar : MonoBehaviour
     {
         int currentHP = attackable.GetHealht();
 
-        Debug.Log(currentHP);
-
         float newWidth = (width / maxHP) * currentHP;
 
         rectTransform.sizeDelta = 

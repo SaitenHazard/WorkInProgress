@@ -17,23 +17,31 @@ public class Door : MonoBehaviour
         spriteDoor = GetComponentInChildren<SpriteRenderer>();
     }
 
-    private void OnTriggerStay2D (Collider2D collider)
+    private void OnTriggerEnter2D (Collider2D collider)
     {
-        if(collider.gameObject.name == "Player")
+        if(collider.gameObject.tag == "Player")
         {
-            colliderMovementModel = collider.GetComponent<CharacterMovementModel>();
+            colliderMovementModel = collider.GetComponentInParent<CharacterMovementModel>();
             Vector2 facingDirection = colliderMovementModel.GetFacingDirection();
 
             if (facingDirection == new Vector2(0, 1))
             {
                 spriteDoor.enabled = true;
+                StartCoroutine(Warp());
             }
         }
     }
 
-    private void Warp()
+    private IEnumerator Warp()
     {
         colliderMovementModel.SetMovementFrozen(true);
-        WarpManager.Instance.Warp(warpScene, warpPoint, faceDirection);
+
+        Fade.Instance.DoFade(true);
+        yield return new WaitForSeconds(Fade.Instance.GetYeildTime());
+
+        //WarpManager.Instance.Warp(warpScene, warpPoint, faceDirection);
+
+        Fade.Instance.DoFade(false);
+        yield return new WaitForSeconds(Fade.Instance.GetYeildTime());
     }
 }

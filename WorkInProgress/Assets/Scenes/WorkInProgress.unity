@@ -122,11 +122,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4751813810705010, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.26
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 4751813810705010, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.99
+      value: 1.98
       objectReference: {fileID: 0}
     - target: {fileID: 4751813810705010, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -176,6 +176,34 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 58117595348039220, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212967625440947654, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 212967625440947654, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -153231989
+      objectReference: {fileID: 0}
+    - target: {fileID: 212967625440947654, guid: 3dee6758fc619404683e113baf5045e4,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581698427898512, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581698427898512, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114571626745187096, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
@@ -197,7 +225,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.27}
+  m_Offset: {x: 0, y: -0.26}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -206,9 +234,9 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 1
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.025, y: 0.025}
+  m_Size: {x: 0.01, y: 0.02541691}
   m_EdgeRadius: 0
 --- !u!114 &57665229
 MonoBehaviour:
@@ -800,6 +828,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212160995104267442, guid: 92b0c1f583145e548ad34622825a2338,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212417545816718088, guid: 92b0c1f583145e548ad34622825a2338,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92b0c1f583145e548ad34622825a2338, type: 2}
   m_IsPrefabParent: 0
@@ -874,19 +912,29 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 114440883091033252, guid: 0089fde42e994ec4c874c4431927147d,
-        type: 2}
-      propertyPath: pushBackTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114440883091033252, guid: 0089fde42e994ec4c874c4431927147d,
-        type: 2}
-      propertyPath: health
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1683307971 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1671687329450212, guid: 3dee6758fc619404683e113baf5045e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 4254850}
+--- !u!58 &1683307974
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1683307971}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.03}
+  serializedVersion: 2
+  m_Radius: 0.2
 --- !u!1 &1750337567
 GameObject:
   m_ObjectHideFlags: 0
