@@ -113,49 +113,94 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &689983766
+--- !u!1001 &1992181283
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4647028353159826, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+    - target: {fileID: 4999112598420300, guid: 5b98f1f8edb04ce4eaf090789caaa035, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 240.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4647028353159826, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+    - target: {fileID: 4999112598420300, guid: 5b98f1f8edb04ce4eaf090789caaa035, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 135.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4647028353159826, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+    - target: {fileID: 4999112598420300, guid: 5b98f1f8edb04ce4eaf090789caaa035, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4647028353159826, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+    - target: {fileID: 4999112598420300, guid: 5b98f1f8edb04ce4eaf090789caaa035, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4647028353159826, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+    - target: {fileID: 4999112598420300, guid: 5b98f1f8edb04ce4eaf090789caaa035, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4647028353159826, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+    - target: {fileID: 4999112598420300, guid: 5b98f1f8edb04ce4eaf090789caaa035, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4647028353159826, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+    - target: {fileID: 4999112598420300, guid: 5b98f1f8edb04ce4eaf090789caaa035, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4647028353159826, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+    - target: {fileID: 4999112598420300, guid: 5b98f1f8edb04ce4eaf090789caaa035, type: 2}
       propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1535032544971672, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
-      propertyPath: m_Name
-      value: Player
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 0089fde42e994ec4c874c4431927147d, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 5b98f1f8edb04ce4eaf090789caaa035, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1992181284 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1113143841490720, guid: 5b98f1f8edb04ce4eaf090789caaa035,
+    type: 2}
+  m_PrefabInternal: {fileID: 1992181283}
+--- !u!1 &1992470838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1992470839}
+  - component: {fileID: 1992470840}
+  m_Layer: 0
+  m_Name: Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1992470839
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992470838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7481016, y: -0.303697, z: 0.111448124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1992470840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992470838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafc482665038b5459abab95feb2975b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DontDestory: {fileID: 1992181284}
+  warpScene: WorkInProgress
+  warpDestination: WarpStart
+  faceDirection: {x: 0, y: -1}

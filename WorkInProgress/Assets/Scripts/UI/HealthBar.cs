@@ -5,17 +5,16 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
     public GameObject Player;
+    public Attackable attackable;
 
     private RectTransform rectTransform;
     private float width;
-    private Attackable attackable;
     private int maxHP;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         width = rectTransform.rect.width;
-        attackable = Player.GetComponentInChildren<Attackable>();
         maxHP = attackable.GetHealht();
     }
 
