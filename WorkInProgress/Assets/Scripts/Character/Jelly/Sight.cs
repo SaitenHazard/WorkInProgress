@@ -5,7 +5,6 @@ public class Sight : MonoBehaviour
 {
     private CharacterMovementModel m_movementModel;
     private SpeechBubble speechBubble;
-    private GameObject player;
     private Vector2 movementDirection;
     private float angle;
 
@@ -19,16 +18,15 @@ public class Sight : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.name == "Player")
+        if (collider2D.gameObject.tag == "Player")
         {
             speechBubble.PopSpeechBubble(enumSpeechBubbles.Question);
-            player = collider2D.gameObject;
         }
     }
 
     private void OnTriggerStay2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.name == "Player")
+        if (collider2D.gameObject.tag == "Player")
         {
             SetDirectionTowardsPlayer();
         }
@@ -36,7 +34,7 @@ public class Sight : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.name == "Player")
+        if (collider2D.gameObject.tag == "Player")
         {
             SetNullDirection();
         }
@@ -59,8 +57,6 @@ public class Sight : MonoBehaviour
             PlayerInstant.Instance.transform.position.y, 
             transform.position.x - PlayerInstant.Instance.transform.position.x) 
             * 180 / Mathf.PI *-1;
-
-        Debug.Log(angle);
 
         if (angle >= 22.5 && angle <= 67.5)
             movementDirection = new Vector2(-1, 1);

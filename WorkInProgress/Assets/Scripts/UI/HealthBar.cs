@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
+    public GameObject Player;
+
     private RectTransform rectTransform;
     private float width;
-
-    public int maxHP;
-    public int currentHP;
+    private Attackable attackable;
+    private int maxHP;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         width = rectTransform.rect.width;
+        attackable = Player.GetComponentInChildren<Attackable>();
+        maxHP = attackable.GetHealht();
     }
 
     private void Update()
@@ -23,6 +26,10 @@ public class HealthBar : MonoBehaviour
 
     private void UpdateHealthBar()
     {
+        int currentHP = attackable.GetHealht();
+
+        Debug.Log(currentHP);
+
         float newWidth = (width / maxHP) * currentHP;
 
         rectTransform.sizeDelta = 

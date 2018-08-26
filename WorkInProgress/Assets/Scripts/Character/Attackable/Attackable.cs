@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AttackableEnemy : AttackableBase 
+public class Attackable : MonoBehaviour 
 {
     public int health;
     public float pushBackTime;
     public float pushBackSpeed;
 
     private GameObject parentObject;
-    private CharacterMovementModel m_movementModel;
+    private CharacterMovementModel attackerMovementModel;
+
+    protected GameObject ColliderObject;
+    protected CharacterMovementModel m_movementModel;
 
     private void Awake()
     {
@@ -21,28 +24,28 @@ public class AttackableEnemy : AttackableBase
         return health;
     }
 
-    private void OnTriggerEnter2D (Collider2D hitCollider)
+    protected virtual void OnTriggerEnter2D (Collider2D hitCollider)
     {
-        HitManager(hitCollider);
+        ColliderObject = hitCollider.gameObject;
+
+        if (ColliderObject.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
+        {
+            DoHit();
+        }
     }
 
-    private void HitManager(Collider2D hitCollider)
+    protected void DoHit()
     {
-        GameObject Object = hitCollider.gameObject;
+        attackerMovementModel =
+                ColliderObject.GetComponentInParent<CharacterMovementModel>();
 
-        if (Object.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
-        {
-            CharacterMovementModel attackerModel =
-                Object.GetComponentInParent<CharacterMovementModel>();
+        m_movementModel.GetHit(attackerMovementModel.GetFacingDirection(),
+            pushBackTime, pushBackSpeed);
 
-            m_movementModel.GetHit(attackerModel.GetFacingDirection(),
-                pushBackTime, pushBackSpeed);
+        DeductHealth();
 
-            DeductHealth();
-
-            if(health <= 0)
-                DoDestroy();
-        }
+        if (health <= 0)
+            DoDestroy();
     }
 
     private void DeductHealth()

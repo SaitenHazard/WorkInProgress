@@ -7,14 +7,14 @@ public class CharacterMovementModel : MonoBehaviour
     protected Vector2 m_MovementDirection;
     protected Vector2 m_FacingDirection;
     protected Vector2 m_ReceivedDirection;
-
     protected Rigidbody2D m_Body;
 
-    protected float m_pushBackSpeed = 0f;
     protected bool movementFrozen = false;
 
     public float Speed;
+
     private float recoilTime = 0.5f;
+    private float m_pushBackSpeed;
 
     private void Awake()
     {
@@ -42,7 +42,12 @@ public class CharacterMovementModel : MonoBehaviour
         m_ReceivedDirection = Vector2.zero;
     }
 
-    private IEnumerator TemporaryFrozen(float time)
+    public void SetTemporaryFrozen(float time)
+    {
+        StartCoroutine(TemporaryFrozenIenumerator(time));
+    }
+
+    private IEnumerator TemporaryFrozenIenumerator(float time)
     {
         SetMovementFrozen(true);
         yield return new WaitForSeconds(time);
@@ -176,14 +181,14 @@ public class CharacterMovementModel : MonoBehaviour
 
     private void HitRecoil()
     {
-        AttackableEnemy attackableEnemy = GetComponentInChildren<AttackableEnemy>();
+        Attackable attackableEnemy = GetComponentInChildren<Attackable>();
 
         if (attackableEnemy == null)
             return;
 
         if (attackableEnemy.GetHealht() != 0)
         {
-            StartCoroutine(TemporaryFrozen(recoilTime));
+            SetTemporaryFrozen(recoilTime);
             return;
         }
 
