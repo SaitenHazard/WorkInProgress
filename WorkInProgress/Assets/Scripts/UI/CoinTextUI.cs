@@ -16,6 +16,6 @@ public class CoinTextUI : MonoBehaviour
 
     private void Update()
     {
-        text.text = playerWallet.GetCoins().ToString();
+        text.text = playerWallet.GetCoins().ToString("000");
     }
 }

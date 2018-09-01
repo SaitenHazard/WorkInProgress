@@ -17,7 +17,7 @@ public class Door : MonoBehaviour
         spriteDoor = GetComponentInChildren<SpriteRenderer>();
     }
 
-    private void OnTriggerEnter2D (Collider2D collider)
+private void OnTriggerEnter2D (Collider2D collider)
     {
         if(collider.gameObject.tag == "Player")
         {
@@ -36,12 +36,13 @@ public class Door : MonoBehaviour
     {
         colliderMovementModel.SetMovementFrozen(true);
 
-        Fade.Instance.DoFade(true);
-        yield return new WaitForSeconds(Fade.Instance.GetYeildTime());
+        Debug.Log("1");
+        yield return StartCoroutine(Fade.Instance.FadeOut());
 
-        //WarpManager.Instance.Warp(warpScene, warpPoint, faceDirection);
+        Debug.Log("2");
+        WarpManager.Instance.Warp(warpScene, warpPoint, faceDirection);
 
-        Fade.Instance.DoFade(false);
-        yield return new WaitForSeconds(Fade.Instance.GetYeildTime());
+        Debug.Log("3");
+        yield return StartCoroutine(Fade.Instance.FadeIn());
     }
 }

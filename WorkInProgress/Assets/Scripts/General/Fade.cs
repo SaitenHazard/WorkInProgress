@@ -6,10 +6,10 @@ public class Fade : MonoBehaviour
 {
     public static Fade Instance;
 
-    private SpriteRenderer spriteRenderer;
-    private Color color;
-    private float opacityIncrement;
-    private float yeildTime;
+    protected SpriteRenderer spriteRenderer;
+    protected Color color;
+    protected float opacityIncrement;
+    protected float yeildTime;
 
     private void Awake()
     {
@@ -29,37 +29,57 @@ public class Fade : MonoBehaviour
 
     public void DoFade(bool fadeIn)
     {
-        if (fadeIn == true)
+        if (fadeIn == false)
             StartCoroutine(FadeIn());
         else
             StartCoroutine(FadeOut());
     }
 
-    private IEnumerator FadeIn()
+    public IEnumerator FadeIn()
     {
-        Debug.Log("in1");
         float opacity = 1f;
 
-        while (color.a > 0f)
+        while (opacity > 0f)
         {
+            Debug.Log(opacity);
             opacity -= opacityIncrement;
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
-            color.a = opacity;
             yield return new WaitForSeconds(yeildTime);
         }
     }
 
-    private IEnumerator FadeOut()
+    public IEnumerator FadeInAndOut()
     {
-        Debug.Log("in2");
         float opacity = 0f;
 
-        while (color.a < 1f)
+        while (opacity < 1f)
         {
             opacity += opacityIncrement;
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
-            color.a = opacity;
             yield return new WaitForSeconds(yeildTime);
         }
+
+        while (opacity > 0f)
+        {
+            opacity -= opacityIncrement;
+            spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
+            Debug.Log(opacity);
+            yield return new WaitForSeconds(yeildTime);
+        }
+    }
+
+    public IEnumerator FadeOut()
+    {
+        float opacity = 0f;
+
+        while (opacity < 1f)
+        {
+            Debug.Log(opacity);
+            opacity += opacityIncrement;
+            spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
+            yield return new WaitForSeconds(yeildTime);
+        }
+
+        Debug.Log("4");
     }
 }
