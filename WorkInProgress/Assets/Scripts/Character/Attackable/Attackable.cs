@@ -42,20 +42,20 @@ public class Attackable : MonoBehaviour
         m_movementModel.GetHit(attackerMovementModel.GetFacingDirection(),
             pushBackTime, pushBackSpeed);
 
-        DeductHealth();
+        SubstractHealth();
 
         if (health <= 0)
             DoDestroy();
     }
 
-    private void DeductHealth()
+    private void SubstractHealth()
     {
-        DeductHealth(1);
+        SubstractHealth(1);
     }
 
-    private void DeductHealth(int deductor)
+    private void SubstractHealth(int number)
     {
-        health -= deductor;
+        health -= number;
     }
 
     private void DoDestroy()
