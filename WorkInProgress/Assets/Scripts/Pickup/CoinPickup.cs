@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpHealth : BaseCollider
+public class CoinPickup : BasePickup
 {
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.tag == "Player")
         {
-            Attackable attackable =
-                collider.transform.parent.GetComponent<Attackable>();
+            PlayerWallet playerWallet =
+                collider.GetComponentInParent<PlayerWallet>();
 
-            attackable.AddHealth(3);
+            playerWallet.AddCoin();
 
             Destroy(gameObject);
         }

@@ -3,15 +3,18 @@ using System.Collections;
 
 public class PlayerControl : CharacterBaseControl
 {
+    PlayerInventory m_inventory;
+
     private void Start()
     {
+        m_inventory = GetComponent<PlayerInventory>();
         SetDirection(new Vector2(0, -1));
     }
 
     private void Update()
     {
         UpdateDirection();
-        UpdateAttack();
+        UpdateAction();
     }
 
     private void OnAttackPressed()
@@ -21,19 +24,21 @@ public class PlayerControl : CharacterBaseControl
     }
 
     //KeybaordControls
-    private void UpdateAttack()
+    private void UpdateAction()
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
             OnAttackPressed();
         }
-    }
 
-    private void UpdateActions()
-    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            m_inventory.changeSelectedSlotID(false);
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            //OnActionPressed();
+            m_inventory.changeSelectedSlotID(true);
         }
     }
 

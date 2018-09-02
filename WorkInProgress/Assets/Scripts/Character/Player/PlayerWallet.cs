@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerWallet : MonoBehaviour
 {
-    public int coins = 0;
+    private int coins = 0;
 
     public void AddCoin()
     {
