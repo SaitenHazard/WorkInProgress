@@ -36,6 +36,9 @@ public class Attackable : MonoBehaviour
 
     protected void DoHit()
     {
+        if (health <= 0)
+            return;
+
         attackerMovementModel =
                 ColliderObject.GetComponentInParent<CharacterMovementModel>();
 

@@ -9,16 +9,21 @@ public class Door : MonoBehaviour
     public string warpPoint;
     public Vector2 faceDirection;
 
+    private bool warping;
+
     private SpriteRenderer spriteDoor;
     private CharacterMovementModel colliderMovementModel;
 
     private void Awake()
     {
         spriteDoor = GetComponentInChildren<SpriteRenderer>();
+        warping = false;
     }
 
-private void OnTriggerEnter2D (Collider2D collider)
+    private void OnTriggerStay2D (Collider2D collider)
     {
+        if (warping) return;
+
         if(collider.gameObject.tag == "Player")
         {
             colliderMovementModel = collider.GetComponentInParent<CharacterMovementModel>();
@@ -26,6 +31,7 @@ private void OnTriggerEnter2D (Collider2D collider)
 
             if (facingDirection == new Vector2(0, 1))
             {
+                warping = true;
                 spriteDoor.enabled = true;
                 StartCoroutine(Warp());
             }
@@ -36,13 +42,8 @@ private void OnTriggerEnter2D (Collider2D collider)
     {
         colliderMovementModel.SetMovementFrozen(true);
 
-        Debug.Log("1");
         yield return StartCoroutine(Fade.Instance.FadeOut());
 
-        Debug.Log("2");
         WarpManager.Instance.Warp(warpScene, warpPoint, faceDirection);
-
-        Debug.Log("3");
-        yield return StartCoroutine(Fade.Instance.FadeIn());
     }
 }

@@ -41,7 +41,6 @@ public class Fade : MonoBehaviour
 
         while (opacity > 0f)
         {
-            Debug.Log(opacity);
             opacity -= opacityIncrement;
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
             yield return new WaitForSeconds(yeildTime);
@@ -63,7 +62,6 @@ public class Fade : MonoBehaviour
         {
             opacity -= opacityIncrement;
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
-            Debug.Log(opacity);
             yield return new WaitForSeconds(yeildTime);
         }
     }
@@ -74,12 +72,9 @@ public class Fade : MonoBehaviour
 
         while (opacity < 1f)
         {
-            Debug.Log(opacity);
             opacity += opacityIncrement;
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
             yield return new WaitForSeconds(yeildTime);
         }
-
-        Debug.Log("4");
     }
 }

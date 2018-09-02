@@ -8,10 +8,14 @@ public class WarpManager : MonoBehaviour {
 	private void Awake ()
     {
         Instance = this;
-	}
+    }
 	
 	public void Warp(string warpScene, string warpDestination, Vector2 faceDirection)
     {
+        CharacterMovementModel movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
+        movementModel.SetDirection(faceDirection);
+        movementModel.SetMovementFrozen(false);
+
         SceneManager.LoadScene(warpScene, LoadSceneMode.Single);
 
         Transform destinationTransform = transform.Find(warpDestination);
@@ -19,7 +23,6 @@ public class WarpManager : MonoBehaviour {
         PlayerInstant.Instance.transform.position = 
             new Vector2(destinationTransform.position.x, destinationTransform.position.y);
 
-        CharacterMovementModel movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
-        movementModel.SetDirection(faceDirection);
+        StartCoroutine(Fade.Instance.FadeIn());
     }
 }
