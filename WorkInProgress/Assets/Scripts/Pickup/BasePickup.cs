@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasePickup : MonoBehaviour
 {
-    virtual protected void OnTriggerEnter2D(Collider2D collision)
+    virtual protected void OnTriggerEnter2D(Collider2D collider)
     {
         
     }

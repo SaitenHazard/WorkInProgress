@@ -8,12 +8,50 @@ public class PlayerInventory : MonoBehaviour
 
     private static int maxInventorySize = 5;
     private int selectedSlotID = -1;
+    private int inventorySize = 0;
 
     private enumInventory [] inventoryArray = new enumInventory[maxInventorySize];
 
     public void Start()
     {
         instance = this;
+        InitializeInventory();
+    }
+
+    public void InitializeInventory()
+    {
+        for (int i = 0; i < maxInventorySize; i++)
+            inventoryArray[i] = enumInventory.NULL;
+    }
+
+    public void AddItem(enumInventory item)
+    {
+        int firstEmptySlot = GetFirstEmptySlot();
+
+        inventoryArray[firstEmptySlot] = item;
+
+        inventorySize++;
+    }
+
+    public int GetInventoryMaxSize()
+    {
+        return maxInventorySize;
+    }
+
+    public int GetInventorySize()
+    {
+        return inventorySize;
+    }
+
+    private int GetFirstEmptySlot()
+    {
+        for( int i = 0; i < maxInventorySize; i++)
+        {
+            if (inventoryArray[i] == enumInventory.NULL)
+                return i;
+        }
+
+        return 0;
     }
 
     public enumInventory[] getEntireInventory()

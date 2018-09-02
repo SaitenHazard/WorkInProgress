@@ -7,7 +7,7 @@
 
 public enum enumInventory
 {
-    StrengthUp,
-    Heal,
+    StrengthPickup,
+    HealthPickup,
     NULL
 };
