@@ -4,6 +4,7 @@ using System.Collections;
 public class Attackable : MonoBehaviour 
 {
     public int health;
+    public int maxHealth;
     public float pushBackTime;
     public float pushBackSpeed;
 
@@ -15,6 +16,7 @@ public class Attackable : MonoBehaviour
 
     private void Awake()
     {
+        maxHealth = health;
         m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
         parentObject = transform.parent.gameObject;
     }
@@ -51,14 +53,26 @@ public class Attackable : MonoBehaviour
             DoDestroy();
     }
 
+    public void AddHealth()
+    {
+        AddHealth(1);
+    }
+
+    public void AddHealth(int amount)
+    {
+        health += amount;
+
+        if (health >= maxHealth) health = maxHealth;
+    }
+
     private void SubstractHealth()
     {
         SubstractHealth(1);
     }
 
-    private void SubstractHealth(int number)
+    private void SubstractHealth(int amount)
     {
-        health -= number;
+        health -= amount;
     }
 
     private void DoDestroy()

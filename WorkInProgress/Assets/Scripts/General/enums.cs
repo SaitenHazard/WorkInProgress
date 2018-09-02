@@ -5,3 +5,9 @@
     NULL
 };
 
+public enum enumInventory
+{
+    StrengthUp,
+    Heal,
+    NULL
+};
