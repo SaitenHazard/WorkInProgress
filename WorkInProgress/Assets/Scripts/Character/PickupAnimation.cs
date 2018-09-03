@@ -21,12 +21,9 @@ public class PickupAnimation : MonoBehaviour
 
     private void SetPickupAnimation(Sprite sprite, float proportion)
     {
-        cloneObject = Instantiate(gameObject,
-            transform.position,
-            transform.rotation );
+        cloneObject = Instantiate(gameObject, transform.position, transform.rotation );
 
-        spriteRenderer = 
-            cloneObject.GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer = cloneObject.GetComponentInChildren<SpriteRenderer>();
 
         spriteRenderer.sprite = sprite;
         cloneObject.transform.localScale = new Vector3(proportion, proportion, 0f);
@@ -34,7 +31,10 @@ public class PickupAnimation : MonoBehaviour
 
     private IEnumerator Animate()
     {
-        Rigidbody2D rigitbody = GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+        SpriteRenderer m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        Debug.Log("Do: " + m_spriteRenderer);
 
         float opacity = 1f;
         float opacityIncrement = 0.2f;
@@ -42,9 +42,9 @@ public class PickupAnimation : MonoBehaviour
 
         while (opacity > 0f)
         {
-            rigitbody.velocity = transform.up * 1;
+            rigidbody.velocity = new Vector2(0, 1) * 0.5f;
             opacity -= opacityIncrement;
-            spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
+            m_spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
 
             yield return new WaitForSeconds(yeildTime);
         }

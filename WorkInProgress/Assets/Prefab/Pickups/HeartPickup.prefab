@@ -36,14 +36,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4947099847862570}
   - component: {fileID: 61952479526240976}
-  - component: {fileID: 114425119168005334}
+  - component: {fileID: 114041858395913380}
   m_Layer: 0
   m_Name: HeartPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4741123173043222
 Transform:
   m_ObjectHideFlags: 1
@@ -64,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1177718609341216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.586, y: -1.86, z: 0}
+  m_LocalPosition: {x: -2.64, y: -1.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4741123173043222}
@@ -96,7 +96,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.15}
   m_EdgeRadius: 0
---- !u!114 &114425119168005334
+--- !u!114 &114041858395913380
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,9 +104,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1177718609341216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 391bef53af074b1498c354e131d0732b, type: 3}
+  m_Script: {fileID: 11500000, guid: dd6efc5257708704dbc3a8f8919aaa00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  proportion: 0.75
 --- !u!212 &212574465169271130
 SpriteRenderer:
   m_ObjectHideFlags: 1

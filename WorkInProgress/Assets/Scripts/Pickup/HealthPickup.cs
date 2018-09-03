@@ -7,18 +7,15 @@ public class HealthPickup : BasePickup
     private PlayerInventory m_inventory;
     public enumInventory item;
 
-    protected override void Awake()
+    private void Start()
     {
         m_inventory = 
-            (Resources.Load("Player") as GameObject).GetComponent<PlayerInventory>();
-
-        base.Awake();
+            PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerInventory>();
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Player" && 
-            m_inventory.GetInventorySize() < 
+        if (collider.tag == "Player" && m_inventory.GetInventorySize() < 
             m_inventory.GetInventoryMaxSize())
         {
             m_inventory.AddItem(item);
