@@ -31,5 +31,6 @@ public class HealthPickup : BasePickup
             GetComponent<AttackablePlayer>();
 
         attackable.RestoreFullHealth();
+        DoNonInstantiateAnimation();
     }
 }

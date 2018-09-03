@@ -29,7 +29,6 @@ public class HealthBar : MonoBehaviour
 
         float newWidth = (width / maxHP) * currentHP;
 
-        rectTransform.sizeDelta = 
-            new Vector2(newWidth, rectTransform.rect.height);
+        rectTransform.sizeDelta = new Vector2(newWidth, rectTransform.rect.height);
     }
 }
