@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class CoinPickup : BasePickup
 {
+    private Sprite sprite;
+    public float proportion;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.tag == "Player")
@@ -13,11 +21,15 @@ public class CoinPickup : BasePickup
 
             playerWallet.AddCoin();
 
-            Sprite sprite = GetComponentInChildren<SpriteRenderer>().sprite;
-
-            pickupAnimation.SetPickupAnimation(sprite, 0.5f);
-
-            Destroy(gameObject);
+            GeeneralPickup();
         }
+    }
+
+    private void GeeneralPickup()
+    {
+        sprite = GetComponentInChildren<SpriteRenderer>().sprite;
+
+        pickupAnimation.DoAnimation(sprite, 0.5f);
+        Destroy(gameObject);
     }
 }
