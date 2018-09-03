@@ -13,7 +13,7 @@ public class InstantPickupCoin : InstantPickupBase
 
             playerWallet.AddCoin();
 
-            GeeneralPickup();
+            DoPickupAnimation();
             Destroy(gameObject);
         }
     }

@@ -15,7 +15,7 @@ public class HealthBar : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         width = rectTransform.rect.width;
-        maxHP = attackable.GetHealht();
+        maxHP = attackable.GetHealth();
     }
 
     private void Update()
@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        int currentHP = attackable.GetHealht();
+        int currentHP = attackable.GetHealth();
 
         float newWidth = (width / maxHP) * currentHP;
 

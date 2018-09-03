@@ -12,7 +12,7 @@ public class InstantPickupHealth : InstantPickupBase
 
             attackable.AddHealth(3);
 
-            GeeneralPickup();
+            DoPickupAnimation();
             Destroy(gameObject);
         }
     }

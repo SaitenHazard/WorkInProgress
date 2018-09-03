@@ -14,7 +14,7 @@ public class AttackablePlayer : Attackable {
                 ColliderObject.transform.parent.gameObject.
                 GetComponentInChildren<Attackable>();
 
-            if (attackerAttackable.GetHealht() <= 0)
+            if (attackerAttackable.GetHealth() <= 0)
                 return;
 
             CharacterMovementModel attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();

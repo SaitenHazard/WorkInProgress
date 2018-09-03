@@ -15,11 +15,21 @@ public class HealthPickup : BasePickup
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Player" && m_inventory.GetInventorySize() < 
+        if (collider.tag == "Player" && m_inventory.GetInventorySize() <
             m_inventory.GetInventoryMaxSize())
         {
             m_inventory.AddItem(item);
+
+            DoPickupAnimation();
             Destroy(gameObject);
         }
+    }
+
+    public override void UsePickup()
+    {
+        AttackablePlayer attackable = PlayerInstant.Instance.transform.gameObject.
+            GetComponent<AttackablePlayer>();
+
+        attackable.RestoreFullHealth();
     }
 }

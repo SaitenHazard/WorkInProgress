@@ -21,9 +21,14 @@ public class Attackable : MonoBehaviour
         parentObject = transform.parent.gameObject;
     }
 
-    public int GetHealht()
+    public int GetHealth()
     {
         return health;
+    }
+
+    public void RestoreFullHealth()
+    {
+        health = maxHealth;
     }
 
     protected virtual void OnTriggerEnter2D (Collider2D hitCollider)

@@ -186,7 +186,7 @@ public class CharacterMovementModel : MonoBehaviour
         if (attackableEnemy == null)
             return;
 
-        if (attackableEnemy.GetHealht() != 0)
+        if (attackableEnemy.GetHealth() != 0)
         {
             SetTemporaryFrozen(recoilTime);
             return;

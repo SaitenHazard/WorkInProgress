@@ -32,6 +32,27 @@ public class PlayerInventory : MonoBehaviour
             InitializeSelected();
     }
 
+    public void UseSelected()
+    {
+        if (selectedSlotID == -1)
+            return;
+
+        UsePickup();
+
+        inventoryArray[selectedSlotID] = enumInventory.NULL;
+        changeSelectedSlotID(true);
+    }
+
+    private void UsePickup()
+    {
+        GameObject pickupObject = Resources.Load(inventoryArray[selectedSlotID].
+            ToString()) as GameObject;
+
+        BasePickup basePickup = pickupObject.GetComponent<BasePickup>();
+
+        basePickup.UsePickup();
+    }
+
     public void InitializeSelected()
     {
         selectedSlotID = 0;

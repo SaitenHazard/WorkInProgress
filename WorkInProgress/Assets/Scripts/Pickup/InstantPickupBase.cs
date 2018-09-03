@@ -12,14 +12,14 @@ public class InstantPickupBase : MonoBehaviour {
 
     }
 
-    protected void GeeneralPickup()
+    protected void DoPickupAnimation()
     {
         PickupAnimation pickupAnimation = PlayerInstant.Instance.transform.
             gameObject.GetComponentInChildren<PickupAnimation>();
 
         sprite = GetComponentInChildren<SpriteRenderer>().sprite;
 
-        pickupAnimation.DoAnimation(sprite, 0.5f);
+        pickupAnimation.DoAnimation(sprite, proportion);
         Destroy(gameObject);
     }
 }

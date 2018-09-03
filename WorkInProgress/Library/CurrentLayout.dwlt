@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 342}
   m_MaxSize: {x: 12004, y: 8042}
   vertical: 0
-  controlID: 2254
+  controlID: 38
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 342}
   m_MaxSize: {x: 8004, y: 8042}
   vertical: 1
-  controlID: 2142
+  controlID: 69
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 221}
   m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
-  controlID: 2143
+  controlID: 70
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -369,23 +369,23 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 902a0000
-    m_LastClickedID: 10896
-    m_ExpandedIDs: 8056ffff4afaffff9cfbffff9efbfffff4ffffff00000000782a0000bc2c0000682d00003a5a0000
+    m_SelectedIDs: 6efaffff
+    m_LastClickedID: -1426
+    m_ExpandedIDs: f6dafeffcc35ffff9cfbffff9efbfffff4ffffff00000000802a0000b82c0000be2c0000122d0000682d0000c06a00005a710000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: CoinPickup (2)
+      m_OriginalName: CoinPickup (2)
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -1166
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -428,9 +428,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.15448101, y: -0.36461937, z: -0.043945312}
+    m_Target: {x: 2.2367187, y: -0.9931342, z: -0.052246094}
     speed: 2
-    m_Value: {x: -0.15448101, y: -0.36461937, z: -0.043945312}
+    m_Value: {x: 2.2367187, y: -0.9931342, z: -0.052246094}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -458,9 +458,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 2.788125
+    m_Target: 3.630864
     speed: 2
-    m_Value: 2.788125
+    m_Value: 3.630864
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -511,19 +511,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/Pickup
+    - Assets/Scripts/Character/Attackable
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scripts/Pickup
+  - Assets/Scripts/Character/Attackable
   m_LastFoldersGridSize: 96
   m_LastProjectPath: E:\Development\WorkInProgress\WorkInProgress
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 180}
-    m_SelectedIDs: a2290000
-    m_LastClickedID: 10658
-    m_ExpandedIDs: 00000000ba270000c6270000d0270000702800006829000074290000e2290000982e000000ca9a3bffffff7f
+    m_SelectedIDs: 5e290000
+    m_LastClickedID: 10590
+    m_ExpandedIDs: 00000000be270000ca270000d4270000742800006c29000078290000e6290000982e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -551,7 +551,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ba270000c6270000d0270000702800006829000074290000e2290000982e000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000be270000ca270000d4270000742800006c29000078290000e6290000982e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -576,10 +576,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: ac060000
-    m_LastClickedInstanceID: 1708
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c6230000a8270000aa270000ec270000602800006a2800001e290000aa2800001e280000762f000000000000463700005a2a0000b22800003a2b0000382f000048320000
+    m_SelectedInstanceIDs: 56faffff
+    m_LastClickedInstanceID: -1450
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000a8270000aa270000ec270000602800006a2800001e290000aa2800001e280000762f000000000000463700005a2a0000b22800003a2b0000382f00004832000064290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

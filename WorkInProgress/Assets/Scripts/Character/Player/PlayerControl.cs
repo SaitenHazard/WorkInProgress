@@ -40,6 +40,11 @@ public class PlayerControl : CharacterBaseControl
         {
             m_inventory.changeSelectedSlotID(true);
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            m_inventory.UseSelected();
+        }
     }
 
     private void UpdateDirection()

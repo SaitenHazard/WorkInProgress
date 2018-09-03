@@ -34,8 +34,6 @@ public class PickupAnimation : MonoBehaviour
         Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
         SpriteRenderer m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        Debug.Log("Do: " + m_spriteRenderer);
-
         float opacity = 1f;
         float opacityIncrement = 0.2f;
         float yeildTime = 0.2f;
