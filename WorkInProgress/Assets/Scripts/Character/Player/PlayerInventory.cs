@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public static PlayerInventory instance;
-
     private static int maxInventorySize = 5;
-    private int selectedSlotID = -1;
-    private int inventorySize = 0;
+    private static int inventorySize = 0;
 
-    private enumInventory [] inventoryArray = new enumInventory[maxInventorySize];
+    private static int selectedSlotID = -1;
+
+    private static enumInventory [] inventoryArray = new enumInventory[maxInventorySize];
 
     public void Start()
     {
-        instance = this;
         InitializeInventory();
     }
-
+ 
     public void InitializeInventory()
     {
         for (int i = 0; i < maxInventorySize; i++)
@@ -27,10 +25,16 @@ public class PlayerInventory : MonoBehaviour
     public void AddItem(enumInventory item)
     {
         int firstEmptySlot = GetFirstEmptySlot();
-
         inventoryArray[firstEmptySlot] = item;
-
         inventorySize++;
+
+        if(inventorySize == 1)
+            InitializeSelected();
+    }
+
+    public void InitializeSelected()
+    {
+        selectedSlotID = 0;
     }
 
     public int GetInventoryMaxSize()
@@ -75,8 +79,11 @@ public class PlayerInventory : MonoBehaviour
         {
             selectedSlotID++;
 
-            if (selectedSlotID == maxInventorySize -1)
+            if (selectedSlotID == maxInventorySize)
                 selectedSlotID = 0;
+
+            if (inventoryArray[selectedSlotID] == enumInventory.NULL)
+                changeSelectedSlotID(true);
         }
         else
         {
@@ -84,6 +91,9 @@ public class PlayerInventory : MonoBehaviour
 
             if (selectedSlotID == -1)
                 selectedSlotID = maxInventorySize -1;
+
+            if (inventoryArray[selectedSlotID] == enumInventory.NULL)
+                changeSelectedSlotID(false);
         }
     }
 }

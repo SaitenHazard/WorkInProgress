@@ -92,7 +92,6 @@ public class Attackable : MonoBehaviour
         {
             opacity -= 0.2f;
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
-            color.a = opacity;
             yield return new WaitForSeconds(0.2f);
         }
 

@@ -13,6 +13,10 @@ public class CoinPickup : BasePickup
 
             playerWallet.AddCoin();
 
+            Sprite sprite = GetComponentInChildren<SpriteRenderer>().sprite;
+
+            pickupAnimation.SetPickupAnimation(sprite, 0.5f);
+
             Destroy(gameObject);
         }
     }

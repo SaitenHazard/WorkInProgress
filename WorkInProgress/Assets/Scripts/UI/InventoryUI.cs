@@ -43,14 +43,11 @@ public class InventoryUI : MonoBehaviour {
     private void SetItemSlot(int index, GameObject itemSlotObject)
     {
         Image itemSlotImage = itemSlotObject.GetComponent<Image>();
-
         GameObject itemObject = Resources.Load(inventory[index].ToString()) as GameObject;
-        Debug.Log(inventory[index]);
-        Debug.Log(itemObject);
-        Sprite sprite = itemObject.GetComponentInChildren<Sprite>();
+        SpriteRenderer spriteRenderer = itemObject.GetComponentInChildren<SpriteRenderer>();
 
-        itemSlotImage.sprite = sprite;
         itemSlotObject.SetActive(true);
+        itemSlotImage.sprite = spriteRenderer.sprite;
     }
 
     private void UpdateSlotSelected()
@@ -64,9 +61,7 @@ public class InventoryUI : MonoBehaviour {
         }
 
         selectedSlot.SetActive(true);
-
         GameObject slotObject = getSlotObject(selectedSlotID);
-
         selectedSlot.transform.position = slotObject.transform.position;
     }
 
