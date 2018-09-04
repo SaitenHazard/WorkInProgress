@@ -68,9 +68,13 @@ public class InventoryUI : MonoBehaviour {
         selectedSlot.transform.position = slotObject.transform.position;
     }
 
-    public Transform getSlotSelectedTransform()
+    public RectTransform GetSlotSelectedRectTransform()
     {
-        return getSlotObject(m_Inventory.getSelectedID()).transform;
+        GameObject Object = getSlotObject(m_Inventory.getSelectedID());
+
+        RectTransform rectTransform = Object.GetComponent<RectTransform>();
+
+        return rectTransform;
     }
 
     private GameObject getSlotObject(int index)

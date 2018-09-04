@@ -29,11 +29,11 @@ public class BasePickup : MonoBehaviour
 
     protected void DoNonInstantiateAnimation()
     {
-        PickupAnimation pickupAnimation =  InventoryUI.Instance.transform.gameObject.GetComponentInChildren<PickupAnimation>();
+        PickupUseGeneralAnimation pickupAnimation =  InventoryUI.Instance.transform.gameObject.GetComponentInChildren<PickupUseGeneralAnimation>();
 
         sprite = GetComponentInChildren<SpriteRenderer>().sprite;
 
-        Transform slotTrasform = InventoryUI.Instance.getSlotSelectedTransform();
+        RectTransform slotTrasform = InventoryUI.Instance.GetSlotSelectedRectTransform();
 
         pickupAnimation.DoAnimation(sprite, proportion, slotTrasform);
     }

@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PickupInventoryAnimation : MonoBehaviour {
-
+public class PickupInventoryAnimation : MonoBehaviour
+{
     public IEnumerator Animate()
     {
         Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
-        SpriteRenderer m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        Image image = GetComponent<Image>();
 
         float opacity = 1f;
         float opacityIncrement = 0.2f;
@@ -17,7 +18,7 @@ public class PickupInventoryAnimation : MonoBehaviour {
         {
             rigidbody.velocity = new Vector2(0, 1) * 0.5f;
             opacity -= opacityIncrement;
-            m_spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
+            image.color = new Color(1f, 1f, 1f, opacity);
 
             yield return new WaitForSeconds(yeildTime);
         }

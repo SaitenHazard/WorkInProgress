@@ -9,8 +9,7 @@ public class HealthPickup : BasePickup
 
     private void Start()
     {
-        m_inventory = 
-            PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerInventory>();
+        m_inventory = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerInventory>();
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)

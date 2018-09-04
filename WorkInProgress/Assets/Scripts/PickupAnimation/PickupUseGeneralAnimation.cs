@@ -16,25 +16,30 @@ public class PickupUseGeneralAnimation : MonoBehaviour {
         inventoryUI = GetComponent<InventoryUI>();
     }
 
-    public void DoAnimation(Sprite sprite, float proportion, Transform tranform)
+    public void DoAnimation(Sprite sprite, float proportion, RectTransform rectTransform)
     {
-        SetPickupAnimation(sprite, proportion, tranform);
+        SetPickupAnimation(sprite, proportion, rectTransform);
         StartAnimation();
+    }
+
+    virtual protected void SetPickupAnimation(Sprite sprite, float proportion, RectTransform slotRectTransform)
+    {
+        cloneObject = Instantiate(objectToClone);
+        cloneObject.transform.SetParent(gameObject.transform);
+
+        RectTransform rectTransform = cloneObject.GetComponent<RectTransform>();
+
+        image = cloneObject.GetComponent<Image>();
+        image.sprite = sprite;
+        image.rectTransform.localScale = slotRectTransform.localScale;
+        image.rectTransform.position = slotRectTransform.position;
+
+        image.enabled = true;
     }
 
     protected void StartAnimation()
     {
         PickupInventoryAnimation clonePickupAnimation = cloneObject.GetComponent<PickupInventoryAnimation>();
         StartCoroutine(clonePickupAnimation.Animate());
-    }
-
-    virtual protected void SetPickupAnimation(Sprite sprite, float proportion, Transform tranform)
-    {
-        cloneObject = Instantiate(objectToClone, transform.position, transform.rotation);
-
-        image = cloneObject.GetComponentInChildren<Image>();
-
-        image.sprite = sprite;
-        cloneObject.transform.localScale = new Vector3(proportion, proportion, 0f);
     }
 }
