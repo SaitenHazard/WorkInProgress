@@ -30,6 +30,8 @@ public class PlayerInventory : MonoBehaviour
 
         if(inventorySize == 1)
             InitializeSelected();
+
+        Debug.Log(inventorySize);
     }
 
     public void UseSelected()
@@ -40,7 +42,10 @@ public class PlayerInventory : MonoBehaviour
         UsePickup();
 
         inventoryArray[selectedSlotID] = enumInventory.NULL;
+        inventorySize--;
+
         changeSelectedSlotID(true);
+        Debug.Log(inventorySize);
     }
 
     private void UsePickup()
@@ -96,6 +101,12 @@ public class PlayerInventory : MonoBehaviour
 
     public void changeSelectedSlotID(bool forward)
     {
+        if (inventorySize == 0)
+        {
+            selectedSlotID = -1;
+            return;
+        }
+
         if (forward)
         {
             selectedSlotID++;

@@ -28,7 +28,7 @@ public class HealthPickup : BasePickup
     public override void UsePickup()
     {
         AttackablePlayer attackable = PlayerInstant.Instance.transform.gameObject.
-            GetComponent<AttackablePlayer>();
+            GetComponentInChildren<AttackablePlayer>();
 
         attackable.RestoreFullHealth();
         DoNonInstantiateAnimation();

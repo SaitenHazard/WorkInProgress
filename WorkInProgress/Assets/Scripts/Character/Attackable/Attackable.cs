@@ -93,7 +93,7 @@ public class Attackable : MonoBehaviour
 
         yield return new WaitForSeconds(pushBackTime);
 
-        while (color.a > 0f)
+        while (opacity > 0f)
         {
             opacity -= 0.2f;
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
@@ -105,6 +105,7 @@ public class Attackable : MonoBehaviour
 
     private void DestroyCharacter()
     {
+        Debug.Log(gameObject.transform.parent.gameObject);
         Destroy(gameObject.transform.parent.gameObject);
     }
 }

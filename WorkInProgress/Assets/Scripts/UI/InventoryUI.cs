@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour {
+    public static InventoryUI Instance;
+
     public PlayerInventory m_Inventory;
     public GameObject selectedSlot;
 
@@ -12,6 +14,7 @@ public class InventoryUI : MonoBehaviour {
     private void Awake()
     {
         inventory = new enumInventory[m_Inventory.GetInventoryMaxSize()];
+        Instance = this;
     }
 
     private void Update ()
@@ -63,6 +66,11 @@ public class InventoryUI : MonoBehaviour {
         selectedSlot.SetActive(true);
         GameObject slotObject = getSlotObject(selectedSlotID);
         selectedSlot.transform.position = slotObject.transform.position;
+    }
+
+    public Transform getSlotSelectedTransform()
+    {
+        return getSlotObject(m_Inventory.getSelectedID()).transform;
     }
 
     private GameObject getSlotObject(int index)

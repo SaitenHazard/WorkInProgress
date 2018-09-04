@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PickupAnimation : MonoBehaviour
 {
-    private GameObject cloneObject;
-    private SpriteRenderer spriteRenderer;
+    protected GameObject cloneObject;
+    protected SpriteRenderer spriteRenderer;
 
     public void DoAnimation(Sprite sprite, float proportion)
     {
@@ -13,13 +13,23 @@ public class PickupAnimation : MonoBehaviour
         StartAnimation();
     }
 
-    private void StartAnimation()
+    virtual public void DoAnimation(Sprite sprite, float proportion, Transform transform)
+    {
+        
+    }
+
+    protected void StartAnimation()
     {
         PickupAnimation clonePickupAnimation = cloneObject.GetComponent<PickupAnimation>();
         StartCoroutine(clonePickupAnimation.Animate());
     }
 
-    private void SetPickupAnimation(Sprite sprite, float proportion)
+    virtual protected void SetPickupAnimation(Sprite sprite, float proportion, Transform transform)
+    {
+
+    }
+
+    virtual protected void SetPickupAnimation(Sprite sprite, float proportion)
     {
         cloneObject = Instantiate(gameObject, transform.position, transform.rotation );
 
@@ -29,7 +39,7 @@ public class PickupAnimation : MonoBehaviour
         cloneObject.transform.localScale = new Vector3(proportion, proportion, 0f);
     }
 
-    private IEnumerator Animate()
+    virtual protected IEnumerator Animate()
     {
         Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
         SpriteRenderer m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
