@@ -13,6 +13,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void Start()
     {
+
         InitializeInventory();
     }
  

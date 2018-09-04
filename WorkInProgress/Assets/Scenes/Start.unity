@@ -1161,6 +1161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1137542933}
   - component: {fileID: 1137542934}
+  - component: {fileID: 1137542935}
   m_Layer: 5
   m_Name: InventoryHud
   m_TagString: Untagged
@@ -1207,6 +1208,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Inventory: {fileID: 188311482}
   selectedSlot: {fileID: 2142301474}
+--- !u!114 &1137542935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1137542932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ebdd046bb451c44b32743f56918276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToClone: {fileID: 1902971204}
 --- !u!1 &1160700288
 GameObject:
   m_ObjectHideFlags: 0
