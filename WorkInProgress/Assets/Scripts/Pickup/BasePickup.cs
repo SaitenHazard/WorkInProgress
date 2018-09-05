@@ -7,14 +7,20 @@ public class BasePickup : MonoBehaviour
     protected Sprite sprite;
     protected PickupAnimation pickupAnimation;
     protected PlayerInventory m_inventory;
+    private float proportion;
 
     public enumInventory item;
-    public float proportion;
 
     private void Awake()
     {
         m_inventory = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerInventory>();
         pickupAnimation = PlayerInstant.Instance.transform.gameObject.GetComponentInChildren<PickupAnimation>();
+    }
+
+    private void Start()
+    {
+        gameObject.name = item.ToString();
+        proportion = GetComponentInChildren<SpriteRenderer>().transform.localScale.x;
     }
 
     protected void ResetSelectedInventory()

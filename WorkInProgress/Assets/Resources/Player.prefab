@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4085788680635742}
   - component: {fileID: 114340084851184458}
+  - component: {fileID: 50671458831602074}
   m_Layer: 0
   m_Name: PickUpAni
   m_TagString: Untagged
@@ -111,6 +112,7 @@ GameObject:
   - component: {fileID: 114194074033651222}
   - component: {fileID: 114529667262117752}
   - component: {fileID: 114250762460006520}
+  - component: {fileID: 114405542626826376}
   - component: {fileID: 50868609984581670}
   m_Layer: 0
   m_Name: Player
@@ -300,6 +302,26 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!50 &50671458831602074
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202199212861700}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &50868609984581670
 Rigidbody2D:
   serializedVersion: 4
@@ -442,6 +464,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec7bdcf81571f2459f3276d0b47198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114405542626826376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372461820951046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e419476a8b8028b42958c283f881b12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yieldTime: 5
+  damage: 0
 --- !u!114 &114484228751584088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -509,7 +544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbaae4f977b4d8449df6fa7b73d2338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1.5
 --- !u!114 &114973844143535920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -691,8 +725,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1667003977
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

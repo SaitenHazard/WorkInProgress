@@ -43,10 +43,15 @@ public class InventoryUI : MonoBehaviour {
         }
     }
 
+    private enumInventory GetItemFromSlot(int index)
+    {
+        return inventory[index];
+    }
+
     private void SetItemSlot(int index, GameObject itemSlotObject)
     {
         Image itemSlotImage = itemSlotObject.GetComponent<Image>();
-        GameObject itemObject = Resources.Load(inventory[index].ToString()) as GameObject;
+        GameObject itemObject = Resources.Load(GetItemFromSlot(index).ToString()) as GameObject;
         SpriteRenderer spriteRenderer = itemObject.GetComponentInChildren<SpriteRenderer>();
 
         itemSlotObject.SetActive(true);

@@ -11,14 +11,18 @@ public class CharacterMovementModel : MonoBehaviour
 
     protected bool movementFrozen = false;
 
-    public float Speed;
-
+    private float Speed;
     private float recoilTime = 0.5f;
     private float m_pushBackSpeed;
 
     private void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        Speed = 1.5f;
     }
 
     private void Update()
