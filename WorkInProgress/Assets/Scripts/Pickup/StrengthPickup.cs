@@ -5,11 +5,18 @@ using UnityEngine;
 public class StrengthPickup : BasePickup {
 
     public override void UsePickup()
-    {
+    { 
         PlayerStats playerStats = PlayerInstant.Instance.transform.gameObject.
             GetComponent<PlayerStats>();
 
-        playerStats.DamageUp();
-        ResetSelectedInventory();
+        if(playerStats.IsDamageUp() == true)
+        {
+            playerStats.DamageUp();
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            return;
+        }
+
+        DoInventoryCancelAnimation();
     }
 }

@@ -31,6 +31,11 @@ public class PlayerStats : MonoBehaviour
         StartCoroutine(RevertDamageUp());
     }
 
+    public bool IsDamageUp()
+    {
+        return damage == 2;
+    }
+
     private IEnumerator RevertDamageUp()
     {
         yield return new WaitForSeconds(yieldTime);

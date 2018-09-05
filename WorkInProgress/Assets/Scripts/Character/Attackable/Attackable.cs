@@ -110,7 +110,6 @@ public class Attackable : MonoBehaviour
 
     private void DestroyCharacter()
     {
-        Debug.Log(gameObject.transform.parent.gameObject);
         Destroy(gameObject.transform.parent.gameObject);
     }
 }

@@ -7,7 +7,7 @@ public class BasePickup : MonoBehaviour
     protected Sprite sprite;
     protected PickupAnimation pickupAnimation;
     protected PlayerInventory m_inventory;
-    private float proportion;
+    protected float proportion;
 
     public enumInventory item;
 
@@ -25,7 +25,6 @@ public class BasePickup : MonoBehaviour
 
     protected void ResetSelectedInventory()
     {
-        DoNonInstantiateAnimation();
         (PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerInventory>()).ResetSlected();
     }
 
@@ -58,7 +57,7 @@ public class BasePickup : MonoBehaviour
 
         sprite = (Object.transform.GetComponentInChildren<SpriteRenderer>()).sprite;
 
-        pickupAnimation.DoAnimation(sprite, 0.5f);
+        pickupAnimation.DoAnimation(sprite, 1f);
     }
 
     virtual public void UsePickup()
@@ -71,7 +70,7 @@ public class BasePickup : MonoBehaviour
         PickupUseGeneralAnimation pickupUseGeneralAnimation = InventoryUI.Instance.transform.gameObject.GetComponent<PickupUseGeneralAnimation>();
         sprite = GetComponentInChildren<SpriteRenderer>().sprite;
         RectTransform slotTrasform = InventoryUI.Instance.GetSlotSelectedRectTransform();
-        pickupUseGeneralAnimation.DoAnimation(sprite, proportion, slotTrasform);
+        pickupUseGeneralAnimation.DoAnimation(sprite, 0.75f, slotTrasform);
     }
 
     protected void DoInventoryCancelAnimation()

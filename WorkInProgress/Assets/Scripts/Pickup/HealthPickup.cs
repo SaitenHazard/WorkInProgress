@@ -12,7 +12,9 @@ public class HealthPickup : BasePickup
         if (attackable.GetHealth() < attackable.GetMaxHealth())
         {
             attackable.RestoreFullHealth();
+            DoNonInstantiateAnimation();
             ResetSelectedInventory();
+            return;
         }
 
         DoInventoryCancelAnimation();

@@ -11,7 +11,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     protected bool movementFrozen = false;
 
-    private float Speed;
+    public float Speed;
     private float recoilTime = 0.5f;
     private float m_pushBackSpeed;
 
@@ -20,12 +20,7 @@ public class CharacterMovementModel : MonoBehaviour
         m_Body = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
-    {
-        Speed = 1.5f;
-    }
-
-    private void Update()
+    protected void Update()
     {
         UpdateDirection();
         ResetReceivedDirection();

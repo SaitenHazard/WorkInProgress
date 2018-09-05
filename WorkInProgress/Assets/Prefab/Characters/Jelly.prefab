@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4298444264109868}
   - component: {fileID: 212791955397603514}
+  - component: {fileID: 114137082878891226}
   m_Layer: 0
   m_Name: SpeechBubble
   m_TagString: Untagged
@@ -53,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4978560973656688}
   - component: {fileID: 58117595348039220}
+  - component: {fileID: 58351173989915982}
   m_Layer: 0
   m_Name: CollisionBox
   m_TagString: Enemy
@@ -71,11 +73,10 @@ GameObject:
   - component: {fileID: 114698047018853190}
   - component: {fileID: 114007775857923254}
   - component: {fileID: 114132014602334926}
-  - component: {fileID: 114571626745187096}
   - component: {fileID: 50853889480544678}
   m_Layer: 0
   m_Name: Jelly
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4644003885501798}
   - component: {fileID: 58126563391285000}
+  - component: {fileID: 114590926832142910}
   m_Layer: 0
   m_Name: SightBox
   m_TagString: Untagged
@@ -171,8 +173,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763049945981194}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26, y: -1.99, z: 0.18603516}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.2971516, y: 1.6245897, z: 0.22021484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4581698427898512}
@@ -225,7 +227,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.03}
@@ -246,6 +248,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
+--- !u!58 &58351173989915982
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671687329450212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.03}
+  serializedVersion: 2
+  m_Radius: 0.2
 --- !u!58 &58814417348335460
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -301,6 +318,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a450fc96b898b6d49bf988cde8f4241e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114137082878891226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518938795203526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca221cd08687fe4ab682125453c94da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionBubble: {fileID: 21300000, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
+  exclamatoinBubble: {fileID: 21300002, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
 --- !u!114 &114305315076348664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,17 +343,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  maxHealth: 0
   pushBackTime: 0.15
   pushBackSpeed: 2.5
---- !u!114 &114571626745187096
+--- !u!114 &114590926832142910
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1763049945981194}
-  m_Enabled: 0
+  m_GameObject: {fileID: 1914367491279532}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c1eee8bd3cc7894e826929f4cb6a223, type: 3}
+  m_Script: {fileID: 11500000, guid: 78ef0938f312c034eb56e87fbf7365f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114698047018853190
@@ -371,7 +402,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4861bafecda4cdf4d80503692e7bc06b, type: 3}
+  m_Sprite: {fileID: 21300002, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -379,7 +410,7 @@ SpriteRenderer:
   m_Size: {x: 0.5, y: 0.46875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
 --- !u!212 &212967625440947654
 SpriteRenderer:
@@ -412,9 +443,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -153231989
+  m_SortingLayer: 2
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300002, guid: eee6be351c8388b4693614d12be097da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
