@@ -31,7 +31,7 @@ public class PickupUseGeneralAnimation : MonoBehaviour {
 
         image = cloneObject.GetComponent<Image>();
         image.sprite = sprite;
-        image.rectTransform.localScale = slotRectTransform.localScale;
+        image.rectTransform.localScale = new Vector2 (proportion, proportion);
         image.rectTransform.position = slotRectTransform.position;
 
         image.enabled = true;

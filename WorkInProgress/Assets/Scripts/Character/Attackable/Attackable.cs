@@ -26,6 +26,11 @@ public class Attackable : MonoBehaviour
         return health;
     }
 
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void RestoreFullHealth()
     {
         health = maxHealth;

@@ -14,6 +14,9 @@ public class PlayerWallet : MonoBehaviour
     public void AddCoin(int number)
     {
         coins += number;
+
+        if (coins > 999)
+            coins = 999;
     }
 
     public void SubstractCoin()

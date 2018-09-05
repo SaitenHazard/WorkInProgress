@@ -10,10 +10,15 @@ public class InstantPickupHealth : InstantPickupBase
         {
             Attackable attackable = collider.GetComponent<Attackable>();
 
-            attackable.AddHealth(3);
+            if (attackable.GetHealth() < attackable.GetMaxHealth())
+            {
+                attackable.AddHealth(3);
 
-            DoPickupAnimation();
-            Destroy(gameObject);
+                DoPickupAnimation();
+                Destroy(gameObject);
+            }
+
+            DoCancelPickupAnimation();
         }
     }
 }

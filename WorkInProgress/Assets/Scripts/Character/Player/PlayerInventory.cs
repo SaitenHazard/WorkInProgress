@@ -6,14 +6,11 @@ public class PlayerInventory : MonoBehaviour
 {
     private static int maxInventorySize = 5;
     private static int inventorySize = 0;
-
     private static int selectedSlotID = -1;
-
     private static enumInventory [] inventoryArray = new enumInventory[maxInventorySize];
 
     public void Start()
     {
-
         InitializeInventory();
     }
  
@@ -31,8 +28,6 @@ public class PlayerInventory : MonoBehaviour
 
         if(inventorySize == 1)
             InitializeSelected();
-
-        Debug.Log(inventorySize);
     }
 
     public void UseSelected()
@@ -41,12 +36,14 @@ public class PlayerInventory : MonoBehaviour
             return;
 
         UsePickup();
+    }
 
+    public void ResetSlected()
+    {
         inventoryArray[selectedSlotID] = enumInventory.NULL;
         inventorySize--;
 
         changeSelectedSlotID(true);
-        Debug.Log(inventorySize);
     }
 
     private void UsePickup()

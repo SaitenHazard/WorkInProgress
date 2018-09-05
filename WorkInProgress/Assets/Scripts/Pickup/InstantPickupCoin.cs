@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class InstantPickupCoin : InstantPickupBase
 {
+    PlayerWallet playerWallet;
+
+    private void Start()
+    {
+        playerWallet = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerWallet>();
+    }
+
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.tag == "Player")
         {
-            PlayerWallet playerWallet =
-                collider.GetComponentInParent<PlayerWallet>();
+            if(playerWallet.GetCoins() < 999)
+            {
+                playerWallet.AddCoin();
+                DoPickupAnimation();
+                Destroy(gameObject);
 
-            playerWallet.AddCoin();
+                return;
+            }
 
-            DoPickupAnimation();
-            Destroy(gameObject);
+            DoCancelPickupAnimation();
         }
     }
 }
