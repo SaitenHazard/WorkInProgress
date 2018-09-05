@@ -70,7 +70,7 @@ public class BasePickup : MonoBehaviour
         PickupUseGeneralAnimation pickupUseGeneralAnimation = InventoryUI.Instance.transform.gameObject.GetComponent<PickupUseGeneralAnimation>();
         sprite = GetComponentInChildren<SpriteRenderer>().sprite;
         RectTransform slotTrasform = InventoryUI.Instance.GetSlotSelectedRectTransform();
-        pickupUseGeneralAnimation.DoAnimation(sprite, 0.75f, slotTrasform);
+        pickupUseGeneralAnimation.DoAnimation(sprite, 1f, slotTrasform);
     }
 
     protected void DoInventoryCancelAnimation()

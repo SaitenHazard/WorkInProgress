@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: dce09bcadb9969c4fbac9455664daa33
+guid: 05796b0a1bc8532429f74cee7a28b6a3
 timeCreated: 1536158904
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pow_alpha_0
-    21300002: pow_alpha_1
-    21300004: pow_alpha_2
+    21300000: pow2_alpha_0
+    21300002: pow2_alpha_1
+    21300004: pow2_alpha_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -93,7 +93,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pow_alpha_0
+      name: pow2_alpha_0
       rect:
         serializedVersion: 2
         x: 0
@@ -107,7 +107,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pow_alpha_1
+      name: pow2_alpha_1
       rect:
         serializedVersion: 2
         x: 32
@@ -121,7 +121,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pow_alpha_2
+      name: pow2_alpha_2
       rect:
         serializedVersion: 2
         x: 64
