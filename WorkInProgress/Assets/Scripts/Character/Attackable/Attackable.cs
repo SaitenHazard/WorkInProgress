@@ -42,11 +42,13 @@ public class Attackable : MonoBehaviour
 
         if (ColliderObject.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            DoHit();
+            int damage = (ColliderObject.GetComponentInParent<PlayerStats>()).GetDamage();
+
+            DoHit(damage);
         }
     }
 
-    protected void DoHit()
+    protected void DoHit(int damage)
     {
         if (health <= 0)
             return;
@@ -57,7 +59,7 @@ public class Attackable : MonoBehaviour
         m_movementModel.GetHit(attackerMovementModel.GetFacingDirection(),
             pushBackTime, pushBackSpeed);
 
-        SubstractHealth();
+        SubstractHealth(damage);
 
         if (health <= 0)
             DoDestroy();

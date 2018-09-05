@@ -9,7 +9,7 @@ public class StrengthPickup : BasePickup {
         PlayerStats playerStats = PlayerInstant.Instance.transform.gameObject.
             GetComponent<PlayerStats>();
 
-        if(playerStats.IsDamageUp() == true)
+        if(playerStats.IsDamageUp() == false)
         {
             playerStats.DamageUp();
             DoNonInstantiateAnimation();

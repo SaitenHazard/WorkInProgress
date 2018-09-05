@@ -17,7 +17,7 @@ public class InventoryUI : MonoBehaviour {
         Instance = this;
     }
 
-    private void Update ()
+    protected void Update ()
     {
         UpdateSlot();
         UpdateSlotSelected();

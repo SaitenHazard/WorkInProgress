@@ -10,8 +10,7 @@ public class AttackablePlayer : Attackable
 
         if (ColliderObject.tag == "Enemy" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            Attackable attackerAttackable =
-                ColliderObject.transform.parent.gameObject.
+            Attackable attackerAttackable = ColliderObject.transform.parent.gameObject.
                 GetComponentInChildren<Attackable>();
 
             if (attackerAttackable.GetHealth() <= 0)
@@ -21,7 +20,7 @@ public class AttackablePlayer : Attackable
 
             attackerMovementModel.SetTemporaryFrozen(1);
 
-            DoHit();
+            DoHit(1);
         }
     }
 }

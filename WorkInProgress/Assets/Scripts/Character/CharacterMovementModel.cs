@@ -8,10 +8,9 @@ public class CharacterMovementModel : MonoBehaviour
     protected Vector2 m_FacingDirection;
     protected Vector2 m_ReceivedDirection;
     protected Rigidbody2D m_Body;
-
     protected bool movementFrozen = false;
+    protected float Speed;
 
-    public float Speed;
     private float recoilTime = 0.5f;
     private float m_pushBackSpeed;
 
