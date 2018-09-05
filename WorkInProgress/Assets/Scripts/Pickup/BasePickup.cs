@@ -52,7 +52,7 @@ public class BasePickup : MonoBehaviour
 
         sprite = (Object.transform.GetComponentInChildren<SpriteRenderer>()).sprite;
 
-        pickupAnimation.DoAnimation(sprite, 0.75f);
+        pickupAnimation.DoAnimation(sprite, 0.5f);
     }
 
     virtual public void UsePickup()

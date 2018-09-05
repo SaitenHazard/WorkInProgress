@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackablePlayer : Attackable {
-
+public class AttackablePlayer : Attackable
+{
     override protected void OnTriggerEnter2D(Collider2D hitCollider)
     {
         ColliderObject = hitCollider.gameObject;
