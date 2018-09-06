@@ -40,11 +40,6 @@ public class PlayerInventory : MonoBehaviour
 
     public void DestorySelected()
     {
-        GameObject pickupObject = Resources.Load(inventoryArray[selectedSlotID].
-            ToString()) as GameObject;
-
-        BasePickup basePickup = pickupObject.GetComponent<BasePickup>();
-
         ResetSlected();
     }
 
