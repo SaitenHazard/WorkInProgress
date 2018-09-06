@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Sight : MonoBehaviour
+public class SightBase : MonoBehaviour
 {
     private CharacterMovementModel m_movementModel;
     private SpeechBubble speechBubble;
     private Vector2 movementDirection;
-    private float angle;
+
+    protected float angle;
 
     private void Awake()
     {
@@ -40,9 +41,19 @@ public class Sight : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected void Update()
     {
+        UpdateAngle();
         m_movementModel.SetDirection(movementDirection);
+    }
+
+    private void UpdateAngle()
+    {
+        angle =
+            Mathf.Atan2(transform.position.y -
+            PlayerInstant.Instance.transform.position.y,
+            transform.position.x - PlayerInstant.Instance.transform.position.x)
+            * 180 / Mathf.PI * -1;
     }
 
     private void SetNullDirection()
@@ -52,12 +63,6 @@ public class Sight : MonoBehaviour
 
     private void SetDirectionTowardsPlayer()
     {
-        float angle = 
-            Mathf.Atan2(transform.position.y - 
-            PlayerInstant.Instance.transform.position.y, 
-            transform.position.x - PlayerInstant.Instance.transform.position.x) 
-            * 180 / Mathf.PI *-1;
-
         if (angle >= 22.5 && angle <= 67.5)
             movementDirection = new Vector2(-1, 1);
 
