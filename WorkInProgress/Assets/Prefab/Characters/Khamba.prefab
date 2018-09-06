@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4105259888261782}
   - component: {fileID: 58965426304830706}
   - component: {fileID: 114391364292557464}
-  - component: {fileID: 114209294005384080}
   m_Layer: 0
   m_Name: SightBox
   m_TagString: Untagged
@@ -56,7 +55,6 @@ GameObject:
   - component: {fileID: 4420158377028732}
   - component: {fileID: 58406653501700470}
   - component: {fileID: 58852627128941794}
-  - component: {fileID: 58558388502877842}
   m_Layer: 0
   m_Name: CollisionBox
   m_TagString: Enemy
@@ -74,7 +72,6 @@ GameObject:
   - component: {fileID: 4478208737347722}
   - component: {fileID: 212347313687637574}
   - component: {fileID: 114174235981995592}
-  - component: {fileID: 114815797062665974}
   m_Layer: 0
   m_Name: SpeechBubble
   m_TagString: Untagged
@@ -110,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4837353752001092}
   - component: {fileID: 212034940518676636}
-  - component: {fileID: 95091122363731542}
+  - component: {fileID: 95835725430123762}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -164,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1669503223243220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.83, y: 1.6245897, z: 0.22021484}
+  m_LocalPosition: {x: 3.94, y: -0.44, z: 0.22021484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4837353752001092}
@@ -182,7 +179,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1789588566823844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.2, y: -0.83, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 4587633333684654}
@@ -236,21 +233,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.03}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!58 &58558388502877842
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1410411401294034}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!58 &58796452725752590
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -296,7 +278,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!95 &95091122363731542
+--- !u!95 &95835725430123762
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -305,7 +287,7 @@ Animator:
   m_GameObject: {fileID: 1789588566823844}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 813e5865d19d9914b94ccddf51d01596, type: 2}
+  m_Controller: {fileID: 9100000, guid: 088c15f5d8594aa4b8a1f1fe3e22bb03, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -324,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c079890b7d8e0546b8c8117d602920d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 1000
   maxHealth: 0
   pushBackTime: 0.15
   pushBackSpeed: 2.5
@@ -341,17 +323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionBubble: {fileID: 21300000, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
   exclamatoinBubble: {fileID: 21300002, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
---- !u!114 &114209294005384080
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1012493728063962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ef0938f312c034eb56e87fbf7365f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114232232062750288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,19 +357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ef0938f312c034eb56e87fbf7365f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114815797062665974
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1497091766301450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca221cd08687fe4ab682125453c94da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questionBubble: {fileID: 21300000, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
-  exclamatoinBubble: {fileID: 21300002, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
 --- !u!114 &114858068984220476
 MonoBehaviour:
   m_ObjectHideFlags: 1

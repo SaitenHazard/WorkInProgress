@@ -11,7 +11,6 @@ public class InstantPickupBase : MonoBehaviour {
 
     private void Awake()
     {
-        pickupAnimation = PlayerInstant.Instance.gameObject.GetComponentInChildren<PickupAnimation>();
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D collider)
@@ -21,6 +20,8 @@ public class InstantPickupBase : MonoBehaviour {
 
     protected void DoPickupAnimation()
     {
+        pickupAnimation = PlayerInstant.Instance.gameObject.GetComponentInChildren<PickupAnimation>();
+
         sprite = GetComponentInChildren<SpriteRenderer>().sprite;
 
         pickupAnimation.DoAnimation(sprite, proportion);
@@ -29,6 +30,8 @@ public class InstantPickupBase : MonoBehaviour {
 
     protected void DoCancelPickupAnimation()
     {
+        pickupAnimation = PlayerInstant.Instance.gameObject.GetComponentInChildren<PickupAnimation>();
+
         GameObject Object = Resources.Load("CancelPickup") as GameObject;
 
         sprite = (Object.transform.GetComponentInChildren<SpriteRenderer>()).sprite;

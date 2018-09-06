@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4298444264109868}
   - component: {fileID: 212791955397603514}
   - component: {fileID: 114137082878891226}
-  - component: {fileID: 114079665658363490}
   m_Layer: 0
   m_Name: SpeechBubble
   m_TagString: Untagged
@@ -56,7 +55,6 @@ GameObject:
   - component: {fileID: 4978560973656688}
   - component: {fileID: 58117595348039220}
   - component: {fileID: 58351173989915982}
-  - component: {fileID: 58183486221318004}
   m_Layer: 0
   m_Name: CollisionBox
   m_TagString: Enemy
@@ -93,7 +91,6 @@ GameObject:
   - component: {fileID: 4644003885501798}
   - component: {fileID: 58126563391285000}
   - component: {fileID: 114590926832142910}
-  - component: {fileID: 114786289174625166}
   m_Layer: 0
   m_Name: SightBox
   m_TagString: Untagged
@@ -177,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763049945981194}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2971516, y: 1.6245897, z: 0.22021484}
+  m_LocalPosition: {x: 1.81, y: 1.6245897, z: 0.22021484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4581698427898512}
@@ -251,21 +248,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!58 &58183486221318004
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1671687329450212}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!58 &58351173989915982
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -325,19 +307,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
---- !u!114 &114079665658363490
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1518938795203526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca221cd08687fe4ab682125453c94da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questionBubble: {fileID: 21300000, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
-  exclamatoinBubble: {fileID: 21300002, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
 --- !u!114 &114132014602334926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -397,17 +366,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb3a106eae9a1d4693599d447a9b1bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114786289174625166
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1914367491279532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ef0938f312c034eb56e87fbf7365f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212791955397603514

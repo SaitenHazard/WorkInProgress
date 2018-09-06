@@ -18,8 +18,6 @@ public class BasePickup : MonoBehaviour
 
     private void Awake()
     {
-        m_inventory = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerInventory>();
-        pickupAnimation = PlayerInstant.Instance.transform.gameObject.GetComponentInChildren<PickupAnimation>();
     }
 
     private void Start()
@@ -37,6 +35,8 @@ public class BasePickup : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
+            m_inventory = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerInventory>();
+
             if (m_inventory.GetInventorySize() < m_inventory.GetInventoryMaxSize())
             {
                 m_inventory.AddItem(item);
@@ -52,12 +52,14 @@ public class BasePickup : MonoBehaviour
 
     protected void DoPickupAnimation()
     {
+        pickupAnimation = PlayerInstant.Instance.GetComponentInChildren<PickupAnimation>();
         sprite = GetComponentInChildren<SpriteRenderer>().sprite;
         pickupAnimation.DoAnimation(sprite, proportion);
     }
 
     protected void DoCancelPickupAnimation()
     {
+        pickupAnimation = PlayerInstant.Instance.GetComponentInChildren<PickupAnimation>();
         GameObject Object = Resources.Load("CancelPickup") as GameObject;
         sprite = (Object.transform.GetComponentInChildren<SpriteRenderer>()).sprite;
         pickupAnimation.DoAnimation(sprite, 1f);
