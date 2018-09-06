@@ -38,6 +38,16 @@ public class PlayerInventory : MonoBehaviour
         UsePickup();
     }
 
+    public void DestorySelected()
+    {
+        GameObject pickupObject = Resources.Load(inventoryArray[selectedSlotID].
+            ToString()) as GameObject;
+
+        BasePickup basePickup = pickupObject.GetComponent<BasePickup>();
+
+        ResetSlected();
+    }
+
     public void ResetSlected()
     {
         inventoryArray[selectedSlotID] = enumInventory.NULL;

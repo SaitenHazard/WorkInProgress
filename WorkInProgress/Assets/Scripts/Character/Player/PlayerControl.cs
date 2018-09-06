@@ -15,6 +15,7 @@ public class PlayerControl : CharacterBaseControl
     {
         UpdateDirection();
         UpdateAction();
+        UpdateInventory();
     }
 
     private void OnAttackPressed()
@@ -24,13 +25,8 @@ public class PlayerControl : CharacterBaseControl
     }
 
     //KeybaordControls
-    private void UpdateAction()
+    private void UpdateInventory()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            OnAttackPressed();
-        }
-
         if (Input.GetKeyDown(KeyCode.Q))
         {
             m_inventory.changeSelectedSlotID(false);
@@ -44,6 +40,19 @@ public class PlayerControl : CharacterBaseControl
         if (Input.GetKeyDown(KeyCode.S))
         {
             m_inventory.UseSelected();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            m_inventory.DestorySelected();
+        }
+    }
+
+    private void UpdateAction()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            OnAttackPressed();
         }
     }
 

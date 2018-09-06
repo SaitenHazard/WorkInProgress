@@ -19,7 +19,19 @@ public class PickupUseGeneralAnimation : MonoBehaviour {
     public void DoAnimation(Sprite sprite, float proportion, RectTransform rectTransform)
     {
         SetPickupAnimation(sprite, proportion, rectTransform);
-        StartAnimation();
+        StartUseAnimation();
+    }
+
+    protected void StartUseAnimation()
+    {
+        PickupInventoryAnimation clonePickupAnimation = cloneObject.GetComponent<PickupInventoryAnimation>();
+        StartCoroutine(clonePickupAnimation.UseAnimate());
+    }
+
+    public void DoDestoryAnimation(Sprite sprite, float proportion, RectTransform rectTransform)
+    {
+        SetPickupAnimation(sprite, proportion, rectTransform);
+        StartUseAnimation();
     }
 
     virtual protected void SetPickupAnimation(Sprite sprite, float proportion, RectTransform slotRectTransform)
@@ -35,11 +47,5 @@ public class PickupUseGeneralAnimation : MonoBehaviour {
         image.rectTransform.position = slotRectTransform.position;
 
         image.enabled = true;
-    }
-
-    protected void StartAnimation()
-    {
-        PickupInventoryAnimation clonePickupAnimation = cloneObject.GetComponent<PickupInventoryAnimation>();
-        StartCoroutine(clonePickupAnimation.Animate());
     }
 }

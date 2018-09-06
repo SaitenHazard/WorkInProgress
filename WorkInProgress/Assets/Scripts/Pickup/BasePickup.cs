@@ -11,6 +11,11 @@ public class BasePickup : MonoBehaviour
 
     public enumInventory item;
 
+    private InventoryUI inventoryUI;
+    private RectTransform slotTransform;
+    private PickupUseGeneralAnimation pickupUseGeneralAnimation;
+    private RectTransform slotTrasform;
+
     private void Awake()
     {
         m_inventory = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerInventory>();
@@ -54,9 +59,7 @@ public class BasePickup : MonoBehaviour
     protected void DoCancelPickupAnimation()
     {
         GameObject Object = Resources.Load("CancelPickup") as GameObject;
-
         sprite = (Object.transform.GetComponentInChildren<SpriteRenderer>()).sprite;
-
         pickupAnimation.DoAnimation(sprite, 1f);
     }
 
@@ -65,20 +68,27 @@ public class BasePickup : MonoBehaviour
 
     }
 
+    private void GetComponents()
+    {
+        inventoryUI = InventoryUI.Instance;
+        pickupUseGeneralAnimation = inventoryUI.GetComponent<PickupUseGeneralAnimation>();
+        slotTrasform = inventoryUI.GetSlotSelectedRectTransform();
+    }
+
     protected void DoNonInstantiateAnimation()
     {
-        PickupUseGeneralAnimation pickupUseGeneralAnimation = InventoryUI.Instance.transform.gameObject.GetComponent<PickupUseGeneralAnimation>();
+        GetComponents();
+
         sprite = GetComponentInChildren<SpriteRenderer>().sprite;
-        RectTransform slotTrasform = InventoryUI.Instance.GetSlotSelectedRectTransform();
         pickupUseGeneralAnimation.DoAnimation(sprite, 1f, slotTrasform);
     }
 
     protected void DoInventoryCancelAnimation()
     {
-        PickupUseGeneralAnimation pickupUseGeneralAnimation = InventoryUI.Instance.transform.gameObject.GetComponent<PickupUseGeneralAnimation>();
+        GetComponents();
+
         GameObject Object = Resources.Load("CancelPickup") as GameObject;
         sprite = (Object.transform.GetComponentInChildren<SpriteRenderer>()).sprite;
-        RectTransform slotTrasform = InventoryUI.Instance.GetSlotSelectedRectTransform();
         pickupUseGeneralAnimation.DoAnimation(sprite, 0.75f, slotTrasform);
     }
 }
