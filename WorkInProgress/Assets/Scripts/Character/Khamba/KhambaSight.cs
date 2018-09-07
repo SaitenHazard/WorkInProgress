@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KhambaSight : SightBase
 {
+    public GameObject projectileObject;
+
     private void Update()
     {
         base.Update();
@@ -18,10 +20,21 @@ public class KhambaSight : SightBase
         }
     }
 
+    virtual protected void OnTriggerExit2D(Collider2D collider2D)
+    {
+        if (collider2D.gameObject.tag == "Player")
+        {
+            base.OnTriggerExit2D(collider2D);
+            StopAllCoroutines();
+        }
+    }
+
     private IEnumerator ProjectileInstantiate()
     {
-        GameObject projectileObject = GetComponent<Projectile>().gameObject;
+        yield return new WaitForSeconds(2);
+
         GameObject cloneObject = Instantiate(projectileObject);
+        cloneObject.transform.SetParent(gameObject.transform.parent);
 
         Transform transform = cloneObject.transform;
 
@@ -29,18 +42,17 @@ public class KhambaSight : SightBase
         Vector2 facingDirection = movementModel.GetFacingDirection();
 
         if (facingDirection == new Vector2(0, 1))
-            transform.position = new Vector2(0, 0.25f);
+            transform.localPosition = new Vector2(0, 0.25f);
         else if (facingDirection == new Vector2(0, -1))
-            transform.position = new Vector2(0, -0.25f);
+            transform.localPosition = new Vector2(0, -0.25f);
         else if (facingDirection == new Vector2(1, 0))
-            transform.position = new Vector2(0.25f, 0);
+            transform.localPosition = new Vector2(0.25f, 0);
         else
-            transform.position = new Vector2(-0.25f, 0);
+            transform.localPosition = new Vector2(-0.25f, 0);
 
         cloneObject.SetActive(true);
+        yield return new WaitForSeconds(3);
 
-        yield return new WaitForSeconds(7);
-
-        ProjectileInstantiate();
+        StartCoroutine(ProjectileInstantiate());
     }
 }

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4105259888261782}
   - component: {fileID: 58965426304830706}
   - component: {fileID: 114101709084900488}
-  - component: {fileID: 114391364292557464}
   m_Layer: 0
   m_Name: SightBox
   m_TagString: Untagged
@@ -90,13 +89,14 @@ GameObject:
   - component: {fileID: 4670088512978974}
   - component: {fileID: 212825770088907768}
   - component: {fileID: 50131468378562786}
+  - component: {fileID: 114450513123915170}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1669503223243220
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 3
 --- !u!95 &95835725430123762
 Animator:
   serializedVersion: 3
@@ -373,6 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e20ce51ce5664f891f73a6d7a0cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileObject: {fileID: 1542113046972888}
 --- !u!114 &114174235981995592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,15 +410,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0
---- !u!114 &114391364292557464
+--- !u!114 &114450513123915170
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1012493728063962}
+  m_GameObject: {fileID: 1542113046972888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ef0938f312c034eb56e87fbf7365f7, type: 3}
+  m_Script: {fileID: 11500000, guid: a508ceaa80ccff9429cedfc09d257e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114858068984220476

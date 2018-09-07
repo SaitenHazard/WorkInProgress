@@ -25,7 +25,7 @@ public class SightBase : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collider2D)
+    virtual protected void OnTriggerStay2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Player")
         {
@@ -33,7 +33,7 @@ public class SightBase : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collider2D)
+    virtual protected void OnTriggerExit2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Player")
         {
