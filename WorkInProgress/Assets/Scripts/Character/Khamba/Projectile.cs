@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KhambaControl : CharacterBaseControl
+public class Projectile : MonoBehaviour
 {
+    private void OnEnable()
+    {
 
+    }
 }

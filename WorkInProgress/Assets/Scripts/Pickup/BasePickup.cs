@@ -18,6 +18,7 @@ public class BasePickup : MonoBehaviour
 
     private void Awake()
     {
+        pickupAnimation = PlayerInstant.Instance.GetComponentInChildren<PickupAnimation>();
     }
 
     private void Start()
@@ -52,14 +53,12 @@ public class BasePickup : MonoBehaviour
 
     protected void DoPickupAnimation()
     {
-        pickupAnimation = PlayerInstant.Instance.GetComponentInChildren<PickupAnimation>();
         sprite = GetComponentInChildren<SpriteRenderer>().sprite;
         pickupAnimation.DoAnimation(sprite, proportion);
     }
 
     protected void DoCancelPickupAnimation()
     {
-        pickupAnimation = PlayerInstant.Instance.GetComponentInChildren<PickupAnimation>();
         GameObject Object = Resources.Load("CancelPickup") as GameObject;
         sprite = (Object.transform.GetComponentInChildren<SpriteRenderer>()).sprite;
         pickupAnimation.DoAnimation(sprite, 1f);

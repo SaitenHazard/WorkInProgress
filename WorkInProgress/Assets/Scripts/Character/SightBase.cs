@@ -17,7 +17,7 @@ public class SightBase : MonoBehaviour
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collider2D)
+    virtual protected void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Player")
         {
