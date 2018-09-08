@@ -107,11 +107,6 @@ public class Attackable : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        DestroyCharacter();
-    }
-
-    private void DestroyCharacter()
-    {
         Destroy(gameObject.transform.parent.gameObject);
     }
 }
