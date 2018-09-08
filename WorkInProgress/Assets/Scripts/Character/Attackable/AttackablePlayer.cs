@@ -8,19 +8,30 @@ public class AttackablePlayer : Attackable
     {
         ColliderObject = hitCollider.gameObject;
 
+        if (ColliderObject.tag == "EnemyProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
+        {
+            ColliderObject.GetComponent<Projectile>().DestroyOnHit();
+            CommonTrigger();
+        }
+
         if (ColliderObject.tag == "Enemy" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            Attackable attackerAttackable = ColliderObject.transform.parent.gameObject.
+            CommonTrigger();
+        }
+    }
+
+    private void CommonTrigger()
+    {
+        Attackable attackerAttackable = ColliderObject.transform.parent.gameObject.
                 GetComponentInChildren<Attackable>();
 
-            if (attackerAttackable.GetHealth() <= 0)
-                return;
+        if (attackerAttackable.GetHealth() <= 0)
+            return;
 
-            CharacterMovementModel attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
+        CharacterMovementModel attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
 
-            attackerMovementModel.SetTemporaryFrozen(1);
+        attackerMovementModel.SetTemporaryFrozen(1);
 
-            DoHit(1);
-        }
+        DoHit(1);
     }
 }

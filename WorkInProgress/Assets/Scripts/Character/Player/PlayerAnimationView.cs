@@ -19,6 +19,6 @@ public class PlayerAnimationView : CharacterMovementView
 
     override public void DoAttack()
     {
-        Animator.SetTrigger("DoAttack");
+        Animator.SetBool("DoAttack", true);
     }
 }

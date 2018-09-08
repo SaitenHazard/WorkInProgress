@@ -9,7 +9,7 @@ public class SightBase : MonoBehaviour
 
     protected float angle;
 
-    private void Awake()
+    virtual protected void Awake()
     {
         speechBubble =
             transform.parent.GetComponentInChildren<SpeechBubble>();

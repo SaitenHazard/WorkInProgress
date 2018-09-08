@@ -41,6 +41,6 @@ public class CharacterMovementView : MonoBehaviour
 
     virtual public void DoAttack()
     {
-
+        Animator.SetTrigger("DoAttack");
     }
 }

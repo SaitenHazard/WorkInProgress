@@ -13,15 +13,24 @@ public class Projectile : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
         direction = PlayerInstant.Instance.transform.position - transform.position;
         direction = direction.normalized;
-        Debug.Log(direction);
     }
 
     private void Update()
     {
         rigidbody2D.velocity = direction * 1.5f;
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
+    public void DestroyOnHit()
+    {
+        Destroy(gameObject);
     }
 }
