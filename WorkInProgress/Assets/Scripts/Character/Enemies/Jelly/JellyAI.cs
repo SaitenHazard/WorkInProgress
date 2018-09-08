@@ -19,7 +19,7 @@ public class JellyAI : AIBase
         if (collider2D.gameObject.tag == "Player")
         {
             SetNullDirection();
-            enemyActions = enumEnemyActions.chase;
+            enemyActions = enumEnemyActions.patrol;
             patrol.SetClosestPatrol();
         }
     }

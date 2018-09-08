@@ -8,7 +8,7 @@ public class AIBase : MonoBehaviour
     protected float angle;
     protected Transform target;
     protected SpeechBubble speechBubble;
-    protected Patrol patrol;
+    public Patrol patrol;
     protected CharacterMovementModel m_movementModel;
     protected Vector2 movementDirection;
 
@@ -25,7 +25,6 @@ public class AIBase : MonoBehaviour
         p_movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
         movementView = GetComponentInParent<CharacterMovementView>();
-        patrol = GetComponentInChildren<Patrol>();
     }
 
     protected void Update()

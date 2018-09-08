@@ -7,13 +7,18 @@ public class Patrol : MonoBehaviour
     private int numberOfPoints;
     private Transform[] childTransforms;
     private Transform m_transform;
-    private Transform target;
+    public Transform target;
     private int targetIndex;
 
     private void Awake()
     {
         childTransforms = GetComponentsInChildren<Transform>();
         m_transform = GetComponentInParent<Transform>();
+    }
+
+    private void Start()
+    {
+        SetClosestPatrol();
     }
 
     public void SetClosestPatrol()
@@ -34,20 +39,6 @@ public class Patrol : MonoBehaviour
         SetTarget();
     }
 
-    public void Update()
-    {
-        CheckTargetReached();
-    }
-
-    public void CheckTargetReached()
-    {
-        Debug.Log(target.transform);
-        Debug.Log(m_transform.transform);
-
-        if (target.transform.position == m_transform.position)
-            SetNextPatrol();
-    }
-
     public Transform GetTarget()
     {
         return target;
@@ -56,6 +47,7 @@ public class Patrol : MonoBehaviour
     private void SetTarget()
     {
         target = childTransforms[targetIndex];
+        Debug.Log(target);
     }
 
     public void SetNextPatrol()
