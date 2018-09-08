@@ -126,7 +126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4751813810705010, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.6245897
+      value: 2.76
       objectReference: {fileID: 0}
     - target: {fileID: 4751813810705010, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -441,6 +441,14 @@ Prefab:
     - target: {fileID: 1397300735777080, guid: 7d11276800ad4934a8dd8703c3f41123, type: 2}
       propertyPath: m_Name
       value: Patrol1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978304100054876, guid: 7d11276800ad4934a8dd8703c3f41123, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568024115876870, guid: 7d11276800ad4934a8dd8703c3f41123, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d11276800ad4934a8dd8703c3f41123, type: 2}

@@ -11,3 +11,10 @@ public enum enumInventory
     HealthPickup,
     NULL
 };
+
+public enum enumEnemyActions
+{
+    chase,
+    patrol,
+    NULL
+}

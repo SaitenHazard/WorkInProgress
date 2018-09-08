@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SightBase : MonoBehaviour
+public class AIBase : MonoBehaviour
 {
     private CharacterMovementModel m_movementModel;
     private SpeechBubble speechBubble;
     private Vector2 movementDirection;
+    private Patrol patrol;
+    private Transform target;
+
+    public enumEnemyActions enemyActions = enumEnemyActions.patrol;
 
     protected float angle;
 
@@ -15,6 +19,8 @@ public class SightBase : MonoBehaviour
             transform.parent.GetComponentInChildren<SpeechBubble>();
 
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
+
+        patrol = GetComponentInChildren<Patrol>();
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D collider2D)
@@ -22,14 +28,8 @@ public class SightBase : MonoBehaviour
         if (collider2D.gameObject.tag == "Player")
         {
             speechBubble.PopSpeechBubble(enumSpeechBubbles.Question);
-        }
-    }
-
-    virtual protected void OnTriggerStay2D(Collider2D collider2D)
-    {
-        if (collider2D.gameObject.tag == "Player")
-        {
-            SetDirectionTowardsPlayer();
+            enemyActions = enumEnemyActions.chase;
+            target = PlayerInstant.Instance.GetComponent<Transform>();
         }
     }
 
@@ -38,22 +38,32 @@ public class SightBase : MonoBehaviour
         if (collider2D.gameObject.tag == "Player")
         {
             SetNullDirection();
+            enemyActions = enumEnemyActions.chase;
+            patrol.SetClosestPatrol();
         }
     }
 
     protected void Update()
     {
         UpdateAngle();
+        SetDirectionTowardsTarget();
+
         m_movementModel.SetDirection(movementDirection);
     }
 
     private void UpdateAngle()
     {
-        angle =
-            Mathf.Atan2(transform.position.y -
-            PlayerInstant.Instance.transform.position.y,
-            transform.position.x - PlayerInstant.Instance.transform.position.x)
-            * 180 / Mathf.PI * -1;
+        if(enemyActions == enumEnemyActions.patrol)
+        {
+            target = patrol.GetTarget();
+        }
+        else if(enemyActions == enumEnemyActions.patrol)
+        {
+            target = PlayerInstant.Instance.GetComponent<Transform>();
+        }
+
+        angle = Mathf.Atan2(transform.position.y - target.position.y, 
+            transform.position.x - target.position.x) * 180 / Mathf.PI * -1;   
     }
 
     private void SetNullDirection()
@@ -61,7 +71,7 @@ public class SightBase : MonoBehaviour
         movementDirection = Vector2.zero;
     }
 
-    private void SetDirectionTowardsPlayer()
+    private void SetDirectionTowardsTarget()
     {
         if (angle >= 22.5 && angle <= 67.5)
             movementDirection = new Vector2(-1, 1);

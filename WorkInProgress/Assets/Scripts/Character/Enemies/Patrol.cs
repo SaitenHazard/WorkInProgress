@@ -5,27 +5,63 @@ using UnityEngine;
 public class Patrol : MonoBehaviour
 {
     private int numberOfPoints;
+    private Transform[] childTransforms;
+    private Transform m_transform;
+    private Transform target;
+    private int targetIndex;
 
     private void Awake()
     {
-        numberOfPoints = transform.childCount;
+        childTransforms = GetComponentsInChildren<Transform>();
+        m_transform = GetComponentInParent<Transform>();
     }
 
-    private void OnEnable()
+    public void SetClosestPatrol()
     {
-        findClosestPatrol();
-    }
-
-    private void findClosestPatrol()
-    {
-        GameObject closesPetrol;
-        Vector2 minDistance;
+        float distance = Mathf.Infinity;
 
         for (int i = 0; i < numberOfPoints; i++)
         {
-            
+            if(transform != null)
+            {
+                if (Vector2.Distance(transform.position, childTransforms[i].position) < distance)
+                {
+                    targetIndex = i;
+                }
+            }
         }
+
+        SetTarget();
     }
 
-    private void get
+    public void Update()
+    {
+        CheckTargetReached();
+    }
+
+    public void CheckTargetReached()
+    {
+        if (target.transform.position == m_transform.position)
+            SetNextPatrol();
+    }
+
+    public Transform GetTarget()
+    {
+        return target;
+    }
+
+    private void SetTarget()
+    {
+        target = childTransforms[targetIndex];
+    }
+
+    public void SetNextPatrol()
+    {
+        targetIndex++;
+
+        if (targetIndex == numberOfPoints)
+            targetIndex = 0;
+
+        SetTarget();
+    }
 }
