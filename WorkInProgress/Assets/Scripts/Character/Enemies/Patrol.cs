@@ -43,7 +43,6 @@ public class Patrol : MonoBehaviour
 
         for (int i = 0; i < numberOfPoints; i++)
         {
-            Debug.Log(Vector2.Distance(m_transform.position, childTransforms[i].position));
             if (Vector2.Distance(m_transform.position, childTransforms[i].position) < distance)
             {
                 distance = Vector2.Distance(m_transform.position, childTransforms[i].position);

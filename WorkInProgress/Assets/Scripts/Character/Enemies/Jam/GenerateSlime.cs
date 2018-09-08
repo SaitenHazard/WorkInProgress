@@ -8,7 +8,7 @@ public class GenerateSlime : MonoBehaviour
 
     private void Awake()
     {
-        slime = GetComponentInParent<Slime>();
+        slime = GetComponentInChildren<Slime>();
         StartCoroutine(Generate());
     }
 
@@ -16,9 +16,11 @@ public class GenerateSlime : MonoBehaviour
     {
         GameObject cloneObject = Instantiate(slime.gameObject);
         cloneObject.transform.position = transform.position;
-        cloneObject.SetActive(true);
+        cloneObject.GetComponent<SpriteRenderer>().enabled = true;
+        cloneObject.GetComponent<Slime>().enabled = true;
+        cloneObject.GetComponent<Collider2D>().enabled = true;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.15f);
         StartCoroutine(Generate());
     }
 }

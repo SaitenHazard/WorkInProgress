@@ -11,22 +11,23 @@ public class AttackablePlayer : Attackable
         if (ColliderObject.tag == "EnemyProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             ColliderObject.GetComponent<Projectile>().DestroyOnHit();
-            CommonTrigger();
+            CommonTrigger(ColliderObject);
         }
 
         if (ColliderObject.tag == "Enemy" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            CommonTrigger();
+            CommonTrigger(ColliderObject);
         }
     }
 
-    private void CommonTrigger()
+    private void CommonTrigger(GameObject ColliderObject)
     {
         Attackable attackerAttackable = ColliderObject.transform.parent.gameObject.
                 GetComponentInChildren<Attackable>();
-
-        if (attackerAttackable.GetHealth() <= 0)
-            return;
+        
+        if(attackerAttackable != null)
+            if (attackerAttackable.GetHealth() <= 0)
+                return;
 
         CharacterMovementModel attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
 
