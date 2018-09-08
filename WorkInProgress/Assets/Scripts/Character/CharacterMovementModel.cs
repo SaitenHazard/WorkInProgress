@@ -196,18 +196,26 @@ public class CharacterMovementModel : MonoBehaviour
 
     private void ReverseFacingDirection()
     {
+        m_FacingDirection = GetReverseFacingDirection();
+        UpdateDirection();
+    }
+
+    public Vector2 GetReverseFacingDirection()
+    {
+        Vector2 direction = Vector2.zero;
+
         if (m_FacingDirection.x == 1)
-            m_FacingDirection.x = -1;
+            direction.x = -1;
 
         else if (m_FacingDirection.x == -1)
-            m_FacingDirection.x = 1;
+            direction.x = 1;
 
         else if (m_FacingDirection.y == 1)
-            m_FacingDirection.y = -1;
+            direction.y = -1;
 
         else if (m_FacingDirection.y == -1)
-            m_FacingDirection.y = 1;
+            direction.y = 1;
 
-        UpdateDirection();
+        return direction;
     }
 }

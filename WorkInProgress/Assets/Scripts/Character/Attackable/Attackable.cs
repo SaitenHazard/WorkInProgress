@@ -9,7 +9,7 @@ public class Attackable : MonoBehaviour
     public float pushBackSpeed;
 
     private GameObject parentObject;
-    private CharacterMovementModel attackerMovementModel;
+    protected CharacterMovementModel attackerMovementModel;
 
     protected GameObject ColliderObject;
     protected CharacterMovementModel m_movementModel;
@@ -44,20 +44,19 @@ public class Attackable : MonoBehaviour
         {
             int damage = (ColliderObject.GetComponentInParent<PlayerStats>()).GetDamage();
 
-            DoHit(damage);
+            attackerMovementModel =
+                ColliderObject.GetComponentInParent<CharacterMovementModel>();
+
+            DoHit(damage, attackerMovementModel.GetFacingDirection());
         }
     }
 
-    protected void DoHit(int damage)
+    protected void DoHit(int damage, Vector2 hitDirection)
     {
         if (health <= 0)
             return;
 
-        attackerMovementModel =
-                ColliderObject.GetComponentInParent<CharacterMovementModel>();
-
-        m_movementModel.GetHit(attackerMovementModel.GetFacingDirection(),
-            pushBackTime, pushBackSpeed);
+        m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed);
 
         SubstractHealth(damage);
 

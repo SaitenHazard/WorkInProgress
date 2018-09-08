@@ -10,29 +10,32 @@ public class AttackablePlayer : Attackable
 
         if (ColliderObject.tag == "EnemyProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
+            DoHit(1, ColliderObject.GetComponent<Projectile>().GetHitDirection());
+
             ColliderObject.GetComponent<Projectile>().DestroyOnHit();
-            CommonTrigger(ColliderObject);
         }
 
         if (ColliderObject.tag == "Enemy" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            CommonTrigger(ColliderObject);
+            Attackable attackerAttackable = ColliderObject.transform.parent.gameObject.
+                            GetComponentInChildren<Attackable>();
+
+            if (attackerAttackable != null)
+            {
+                if (attackerAttackable.GetHealth() <= 0)
+                    return;
+
+                CharacterMovementModel attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
+
+                attackerMovementModel.SetTemporaryFrozen(1);
+            }
+
+            DoHit(1, attackerMovementModel.GetFacingDirection());
         }
-    }
 
-    private void CommonTrigger(GameObject ColliderObject)
-    {
-        Attackable attackerAttackable = ColliderObject.transform.parent.gameObject.
-                GetComponentInChildren<Attackable>();
-        
-        if(attackerAttackable != null)
-            if (attackerAttackable.GetHealth() <= 0)
-                return;
-
-        CharacterMovementModel attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
-
-        attackerMovementModel.SetTemporaryFrozen(1);
-
-        DoHit(1);
+        if (ColliderObject.tag == "Hazard" && m_movementModel.GetPushBackSpeed() == 0f)
+        {
+            DoHit(1, GetComponentInParent<CharacterMovementModel>().GetReverseFacingDirection());
+        }
     }
 }
