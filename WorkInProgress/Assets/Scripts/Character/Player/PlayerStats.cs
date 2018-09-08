@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public float yieldTime = 5;
+    public int damage;
 
     private float speed;
-    public int damage;
+    private bool projectile;
 
     private void Start()
     {
@@ -34,6 +35,18 @@ public class PlayerStats : MonoBehaviour
     public bool IsDamageUp()
     {
         return damage == 2;
+    }
+
+    public void SetProjectile()
+    {
+        projectile = true;
+        StartCoroutine(RevertProjectile());
+    }
+
+    private IEnumerator RevertProjectile()
+    {
+        yield return new WaitForSeconds(yieldTime);
+        projectile = false;
     }
 
     private IEnumerator RevertDamageUp()

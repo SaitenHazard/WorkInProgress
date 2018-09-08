@@ -9,6 +9,7 @@ TagManager:
   - EnemyProjectile
   - PatrolCollider
   - Hazard
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX
