@@ -41,6 +41,9 @@ public class Patrol : MonoBehaviour
 
     public void CheckTargetReached()
     {
+        Debug.Log(target.transform);
+        Debug.Log(m_transform.transform);
+
         if (target.transform.position == m_transform.position)
             SetNextPatrol();
     }
