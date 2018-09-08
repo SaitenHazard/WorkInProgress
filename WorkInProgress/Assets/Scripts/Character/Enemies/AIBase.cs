@@ -8,14 +8,15 @@ public class AIBase : MonoBehaviour
     protected float angle;
     protected Transform target;
     protected SpeechBubble speechBubble;
-    public Patrol patrol;
     protected CharacterMovementModel m_movementModel;
     protected Vector2 movementDirection;
+    protected Coroutine projectileCoroutine;
 
     private CharacterMovementModel p_movementModel;
     private CharacterMovementView movementView;
-    private Vector2 facingDirection;
+
     public GameObject projectileObject;
+    public Patrol patrol;
 
     virtual protected void Awake()
     {
@@ -37,7 +38,12 @@ public class AIBase : MonoBehaviour
 
     private void UpdateAngle()
     {
-        if (enemyActions == enumEnemyActions.patrol)
+        if(enemyActions == enumEnemyActions.NULL)
+        {
+            SetNullDirection();
+            return;
+        }
+        else if (enemyActions == enumEnemyActions.patrol)
         {
             target = patrol.GetTarget();
         }
@@ -54,22 +60,24 @@ public class AIBase : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        movementView.DoAttack();
-        facingDirection = p_movementModel.GetFacingDirection();
+        Vector2 facingDirection = m_movementModel.GetFacingDirection();
 
         GameObject cloneObject = Instantiate(projectileObject);
-        cloneObject.transform.SetParent(gameObject.transform.parent);
 
-        Transform transform = cloneObject.transform;
+        cloneObject.transform.position = gameObject.transform.parent.position;
 
         if (facingDirection == new Vector2(0, 1))
-            transform.localPosition = new Vector2(0, 0.25f);
+            cloneObject.transform.position = 
+                new Vector2(transform.position.x, transform.position.y + 0.25f);
         else if (facingDirection == new Vector2(0, -1))
-            transform.localPosition = new Vector2(0, -0.25f);
+            cloneObject.transform.position =
+                new Vector2(transform.position.x, transform.position.y - 0.25f);
         else if (facingDirection == new Vector2(1, 0))
-            transform.localPosition = new Vector2(0.25f, 0);
+            cloneObject.transform.position =
+                new Vector2(transform.position.x + 0.25f, transform.position.y);
         else
-            transform.localPosition = new Vector2(-0.25f, 0);
+            cloneObject.transform.position = 
+                new Vector2(transform.position.x - 0.25f, transform.position.y);
 
         cloneObject.SetActive(true);
         yield return new WaitForSeconds(3);
@@ -79,12 +87,17 @@ public class AIBase : MonoBehaviour
 
     virtual protected void OnTriggerEnter2D(Collider2D collider2D)
     {
-        speechBubble.PopSpeechBubble(enumSpeechBubbles.Question);
+        if (collider2D.gameObject.tag == "Player")
+        {
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Question);
+        }
     }
 
     virtual protected void OnTriggerExit2D(Collider2D collider2D)
     {
-
+        if (collider2D.gameObject.tag == "Player")
+        {
+        }
     }
 
     protected void SetNullDirection()

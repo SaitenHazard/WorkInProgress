@@ -45,6 +45,9 @@ public class PlayerInventory : MonoBehaviour
 
     public void ResetSlected()
     {
+        if (selectedSlotID == -1)
+            return;
+
         inventoryArray[selectedSlotID] = enumInventory.NULL;
         inventorySize--;
 

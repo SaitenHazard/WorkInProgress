@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KhambaSight : AIBase
+public class KhambaAI : AIBase
 {
-    virtual protected void OnTriggerEnter2D(Collider2D collider2D)
+    protected override void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Player")
         {
             base.OnTriggerEnter2D(collider2D);
+            enemyActions = enumEnemyActions.chase;
             StartCoroutine(ProjectileInstantiate());
         }
     }
 
-    virtual protected void OnTriggerExit2D(Collider2D collider2D)
+    protected override void OnTriggerExit2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Player")
         {
-            base.OnTriggerExit2D(collider2D);
+            enemyActions = enumEnemyActions.NULL;
             StopAllCoroutines();
         }
     }
