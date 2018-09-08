@@ -1302,6 +1302,62 @@ Transform:
   m_Father: {fileID: 1488927718}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &892362007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1782665393528392, guid: 7d11276800ad4934a8dd8703c3f41123,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 892362008}
+  - component: {fileID: 892362009}
+  m_Layer: 0
+  m_Name: Patrol2
+  m_TagString: PatrolCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &892362008
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4978304100054876, guid: 7d11276800ad4934a8dd8703c3f41123,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 892362007}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2, y: -1.97, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 620202130}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &892362009
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 892362007}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01}
+  m_EdgeRadius: 0
 --- !u!1 &914762442
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1609,24 @@ Prefab:
       propertyPath: m_Name
       value: JellyPatrol
       objectReference: {fileID: 0}
+    - target: {fileID: 114472222289926964, guid: 7d11276800ad4934a8dd8703c3f41123,
+        type: 2}
+      propertyPath: AIBase
+      value: 
+      objectReference: {fileID: 1696492383}
+    - target: {fileID: 1445100287341022, guid: 7d11276800ad4934a8dd8703c3f41123, type: 2}
+      propertyPath: m_TagString
+      value: PatrolCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782665393528392, guid: 7d11276800ad4934a8dd8703c3f41123, type: 2}
+      propertyPath: m_TagString
+      value: PatrolCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 114472222289926964, guid: 7d11276800ad4934a8dd8703c3f41123,
+        type: 2}
+      propertyPath: m_transform
+      value: 
+      objectReference: {fileID: 629925128}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d11276800ad4934a8dd8703c3f41123, type: 2}
   m_IsPrefabParent: 0
@@ -2458,8 +2532,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -3064,11 +3138,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4751813810705010, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.03
+      value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 4751813810705010, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.76
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 4751813810705010, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3102,6 +3176,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1696492383 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114286351478168306, guid: 3dee6758fc619404683e113baf5045e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1696492382}
+  m_Script: {fileID: 11500000, guid: cda1c557808069b4f82f13a7d79b2ab1, type: 3}
 --- !u!1001 &1747334990
 Prefab:
   m_ObjectHideFlags: 0
@@ -3239,8 +3319,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:

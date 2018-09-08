@@ -79,7 +79,7 @@ public class AIBase : MonoBehaviour
 
     virtual protected void OnTriggerEnter2D(Collider2D collider2D)
     {
-
+        speechBubble.PopSpeechBubble(enumSpeechBubbles.Question);
     }
 
     virtual protected void OnTriggerExit2D(Collider2D collider2D)

@@ -7,18 +7,34 @@ public class Patrol : MonoBehaviour
     private int numberOfPoints;
     private Transform[] childTransforms;
     private Transform m_transform;
-    public Transform target;
+    private Transform target;
     private int targetIndex;
+
+    public AIBase AIBase;
 
     private void Awake()
     {
         childTransforms = GetComponentsInChildren<Transform>();
-        m_transform = GetComponentInParent<Transform>();
+        numberOfPoints = childTransforms.Length;
+        m_transform = AIBase.GetComponentInParent<Transform>();
     }
 
     private void Start()
     {
         SetClosestPatrol();
+    }
+
+    private void Update()
+    {
+        CheckTargetReached();
+    }
+
+    private void CheckTargetReached()
+    {
+        if (Vector2.Distance(m_transform.position, target.position) < 0.04)
+        {
+            SetNextPatrol();
+        }
     }
 
     public void SetClosestPatrol()
@@ -27,12 +43,11 @@ public class Patrol : MonoBehaviour
 
         for (int i = 0; i < numberOfPoints; i++)
         {
-            if(transform != null)
+            Debug.Log(Vector2.Distance(m_transform.position, childTransforms[i].position));
+            if (Vector2.Distance(m_transform.position, childTransforms[i].position) < distance)
             {
-                if (Vector2.Distance(transform.position, childTransforms[i].position) < distance)
-                {
-                    targetIndex = i;
-                }
+                distance = Vector2.Distance(m_transform.position, childTransforms[i].position);
+                targetIndex = i;
             }
         }
 
@@ -47,7 +62,6 @@ public class Patrol : MonoBehaviour
     private void SetTarget()
     {
         target = childTransforms[targetIndex];
-        Debug.Log(target);
     }
 
     public void SetNextPatrol()
