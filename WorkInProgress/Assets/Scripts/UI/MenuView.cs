@@ -55,6 +55,7 @@ public class MenuView : MonoBehaviour
     {
         active = state;
         SetMenuEnable();
+        UpdateSelected();
     }
 
     private void SetMenuEnable()
