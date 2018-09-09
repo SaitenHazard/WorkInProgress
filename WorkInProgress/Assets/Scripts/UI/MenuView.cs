@@ -10,6 +10,7 @@ public class MenuView : MonoBehaviour
     public Transform slected;
 
     private int mainMenuIndex;
+    private bool active = true;
 
     private void Awake()
     {
@@ -18,7 +19,7 @@ public class MenuView : MonoBehaviour
 
     private void OnEnable()
     {
-        mainMenuIndex = 1;
+        mainMenuIndex = 0;
     }
 
     private void Update()
@@ -46,6 +47,11 @@ public class MenuView : MonoBehaviour
 
     private void UpdateView()
     {
+        gameObject.SetActive(active);
+
+        if (active == false)
+            return;
+
         slected.position = buttonTransform[mainMenuIndex].position;
         menuObjects[mainMenuIndex].SetActive(true);
 
