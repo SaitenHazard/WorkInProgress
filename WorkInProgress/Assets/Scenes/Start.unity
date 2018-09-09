@@ -1217,7 +1217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &720395088
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1286,17 +1286,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2207aa0e6988cc439879e877afa7b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonTransform:
-  - {fileID: 970484747}
-  - {fileID: 422876194}
-  - {fileID: 1256622988}
-  - {fileID: 727243891}
-  menuObjects:
+  mainMenuObject: {fileID: 343052991}
+  subMenuObjects:
   - {fileID: 222805402}
   - {fileID: 339868933}
   - {fileID: 627501825}
   - {fileID: 1619042276}
-  slected: {fileID: 819371388}
+  slected: {fileID: 819371387}
 --- !u!1 &727243890
 GameObject:
   m_ObjectHideFlags: 0

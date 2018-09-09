@@ -35,9 +35,9 @@ public class PlayerControl : CharacterBaseControl
     //KeybaordControls
     private void UpdateMenuScreen()
     {
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
-            if (menuView.GetMenuActive())
+            if (menuView.GetMenuActive() == false)
                 menuView.SetMenuActive(true);
             else
                 menuView.SetMenuActive(false);

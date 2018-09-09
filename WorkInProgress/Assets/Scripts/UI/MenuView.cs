@@ -1,20 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuView : MonoBehaviour
 {
     public static MenuView Instance;
-    public RectTransform[] buttonTransform;
-    public GameObject[] menuObjects;
-    public Transform slected;
 
+    public GameObject mainMenuObject;
+    public GameObject[] subMenuObjects;
+    public GameObject slected;
+
+    private Text[] mainMenuTexts;
     private int mainMenuIndex;
-    private bool active = true;
+    private bool active = false;
 
     private void Awake()
     {
         Instance = this;
+
+        mainMenuTexts = mainMenuObject.GetComponentsInChildren<Text>();
     }
 
     public bool GetMenuActive()
@@ -55,20 +60,36 @@ public class MenuView : MonoBehaviour
         active = state;
     }
 
+    private void SetMenuEnable()
+    {
+        GetComponent<Image>().enabled = active;
+        slected.GetComponent<Image>().enabled = active;
+
+        for (int i = 0; i < 4; i++)
+        {
+            subMenuObjects[i].GetComponentInChildren<Text>().enabled = active;
+        }
+
+        for (int i = 0; i < mainMenuTexts.Length; i++)
+        {
+            mainMenuTexts[i].enabled = active;
+        }
+    }
+
     private void UpdateView()
     {
-        gameObject.SetActive(active);
+        SetMenuEnable();
 
         if (active == false)
             return;
 
-        slected.position = buttonTransform[mainMenuIndex].position;
-        menuObjects[mainMenuIndex].SetActive(true);
+        slected.transform.position = mainMenuObject.transform.position;
+        subMenuObjects[mainMenuIndex].SetActive(true);
 
         for(int i = 0; i < 4; i++)
         {
             if(mainMenuIndex != i)
-                menuObjects[i].SetActive(false);
+                subMenuObjects[i].SetActive(false);
         }
-    }
+    }   
 }
