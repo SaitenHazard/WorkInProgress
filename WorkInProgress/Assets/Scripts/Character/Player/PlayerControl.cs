@@ -48,14 +48,14 @@ public class PlayerControl : CharacterBaseControl
     {
         if (menuView.GetMenuActive() == true)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                menuView.ChangeIndex(false);
-            }
-
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 menuView.ChangeIndex(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                menuView.ChangeIndex(false);
             }
 
             return;

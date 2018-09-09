@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 58796452725752590}
   m_Layer: 0
   m_Name: HitBox
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1789588566823844
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,8 +198,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1542113046972888}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5799999, y: -3.7, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4587633333684654}
@@ -258,7 +258,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1669503223243220}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -396,12 +396,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1012493728063962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f93e20ce51ce5664f891f73a6d7a0cae, type: 3}
+  m_Script: {fileID: 11500000, guid: d9afa084d5ae71047ab08786779e364e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyActions: 1
-  patrol: {fileID: 0}
+  enemyActions: 2
   projectileObject: {fileID: 1542113046972888}
+  patrol: {fileID: 0}
 --- !u!114 &114174235981995592
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour
         CheckMenuActive();
     }
 
-    private bool GetGameState()
+    public bool GetGameState()
     {
         return gameStateFrozen;
     }

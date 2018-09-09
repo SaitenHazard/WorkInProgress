@@ -14,10 +14,12 @@ public class CharacterMovementModel : MonoBehaviour
 
     private float recoilTime = 0.5f;
     private float m_pushBackSpeed;
+    private PlayerStats playerStats;
 
     private void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
+        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
     }
 
     protected void Update()
@@ -55,7 +57,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     private void UpdateDirection()
     {
-        if (movementFrozen)
+        if (movementFrozen || playerStats.GetGameState())
             return;
 
         m_MovementDirection = new Vector2(m_ReceivedDirection.x, m_ReceivedDirection.y);
@@ -92,7 +94,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     private void UpdateMovement()
     {
-        if (movementFrozen == true)
+        if (movementFrozen == true || playerStats.GetGameState())
         {
             m_Body.velocity = Vector2.zero;
             return;
@@ -135,7 +137,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     public bool IsMoving()
     {
-        if (movementFrozen == true)
+        if (movementFrozen == true || playerStats.GetGameState())
         {
             return false;
         }

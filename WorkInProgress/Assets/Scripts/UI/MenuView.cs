@@ -12,29 +12,23 @@ public class MenuView : MonoBehaviour
     public GameObject slected;
 
     private Text[] mainMenuTexts;
-    private int mainMenuIndex;
-    private bool active = false;
+    private int mainMenuIndex = 1;
+    private bool active;
 
     private void Awake()
     {
         Instance = this;
-
         mainMenuTexts = mainMenuObject.GetComponentsInChildren<Text>();
+    }
+
+    private void Start()
+    {
+        SetMenuActive(false);
     }
 
     public bool GetMenuActive()
     {
         return active;
-    }
-
-    private void OnEnable()
-    {
-        mainMenuIndex = 0;
-    }
-
-    private void Update()
-    {
-        UpdateView();
     }
 
     public void ChangeIndex(bool increment)
@@ -43,7 +37,7 @@ public class MenuView : MonoBehaviour
         {
             mainMenuIndex--;
 
-            if (mainMenuIndex == -1)
+            if (mainMenuIndex == 0)
                 mainMenuIndex = 4;
         }
         else
@@ -51,13 +45,16 @@ public class MenuView : MonoBehaviour
             mainMenuIndex++;
 
             if (mainMenuIndex == 5)
-                mainMenuIndex = 0;
+                mainMenuIndex = 1;
         }
+
+        UpdateSelected();
     }
 
     public void SetMenuActive(bool state)
     {
         active = state;
+        SetMenuEnable();
     }
 
     private void SetMenuEnable()
@@ -76,20 +73,15 @@ public class MenuView : MonoBehaviour
         }
     }
 
-    private void UpdateView()
+    private void UpdateSelected()
     {
-        SetMenuEnable();
+        slected.transform.position = mainMenuTexts[mainMenuIndex].transform.position;
 
-        if (active == false)
-            return;
-
-        slected.transform.position = mainMenuObject.transform.position;
-        subMenuObjects[mainMenuIndex].SetActive(true);
-
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
-            if(mainMenuIndex != i)
-                subMenuObjects[i].SetActive(false);
+            subMenuObjects[i].SetActive(false);
         }
-    }   
+
+        subMenuObjects[mainMenuIndex-1].SetActive(true);
+    }
 }
