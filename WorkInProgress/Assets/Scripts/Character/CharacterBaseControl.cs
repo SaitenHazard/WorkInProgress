@@ -6,7 +6,7 @@ public class CharacterBaseControl : MonoBehaviour
     protected CharacterMovementModel m_movementModel;
     protected CharacterMovementView m_movementView;
 
-    void Awake()
+    protected void Awake()
     {
         m_movementModel = GetComponent<CharacterMovementModel>();
         m_movementView = GetComponent<CharacterMovementView>();

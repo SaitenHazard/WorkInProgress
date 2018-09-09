@@ -4,16 +4,32 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float yieldTime = 5;
-    public int damage;
+    private float yieldTime = 5;
+    private int damage;
 
     private float speed;
     private bool projectile;
+    private bool gameStateFrozen;
 
     private void Start()
     {
         speed = 1.5f;
         damage = 1;
+    }
+
+    private void Update()
+    {
+        CheckMenuActive();
+    }
+
+    private bool GetGameState()
+    {
+        return gameStateFrozen;
+    }
+
+    private void CheckMenuActive()
+    {
+        gameStateFrozen = MenuView.Instance.GetMenuActive();
     }
 
     public float GetSpeed()

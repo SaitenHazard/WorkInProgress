@@ -17,6 +17,11 @@ public class MenuView : MonoBehaviour
         Instance = this;
     }
 
+    public bool GetMenuActive()
+    {
+        return active;
+    }
+
     private void OnEnable()
     {
         mainMenuIndex = 0;
@@ -43,6 +48,11 @@ public class MenuView : MonoBehaviour
             if (mainMenuIndex == 5)
                 mainMenuIndex = 0;
         }
+    }
+
+    public void SetMenuActive(bool state)
+    {
+        active = state;
     }
 
     private void UpdateView()

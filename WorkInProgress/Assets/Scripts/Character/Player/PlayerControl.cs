@@ -3,16 +3,24 @@ using System.Collections;
 
 public class PlayerControl : CharacterBaseControl
 {
-    PlayerInventory m_inventory;
+    private PlayerInventory m_inventory;
+    public MenuView menuView;
+
+    private void Awake()
+    {
+        base.Awake();
+        m_inventory = GetComponent<PlayerInventory>();
+    }
 
     private void Start()
     {
-        m_inventory = GetComponent<PlayerInventory>();
         SetDirection(new Vector2(0, -1));
     }
 
     private void Update()
     {
+        UpdateMenuScreen();
+        UpdateMenu();
         UpdateDirection();
         UpdateAction();
         UpdateInventory();
@@ -25,6 +33,35 @@ public class PlayerControl : CharacterBaseControl
     }
 
     //KeybaordControls
+    private void UpdateMenuScreen()
+    {
+        if (Input.GetKey(KeyCode.X))
+        {
+            if (menuView.GetMenuActive())
+                menuView.SetMenuActive(true);
+            else
+                menuView.SetMenuActive(false);
+        }
+    }
+
+    private void UpdateMenu()
+    {
+        if (menuView.GetMenuActive() == true)
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                menuView.ChangeIndex(false);
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                menuView.ChangeIndex(true);
+            }
+
+            return;
+        }
+    }
+
     private void UpdateInventory()
     {
         if (Input.GetKeyDown(KeyCode.Q))
