@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: e9207e17fdcb50948838fca1a1fcccd3
-timeCreated: 1535225750
+guid: 0a40449db80876f4a85f1553bd9568f6
+timeCreated: 1536599256
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: OverheadBubbles_alpha_0
     21300002: OverheadBubbles_alpha_1
+    21300004: OverheadBubbles_alpha_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -110,6 +111,20 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
+        y: 0
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: OverheadBubbles_alpha_2
+      rect:
+        serializedVersion: 2
+        x: 64
         y: 0
         width: 32
         height: 30

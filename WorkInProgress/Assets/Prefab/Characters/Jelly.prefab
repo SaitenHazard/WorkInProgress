@@ -329,8 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca221cd08687fe4ab682125453c94da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionBubble: {fileID: 21300000, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
-  exclamatoinBubble: {fileID: 21300002, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
+  exclamatoinBubble: {fileID: 21300002, guid: 0a40449db80876f4a85f1553bd9568f6, type: 3}
+  questionBubble: {fileID: 21300000, guid: 0a40449db80876f4a85f1553bd9568f6, type: 3}
 --- !u!114 &114286351478168306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,8 +343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyActions: 1
-  patrol: {fileID: 0}
   projectileObject: {fileID: 0}
+  patrol: {fileID: 0}
 --- !u!114 &114305315076348664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,7 +405,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: e9207e17fdcb50948838fca1a1fcccd3, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 0a40449db80876f4a85f1553bd9568f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

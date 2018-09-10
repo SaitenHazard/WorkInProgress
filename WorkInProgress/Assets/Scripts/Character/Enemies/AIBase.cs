@@ -89,7 +89,7 @@ public class AIBase : MonoBehaviour
     {
         if (collider2D.gameObject.tag == "Player")
         {
-            speechBubble.PopSpeechBubble(enumSpeechBubbles.Question);
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
         }
     }
 

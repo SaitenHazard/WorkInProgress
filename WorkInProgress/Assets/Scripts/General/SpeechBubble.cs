@@ -6,9 +6,9 @@ public class SpeechBubble : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private enumSpeechBubbles m_bubble;
-
-    public Sprite questionBubble;
+    
     public Sprite exclamatoinBubble;
+    public Sprite questionBubble;
 
     private float defaultPopTime = 0.25f;
 
@@ -23,7 +23,7 @@ public class SpeechBubble : MonoBehaviour
             spriteRenderer.sprite = questionBubble;
 
         else if (m_bubble == enumSpeechBubbles.Exclamation)
-            spriteRenderer.sprite = questionBubble;
+            spriteRenderer.sprite = exclamatoinBubble;
     }
 
     public void PopSpeechBubble(enumSpeechBubbles bubble)
