@@ -8,9 +8,16 @@ public class SaveLoadSystem : MonoBehaviour
 {
     public static SaveLoadSystem Instance;
 
+    private string slotName;
+
     void Awake()
     {
         Instance = this;
+    }
+
+    public void SetSlotName(string index)
+    {
+        slotName = "Slot" + index + ".dat";
     }
 
     private void Start()
@@ -26,14 +33,13 @@ public class SaveLoadSystem : MonoBehaviour
     public void SaveGame()
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream file = File.Open(Application.dataPath + "/save.dat", FileMode.Create);
+        FileStream file = File.Open(Application.dataPath + "SaveGame" + 
+            slotName, FileMode.Create);
 
         SaveData data = new SaveData();
 
         formatter.Serialize(file, data);
         file.Close();
-
-        Debug.Log("Saved");
     }
 }
 
