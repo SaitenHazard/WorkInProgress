@@ -11,10 +11,27 @@ public class PlayerStats : MonoBehaviour
     private bool projectile;
     private bool gameStateFrozen;
 
+    private InteractableBase m_interactableBase;
+
+    private void Awake()
+    {
+        m_interactableBase = null;
+    }
+
     private void Start()
     {
         speed = 1.5f;
         damage = 1;
+    }
+
+    public void SetInteractableBase(InteractableBase interactableBase)
+    {
+        m_interactableBase = interactableBase;
+    }
+
+    public InteractableBase GetInteractableBase()
+    {
+        return m_interactableBase;
     }
 
     private void Update()

@@ -4,12 +4,15 @@ using System.Collections;
 public class PlayerControl : CharacterBaseControl
 {
     private PlayerInventory m_inventory;
+    private PlayerStats playerStats;
+
     public MenuView menuView;
 
     private void Awake()
     {
         base.Awake();
         m_inventory = GetComponent<PlayerInventory>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void Start()
@@ -89,7 +92,12 @@ public class PlayerControl : CharacterBaseControl
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
-            OnAttackPressed();
+            InteractableBase interactableBase = playerStats.GetInteractableBase();
+
+            if (interactableBase != null)
+                interactableBase.OnInteract();
+            else
+                OnAttackPressed();
         }
     }
 

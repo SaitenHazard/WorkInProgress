@@ -8,16 +8,19 @@ public abstract class InteractableBase : MonoBehaviour
 
     private SpeechBubble speechBubble;
     private enumSpeechBubbles enumSpeechBubble;
+    private PlayerStats playerStats;
 
     private void Awake()
     {
+        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
+
         speechBubble = gameObject.transform.parent.
             GetComponentInChildren<SpeechBubble>();
 
         enumSpeechBubble = enumSpeechBubbles.Interactable;
     }
 
-    virtual protected void OnInteract()
+    virtual public void OnInteract()
     {
        
     }
@@ -33,12 +36,21 @@ public abstract class InteractableBase : MonoBehaviour
             if(facingDirection == mustFaceDirection)
             {
                 speechBubble.ShowSpeechBubble(enumSpeechBubble);
+                playerStats.SetInteractableBase(this);
+            }
+            else
+            {
+                playerStats.SetInteractableBase(null);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collider2D)
     {
-        speechBubble.HideSpeechBubble();
+        if (collider2D.gameObject.tag == "Player")
+        {
+            playerStats.SetInteractableBase(null);
+            speechBubble.HideSpeechBubble();
+        }
     }
 }
