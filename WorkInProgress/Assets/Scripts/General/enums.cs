@@ -2,6 +2,7 @@
 {
     Question,
     Exclamation,
+    Interactable,
     NULL
 };
 

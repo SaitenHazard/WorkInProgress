@@ -8,8 +8,6 @@ public class AutoSetSortingOrder : MonoBehaviour {
     private Transform m_transform;
     private Transform p_Trasnform;
 
-   
-
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
