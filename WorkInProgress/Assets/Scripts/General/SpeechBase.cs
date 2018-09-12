@@ -26,6 +26,6 @@ public class SpeechBase : MonoBehaviour
     {
         index++;
 
-        speechText.
+        speechTextUI.SetString(speech[index]);
     }
 }
