@@ -3,6 +3,7 @@
     Question,
     Exclamation,
     Interactable,
+    Empty,
     NULL
 };
 
