@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class SpeechBase : MonoBehaviour
 {
-    public static int indexSize;
-
-    public string[] speech = new string[indexSize];
-    public Vector2[] faceDirection = new Vector2[indexSize];
-    public GameObject[] Object = new GameObject[indexSize];
+    public string[] speech;
+    public Vector2[] faceDirection;
+    public GameObject[] Object;
 }

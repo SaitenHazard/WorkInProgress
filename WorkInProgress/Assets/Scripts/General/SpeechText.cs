@@ -8,6 +8,8 @@ public class SpeechText : MonoBehaviour
     private Text text;
     private Image back;
 
+    public GameObject playTimeUI;
+
     private void Awake()
     {
         text = GetComponentInChildren<Text>();
@@ -19,10 +21,12 @@ public class SpeechText : MonoBehaviour
         ActivateSpeechBox(false);
     }
 
-    private void ActivateSpeechBox(bool active)
+    public void ActivateSpeechBox(bool active)
     {
         text.enabled = active;
         back.enabled = active;
+
+        PlayTimeUI.instance.Activate(!active);
     }
 
     public bool GetTextBoxActive()
@@ -30,8 +34,8 @@ public class SpeechText : MonoBehaviour
         return text.IsActive();
     }
 
-    public void DoTextBox(string [] String)
+    public void SetString(string String)
     {
-
+        text.text = String;
     }
 }
