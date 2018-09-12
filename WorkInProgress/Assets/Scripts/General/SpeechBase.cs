@@ -9,5 +9,23 @@ public class SpeechBase : MonoBehaviour
     public GameObject[] Object;
     public enumSpeechBubbles[] speechBubble;
 
+    private int index;
+    private SpeechTextUI speechTextUI;
 
+    private void Awake()
+    {
+        speechTextUI = SpeechTextUI.Instance.GetComponent<SpeechTextUI>();
+    }
+
+    public void Initialize()
+    {
+        index = -1;
+    }
+
+    public void DoSpeech()
+    {
+        index++;
+
+        speechText.
+    }
 }

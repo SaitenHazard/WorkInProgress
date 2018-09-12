@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpeechText : MonoBehaviour
+public class SpeechTextUI : MonoBehaviour
 {
+    public static SpeechTextUI Instance;
+
     private Text text;
     private Image back;
 
@@ -12,6 +14,8 @@ public class SpeechText : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         text = GetComponentInChildren<Text>();
         back = GetComponentInChildren<Image>();
     }
