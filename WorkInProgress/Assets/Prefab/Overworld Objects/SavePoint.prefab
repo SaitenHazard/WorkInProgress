@@ -51,6 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4295717617501620}
   - component: {fileID: 61423967835643454}
+  - component: {fileID: 114927985140615376}
   m_Layer: 0
   m_Name: InteractableBox
   m_TagString: Untagged
@@ -112,7 +113,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1736638004113802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7028484, y: 4.5154104, z: 0}
+  m_LocalPosition: {x: 0, y: 0.383, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4837906151498958}
@@ -235,7 +236,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exclamatoinBubble: {fileID: 21300002, guid: 0a40449db80876f4a85f1553bd9568f6, type: 3}
   questionBubble: {fileID: 21300000, guid: 0a40449db80876f4a85f1553bd9568f6, type: 3}
-  interactableBubble: {fileID: 0}
+  interactableBubble: {fileID: 21300004, guid: fb866d8455c2efa489ae70da571ddb78, type: 3}
+--- !u!114 &114927985140615376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1390464129825704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f53f388d4787942865629969e72d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mustFaceDirection: {x: 0, y: 1}
 --- !u!212 &212422213179032374
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -311,8 +324,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1667003977
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 0a40449db80876f4a85f1553bd9568f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -8,6 +8,9 @@ public class SaveLoadSystem : MonoBehaviour
 {
     public static SaveLoadSystem Instance;
 
+    public GameObject[] Slots;
+    private int index;
+
     private string slotName;
 
     void Awake()
@@ -22,7 +25,39 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void Start()
     {
+        index = 1;
+    }
 
+    public void ChangeIndex(bool increment)
+    {
+        if (increment)
+        {
+            index--;
+
+            if (index == 0)
+                index = 4;
+        }
+        else
+        {
+            index++;
+
+            if (index == 5)
+                index = 1;
+        }
+
+        UpdateSelected();
+    }
+
+    private void UpdateSelected()
+    {
+        //slected.transform.position = mainMenuTexts[mainMenuIndex].transform.position;
+
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    subMenuObjects[i].SetActive(false);
+        //}
+
+        //subMenuObjects[mainMenuIndex - 1].SetActive(true);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

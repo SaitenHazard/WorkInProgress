@@ -6,7 +6,6 @@ public class test : MonoBehaviour
 {
 	void Start ()
     {
-        Debug.Log(System.DateTime.Now);
         //Debug.Log(System.DateTime.Now.ToShortDateString());
         //Debug.Log(System.DateTime.Now.ToLongTimeString());
     }

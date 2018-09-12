@@ -25,7 +25,7 @@ public abstract class InteractableBase : MonoBehaviour
        
     }
 
-    private void OnTriggerEnter2D(Collider2D collider2D)
+    private void OnTriggerStay2D(Collider2D collider2D)
     {
         if(collider2D.gameObject.tag == "Player")
         {

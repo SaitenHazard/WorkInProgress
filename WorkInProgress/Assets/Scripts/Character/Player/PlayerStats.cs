@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        CheckMenuActive();
+        CheckActiveUI();
     }
 
     public bool GetGameState()
@@ -44,9 +44,12 @@ public class PlayerStats : MonoBehaviour
         return gameStateFrozen;
     }
 
-    private void CheckMenuActive()
+    private void CheckActiveUI()
     {
-        gameStateFrozen = MenuView.Instance.GetMenuActive();
+        if (MenuView.Instance.GetMenuActive() == true)
+            gameStateFrozen = true;
+        else
+            gameStateFrozen = false;
     }
 
     public float GetSpeed()
