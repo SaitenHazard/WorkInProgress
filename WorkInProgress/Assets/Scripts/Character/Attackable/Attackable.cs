@@ -106,6 +106,14 @@ public class Attackable : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
+        AIBase aiBase = gameObject.transform.parent.GetComponentInChildren<AIBase>();
+        Debug.Log(aiBase);
+        GameObject patrolObject = aiBase.GetPatrolObject();
+        Debug.Log(patrolObject);
+
+        if (aiBase != null)
+            Destroy(patrolObject);
+
         Destroy(gameObject.transform.parent.gameObject);
     }
 }

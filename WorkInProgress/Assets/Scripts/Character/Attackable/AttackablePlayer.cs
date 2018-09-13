@@ -20,16 +20,12 @@ public class AttackablePlayer : Attackable
             Attackable attackerAttackable = ColliderObject.transform.parent.gameObject.
                             GetComponentInChildren<Attackable>();
 
-            if (attackerAttackable != null)
-            {
-                if (attackerAttackable.GetHealth() <= 0)
-                    return;
+            if (attackerAttackable.GetHealth() <= 0)
+                return;
 
-                CharacterMovementModel attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
+            CharacterMovementModel attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
 
-                attackerMovementModel.SetTemporaryFrozen(1);
-            }
-
+            attackerMovementModel.SetTemporaryFrozen(1);
             DoHit(1, attackerMovementModel.GetFacingDirection());
         }
 

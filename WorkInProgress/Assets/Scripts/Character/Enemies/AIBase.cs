@@ -28,6 +28,14 @@ public class AIBase : MonoBehaviour
         movementView = GetComponentInParent<CharacterMovementView>();
     }
 
+    public GameObject GetPatrolObject()
+    {
+        if (patrol == null)
+            return null;
+
+        return patrol.gameObject;
+    }
+
     protected void Update()
     {
         UpdateAngle();
