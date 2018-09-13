@@ -14,6 +14,8 @@ public class PlayTimeUI : MonoBehaviour {
     {
         childImages = GetComponentsInChildren<Image>();
         childTexts = GetComponentsInChildren<Text>();
+
+        instance = this;
     }
 
     public void Activate(bool active)

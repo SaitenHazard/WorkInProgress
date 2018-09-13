@@ -6,6 +6,8 @@ public class InteractableSpeech : InteractableBase
 {
     public override void OnInteract()
     {
-        SaveLoadSystem.Instance.SaveGame();
+        SpeechBase speechBase = GetComponent<SpeechBase>();
+        speechBase.Initialize();
+        speechBase.DoSpeech();
     }
 }

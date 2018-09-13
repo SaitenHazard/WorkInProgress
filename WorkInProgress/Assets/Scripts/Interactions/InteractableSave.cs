@@ -6,6 +6,9 @@ public class InteractableSave : InteractableBase
 {
     public override void OnInteract()
     {
+        Debug.Log("Save");
+        return;
+
         SaveLoadSystem.Instance.SaveGame();
     }
 }

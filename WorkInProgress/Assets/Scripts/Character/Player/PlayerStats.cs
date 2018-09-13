@@ -46,7 +46,7 @@ public class PlayerStats : MonoBehaviour
 
     private void CheckActiveUI()
     {
-        if (MenuView.Instance.GetMenuActive() == true)
+        if (MenuView.Instance.GetMenuActive() == true || SpeechTextUI.Instance.GetTextBoxActive())
             gameStateFrozen = true;
         else
             gameStateFrozen = false;

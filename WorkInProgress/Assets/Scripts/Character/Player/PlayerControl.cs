@@ -94,6 +94,13 @@ public class PlayerControl : CharacterBaseControl
         {
             InteractableBase interactableBase = playerStats.GetInteractableBase();
 
+            if (SpeechTextUI.Instance.GetTextBoxActive() == true)
+            {
+                interactableBase.GetComponent<SpeechBase>().DoSpeech();
+
+                return;
+            }
+
             if (interactableBase != null)
                 interactableBase.OnInteract();
             else

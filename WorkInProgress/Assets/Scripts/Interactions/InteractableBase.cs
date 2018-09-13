@@ -41,6 +41,7 @@ public abstract class InteractableBase : MonoBehaviour
             else
             {
                 playerStats.SetInteractableBase(null);
+                speechBubble.HideSpeechBubble();
             }
         }
     }
