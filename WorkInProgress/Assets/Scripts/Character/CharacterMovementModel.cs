@@ -94,7 +94,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     private void UpdateMovement()
     {
-        if (movementFrozen == true || playerStats.GetGameState())
+        if (movementFrozen == true || playerStats.GetGameState() == true)
         {
             m_Body.velocity = Vector2.zero;
             return;

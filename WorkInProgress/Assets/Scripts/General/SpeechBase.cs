@@ -7,7 +7,7 @@ public class SpeechBase : MonoBehaviour
     public string[] speech;
     public Vector2[] faceDirection;
     public GameObject[] Object;
-    public enumSpeechBubbles[] speechBubble;
+    public enumSpeechBubbles[] speechBubbleEnum;
 
     private int index;
     private SpeechTextUI speechTextUI;
@@ -45,12 +45,17 @@ public class SpeechBase : MonoBehaviour
         if (Object[index].name == "PlayerStandIn")
             Object[index] = PlayerInstant.Instance.gameObject;
 
-        Debug.Log(Object[index])
 
-        if (speech[index] != null)
-            Object[index].GetComponent<SpeechBubble>().PopSpeechBubble(speechBubble[index]);
+        if (speechBubbleEnum[index] != enumSpeechBubbles.NULL)
+        {
+            SpeechBubble n_speechBubble = Object[index].GetComponentInChildren<SpeechBubble>();
+            n_speechBubble.PopSpeechBubble(speechBubbleEnum[index]);
+        }
 
         if (faceDirection[index] != new Vector2(0, 0))
-            Object[index].GetComponent<CharacterMovementModel>().SetDirection(faceDirection[index]);
+        {
+            CharacterMovementModel n_CharacterMovementModel = Object[index].GetComponent<CharacterMovementModel>();
+            n_CharacterMovementModel.SetDirection(faceDirection[index]);
+        }
     }
 }

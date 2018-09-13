@@ -414,7 +414,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1269086478}
   - {fileID: 1269086478}
-  speechBubble: 040000000400000003000000
+  speechBubbleEnum: 040000000400000003000000
 --- !u!1001 &221617296
 Prefab:
   m_ObjectHideFlags: 0
