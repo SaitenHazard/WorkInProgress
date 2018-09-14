@@ -10,7 +10,7 @@ public class SpeechTextUI : MonoBehaviour
     private Text text;
     private Image back;
 
-    public PlayTimeUI playTimeUI;
+    private PlayTimeUI playTimeUI;
 
     private void Awake()
     {

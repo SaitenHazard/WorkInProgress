@@ -4,12 +4,15 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.SceneManagement;
 
-public class SaveLoadSystem : MonoBehaviour
+public class TitleScreenView : MonoBehaviour
 {
-    public static SaveLoadSystem Instance;
+    public static TitleScreenView Instance;
 
     public GameObject[] Slots;
-    private int index;
+    public Transform selectedTranform;
+
+    private int indexVertical;
+    private int indexHorizontal;
 
     private string slotName;
 
@@ -25,24 +28,40 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void Start()
     {
-        index = 1;
+        indexVertical = 0;
+        indexHorizontal = 0;
     }
 
-    public void ChangeIndex(bool increment)
+    public void ChangeIndex(bool up, bool right)
     {
-        if (increment)
+        if (up)
         {
-            index--;
+            indexVertical--;
 
-            if (index == 0)
-                index = 4;
+            if (indexVertical == -1)
+                indexVertical = 2;
         }
         else
         {
-            index++;
+            indexVertical++;
 
-            if (index == 5)
-                index = 1;
+            if (indexVertical == 3)
+                indexVertical = 0;
+        }
+
+        if (right)
+        {
+            indexHorizontal--;
+
+            if (indexHorizontal == -1)
+                indexHorizontal = 1;
+        }
+        else
+        {
+            indexHorizontal++;
+
+            if (indexHorizontal == 2)
+                indexHorizontal = 0;
         }
 
         UpdateSelected();
@@ -50,14 +69,9 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void UpdateSelected()
     {
-        //slected.transform.position = mainMenuTexts[mainMenuIndex].transform.position;
+        Transform []childTransforms = Slots[indexVertical].GetComponentsInChildren<Transform>();
 
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    subMenuObjects[i].SetActive(false);
-        //}
-
-        //subMenuObjects[mainMenuIndex - 1].SetActive(true);
+        selectedTranform.position = childTransforms[indexHorizontal].position;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

@@ -1,0 +1,44 @@
+Enemy
+-Basic/Jelly: Petrol -> Chase -> Colllider
+-Basic + Generate Hazard: Petrol -> Chase -> Collider - Generate Slime
+-Projectile + Khamba: Stand -> Shoot
+
+Inventory Item List
+-Life full
+-Damage Up
+-Speed Up
+-Projectile
+-Bombs
+-Mines
+-Range Up
+-Temp Extra HP Bar
+-Invinsible
+-New Teleport Station
+-Save Game
+
+Menu
+-Options
+-Quicksave
+-Inventory
+-Quit
+
+Special Item List
+-Kamehameha
+-Time Slow
+-Damage Up, Speed Up, Invinsible
+
+Armor
+-Incrase Coin Drops
+-Increase Non Coin Drops
+-Double health Bar
+
+Races
+-Merchants / Piggy Banks - Wondering Race
+
+Save Slot
+-3
+-1 per playthough
+
+Save Slot Display
+-Date & Time
+-Save Name

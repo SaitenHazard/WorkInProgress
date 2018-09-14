@@ -8,7 +8,5 @@ public class InteractableSave : InteractableBase
     {
         Debug.Log("Save");
         return;
-
-        SaveLoadSystem.Instance.SaveGame();
     }
 }
