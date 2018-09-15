@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-using UnityEngine.SceneManagement;
 
 public class TitleScreenView : MonoBehaviour
 {
@@ -14,16 +11,9 @@ public class TitleScreenView : MonoBehaviour
     private int indexVertical;
     private int indexHorizontal;
 
-    private string slotName;
-
     void Awake()
     {
         Instance = this;
-    }
-
-    public void SetSlotName(string index)
-    {
-        slotName = "Slot" + index + ".dat";
     }
 
     private void Start()
@@ -32,7 +22,27 @@ public class TitleScreenView : MonoBehaviour
         indexHorizontal = 0;
     }
 
-    public void ChangeIndex(bool up, bool right)
+    private void Update()
+    {
+        UpdateControl();
+    }
+
+    private void UpdateControl()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            ChangeIndex(true, false, false, false);
+
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            ChangeIndex(false, true, false, false);
+
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+            ChangeIndex(false, false, true, false);
+
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            ChangeIndex(false, false, false, true);
+    }
+
+    public void ChangeIndex(bool up, bool down, bool right, bool left)
     {
         if (up)
         {
@@ -41,7 +51,8 @@ public class TitleScreenView : MonoBehaviour
             if (indexVertical == -1)
                 indexVertical = 2;
         }
-        else
+
+        else if(down)
         {
             indexVertical++;
 
@@ -49,20 +60,21 @@ public class TitleScreenView : MonoBehaviour
                 indexVertical = 0;
         }
 
-        if (right)
+        else if (right)
         {
             indexHorizontal--;
 
             if (indexHorizontal == -1)
                 indexHorizontal = 1;
         }
-        else
+
+        else if (left)
         {
             indexHorizontal++;
 
             if (indexHorizontal == 2)
                 indexHorizontal = 0;
-        }
+        } 
 
         UpdateSelected();
     }
@@ -73,35 +85,7 @@ public class TitleScreenView : MonoBehaviour
 
         selectedTranform.position = childTransforms[indexHorizontal].position;
     }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        
-    }
-
-    public void SaveGame()
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream file = File.Open(Application.dataPath + "SaveGame" + 
-            slotName, FileMode.Create);
-
-        SaveData data = new SaveData();
-
-        formatter.Serialize(file, data);
-        file.Close();
-    }
 }
 
 
-[Serializable]
-class SaveData
-{
-    String date;
-    String time;
 
-    public SaveData()
-    {
-        date = DateTime.Now.ToShortDateString();
-        time = DateTime.Now.ToLongTimeString();
-    }
-}

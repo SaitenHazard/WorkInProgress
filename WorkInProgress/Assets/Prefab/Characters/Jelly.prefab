@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4921197704447566}
   - component: {fileID: 212604901177315954}
+  - component: {fileID: 114134005562064100}
   m_Layer: 0
   m_Name: HPBar
   m_TagString: Untagged
@@ -255,7 +256,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1630843429390698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.22, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4354050135368968}
@@ -407,6 +408,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a450fc96b898b6d49bf988cde8f4241e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114134005562064100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630843429390698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5271a65dd1c82554fabb7ceecb90fdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackable: {fileID: 0}
 --- !u!114 &114137082878891226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -583,7 +596,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1667003977
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_Sprite: {fileID: 21300002, guid: 0a40449db80876f4a85f1553bd9568f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
