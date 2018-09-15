@@ -5,7 +5,7 @@ using System;
 
 public class SaveLoadSystem : MonoBehaviour
 {
-    private string slotName;
+    private string m_slotName;
     private BinaryFormatter formatter;
     FileStream file;
     SaveData saveData;
@@ -32,7 +32,15 @@ public class SaveLoadSystem : MonoBehaviour
         file.Close();
     }
 
-    private void SetNewGameData()
+    public void DoNewGameSave(string slotName)
+    {
+        m_slotName = slotName;
+        InitializeSaveData();
+        InitializeNewSave();
+        SaveGame();
+    }
+
+    private void InitializeNewSave()
     {
         saveData.date = DateTime.Now.ToShortDateString();
         saveData.time = DateTime.Now.ToLongTimeString();
@@ -40,14 +48,20 @@ public class SaveLoadSystem : MonoBehaviour
         saveData.money = 0;
         saveData.life = 10;
 
+        saveData.startPosition = new Vector3(3.66f, -0.36f, -0.36f);
         saveData.faceDirection = new Vector2(0, -1);
+
+        saveData.slotName = m_slotName;
+
+        for (int i = 0; i < 5; i++)
+            saveData.inventory[i] = enumInventory.NULL;
     }
 }
 
 [Serializable]
 class SaveData
 {
-    public string saveName;
+    public string slotName;
 
     public string date;
     public string time;
@@ -56,7 +70,9 @@ class SaveData
     public int life;
 
     public Vector2 faceDirection;
-    public GameObject startPosition;
+    public Vector3 startPosition;
 
-    enumInventory[] inventory = new enumInventory[5];
+    public string sceneName;
+
+    public enumInventory[] inventory = new enumInventory[5];
 }

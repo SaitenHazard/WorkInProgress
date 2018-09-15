@@ -106,11 +106,11 @@ public class PlayerControl : CharacterBaseControl
 
     private void UpdateAction()
     {
-        if (menuView.GetMenuActive() == true)
-            return;
-
         if (Input.GetKeyDown(KeyCode.D))
         {
+            if (menuView.GetMenuActive() == true)
+                TitleScreenView.Instance.ActionPresed();
+
             InteractableBase interactableBase = playerStats.GetInteractableBase();
 
             if (SpeechTextUI.Instance.GetTextBoxActive() == true)

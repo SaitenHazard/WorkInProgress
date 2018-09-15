@@ -13,11 +13,18 @@ public class TitleScreenView : MonoBehaviour
     private int indexVertical;
     private int indexHorizontal;
 
-    void Awake()
+    private void Awake()
     {
         Instance = this;
 
         titleScreenBack = GetComponent<Image>();
+    }
+
+    private void Start()
+    {
+        indexVertical = 0;
+        indexHorizontal = 0;
+        UpdateSelected();
     }
 
     public bool GetTitleScreenActive()
@@ -25,11 +32,17 @@ public class TitleScreenView : MonoBehaviour
         return titleScreenBack.IsActive();
     }
 
-    private void Start()
+    public void ActionPresed()
     {
-        indexVertical = 0;
-        indexHorizontal = 0;
-    } 
+        if (indexHorizontal == 0)
+            DoNewSave();
+    }
+
+    private void DoNewSave()
+    {
+        SaveLoadSystem saveLoadSystem = GetComponent<SaveLoadSystem>();
+        saveLoadSystem.DoNewGameSave("Slot" + indexVertical+1);
+    }
 
     public void ChangeIndex(bool up, bool down, bool right, bool left)
     {
@@ -67,13 +80,6 @@ public class TitleScreenView : MonoBehaviour
 
         UpdateSelected();
     }
-
-    public int GetSlotIndex()
-    {
-        return indexVertical;
-    }
-
-    public int Get
 
     private void UpdateSelected()
     {
