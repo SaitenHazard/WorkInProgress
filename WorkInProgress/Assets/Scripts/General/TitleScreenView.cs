@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class TitleScreenView : MonoBehaviour
@@ -7,6 +8,7 @@ public class TitleScreenView : MonoBehaviour
 
     public GameObject[] Slots;
     public Transform selectedTranform;
+    public Image titleScreenBack; 
 
     private int indexVertical;
     private int indexHorizontal;
@@ -14,33 +16,20 @@ public class TitleScreenView : MonoBehaviour
     void Awake()
     {
         Instance = this;
+
+        titleScreenBack = GetComponent<Image>();
+    }
+
+    public bool GetTitleScreenActive()
+    {
+        return titleScreenBack.IsActive();
     }
 
     private void Start()
     {
         indexVertical = 0;
         indexHorizontal = 0;
-    }
-
-    private void Update()
-    {
-        UpdateControl();
-    }
-
-    private void UpdateControl()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            ChangeIndex(true, false, false, false);
-
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-            ChangeIndex(false, true, false, false);
-
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-            ChangeIndex(false, false, true, false);
-
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            ChangeIndex(false, false, false, true);
-    }
+    } 
 
     public void ChangeIndex(bool up, bool down, bool right, bool left)
     {
@@ -79,11 +68,19 @@ public class TitleScreenView : MonoBehaviour
         UpdateSelected();
     }
 
+    public int GetSlotIndex()
+    {
+        return indexVertical;
+    }
+
+    public int Get
+
     private void UpdateSelected()
     {
-        Transform []childTransforms = Slots[indexVertical].GetComponentsInChildren<Transform>();
+        Transform []childTransforms = Slots[indexVertical].
+            GetComponentsInChildren<Transform>();
 
-        selectedTranform.position = childTransforms[indexHorizontal].position;
+        selectedTranform.position = childTransforms[indexHorizontal+1].position;
     }
 }
 

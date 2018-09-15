@@ -23,7 +23,7 @@ public class PlayerControl : CharacterBaseControl
     private void Update()
     {
         UpdateMenuScreen();
-        UpdateMenu();
+        UpdateMenus();
         UpdateDirection();
         UpdateAction();
         UpdateInventory();
@@ -47,8 +47,23 @@ public class PlayerControl : CharacterBaseControl
         }
     }
 
-    private void UpdateMenu()
+    private void UpdateMenus()
     {
+        if (TitleScreenView.Instance.GetTitleScreenActive() == true)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                TitleScreenView.Instance.ChangeIndex(true, false, false, false);
+
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+                TitleScreenView.Instance.ChangeIndex(false, true, false, false);
+
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+                TitleScreenView.Instance.ChangeIndex(false, false, true, false);
+
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                TitleScreenView.Instance.ChangeIndex(false, false, false, true);
+        }
+
         if (menuView.GetMenuActive() == true)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -60,14 +75,15 @@ public class PlayerControl : CharacterBaseControl
             {
                 menuView.ChangeIndex(false);
             }
-
-            return;
         }
     }
 
     private void UpdateInventory()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (menuView.GetMenuActive() == true)
+            return;
+
+            if (Input.GetKeyDown(KeyCode.Q))
         {
             m_inventory.changeSelectedSlotID(false);
         }
@@ -90,6 +106,9 @@ public class PlayerControl : CharacterBaseControl
 
     private void UpdateAction()
     {
+        if (menuView.GetMenuActive() == true)
+            return;
+
         if (Input.GetKeyDown(KeyCode.D))
         {
             InteractableBase interactableBase = playerStats.GetInteractableBase();
@@ -110,6 +129,9 @@ public class PlayerControl : CharacterBaseControl
 
     private void UpdateDirection()
     {
+        if (menuView.GetMenuActive() == true)
+            return;
+
         Vector2 newDirection = Vector2.zero;
 
         if (Input.GetKey(KeyCode.UpArrow))
