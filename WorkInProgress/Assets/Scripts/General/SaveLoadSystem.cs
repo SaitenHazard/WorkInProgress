@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class SaveLoadSystem : MonoBehaviour
 {
@@ -10,13 +11,15 @@ public class SaveLoadSystem : MonoBehaviour
     SaveData saveData;
 
     private string m_slotName;
+
     public Transform startPosiiton;
+    public GameObject[] loadButton;
 
     private void InitializeSaveData()
     {
         formatter = new BinaryFormatter();
 
-        string filePath = Application.dataPath + "/SaveGame/" + m_slotName;
+        string filePath = Application.dataPath + "/SaveGame/" + m_slotName + ".dat";
         Debug.Log(filePath);
 
         file = File.Open(filePath, FileMode.Create);
@@ -24,10 +27,29 @@ public class SaveLoadSystem : MonoBehaviour
         saveData = new SaveData();
     }
 
-    public string GetSlotName()
+    private void CheckSaveFiles()
     {
-        string st = null;
-        return st;
+        string filePath = Application.dataPath + "/SaveGame/";
+
+        if(!File.Exists(filePath + "/Slot1.dat"))
+        {
+            loadButton[0].SetActive(false);
+        }
+
+        if (!File.Exists(filePath + "/Slot2.dat"))
+        {
+            loadButton[1].SetActive(false);
+        }
+
+        if (!File.Exists(filePath + "/Slot3.dat"))
+        {
+            loadButton[2].SetActive(false);
+        }
+    }
+
+    public void LoadGame(string slotName)
+    {
+
     }
 
     private void SaveGame()
@@ -63,6 +85,17 @@ public class SaveLoadSystem : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
             saveData.inventory[i] = enumInventory.NULL;
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.name == "Start")
+            CheckSaveFiles();
     }
 }
 

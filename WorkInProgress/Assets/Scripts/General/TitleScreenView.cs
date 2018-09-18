@@ -36,6 +36,13 @@ public class TitleScreenView : MonoBehaviour
     {
         if (indexHorizontal == 0)
             DoNewSave();
+        else
+            ;
+    }
+
+    private void LoadGame()
+    {
+
     }
 
     private void DoNewSave()

@@ -4237,6 +4237,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosiiton: {fileID: 511239757}
+  loadButton:
+  - {fileID: 1601820535}
+  - {fileID: 491621048}
+  - {fileID: 1135740293}
 --- !u!1 &1797818978
 GameObject:
   m_ObjectHideFlags: 0
