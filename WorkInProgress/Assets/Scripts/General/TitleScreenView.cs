@@ -41,7 +41,11 @@ public class TitleScreenView : MonoBehaviour
     private void DoNewSave()
     {
         SaveLoadSystem saveLoadSystem = GetComponent<SaveLoadSystem>();
-        saveLoadSystem.DoNewGameSave("Slot" + indexVertical+1);
+        int slotNumber = indexVertical + 1;
+
+        string slotName = "Slot" + slotNumber;
+
+        saveLoadSystem.DoNewGameSave(slotName);
     }
 
     public void ChangeIndex(bool up, bool down, bool right, bool left)

@@ -62,6 +62,9 @@ public class PlayerControl : CharacterBaseControl
 
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 TitleScreenView.Instance.ChangeIndex(false, false, false, true);
+
+            if (Input.GetKeyDown(KeyCode.D))
+                TitleScreenView.Instance.ActionPresed();
         }
 
         if (menuView.GetMenuActive() == true)

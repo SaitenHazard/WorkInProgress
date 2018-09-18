@@ -12,9 +12,9 @@ public class StartGame : MonoBehaviour {
 
     private void Awake()
     {
-        DontDestroyOnLoad(DontDestory);
+        //DontDestroyOnLoad(DontDestory);
 
-        WarpManager.Instance.
-            Warp(warpScene, warpDestination, faceDirection);
+        //WarpManager.Instance.
+        //    Warp(warpScene, warpDestination, faceDirection);
     }
 }

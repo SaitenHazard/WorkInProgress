@@ -5,17 +5,21 @@ using System;
 
 public class SaveLoadSystem : MonoBehaviour
 {
-    private string m_slotName;
     private BinaryFormatter formatter;
     FileStream file;
     SaveData saveData;
+
+    private string m_slotName;
+    public Transform startPosiiton;
 
     private void InitializeSaveData()
     {
         formatter = new BinaryFormatter();
 
-        file = File.Open(Application.dataPath + "SaveGame" +
-            GetSlotName(), FileMode.Create);
+        string filePath = Application.dataPath + "/SaveGame/" + m_slotName;
+        Debug.Log(filePath);
+
+        file = File.Open(filePath, FileMode.Create);
 
         saveData = new SaveData();
     }
@@ -48,8 +52,12 @@ public class SaveLoadSystem : MonoBehaviour
         saveData.money = 0;
         saveData.life = 10;
 
-        saveData.startPosition = new Vector3(3.66f, -0.36f, -0.36f);
-        saveData.faceDirection = new Vector2(0, -1);
+        saveData.startPosition[0] = 3.66f;
+        saveData.startPosition[1] = -0.36f;
+        saveData.startPosition[2] = -0.36f;
+
+        saveData.faceDirection[0] = false;
+        saveData.faceDirection[1] = true;
 
         saveData.slotName = m_slotName;
 
@@ -57,6 +65,7 @@ public class SaveLoadSystem : MonoBehaviour
             saveData.inventory[i] = enumInventory.NULL;
     }
 }
+
 
 [Serializable]
 class SaveData
@@ -69,8 +78,8 @@ class SaveData
     public int money;
     public int life;
 
-    public Vector2 faceDirection;
-    public Vector3 startPosition;
+    public bool[] faceDirection = new bool [2];
+    public float[] startPosition = new float [3];
 
     public string sceneName;
 
