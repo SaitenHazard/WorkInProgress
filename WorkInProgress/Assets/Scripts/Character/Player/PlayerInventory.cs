@@ -43,6 +43,11 @@ public class PlayerInventory : MonoBehaviour
         ResetSlected();
     }
 
+    public void SetInventoryArray(enumInventory [] l_inventoryArray)
+    {
+        inventoryArray = l_inventoryArray;
+    }
+
     public void ResetSlected()
     {
         if (selectedSlotID == -1)

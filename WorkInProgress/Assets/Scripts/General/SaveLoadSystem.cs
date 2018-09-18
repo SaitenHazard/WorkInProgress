@@ -15,39 +15,52 @@ public class SaveLoadSystem : MonoBehaviour
     public Transform startPosiiton;
     public GameObject[] loadButton;
 
+    public string m_path;
+
+    private void Start()
+    {
+        m_path = Application.dataPath + "/SaveGame/";
+    }
+
     private void InitializeSaveData()
     {
         formatter = new BinaryFormatter();
 
-        string filePath = Application.dataPath + "/SaveGame/" + m_slotName + ".dat";
-        Debug.Log(filePath);
+        string path = m_path + m_slotName + ".dat";
 
-        file = File.Open(filePath, FileMode.Create);
+        file = File.Open(path, FileMode.Create);
 
         saveData = new SaveData();
     }
 
     private void CheckSaveFiles()
     {
-        string filePath = Application.dataPath + "/SaveGame/";
-
-        if(!File.Exists(filePath + "/Slot1.dat"))
+        if(!File.Exists(m_path + "/Slot1.dat"))
         {
             loadButton[0].SetActive(false);
         }
 
-        if (!File.Exists(filePath + "/Slot2.dat"))
+        if (!File.Exists(m_path + "/Slot2.dat"))
         {
             loadButton[1].SetActive(false);
         }
 
-        if (!File.Exists(filePath + "/Slot3.dat"))
+        if (!File.Exists(m_path + "/Slot3.dat"))
         {
             loadButton[2].SetActive(false);
         }
     }
 
     public void LoadGame(string slotName)
+    {
+        string path = m_path + slotName + ".dat";
+
+        file = File.Open(path, FileMode.Open);
+
+        saveData = (SaveData)formatter.Deserialize(file);
+    }
+
+    private void DoLoad()
     {
 
     }
