@@ -51,18 +51,26 @@ public class SaveLoadSystem : MonoBehaviour
         }
     }
 
-    public void LoadGame(string slotName)
+    public void SetLoadGame(string slotName)
     {
         string path = m_path + slotName + ".dat";
-
         file = File.Open(path, FileMode.Open);
-
         saveData = (SaveData)formatter.Deserialize(file);
+
+        DoLoad();
     }
 
     private void DoLoad()
     {
+        PlayerInstant.Instance.GetComponent<PlayerInventory>().SetInventoryArray(saveData.inventory);
+        PlayerInstant.Instance.GetComponentInChildren<Attackable>().SetHealth(saveData.health);
+        PlayerInstant.Instance.GetComponent<PlayerWallet>().SetCoin(saveData.coin);
+        startPosiiton.position = new Vector3(saveData.startPosition[0], saveData.startPosition[1], 
+            saveData.startPosition[2]);
 
+        Vector2 faceDirection = new Vector2(saveData.faceDirection[0], saveData.faceDirection[1]);
+
+        WarpManager.Instance.Warp(saveData.sceneName, "WarpStart", faceDirection);
     }
 
     private void SaveGame()
@@ -84,17 +92,18 @@ public class SaveLoadSystem : MonoBehaviour
         saveData.date = DateTime.Now.ToShortDateString();
         saveData.time = DateTime.Now.ToLongTimeString();
 
-        saveData.money = 0;
-        saveData.life = 10;
+        saveData.coin = 0;
+        saveData.health = 10;
 
         saveData.startPosition[0] = 3.66f;
         saveData.startPosition[1] = -0.36f;
         saveData.startPosition[2] = -0.36f;
 
-        saveData.faceDirection[0] = false;
-        saveData.faceDirection[1] = true;
+        saveData.faceDirection[0] = 0;
+        saveData.faceDirection[1] = -1;
 
         saveData.slotName = m_slotName;
+        saveData.sceneName = "WorkInProgress";
 
         for (int i = 0; i < 5; i++)
             saveData.inventory[i] = enumInventory.NULL;
@@ -112,7 +121,6 @@ public class SaveLoadSystem : MonoBehaviour
     }
 }
 
-
 [Serializable]
 class SaveData
 {
@@ -121,10 +129,10 @@ class SaveData
     public string date;
     public string time;
 
-    public int money;
-    public int life;
+    public int coin;
+    public int health;
 
-    public bool[] faceDirection = new bool [2];
+    public float[] faceDirection = new float[2];
     public float[] startPosition = new float [3];
 
     public string sceneName;

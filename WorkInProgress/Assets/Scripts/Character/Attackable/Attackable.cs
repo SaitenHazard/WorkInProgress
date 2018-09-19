@@ -76,6 +76,11 @@ public class Attackable : MonoBehaviour
         if (health >= maxHealth) health = maxHealth;
     }
 
+    public void SetHealth(int l_health)
+    {
+        health = l_health;
+    }
+
     private void SubstractHealth()
     {
         SubstractHealth(1);

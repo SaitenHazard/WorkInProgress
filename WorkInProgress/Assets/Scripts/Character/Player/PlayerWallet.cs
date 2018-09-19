@@ -29,6 +29,11 @@ public class PlayerWallet : MonoBehaviour
         coins -= number;
     }
 
+    public void SetCoin(int l_coin)
+    {
+        coins = l_coin;
+    }
+
     public int GetCoins()
     {
         return coins;
