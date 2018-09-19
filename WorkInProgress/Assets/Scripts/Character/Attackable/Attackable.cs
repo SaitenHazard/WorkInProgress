@@ -112,9 +112,7 @@ public class Attackable : MonoBehaviour
         }
 
         AIBase aiBase = gameObject.transform.parent.GetComponentInChildren<AIBase>();
-        Debug.Log(aiBase);
         GameObject patrolObject = aiBase.GetPatrolObject();
-        Debug.Log(patrolObject);
 
         if (aiBase != null)
             Destroy(patrolObject);

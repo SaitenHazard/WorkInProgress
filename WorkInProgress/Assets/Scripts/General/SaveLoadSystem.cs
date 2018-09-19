@@ -14,11 +14,12 @@ public class SaveLoadSystem : MonoBehaviour
 
     public Transform startPosiiton;
     public GameObject[] loadButton;
-
     public string m_path;
+    public GameObject DontDestory;
 
     private void Start()
     {
+        DontDestroyOnLoad(DontDestory);
         m_path = Application.dataPath + "/SaveGame/";
     }
 
@@ -73,18 +74,25 @@ public class SaveLoadSystem : MonoBehaviour
         WarpManager.Instance.Warp(saveData.sceneName, "WarpStart", faceDirection);
     }
 
+    private void SetTitleScreenActive(bool active)
+    {
+        TitleScreenView.Instance.SetActive(active);
+    }
+
     private void SaveGame()
     {
         formatter.Serialize(file, saveData);
         file.Close();
     }
 
-    public void DoNewGameSave(string slotName)
+    public void DoNewGame(string slotName)
     {
         m_slotName = slotName;
         InitializeSaveData();
         InitializeNewSave();
         SaveGame();
+        SetTitleScreenActive(false);
+        DoLoad();
     }
 
     private void InitializeNewSave()

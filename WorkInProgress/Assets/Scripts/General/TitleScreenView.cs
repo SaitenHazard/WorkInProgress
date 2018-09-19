@@ -20,6 +20,18 @@ public class TitleScreenView : MonoBehaviour
         titleScreenBack = GetComponent<Image>();
     }
 
+    public void SetActive(bool active)
+    {
+        Image [] image = GetComponentsInChildren<Image>();
+        Text [] text = GetComponentsInChildren<Text>();
+
+        for (int i = 0; i < image.Length; i++)
+            image[i].enabled = active;
+
+        for (int i = 0; i < text.Length; i++)
+            text[i].enabled = active;
+    }
+
     private void Start()
     {
         indexVertical = 0;
@@ -40,11 +52,6 @@ public class TitleScreenView : MonoBehaviour
             ;
     }
 
-    private void LoadGame()
-    {
-
-    }
-
     private void DoNewSave()
     {
         SaveLoadSystem saveLoadSystem = GetComponent<SaveLoadSystem>();
@@ -52,7 +59,7 @@ public class TitleScreenView : MonoBehaviour
 
         string slotName = "Slot" + slotNumber;
 
-        saveLoadSystem.DoNewGameSave(slotName);
+        saveLoadSystem.DoNewGame(slotName);
     }
 
     public void ChangeIndex(bool up, bool down, bool right, bool left)

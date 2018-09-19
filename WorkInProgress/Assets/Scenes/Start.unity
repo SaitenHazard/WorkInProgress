@@ -4241,6 +4241,8 @@ MonoBehaviour:
   - {fileID: 1601820535}
   - {fileID: 491621048}
   - {fileID: 1135740293}
+  m_path: 
+  DontDestory: {fileID: 1992181284}
 --- !u!1 &1797818978
 GameObject:
   m_ObjectHideFlags: 0
