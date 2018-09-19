@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class SaveLoadSystem : MonoBehaviour
 {
-    private BinaryFormatter formatter;
     FileStream file;
     SaveData saveData;
+    private string m_path;
+    private BinaryFormatter formatter;
 
     private string m_slotName;
 
     public Transform startPosiiton;
     public GameObject[] loadButton;
-    public string m_path;
     public GameObject DontDestory;
 
     private void Start()
@@ -63,13 +63,22 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void DoLoad()
     {
-        PlayerInstant.Instance.GetComponent<PlayerInventory>().SetInventoryArray(saveData.inventory);
-        PlayerInstant.Instance.GetComponentInChildren<Attackable>().SetHealth(saveData.health);
-        PlayerInstant.Instance.GetComponent<PlayerWallet>().SetCoin(saveData.coin);
-        startPosiiton.position = new Vector3(saveData.startPosition[0], saveData.startPosition[1], 
-            saveData.startPosition[2]);
+        PlayerInstant.Instance.GetComponent<PlayerInventory>().
+            SetInventoryArray(saveData.inventory);
 
-        Vector2 faceDirection = new Vector2(saveData.faceDirection[0], saveData.faceDirection[1]);
+        PlayerInstant.Instance.GetComponentInChildren<Attackable>().
+            SetHealth(saveData.health);
+
+        PlayerInstant.Instance.GetComponent<PlayerWallet>().
+            SetCoin(saveData.coin);
+
+        startPosiiton.position = new Vector3(saveData.startPosition[0], 
+            saveData.startPosition[1], saveData.startPosition[2]);
+
+        Vector2 faceDirection = new Vector2(saveData.faceDirection[0], 
+            saveData.faceDirection[1]);
+
+        m_slotName = saveData.slotName;
 
         WarpManager.Instance.Warp(saveData.sceneName, "WarpStart", faceDirection);
     }
@@ -79,18 +88,53 @@ public class SaveLoadSystem : MonoBehaviour
         TitleScreenView.Instance.SetActive(active);
     }
 
-    private void SaveGame()
+    private void SaveFile()
     {
         formatter.Serialize(file, saveData);
         file.Close();
     }
 
+    private void InitialSave(string sceneName)
+    {
+        saveData.date = DateTime.Now.ToShortDateString();
+        saveData.time = DateTime.Now.ToLongTimeString();
+
+        saveData.coin = PlayerInstant.Instance.GetComponent<PlayerWallet>().GetCoins();
+        saveData.health = PlayerInstant.Instance.GetComponent<Attackable>().GetHealth();
+
+        saveData.startPosition[0] = PlayerInstant.Instance.
+            GetComponent<Transform>().position.x;
+        saveData.startPosition[1] = PlayerInstant.Instance.
+            GetComponent<Transform>().position.y;
+        saveData.startPosition[2] = PlayerInstant.Instance.
+            GetComponent<Transform>().position.z;
+
+        saveData.faceDirection[0] = PlayerInstant.Instance.
+            GetComponent<CharacterMovementModel>().GetFacingDirection().x;
+        saveData.faceDirection[1] = PlayerInstant.Instance.
+            GetComponent<CharacterMovementModel>().GetFacingDirection().y;
+
+        saveData.inventory = PlayerInstant.Instance.GetComponent<PlayerInventory>().
+            GetEntireInventory();
+
+        saveData.slotName = m_slotName;
+        saveData.sceneName = sceneName;
+    }
+
+    public void DoSaveGame()
+    {
+        InitializeSaveData();
+        InitializeNewSave();
+        SaveFile();
+    }
+
     public void DoNewGame(string slotName)
     {
         m_slotName = slotName;
+
         InitializeSaveData();
         InitializeNewSave();
-        SaveGame();
+        SaveFile();
         SetTitleScreenActive(false);
         DoLoad();
     }

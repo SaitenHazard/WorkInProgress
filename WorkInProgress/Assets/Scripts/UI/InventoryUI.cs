@@ -25,7 +25,7 @@ public class InventoryUI : MonoBehaviour {
 
     private void UpdateSlot()
     {
-        inventory = m_Inventory.getEntireInventory();
+        inventory = m_Inventory.GetEntireInventory();
 
         for(int i = 0; i < m_Inventory.GetInventoryMaxSize(); i++)
         {

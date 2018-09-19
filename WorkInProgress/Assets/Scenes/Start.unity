@@ -2442,6 +2442,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 850482888}
+  - component: {fileID: 850482889}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2466,6 +2467,24 @@ Transform:
   m_Father: {fileID: 1992181285}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &850482889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 850482887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabe415e8dc95a34d82ad3000544d811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosiiton: {fileID: 511239757}
+  loadButton:
+  - {fileID: 1601820535}
+  - {fileID: 491621048}
+  - {fileID: 1135740293}
+  m_path: 
+  DontDestory: {fileID: 1992181284}
 --- !u!1 &970484746
 GameObject:
   m_ObjectHideFlags: 0
@@ -4143,7 +4162,6 @@ GameObject:
   - component: {fileID: 1746645309}
   - component: {fileID: 1746645312}
   - component: {fileID: 1746645311}
-  - component: {fileID: 1746645313}
   - component: {fileID: 1746645310}
   m_Layer: 5
   m_Name: TitleScreen
@@ -4225,24 +4243,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1746645308}
---- !u!114 &1746645313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1746645308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabe415e8dc95a34d82ad3000544d811, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPosiiton: {fileID: 511239757}
-  loadButton:
-  - {fileID: 1601820535}
-  - {fileID: 491621048}
-  - {fileID: 1135740293}
-  m_path: 
-  DontDestory: {fileID: 1992181284}
 --- !u!1 &1797818978
 GameObject:
   m_ObjectHideFlags: 0
@@ -4919,10 +4919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafc482665038b5459abab95feb2975b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DontDestory: {fileID: 1992181284}
-  warpScene: WorkInProgress
-  warpDestination: WarpStart
-  faceDirection: {x: 0, y: -1}
 --- !u!1 &2028152390
 GameObject:
   m_ObjectHideFlags: 0

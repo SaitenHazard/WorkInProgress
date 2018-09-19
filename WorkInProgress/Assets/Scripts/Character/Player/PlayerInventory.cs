@@ -95,7 +95,7 @@ public class PlayerInventory : MonoBehaviour
         return 0;
     }
 
-    public enumInventory[] getEntireInventory()
+    public enumInventory[] GetEntireInventory()
     {
         return inventoryArray;
     }

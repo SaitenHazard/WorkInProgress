@@ -54,7 +54,7 @@ public class TitleScreenView : MonoBehaviour
 
     private void DoNewSave()
     {
-        SaveLoadSystem saveLoadSystem = GetComponent<SaveLoadSystem>();
+        SaveLoadSystem saveLoadSystem = GetComponentInParent<SaveLoadSystem>();
         int slotNumber = indexVertical + 1;
 
         string slotName = "Slot" + slotNumber;
