@@ -9,6 +9,7 @@ public class InteractableSave : InteractableBase
     private void Awake()
     {
         speechBase = GetComponent<SpeechBase>();
+        base.Awake();
     }
 
     public override void OnInteract()

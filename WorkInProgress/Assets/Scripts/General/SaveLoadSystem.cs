@@ -8,7 +8,6 @@ public class SaveLoadSystem : MonoBehaviour
 {
     FileStream file;
     SaveData saveData;
-    private string m_path;
     private BinaryFormatter formatter;
 
     private string m_slotName;
@@ -28,14 +27,14 @@ public class SaveLoadSystem : MonoBehaviour
     {
         DontDestroyOnLoad(DontDestory);
 
-        m_path = Application.dataPath.ToString() + "/SaveGame/";
     }
 
     private void InitializeSaveData()
     {
         formatter = new BinaryFormatter();
 
-        string path = m_path + m_slotName + ".dat";
+        string path = Application.dataPath.ToString() + "/SaveGame/" + 
+            m_slotName + ".dat";
 
         file = File.Open(path, FileMode.Create);
 
@@ -44,34 +43,42 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void CheckSaveFiles()
     {
-        m_path = Application.dataPath.ToString() + "/SaveGame/";
+        Debug.Log(Application.dataPath.ToString() + "/SaveGame/" + "Slot1.dat");
 
-        if(!File.Exists(m_path + "/Slot1.dat"))
+        string path = Application.dataPath.ToString() + "/SaveGame/";
+
+        if(!File.Exists(path + "/Slot1.dat"))
         {
             loadButton[0].SetActive(false);
         }
 
-        if (!File.Exists(m_path + "/Slot2.dat"))
+        if (!File.Exists(path + "/Slot2.dat"))
         {
             loadButton[1].SetActive(false);
         }
 
-        if (!File.Exists(m_path + "/Slot3.dat"))
+        if (!File.Exists(path + "/Slot3.dat"))
         {
             loadButton[2].SetActive(false);
         }
     }
 
-    public void SetLoadGame(string slotName)
+    public void LoadGame(string slotName)
     {
-        string path = m_path + slotName + ".dat";
+        formatter = new BinaryFormatter();
+
+        Debug.Log(Application.dataPath.ToString() + "/SaveGame/" + slotName + ".dat");
+
+        string path = Application.dataPath.ToString() + "/SaveGame/" + slotName + ".dat";
+
         file = File.Open(path, FileMode.Open);
         saveData = (SaveData)formatter.Deserialize(file);
+        file.Close();
 
         DoLoad();
     }
 
-    public void DoLoad()
+    private void DoLoad()
     {
         PlayerInstant.Instance.GetComponent<PlayerInventory>().
             SetInventoryArray(saveData.inventory);
@@ -91,6 +98,8 @@ public class SaveLoadSystem : MonoBehaviour
         m_slotName = saveData.slotName;
 
         WarpManager.Instance.Warp(saveData.sceneName, "WarpStart", faceDirection);
+
+        SetTitleScreenActive(false);
     }
 
     private void SetTitleScreenActive(bool active)
@@ -104,13 +113,14 @@ public class SaveLoadSystem : MonoBehaviour
         file.Close();
     }
 
-    private void InitialSave(string sceneName)
+    private void InitializeSave()
     {
         saveData.date = DateTime.Now.ToShortDateString();
         saveData.time = DateTime.Now.ToLongTimeString();
 
         saveData.coin = PlayerInstant.Instance.GetComponent<PlayerWallet>().GetCoins();
-        saveData.health = PlayerInstant.Instance.GetComponent<Attackable>().GetHealth();
+        saveData.health = PlayerInstant.Instance.
+            GetComponentInChildren<Attackable>().GetHealth();
 
         saveData.startPosition[0] = PlayerInstant.Instance.
             GetComponent<Transform>().position.x;
@@ -128,13 +138,13 @@ public class SaveLoadSystem : MonoBehaviour
             GetEntireInventory();
 
         saveData.slotName = m_slotName;
-        saveData.sceneName = sceneName;
+        saveData.sceneName = SceneManager.GetActiveScene().name;
     }
 
     public void DoSaveGame()
     {
         InitializeSaveData();
-        InitializeNewSave();
+        InitializeSave();
         SaveFile();
     }
 
@@ -145,7 +155,6 @@ public class SaveLoadSystem : MonoBehaviour
         InitializeSaveData();
         InitializeNewSave();
         SaveFile();
-        SetTitleScreenActive(false);
         DoLoad();
     }
 

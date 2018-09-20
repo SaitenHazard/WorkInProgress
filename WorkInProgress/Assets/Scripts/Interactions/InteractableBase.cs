@@ -38,6 +38,7 @@ public abstract class InteractableBase : MonoBehaviour
                 speechBubble.ShowSpeechBubble(enumSpeechBubble);
                 playerStats.SetInteractableBase(this);
             }
+
             else
             {
                 playerStats.SetInteractableBase(null);

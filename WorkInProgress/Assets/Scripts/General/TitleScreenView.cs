@@ -7,19 +7,21 @@ public class TitleScreenView : MonoBehaviour
     public static TitleScreenView Instance;
 
     public GameObject [] Slots;
-    private RectTransform [][] slotChildTransforms = new RectTransform [3][];
 
     public RectTransform selectedTranform;
     public Image titleScreenBack; 
 
     private int indexVertical;
     private int indexHorizontal;
+    private SaveLoadSystem saveLoadSystem;
+    private RectTransform[][] slotChildTransforms = new RectTransform[3][];
 
     private void Awake()
     {
         Instance = this;
 
         titleScreenBack = GetComponent<Image>();
+        saveLoadSystem = GetComponentInParent<SaveLoadSystem>();
     }
 
     private void Start()
@@ -54,22 +56,19 @@ public class TitleScreenView : MonoBehaviour
 
     public void ActionPresed()
     {
+        string slotNumber = GetSlotName();
+
         if (indexHorizontal == 1)
-        {
-            DoNewSave();
-        }
+            saveLoadSystem.DoNewGame(slotNumber);
         else
-            ;
+            saveLoadSystem.LoadGame(slotNumber);
     }
 
-    private void DoNewSave()
+    private string GetSlotName()
     {
-        SaveLoadSystem saveLoadSystem = GetComponentInParent<SaveLoadSystem>();
         int slotNumber = indexVertical + 1;
-
         string slotName = "Slot" + slotNumber;
-
-        saveLoadSystem.DoNewGame(slotName);
+        return slotName;
     }
 
     public void ChangeIndex(bool up, bool down, bool right, bool left)
