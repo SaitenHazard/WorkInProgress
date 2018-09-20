@@ -17,6 +17,13 @@ public class SaveLoadSystem : MonoBehaviour
     public GameObject[] loadButton;
     public GameObject DontDestory;
 
+    public static SaveLoadSystem Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         DontDestroyOnLoad(DontDestory);
@@ -64,7 +71,7 @@ public class SaveLoadSystem : MonoBehaviour
         DoLoad();
     }
 
-    private void DoLoad()
+    public void DoLoad()
     {
         PlayerInstant.Instance.GetComponent<PlayerInventory>().
             SetInventoryArray(saveData.inventory);

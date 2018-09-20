@@ -32,10 +32,6 @@ public class TitleScreenView : MonoBehaviour
             slotChildTransforms[i] = Slots[i].GetComponentsInChildren<RectTransform>(true);
         }
 
-        for (int i = 0; i < Slots.Length; i++)
-            for (int j = 0; j < slotChildTransforms[i].Length; j++)
-                Debug.Log(slotChildTransforms[i][j]);
-
         UpdateSelected();
     }
 
@@ -58,8 +54,10 @@ public class TitleScreenView : MonoBehaviour
 
     public void ActionPresed()
     {
-        if (indexHorizontal == 0)
+        if (indexHorizontal == 1)
+        {
             DoNewSave();
+        }
         else
             ;
     }

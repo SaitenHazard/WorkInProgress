@@ -671,9 +671,38 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114739170143077866, guid: d673877d3d741bd4fb365cf7e83e3042,
+        type: 2}
+      propertyPath: empty
+      value: 
+      objectReference: {fileID: 21300000, guid: 21a3233b53974a640b999b28fe4f0108,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d673877d3d741bd4fb365cf7e83e3042, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &435250445 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1390464129825704, guid: d673877d3d741bd4fb365cf7e83e3042,
+    type: 2}
+  m_PrefabInternal: {fileID: 435250444}
+--- !u!114 &435250446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 435250445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9ad9828d17628469e7bc156b69bb87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speech:
+  - GAME SAVED!
+  faceDirection:
+  - {x: 0, y: 0}
+  Object:
+  - {fileID: 0}
+  speechBubbleEnum: 04000000
 --- !u!4 &451561769 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4165491021191736, guid: 759c67bb5692b4346889e66524364234,

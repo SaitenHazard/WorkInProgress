@@ -10,7 +10,7 @@ public abstract class InteractableBase : MonoBehaviour
     private enumSpeechBubbles enumSpeechBubble;
     private PlayerStats playerStats;
 
-    private void Awake()
+    public void Awake()
     {
         playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
 

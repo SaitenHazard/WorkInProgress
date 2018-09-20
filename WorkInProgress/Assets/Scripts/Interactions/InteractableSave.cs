@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class InteractableSave : InteractableBase
 {
+    SpeechBase speechBase;
+
+    private void Awake()
+    {
+        speechBase = GetComponent<SpeechBase>();
+    }
+
     public override void OnInteract()
     {
-        Debug.Log("Save");
+        speechBase.Initialize();
+        speechBase.DoSpeech();
+        SaveLoadSystem.Instance.DoSaveGame();
         return;
     }
 }
