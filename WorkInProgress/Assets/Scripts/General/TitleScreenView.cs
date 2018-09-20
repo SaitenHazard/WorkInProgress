@@ -6,7 +6,8 @@ public class TitleScreenView : MonoBehaviour
 {
     public static TitleScreenView Instance;
 
-    public GameObject[] Slots;
+    public GameObject [] Slots;
+    public Transform [][] slotChildTransforms;
     public Transform selectedTranform;
     public Image titleScreenBack; 
 
@@ -20,6 +21,19 @@ public class TitleScreenView : MonoBehaviour
         titleScreenBack = GetComponent<Image>();
     }
 
+    private void Start()
+    {
+        indexVertical = 0;
+        indexHorizontal = 0;
+        UpdateSelected();
+
+        Transform[] childTransforms = Slots[indexVertical].
+            GetComponentsInChildren<Transform>();
+
+        for (int i = 0; i < Slots.Length; i++)
+            slotChildTransforms[i] = Slots[i].GetComponentsInChildren<Transform>();
+    }
+
     public void SetActive(bool active)
     {
         Image [] image = GetComponentsInChildren<Image>();
@@ -30,13 +44,6 @@ public class TitleScreenView : MonoBehaviour
 
         for (int i = 0; i < text.Length; i++)
             text[i].enabled = active;
-    }
-
-    private void Start()
-    {
-        indexVertical = 0;
-        indexHorizontal = 0;
-        UpdateSelected();
     }
 
     public bool GetTitleScreenActive()
@@ -101,10 +108,12 @@ public class TitleScreenView : MonoBehaviour
 
     private void UpdateSelected()
     {
-        Transform []childTransforms = Slots[indexVertical].
-            GetComponentsInChildren<Transform>();
+        Debug.Log(selectedTranform);
+        Debug.Log(slotChildTransforms[indexVertical]);
+        Debug.Log(slotChildTransforms[indexVertical][indexHorizontal]);
 
-        selectedTranform.position = childTransforms[indexHorizontal+1].position;
+        selectedTranform.position = 
+            slotChildTransforms[indexVertical][indexHorizontal+1].position;
     }
 }
 

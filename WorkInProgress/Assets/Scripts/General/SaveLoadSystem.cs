@@ -20,7 +20,8 @@ public class SaveLoadSystem : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(DontDestory);
-        m_path = Application.dataPath + "/SaveGame/";
+
+        m_path = Application.dataPath.ToString() + "/SaveGame/";
     }
 
     private void InitializeSaveData()
@@ -36,6 +37,8 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void CheckSaveFiles()
     {
+        m_path = Application.dataPath.ToString() + "/SaveGame/";
+
         if(!File.Exists(m_path + "/Slot1.dat"))
         {
             loadButton[0].SetActive(false);
