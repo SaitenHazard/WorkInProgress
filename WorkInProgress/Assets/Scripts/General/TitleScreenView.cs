@@ -7,8 +7,9 @@ public class TitleScreenView : MonoBehaviour
     public static TitleScreenView Instance;
 
     public GameObject [] Slots;
-    public Transform [][] slotChildTransforms;
-    public Transform selectedTranform;
+    private RectTransform [][] slotChildTransforms = new RectTransform [3][];
+
+    public RectTransform selectedTranform;
     public Image titleScreenBack; 
 
     private int indexVertical;
@@ -24,14 +25,18 @@ public class TitleScreenView : MonoBehaviour
     private void Start()
     {
         indexVertical = 0;
-        indexHorizontal = 0;
-        UpdateSelected();
-
-        Transform[] childTransforms = Slots[indexVertical].
-            GetComponentsInChildren<Transform>();
+        indexHorizontal = 1;
 
         for (int i = 0; i < Slots.Length; i++)
-            slotChildTransforms[i] = Slots[i].GetComponentsInChildren<Transform>();
+        {
+            slotChildTransforms[i] = Slots[i].GetComponentsInChildren<RectTransform>(true);
+        }
+
+        for (int i = 0; i < Slots.Length; i++)
+            for (int j = 0; j < slotChildTransforms[i].Length; j++)
+                Debug.Log(slotChildTransforms[i][j]);
+
+        UpdateSelected();
     }
 
     public void SetActive(bool active)
@@ -87,33 +92,32 @@ public class TitleScreenView : MonoBehaviour
                 indexVertical = 0;
         }
 
-        else if (right)
+        if (right)
         {
             indexHorizontal--;
 
-            if (indexHorizontal == -1)
-                indexHorizontal = 1;
+            if (indexHorizontal == 0)
+                indexHorizontal = 2;
         }
 
         else if (left)
         {
             indexHorizontal++;
 
-            if (indexHorizontal == 2)
-                indexHorizontal = 0;
-        } 
+            if (indexHorizontal == 3)
+                indexHorizontal = 1;
+        }
 
         UpdateSelected();
     }
 
     private void UpdateSelected()
     {
-        Debug.Log(selectedTranform);
-        Debug.Log(slotChildTransforms[indexVertical]);
-        Debug.Log(slotChildTransforms[indexVertical][indexHorizontal]);
+        if (slotChildTransforms[indexVertical][indexHorizontal].
+            GetComponent<Text>().IsActive() == false)
+            indexHorizontal--;
 
-        selectedTranform.position = 
-            slotChildTransforms[indexVertical][indexHorizontal+1].position;
+        selectedTranform.position = slotChildTransforms[indexVertical][indexHorizontal].position;
     }
 }
 
