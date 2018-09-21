@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpeechBase : MonoBehaviour
 {
     public string[] speech;
+    public string[] speaker;
     public Vector2[] faceDirection;
     public GameObject[] Object;
     public enumSpeechBubbles[] speechBubbleEnum;
@@ -35,7 +36,7 @@ public class SpeechBase : MonoBehaviour
             return;
         }
 
-        speechTextUI.SetString(speech[index]);
+        speechTextUI.SetString(speech[index], speaker[index]);
 
         if(Object[index] == null)
         {

@@ -349,6 +349,10 @@ MonoBehaviour:
   - Hi!
   - Look Right!
   - PopBubble
+  speaker:
+  - Signboard
+  - Signboard
+  - Signboard
   faceDirection:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
@@ -698,6 +702,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speech:
   - GAME SAVED!
+  speaker:
+  - SYSTEM
   faceDirection:
   - {x: 0, y: 0}
   Object:

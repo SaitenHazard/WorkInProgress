@@ -49,36 +49,39 @@ public class PlayerControl : CharacterBaseControl
 
     private void UpdateMenus()
     {
-        if (TitleScreenView.Instance.GetTitleScreenActive() == true)
+        if (TitleScreenView.Instance != null)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-                TitleScreenView.Instance.ChangeIndex(true, false, false, false);
-
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-                TitleScreenView.Instance.ChangeIndex(false, true, false, false);
-
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-                TitleScreenView.Instance.ChangeIndex(false, false, true, false);
-
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                TitleScreenView.Instance.ChangeIndex(false, false, false, true);
-
-            if (Input.GetKeyDown(KeyCode.D))
+            if (TitleScreenView.Instance.GetTitleScreenActive() == true)
             {
-                TitleScreenView.Instance.ActionPresed();
-            }
-        }
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                    TitleScreenView.Instance.ChangeIndex(true, false, false, false);
 
-        if (menuView.GetMenuActive() == true)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                menuView.ChangeIndex(true);
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                    TitleScreenView.Instance.ChangeIndex(false, true, false, false);
+
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                    TitleScreenView.Instance.ChangeIndex(false, false, true, false);
+
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    TitleScreenView.Instance.ChangeIndex(false, false, false, true);
+
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    TitleScreenView.Instance.ActionPresed();
+                }
             }
 
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (menuView.GetMenuActive() == true)
             {
-                menuView.ChangeIndex(false);
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    menuView.ChangeIndex(true);
+                }
+
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    menuView.ChangeIndex(false);
+                }
             }
         }
     }

@@ -43,8 +43,6 @@ public class SaveLoadSystem : MonoBehaviour
 
     private void CheckSaveFiles()
     {
-        Debug.Log(Application.dataPath.ToString() + "/SaveGame/" + "Slot1.dat");
-
         string path = Application.dataPath.ToString() + "/SaveGame/";
 
         if(!File.Exists(path + "/Slot1.dat"))

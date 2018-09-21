@@ -7,8 +7,8 @@ public class SpeechTextUI : MonoBehaviour
 {
     public static SpeechTextUI Instance;
 
-    private Text text;
-    private Image back;
+    private Text[] texts;
+    private Image[] images;
 
     private PlayTimeUI playTimeUI;
 
@@ -16,8 +16,8 @@ public class SpeechTextUI : MonoBehaviour
     {
         Instance = this;
 
-        text = GetComponentInChildren<Text>();
-        back = GetComponentInChildren<Image>();
+        texts = GetComponentsInChildren<Text>();
+        images = GetComponentsInChildren<Image>();
         playTimeUI = PlayTimeUI.instance;
     }
 
@@ -28,19 +28,23 @@ public class SpeechTextUI : MonoBehaviour
 
     public void ActivateSpeechBox(bool active)
     {
-        text.enabled = active;
-        back.enabled = active;
+        for (int i = 0; i < texts.Length; i++)
+            texts[i].enabled = active;
 
-        playTimeUI.Activate(!active);
+        for (int i = 0; i < images.Length; i++)
+            images[i].enabled = active;
+
+        //playTimeUI.Activate(!active);
     }
 
     public bool GetTextBoxActive()
     {
-        return back.IsActive();
+        return images[0].IsActive();
     }
 
-    public void SetString(string String)
+    public void SetString(string speach, string speaker)
     {
-        text.text = String;
+        texts[0].text = speach;
+        texts[1].text = speaker;
     }
 }
