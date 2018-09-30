@@ -44,10 +44,17 @@ public class Attackable : MonoBehaviour
         {
             int damage = (ColliderObject.GetComponentInParent<PlayerStats>()).GetDamage();
 
-            attackerMovementModel =
-                ColliderObject.GetComponentInParent<CharacterMovementModel>();
+            attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
 
             DoHit(damage, attackerMovementModel.GetFacingDirection());
+        }
+
+        if(ColliderObject.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
+        {
+            Destroy(ColliderObject.gameObject);
+
+            int damage = PlayerInstant.Instance.GetComponent<PlayerStats>().GetDamage();
+            DoHit(damage, ColliderObject.GetComponent<Projectile>().GetMovementDirection());
         }
     }
 
@@ -55,6 +62,10 @@ public class Attackable : MonoBehaviour
     {
         if (health <= 0)
             return;
+
+        Debug.Log("hitDirection = " + hitDirection);
+        Debug.Log("pushBackTime = " + pushBackTime);
+        Debug.Log("pushBackSpeed = " + pushBackSpeed);
 
         m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed);
 

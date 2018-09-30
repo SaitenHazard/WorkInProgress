@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     private float speed;
     private bool projectileActive;
     private bool gameStateFrozen;
+    private int projectileNumbers;
 
     private InteractableBase m_interactableBase;
 
@@ -86,19 +87,17 @@ public class PlayerStats : MonoBehaviour
 
     public bool IsProjetileActive()
     {
-        return projectileActive;
+        return projectileNumbers > 0;
     }
 
     public void SetProjectile()
     {
-        projectileActive = true;
-        StartCoroutine(RevertProjectile());
+        projectileNumbers = 5;
     }
 
-    private IEnumerator RevertProjectile()
+    public void DeductProjectiletNumber()
     {
-        yield return new WaitForSeconds(yieldTime);
-        projectileActive = false;
+        projectileNumbers--;
     }
 
     private IEnumerator RevertSpeedUp()

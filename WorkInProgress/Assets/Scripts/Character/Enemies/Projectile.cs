@@ -15,14 +15,46 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        speed = 2;
+    }
+
+    public void SetDirectionTowardsPlayerFacing()
+    {
+        direction = PlayerInstant.Instance.GetComponent<CharacterMovementModel>().GetFacingDirection();
+    }
+
+    public void SetDirectionTowardsPlayer()
+    {
         direction = PlayerInstant.Instance.transform.position - transform.position;
         direction = direction.normalized;
+    }
+
+    public Vector2 GetMovementDirection()
+    {
+        return direction;
+    }
+
+    public Vector2 GetReverseDirection()
+    {
+        if (direction.x == 1)
+            direction.x = -1;
+
+        else if (direction.x == -1)
+            direction.x = 1;
+
+        else if (direction.y == 1)
+            direction.y = -1;
+
+        else if (direction.y == -1)
+            direction.y = 1;
+
+        return direction;
     }
 
     public Vector2 GetHitDirection()
     {
         float angle;
-        Vector2 direction = Vector2.zero;
+        direction = Vector2.zero;
 
         angle = Mathf.Atan2(transform.position.y - PlayerInstant.Instance.transform.position.y,
             transform.position.x - PlayerInstant.Instance.transform.position.x) * 180 / Mathf.PI * -1;
@@ -56,7 +88,7 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        m_rigidbody2D.velocity = direction * 1.5f;
+        m_rigidbody2D.velocity = direction * speed;
     }
 
     private void OnBecameInvisible()

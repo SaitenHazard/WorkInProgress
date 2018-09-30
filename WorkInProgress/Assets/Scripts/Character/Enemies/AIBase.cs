@@ -88,6 +88,7 @@ public class AIBase : MonoBehaviour
                 new Vector2(transform.position.x - 0.25f, transform.position.y);
 
         cloneObject.SetActive(true);
+        cloneObject.GetComponent<Projectile>().SetDirectionTowardsPlayer();
         yield return new WaitForSeconds(3);
 
         StartCoroutine(ProjectileInstantiate());

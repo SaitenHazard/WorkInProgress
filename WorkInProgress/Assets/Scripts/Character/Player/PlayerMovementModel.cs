@@ -23,6 +23,8 @@ public class PlayerMovementModel : CharacterMovementModel
         SetMovementFrozen(true);
 
         if (playerStats.IsProjetileActive() == true)
+        {
             playerProjectile.DoPorjectile();
+        }
     }
 }
