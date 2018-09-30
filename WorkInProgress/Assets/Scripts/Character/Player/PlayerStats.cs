@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     private int damage;
 
     private float speed;
-    private bool projectile;
+    private bool projectileActive;
     private bool gameStateFrozen;
 
     private InteractableBase m_interactableBase;
@@ -68,21 +68,43 @@ public class PlayerStats : MonoBehaviour
         StartCoroutine(RevertDamageUp());
     }
 
+    public void SpeedUp()
+    {
+        speed = 2.5f;
+        StartCoroutine(RevertSpeedUp());
+    }
+
     public bool IsDamageUp()
     {
         return damage == 2;
     }
 
+    public bool IsSpeedUp()
+    {
+        return speed == 2;
+    }
+
+    public bool IsProjetileActive()
+    {
+        return projectileActive;
+    }
+
     public void SetProjectile()
     {
-        projectile = true;
+        projectileActive = true;
         StartCoroutine(RevertProjectile());
     }
 
     private IEnumerator RevertProjectile()
     {
         yield return new WaitForSeconds(yieldTime);
-        projectile = false;
+        projectileActive = false;
+    }
+
+    private IEnumerator RevertSpeedUp()
+    {
+        yield return new WaitForSeconds(yieldTime);
+        speed = 1.5f;
     }
 
     private IEnumerator RevertDamageUp()

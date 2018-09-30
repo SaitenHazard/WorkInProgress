@@ -14,9 +14,9 @@ public class CharacterMovementModel : MonoBehaviour
 
     private float recoilTime = 0.5f;
     private float m_pushBackSpeed;
-    private PlayerStats playerStats;
+    protected PlayerStats playerStats;
 
-    private void Awake()
+    protected void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
         playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();

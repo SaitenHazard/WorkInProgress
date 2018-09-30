@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StrengthPickup : BasePickup {
-
+public class StrengthPickup : BasePickup
+{
     public override void UsePickup()
-    { 
-        PlayerStats playerStats = PlayerInstant.Instance.transform.gameObject.
-            GetComponent<PlayerStats>();
+    {
+        PlayerStats playerStats = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerStats>();
 
-        if(playerStats.IsDamageUp() == false)
+        if (playerStats.IsDamageUp() == false)
         {
             playerStats.DamageUp();
             DoNonInstantiateAnimation();

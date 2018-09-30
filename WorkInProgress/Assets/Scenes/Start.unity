@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 188311482}
   - component: {fileID: 188311476}
   - component: {fileID: 188311485}
+  - component: {fileID: 188311486}
   - component: {fileID: 188311484}
   - component: {fileID: 188311475}
   m_Layer: 0
@@ -682,6 +683,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd365535edae2e5419e9ca711f728497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &188311486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 188311473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc16dda9d24e9f4cb635054d3147be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileObject: {fileID: 55700162}
 --- !u!1 &194997714
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +730,7 @@ RectTransform:
   - {fileID: 720395088}
   - {fileID: 1746645309}
   - {fileID: 1902971205}
+  - {fileID: 365750749}
   m_Father: {fileID: 850482888}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1059,6 +1073,39 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 133, y: -225}
   m_SizeDelta: {x: 266, y: 450}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &365750748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 365750749}
+  m_Layer: 5
+  m_Name: Shop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &365750749
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 365750748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 194997715}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000019073486, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &422876193
 GameObject:
@@ -4312,7 +4359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1746645309
 RectTransform:
   m_ObjectHideFlags: 0

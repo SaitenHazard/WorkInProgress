@@ -11,6 +11,8 @@ public enum enumInventory
 {
     StrengthPickup,
     HealthPickup,
+    SpeedPickup,
+    ProjectilePickup,
     NULL
 };
 

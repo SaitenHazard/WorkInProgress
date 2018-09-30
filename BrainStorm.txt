@@ -1,3 +1,13 @@
+World Building
+-Adventure time, anything is possible
+-Packed with references
+
+Terrain
+-Candy
+-Cloud
+-Ruins
+-
+
 Enemy
 -Basic/Jelly: Petrol -> Chase -> Colllider
 -Basic + Generate Hazard: Petrol -> Chase -> Collider - Generate Slime
@@ -15,6 +25,23 @@ Inventory Item List
 -Invinsible
 -New Teleport Station
 -Save Game
+-Invinsibility
+-Invisibility
+-Radius
+-Ally
+-Instant Recharge
+-False Target
+-Protective Wall
+-Paralysis Bonus
+-Poison Bonus
+
+Armor
+-Extra HP Bar
+-More coin drops
+-Extra MP Bar
+-
+
+#different types of items can be combined eg: Damage Up + projectile = better projectile
 
 Menu
 -Options

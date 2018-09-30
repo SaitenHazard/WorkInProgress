@@ -34,7 +34,7 @@ public class SpeechTextUI : MonoBehaviour
         for (int i = 0; i < images.Length; i++)
             images[i].enabled = active;
 
-        //playTimeUI.Activate(!active);
+        playTimeUI.Activate(!active);
     }
 
     public bool GetTextBoxActive()

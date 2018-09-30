@@ -16,7 +16,7 @@ public class BasePickup : MonoBehaviour
     private PickupUseGeneralAnimation pickupUseGeneralAnimation;
     private RectTransform slotTrasform;
 
-    private void Awake()
+    protected void Awake()
     {
         pickupAnimation = PlayerInstant.Instance.GetComponentInChildren<PickupAnimation>();
     }
