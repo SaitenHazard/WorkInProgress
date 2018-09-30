@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
 
     private RectTransform rectTransform;
     private float width;
-    private int maxHP;
+    private float maxHP;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        int currentHP = attackable.GetHealth();
+        float currentHP = attackable.GetHealth();
 
         float newWidth = (width / maxHP) * currentHP;
 

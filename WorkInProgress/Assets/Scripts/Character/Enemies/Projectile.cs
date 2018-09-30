@@ -7,10 +7,21 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D m_rigidbody2D;
     private Vector2 direction;
     private float speed;
+    private float m_damage;
 
     private void Awake()
     {
         m_rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    public void SetDamage(float damage)
+    {
+        m_damage = damage;
+    }
+
+    public float GetDamage()
+    {
+        return m_damage;
     }
 
     private void Start()

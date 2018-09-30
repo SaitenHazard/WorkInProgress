@@ -40,7 +40,11 @@ public class PlayerProjectile : MonoBehaviour
         else
             cloneObject.transform.position = new Vector2(transform.position.x - 0.25f, transform.position.y);
 
+        Projectile projectile = cloneObject.GetComponent<Projectile>();
+
+        projectile.SetDirectionTowardsPlayerFacing();
+        projectile.SetDamage(GetComponent<PlayerStats>().GetDamage());
+
         cloneObject.SetActive(true);
-        cloneObject.GetComponent<Projectile>().SetDirectionTowardsPlayerFacing();
     }
 }

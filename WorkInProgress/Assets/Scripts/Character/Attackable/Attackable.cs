@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Attackable : MonoBehaviour 
 {
-    public int health;
-    public int maxHealth;
+    public float health;
+    public float maxHealth;
     public float pushBackTime;
     public float pushBackSpeed;
 
@@ -21,12 +21,12 @@ public class Attackable : MonoBehaviour
         parentObject = transform.parent.gameObject;
     }
 
-    public int GetHealth()
+    public float GetHealth()
     {
         return health;
     }
 
-    public int GetMaxHealth()
+    public float GetMaxHealth()
     {
         return maxHealth;
     }
@@ -53,19 +53,16 @@ public class Attackable : MonoBehaviour
         {
             Destroy(ColliderObject.gameObject);
 
-            int damage = PlayerInstant.Instance.GetComponent<PlayerStats>().GetDamage();
+            float damage = ColliderObject.GetComponent<Projectile>().GetDamage();
+
             DoHit(damage, ColliderObject.GetComponent<Projectile>().GetMovementDirection());
         }
     }
 
-    protected void DoHit(int damage, Vector2 hitDirection)
+    protected void DoHit(float damage, Vector2 hitDirection)
     {
         if (health <= 0)
             return;
-
-        Debug.Log("hitDirection = " + hitDirection);
-        Debug.Log("pushBackTime = " + pushBackTime);
-        Debug.Log("pushBackSpeed = " + pushBackSpeed);
 
         m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed);
 
@@ -87,7 +84,7 @@ public class Attackable : MonoBehaviour
         if (health >= maxHealth) health = maxHealth;
     }
 
-    public void SetHealth(int l_health)
+    public void SetHealth(float l_health)
     {
         health = l_health;
     }
@@ -97,7 +94,7 @@ public class Attackable : MonoBehaviour
         SubstractHealth(1);
     }
 
-    private void SubstractHealth(int amount)
+    private void SubstractHealth(float amount)
     {
         health -= amount;
     }

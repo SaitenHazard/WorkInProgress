@@ -117,8 +117,7 @@ public class SaveLoadSystem : MonoBehaviour
         saveData.time = DateTime.Now.ToLongTimeString();
 
         saveData.coin = PlayerInstant.Instance.GetComponent<PlayerWallet>().GetCoins();
-        saveData.health = PlayerInstant.Instance.
-            GetComponentInChildren<Attackable>().GetHealth();
+        saveData.health = PlayerInstant.Instance.GetComponentInChildren<Attackable>().GetHealth();
 
         saveData.startPosition[0] = PlayerInstant.Instance.
             GetComponent<Transform>().position.x;
@@ -199,7 +198,7 @@ class SaveData
     public string time;
 
     public int coin;
-    public int health;
+    public float health;
 
     public float[] faceDirection = new float[2];
     public float[] startPosition = new float [3];
