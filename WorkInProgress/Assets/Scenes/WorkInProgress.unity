@@ -5090,11 +5090,6 @@ Prefab:
       propertyPath: patrol
       value: 
       objectReference: {fileID: 1281956693}
-    - target: {fileID: 95988371931540486, guid: f4ebf87dd80b7fc449a8579dde113b0a,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 7679f96d50c0b0e4d9680c019af465ba, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4ebf87dd80b7fc449a8579dde113b0a, type: 2}
   m_IsPrefabParent: 0

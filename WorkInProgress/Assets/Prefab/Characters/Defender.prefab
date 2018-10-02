@@ -72,7 +72,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4855096410567406}
   - component: {fileID: 58650710520935734}
-  - component: {fileID: 114757327645290608}
   - component: {fileID: 114132723201091198}
   m_Layer: 0
   m_Name: SightBox
@@ -456,7 +455,7 @@ Animator:
   m_GameObject: {fileID: 1362855837989628}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0f244b5a24955834eabde3840103d7ce, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7679f96d50c0b0e4d9680c019af465ba, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -527,20 +526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a450fc96b898b6d49bf988cde8f4241e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114757327645290608
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1243125157067634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cda1c557808069b4f82f13a7d79b2ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyActions: 1
-  projectileObject: {fileID: 0}
-  patrol: {fileID: 0}
 --- !u!114 &114832952650047528
 MonoBehaviour:
   m_ObjectHideFlags: 1

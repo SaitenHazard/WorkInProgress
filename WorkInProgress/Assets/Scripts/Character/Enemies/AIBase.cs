@@ -20,9 +20,7 @@ public class AIBase : MonoBehaviour
 
     virtual protected void Awake()
     {
-        speechBubble =
-            transform.parent.GetComponentInChildren<SpeechBubble>();
-
+        speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
         p_movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
         movementView = GetComponentInParent<CharacterMovementView>();
@@ -46,22 +44,31 @@ public class AIBase : MonoBehaviour
 
     private void UpdateAngle()
     {
+        if(enemyActions == enumEnemyActions.defend)
+        {
+
+        }
+
         if(enemyActions == enumEnemyActions.NULL)
         {
             SetNullDirection();
-            return;
-        }
-        else if (enemyActions == enumEnemyActions.patrol)
-        {
-            target = patrol.GetTarget();
-        }
-        else if (enemyActions == enumEnemyActions.chase)
-        {
-            target = PlayerInstant.Instance.GetComponent<Transform>();
         }
 
-        angle = Mathf.Atan2(transform.position.y - target.position.y,
+        if (enemyActions == enumEnemyActions.patrol)
+        {
+            target = patrol.GetTarget();
+
+            angle = Mathf.Atan2(transform.position.y - target.position.y,
             transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
+        }
+
+        if (enemyActions == enumEnemyActions.chase)
+        {
+            target = PlayerInstant.Instance.GetComponent<Transform>();
+
+            angle = Mathf.Atan2(transform.position.y - target.position.y,
+            transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
+        }
     }
 
     protected IEnumerator ProjectileInstantiate()
@@ -99,6 +106,13 @@ public class AIBase : MonoBehaviour
         if (collider2D.gameObject.tag == "Player")
         {
             speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+        }
+    }
+
+    virtual protected void OnTriggerStay2D(Collider2D collider2D)
+    {
+        if (collider2D.gameObject.tag == "Player")
+        {
         }
     }
 

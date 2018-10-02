@@ -20,5 +20,6 @@ public enum enumEnemyActions
 {
     chase,
     patrol,
+    defend,
     NULL
 }
