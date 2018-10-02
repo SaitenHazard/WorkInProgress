@@ -3,7 +3,9 @@ using System.Collections;
 
 public class AIBase : MonoBehaviour
 {
-    public enumEnemyActions enemyActions = enumEnemyActions.patrol;
+    public enumEnemyActions enemyAction;
+    public GameObject projectileObject;
+    public Patrol patrol;
 
     protected float angle;
     protected Transform target;
@@ -13,17 +15,14 @@ public class AIBase : MonoBehaviour
     protected Coroutine projectileCoroutine;
 
     private CharacterMovementModel p_movementModel;
-    private CharacterMovementView movementView;
-
-    public GameObject projectileObject;
-    public Patrol patrol;
+    private Animator m_Animator;
 
     virtual protected void Awake()
     {
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
         p_movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
-        movementView = GetComponentInParent<CharacterMovementView>();
+        m_Animator = transform.parent.GetComponentInChildren<Animator>();
     }
 
     public GameObject GetPatrolObject()
@@ -34,41 +33,45 @@ public class AIBase : MonoBehaviour
         return patrol.gameObject;
     }
 
+    public enumEnemyActions GetEnemyAction()
+    {
+        return enemyAction;
+    }
+
     protected void Update()
     {
+        UpdateDefendAni();
         UpdateAngle();
         SetDirectionTowardsTarget();
 
         m_movementModel.SetDirection(movementDirection);
     }
 
+    private void UpdateDefendAni()
+    {
+        m_Animator.SetBool("Defend", enemyAction == enumEnemyActions.patrol);
+    }
+
     private void UpdateAngle()
     {
-        if(enemyActions == enumEnemyActions.defend)
-        {
-
-        }
-
-        if(enemyActions == enumEnemyActions.NULL)
+        if(enemyAction == enumEnemyActions.patrol || enemyAction == enumEnemyActions.chase)
         {
             SetNullDirection();
+            return;
         }
 
-        if (enemyActions == enumEnemyActions.patrol)
+        if (enemyAction == enumEnemyActions.patrol)
         {
             target = patrol.GetTarget();
-
-            angle = Mathf.Atan2(transform.position.y - target.position.y,
-            transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
 
-        if (enemyActions == enumEnemyActions.chase)
+        if (enemyAction == enumEnemyActions.chase)
         {
             target = PlayerInstant.Instance.GetComponent<Transform>();
-
-            angle = Mathf.Atan2(transform.position.y - target.position.y,
-            transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
+
+        angle = Mathf.Atan2(transform.position.y - target.position.y,
+            transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
     }
 
     protected IEnumerator ProjectileInstantiate()

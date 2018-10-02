@@ -9,7 +9,7 @@ public class JellyAI : AIBase
         if (collider2D.gameObject.tag == "Player")
         {
             base.OnTriggerEnter2D(collider2D);
-            enemyActions = enumEnemyActions.chase;
+            enemyAction = enumEnemyActions.chase;
             target = PlayerInstant.Instance.GetComponent<Transform>();
         }
     }
@@ -19,7 +19,7 @@ public class JellyAI : AIBase
         if (collider2D.gameObject.tag == "Player")
         {
             SetNullDirection();
-            enemyActions = enumEnemyActions.patrol;
+            enemyAction = enumEnemyActions.patrol;
         }
     }
 }

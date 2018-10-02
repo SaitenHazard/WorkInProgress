@@ -9,7 +9,7 @@ public class KhambaAI : AIBase
         if (collider2D.gameObject.tag == "Player")
         {
             base.OnTriggerEnter2D(collider2D);
-            enemyActions = enumEnemyActions.chase;
+            enemyAction = enumEnemyActions.chase;
             StartCoroutine(ProjectileInstantiate());
         }
     }
@@ -18,7 +18,7 @@ public class KhambaAI : AIBase
     {
         if (collider2D.gameObject.tag == "Player")
         {
-            enemyActions = enumEnemyActions.NULL;
+            enemyAction = enumEnemyActions.NULL;
             StopAllCoroutines();
         }
     }

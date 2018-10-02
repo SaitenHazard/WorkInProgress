@@ -17,52 +17,52 @@ public class DefenderAI : AIBase
 
     override protected void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (enemyActions == enumEnemyActions.defend)
+        if (enemyAction == enumEnemyActions.defend)
             return;
 
         if (collider2D.gameObject.tag == "Player")
         {
             base.OnTriggerEnter2D(collider2D);
-            enemyActions = enumEnemyActions.chase;
+            enemyAction = enumEnemyActions.chase;
             target = PlayerInstant.Instance.GetComponent<Transform>();
         }
     }
 
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
-        if (enemyActions == enumEnemyActions.defend)
+        if (enemyAction == enumEnemyActions.defend)
             return;
 
         if (collider2D.gameObject.tag == "Player")
         {
             base.OnTriggerEnter2D(collider2D);
-            enemyActions = enumEnemyActions.chase;
+            enemyAction = enumEnemyActions.chase;
             target = PlayerInstant.Instance.GetComponent<Transform>();
         }
     }
 
     override protected void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (enemyActions == enumEnemyActions.defend)
+        if (enemyAction == enumEnemyActions.defend)
             return;
 
         if (collider2D.gameObject.tag == "Player")
         {
             SetNullDirection();
-            enemyActions = enumEnemyActions.patrol;
+            enemyAction = enumEnemyActions.patrol;
         }
     }
 
     private IEnumerator clockDefendAfterTime()
     {
-        enemyActions = enumEnemyActions.NULL;
+        enemyAction = enumEnemyActions.NULL;
         yield return new WaitForSeconds(defendAfterTime);
         StartCoroutine(clockDefendForTime());
     }
 
     private IEnumerator clockDefendForTime()
     {
-        enemyActions = enumEnemyActions.defend;
+        enemyAction = enumEnemyActions.defend;
         yield return new WaitForSeconds(defendForTime);
         StartCoroutine(clockDefendAfterTime());
     }

@@ -9,16 +9,18 @@ public class Attackable : MonoBehaviour
     public float pushBackSpeed;
 
     private GameObject parentObject;
-    protected CharacterMovementModel attackerMovementModel;
 
+    protected CharacterMovementModel attackerMovementModel;
     protected GameObject ColliderObject;
     protected CharacterMovementModel m_movementModel;
+    private AIBase aiBase;
 
     private void Awake()
     {
         maxHealth = health;
         m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
         parentObject = transform.parent.gameObject;
+        aiBase = transform.parent.GetComponent<AIBase>();
     }
 
     public float GetHealth()
@@ -38,6 +40,11 @@ public class Attackable : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D (Collider2D hitCollider)
     {
+        if(aiBase.GetEnemyAction() == enumEnemyActions.defend)
+        {
+            return;
+        }
+
         ColliderObject = hitCollider.gameObject;
 
         if (ColliderObject.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)

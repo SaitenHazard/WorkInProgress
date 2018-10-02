@@ -605,7 +605,7 @@ Prefab:
         type: 2}
       propertyPath: AIBase
       value: 
-      objectReference: {fileID: 340533990}
+      objectReference: {fileID: 1659199135}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d11276800ad4934a8dd8703c3f41123, type: 2}
   m_IsPrefabParent: 0
@@ -614,12 +614,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4015440735352804, guid: 7d11276800ad4934a8dd8703c3f41123,
     type: 2}
   m_PrefabInternal: {fileID: 305265757}
---- !u!114 &340533990 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114132723201091198, guid: f4ebf87dd80b7fc449a8579dde113b0a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1659199133}
-  m_Script: {fileID: 11500000, guid: cda1c557808069b4f82f13a7d79b2ab1, type: 3}
 --- !u!4 &384879956 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4587633333684654, guid: e09913cd3d7fffb4e8be1821ff4ff4d3,
@@ -5090,9 +5084,29 @@ Prefab:
       propertyPath: patrol
       value: 
       objectReference: {fileID: 1281956693}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114132723201091198, guid: f4ebf87dd80b7fc449a8579dde113b0a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f4ebf87dd80b7fc449a8579dde113b0a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1659199134 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1243125157067634, guid: f4ebf87dd80b7fc449a8579dde113b0a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1659199133}
+--- !u!114 &1659199135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1659199134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb4507e92ba206448f7d2698fc1384e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyActions: 1
+  projectileObject: {fileID: 0}
+  patrol: {fileID: 1281956693}
 --- !u!1001 &1669818130
 Prefab:
   m_ObjectHideFlags: 0
