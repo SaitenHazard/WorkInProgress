@@ -20,7 +20,7 @@ public class Attackable : MonoBehaviour
         maxHealth = health;
         m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
         parentObject = transform.parent.gameObject;
-        aiBase = transform.parent.GetComponent<AIBase>();
+        aiBase = transform.parent.GetComponentInChildren<AIBase>();
     }
 
     public float GetHealth()

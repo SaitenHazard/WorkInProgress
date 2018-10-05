@@ -3,7 +3,6 @@ using System.Collections;
 
 public class AIBase : MonoBehaviour
 {
-    public enumEnemyActions enemyAction;
     public GameObject projectileObject;
     public Patrol patrol;
 
@@ -13,6 +12,7 @@ public class AIBase : MonoBehaviour
     protected CharacterMovementModel m_movementModel;
     protected Vector2 movementDirection;
     protected Coroutine projectileCoroutine;
+    protected enumEnemyActions enemyAction;
 
     private CharacterMovementModel p_movementModel;
     private Animator m_Animator;
@@ -23,6 +23,11 @@ public class AIBase : MonoBehaviour
         p_movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
         m_Animator = transform.parent.GetComponentInChildren<Animator>();
+    }
+
+    private void Start()
+    {
+        enemyAction = enumEnemyActions.patrol;
     }
 
     public GameObject GetPatrolObject()
@@ -54,7 +59,7 @@ public class AIBase : MonoBehaviour
 
     private void UpdateAngle()
     {
-        if(enemyAction == enumEnemyActions.patrol || enemyAction == enumEnemyActions.chase)
+        if(enemyAction == enumEnemyActions.NULL)
         {
             SetNullDirection();
             return;

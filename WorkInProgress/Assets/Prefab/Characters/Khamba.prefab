@@ -420,7 +420,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2
 --- !u!61 &61610500124652670
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9afa084d5ae71047ab08786779e364e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyActions: 2
+  enemyAction: 1
   projectileObject: {fileID: 1542113046972888}
   patrol: {fileID: 0}
 --- !u!114 &114174235981995592

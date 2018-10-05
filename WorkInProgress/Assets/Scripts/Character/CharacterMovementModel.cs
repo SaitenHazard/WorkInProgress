@@ -10,16 +10,18 @@ public class CharacterMovementModel : MonoBehaviour
     protected Vector2 m_FacingDirection;
     protected Vector2 m_ReceivedDirection;
     protected Rigidbody2D m_Body;
+    protected PlayerStats playerStats;
     protected bool movementFrozen = false;
 
     private float recoilTime = 0.5f;
     private float m_pushBackSpeed;
-    protected PlayerStats playerStats;
+    private AIBase aiBases;
 
     protected void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
         playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
+        aiBases = GetComponentInChildren<AIBase>();
     }
 
     protected void Update()
@@ -98,6 +100,15 @@ public class CharacterMovementModel : MonoBehaviour
         {
             m_Body.velocity = Vector2.zero;
             return;
+        }
+
+        if(aiBases != null )
+        {
+            if(aiBases.GetEnemyAction() == enumEnemyActions.defend)
+            {
+                m_Body.velocity = Vector2.zero;
+                return;
+            }
         }
 
         if (m_MovementDirection != Vector2.zero)

@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda1c557808069b4f82f13a7d79b2ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyActions: 1
+  enemyAction: 0
   projectileObject: {fileID: 0}
   patrol: {fileID: 0}
 --- !u!114 &114247884407874326

@@ -5032,11 +5032,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 58965426304830706, guid: e09913cd3d7fffb4e8be1821ff4ff4d3,
-        type: 2}
-      propertyPath: m_Radius
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e09913cd3d7fffb4e8be1821ff4ff4d3, type: 2}
   m_IsPrefabParent: 0
@@ -5104,7 +5099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb4507e92ba206448f7d2698fc1384e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyActions: 1
   projectileObject: {fileID: 0}
   patrol: {fileID: 1281956693}
 --- !u!1001 &1669818130
@@ -5313,16 +5307,6 @@ Prefab:
       propertyPath: patrol
       value: 
       objectReference: {fileID: 620202131}
-    - target: {fileID: 212791955397603514, guid: 3dee6758fc619404683e113baf5045e4,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: -105713287
-      objectReference: {fileID: 0}
-    - target: {fileID: 212791955397603514, guid: 3dee6758fc619404683e113baf5045e4,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3dee6758fc619404683e113baf5045e4, type: 2}
   m_IsPrefabParent: 0

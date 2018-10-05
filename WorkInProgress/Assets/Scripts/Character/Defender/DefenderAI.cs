@@ -35,7 +35,7 @@ public class DefenderAI : AIBase
 
         if (collider2D.gameObject.tag == "Player")
         {
-            base.OnTriggerEnter2D(collider2D);
+            base.OnTriggerStay2D(collider2D);
             enemyAction = enumEnemyActions.chase;
             target = PlayerInstant.Instance.GetComponent<Transform>();
         }
