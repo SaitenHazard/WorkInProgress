@@ -17,7 +17,7 @@ public class AIBase : MonoBehaviour
     private CharacterMovementModel p_movementModel;
     private Animator m_Animator;
 
-    virtual protected void Awake()
+    protected void Awake()
     {
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
         p_movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
@@ -25,7 +25,7 @@ public class AIBase : MonoBehaviour
         m_Animator = transform.parent.GetComponentInChildren<Animator>();
     }
 
-    private void Start()
+    protected void Start()
     {
         enemyAction = enumEnemyActions.patrol;
     }
@@ -45,16 +45,17 @@ public class AIBase : MonoBehaviour
 
     protected void Update()
     {
-        UpdateDefendAni();
+        UpdateDefendAni(enemyAction == enumEnemyActions.patrol);
         UpdateAngle();
         SetDirectionTowardsTarget();
 
         m_movementModel.SetDirection(movementDirection);
     }
 
-    private void UpdateDefendAni()
+    private void UpdateDefendAni(bool defend)
     {
-        m_Animator.SetBool("Defend", enemyAction == enumEnemyActions.patrol);
+        m_movementModel.SetMovementFrozen(defend);
+        m_Animator.SetBool("Defend", defend);
     }
 
     private void UpdateAngle()

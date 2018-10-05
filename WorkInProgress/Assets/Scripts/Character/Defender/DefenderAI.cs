@@ -9,6 +9,8 @@ public class DefenderAI : AIBase
 
     private void Start()
     {
+        base.Start();
+
         defendForTime = Random.Range(3, 6);
         defendAfterTime = Random.Range(5, 9);
 
