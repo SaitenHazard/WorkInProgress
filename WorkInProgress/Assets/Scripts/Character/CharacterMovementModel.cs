@@ -58,7 +58,9 @@ public class CharacterMovementModel : MonoBehaviour
     private void UpdateDirection()
     {
         if (movementFrozen || playerStats.GetGameState())
+        {
             return;
+        }
 
         m_MovementDirection = new Vector2(m_ReceivedDirection.x, m_ReceivedDirection.y);
 

@@ -14,50 +14,41 @@ public class DefenderAI : AIBase
         defendForTime = Random.Range(3, 6);
         defendAfterTime = Random.Range(5, 9);
 
-        StartCoroutine(clockDefendAfterTime());
+        //StartCoroutine(clockDefendAfterTime());
     }
 
     override protected void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (enemyAction == enumEnemyActions.defend)
-            return;
-
-        if (collider2D.gameObject.tag == "Player")
-        {
-            base.OnTriggerEnter2D(collider2D);
-            enemyAction = enumEnemyActions.chase;
-            target = PlayerInstant.Instance.GetComponent<Transform>();
-        }
+        //if (collider2D.gameObject.tag == "Player")
+        //{
+        //    base.OnTriggerEnter2D(collider2D);
+        //    enemyAction = enumEnemyActions.chase;
+        //    target = PlayerInstant.Instance.GetComponent<Transform>();
+        //}
     }
 
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
-        if (enemyAction == enumEnemyActions.defend)
-            return;
-
-        if (collider2D.gameObject.tag == "Player")
-        {
-            base.OnTriggerStay2D(collider2D);
-            enemyAction = enumEnemyActions.chase;
-            target = PlayerInstant.Instance.GetComponent<Transform>();
-        }
+        //if (collider2D.gameObject.tag == "Player")
+        //{
+        //    base.OnTriggerStay2D(collider2D);
+        //    enemyAction = enumEnemyActions.chase;
+        //    target = PlayerInstant.Instance.GetComponent<Transform>();
+        //}
     }
 
     override protected void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (enemyAction == enumEnemyActions.defend)
-            return;
-
-        if (collider2D.gameObject.tag == "Player")
-        {
-            SetNullDirection();
-            enemyAction = enumEnemyActions.patrol;
-        }
+        //if (collider2D.gameObject.tag == "Player")
+        //{
+        //    SetNullDirection();
+        //    enemyAction = enumEnemyActions.patrol;
+        //}
     }
 
     private IEnumerator clockDefendAfterTime()
     {
-        enemyAction = enumEnemyActions.NULL;
+        enemyAction = enumEnemyActions.patrol;
         yield return new WaitForSeconds(defendAfterTime);
         StartCoroutine(clockDefendForTime());
     }

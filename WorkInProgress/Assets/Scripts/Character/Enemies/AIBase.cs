@@ -45,22 +45,28 @@ public class AIBase : MonoBehaviour
 
     protected void Update()
     {
-        UpdateDefendAni(enemyAction == enumEnemyActions.patrol);
+        Debug.Log(enemyAction);
+
+        UpdateDefendAni();
         UpdateAngle();
         SetDirectionTowardsTarget();
+        DoMovement();
 
+    }
+
+    private void DoMovement()
+    {
         m_movementModel.SetDirection(movementDirection);
     }
 
-    private void UpdateDefendAni(bool defend)
+    private void UpdateDefendAni()
     {
-        m_movementModel.SetMovementFrozen(defend);
-        m_Animator.SetBool("Defend", defend);
+        m_Animator.SetBool("Defend", enemyAction == enumEnemyActions.defend);
     }
 
     private void UpdateAngle()
     {
-        if(enemyAction == enumEnemyActions.NULL)
+        if(enemyAction == enumEnemyActions.NULL || enemyAction != enumEnemyActions.defend)
         {
             SetNullDirection();
             return;
@@ -69,6 +75,7 @@ public class AIBase : MonoBehaviour
         if (enemyAction == enumEnemyActions.patrol)
         {
             target = patrol.GetTarget();
+            Debug.Log(target);
         }
 
         if (enemyAction == enumEnemyActions.chase)
@@ -139,28 +146,46 @@ public class AIBase : MonoBehaviour
 
     protected void SetDirectionTowardsTarget()
     {
+        Debug.Log(angle);
+
         if (angle >= 22.5 && angle <= 67.5)
+        {
             movementDirection = new Vector2(-1, 1);
+        }
 
         if (angle >= 112.5 && angle <= 157.5)
+        {
             movementDirection = new Vector2(1, 1);
+        }
 
         if (angle <= -22.5 && angle >= -67.5)
+        {
             movementDirection = new Vector2(-1, -1);
+        }
 
         if (angle <= -112.5 && angle >= -157.5)
+        {
             movementDirection = new Vector2(1, -1);
+        }
 
         if (angle >= 67.5 && angle <= 112.5)
+        {
             movementDirection = new Vector2(0, 1);
+        }
 
         if (angle <= -67.5 && angle >= -112.5)
+        {
             movementDirection = new Vector2(0, -1);
+        }
 
-        if (angle <= 22.5 && angle >= 0  || angle >= -22.5 && angle <=0)
+        if (angle <= 22.5 && angle >= 0 || angle >= -22.5 && angle <= 0)
+        {
             movementDirection = new Vector2(-1, 0);
+        }
 
         if (angle >= 157.5 && angle <= 180 || angle <= -157.5 && angle >= -180)
+        {
             movementDirection = new Vector2(1, 0);
+        }
     }
 }

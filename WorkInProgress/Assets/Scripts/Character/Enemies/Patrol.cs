@@ -14,14 +14,16 @@ public class Patrol : MonoBehaviour
 
     private void Awake()
     {
+        m_transform = AIBase.GetComponentInParent<Transform>();
+
         childTransforms = GetComponentsInChildren<Transform>();
         numberOfPoints = childTransforms.Length;
-        m_transform = AIBase.GetComponentInParent<Transform>();
     }
 
     private void Start()
     {
-        SetClosestPatrol();
+        targetIndex = 0;
+        SetTarget();
     }
 
     private void Update()
