@@ -46,12 +46,10 @@ public class AIBase : MonoBehaviour
     protected void Update()
     {
         Debug.Log(enemyAction);
-
         UpdateDefendAni();
         UpdateAngle();
         SetDirectionTowardsTarget();
         DoMovement();
-
     }
 
     private void DoMovement()
@@ -66,25 +64,17 @@ public class AIBase : MonoBehaviour
 
     private void UpdateAngle()
     {
-        if(enemyAction == enumEnemyActions.NULL || enemyAction != enumEnemyActions.defend)
-        {
-            SetNullDirection();
-            return;
-        }
-
         if (enemyAction == enumEnemyActions.patrol)
         {
             target = patrol.GetTarget();
-            Debug.Log(target);
+            angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
 
         if (enemyAction == enumEnemyActions.chase)
         {
             target = PlayerInstant.Instance.GetComponent<Transform>();
+            angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
-
-        angle = Mathf.Atan2(transform.position.y - target.position.y,
-            transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
     }
 
     protected IEnumerator ProjectileInstantiate()
@@ -121,7 +111,6 @@ public class AIBase : MonoBehaviour
     {
         if (collider2D.gameObject.tag == "Player")
         {
-            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
         }
     }
 
@@ -139,15 +128,8 @@ public class AIBase : MonoBehaviour
         }
     }
 
-    protected void SetNullDirection()
-    {
-        movementDirection = Vector2.zero;
-    }
-
     protected void SetDirectionTowardsTarget()
     {
-        Debug.Log(angle);
-
         if (angle >= 22.5 && angle <= 67.5)
         {
             movementDirection = new Vector2(-1, 1);
@@ -186,6 +168,11 @@ public class AIBase : MonoBehaviour
         if (angle >= 157.5 && angle <= 180 || angle <= -157.5 && angle >= -180)
         {
             movementDirection = new Vector2(1, 0);
+        }
+
+        if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend)
+        {
+            movementDirection = Vector2.zero;
         }
     }
 }

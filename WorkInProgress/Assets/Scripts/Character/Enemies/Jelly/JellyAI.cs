@@ -8,7 +8,7 @@ public class JellyAI : AIBase
     {
         if (collider2D.gameObject.tag == "Player")
         {
-            base.OnTriggerEnter2D(collider2D);
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
             enemyAction = enumEnemyActions.chase;
             target = PlayerInstant.Instance.GetComponent<Transform>();
         }
@@ -18,7 +18,6 @@ public class JellyAI : AIBase
     {
         if (collider2D.gameObject.tag == "Player")
         {
-            SetNullDirection();
             enemyAction = enumEnemyActions.patrol;
         }
     }

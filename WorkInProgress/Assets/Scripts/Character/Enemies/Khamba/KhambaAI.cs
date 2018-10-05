@@ -15,7 +15,7 @@ public class KhambaAI : AIBase
     {
         if (collider2D.gameObject.tag == "Player")
         {
-            base.OnTriggerEnter2D(collider2D);
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
             enemyAction = enumEnemyActions.chase;
             StartCoroutine(ProjectileInstantiate());
         }
