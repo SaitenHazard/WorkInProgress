@@ -32,6 +32,9 @@ public class SpeechBubble : MonoBehaviour
 
         else if (m_bubble == enumSpeechBubbles.Interactable)
             spriteRenderer.sprite = empty;
+
+        else if (m_bubble == enumSpeechBubbles.Paralyzed)
+            spriteRenderer.sprite = empty;
     }
 
     public void PopSpeechBubble(enumSpeechBubbles bubble)

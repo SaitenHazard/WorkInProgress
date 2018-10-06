@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
 
     private bool projectileActive;
     private bool gameStateFrozen;
-    private bool shockActive;
+    private bool shockActive = true;
 
     private float speed;
     private float yieldTime;

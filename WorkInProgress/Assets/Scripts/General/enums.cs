@@ -4,6 +4,7 @@
     Exclamation,
     Interactable,
     Empty,
+    Paralyzed,
     NULL
 };
 

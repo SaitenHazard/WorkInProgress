@@ -16,6 +16,8 @@ public class Attackable : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private GameObject parentObject;
     private Color color;
+    private SpeechBubble speechBubble;
+    private float shockTime;
 
     private void Awake()
     {
@@ -25,6 +27,12 @@ public class Attackable : MonoBehaviour
         aiBase = transform.parent.GetComponentInChildren<AIBase>();
         spriteRenderer = parentObject.GetComponentInChildren<SpriteRenderer>();
         color = spriteRenderer.color;
+        speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
+    }
+
+    private void Start()
+    {
+        shockTime = 10f;
     }
 
     public float GetHealth()
@@ -61,17 +69,25 @@ public class Attackable : MonoBehaviour
 
             if(ColliderObject.GetComponentInParent<PlayerStats>().IsParalyzeUp() == true)
             {
-                DoParalyze(2f);
+                DoParalyze(shockTime);
             }
         }
 
         if(ColliderObject.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
+            if (health <= 0)
+                return;
+
             Destroy(ColliderObject.gameObject);
 
             float damage = ColliderObject.GetComponent<Projectile>().GetDamage();
 
             DoHit(damage, ColliderObject.GetComponent<Projectile>().GetMovementDirection());
+
+            if (ColliderObject.GetComponentInParent<PlayerStats>().IsParalyzeUp() == true)
+            {
+                DoParalyze(shockTime);
+            }
         }
     }
 
@@ -84,8 +100,10 @@ public class Attackable : MonoBehaviour
 
         SubstractHealth(damage);
 
-        if (health <= 0)
-            DoDestroy();
+        if (ColliderObject.GetComponentInParent<PlayerStats>().IsParalyzeUp() == true)
+        {
+            DoParalyze(10f);
+        }
     }
 
     public void AddHealth()
@@ -131,9 +149,8 @@ public class Attackable : MonoBehaviour
 
     private IEnumerator DoParalyzeView(float paralyzeTime)
     {
-        spriteRenderer.color = Color.yellow;
+        speechBubble
         yield return new WaitForSeconds(paralyzeTime);
-        spriteRenderer.color = Color.white;
     }
 
     private IEnumerator characterFadeOut()

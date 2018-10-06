@@ -1746,7 +1746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 717817513}
   m_Layer: 0
-  m_Name: ParalyzePickups
+  m_Name: ShockPickups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5039,6 +5039,10 @@ Prefab:
     - target: {fileID: 4130107170901788, guid: 888c0669a3b809744b4533534937f0de, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996525991827024, guid: 888c0669a3b809744b4533534937f0de, type: 2}
+      propertyPath: m_Name
+      value: ShockPickup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 888c0669a3b809744b4533534937f0de, type: 2}
