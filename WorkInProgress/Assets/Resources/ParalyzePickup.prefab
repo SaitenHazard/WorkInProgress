@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4130107170901788}
   - component: {fileID: 61386055172383628}
-  - component: {fileID: 114688166895047558}
+  - component: {fileID: 114999726927350404}
   m_Layer: 0
   m_Name: ParalyzePickup
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.15}
   m_EdgeRadius: 0
---- !u!114 &114688166895047558
+--- !u!114 &114999726927350404
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,10 +104,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1996525991827024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa2ec13245e6a1f4b97645078c0ae1c5, type: 3}
+  m_Script: {fileID: 11500000, guid: baed25729160710458c19e0a527f838d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: 3
+  item: 4
 --- !u!212 &212628179704085026
 SpriteRenderer:
   m_ObjectHideFlags: 1

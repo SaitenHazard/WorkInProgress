@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4749157202585454}
   - component: {fileID: 61641860708738104}
-  - component: {fileID: 114298657814469596}
+  - component: {fileID: 114018018175981682}
   m_Layer: 0
   m_Name: SpeedPickup
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.15}
   m_EdgeRadius: 0
---- !u!114 &114298657814469596
+--- !u!114 &114018018175981682
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1915890937744430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32a3c86544af6aa499fc72dc33840e0e, type: 3}
+  m_Script: {fileID: 11500000, guid: baed25729160710458c19e0a527f838d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item: 2

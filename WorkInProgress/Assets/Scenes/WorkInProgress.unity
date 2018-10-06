@@ -385,8 +385,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -641,8 +640,7 @@ Prefab:
       propertyPath: m_Name
       value: StrengthPickup
       objectReference: {fileID: 0}
-    - target: {fileID: 114659123806516392, guid: 7bfc5c0d061f8604396a59bd7cb665de,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -2228,8 +2226,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -2424,8 +2421,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -2545,8 +2541,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -2673,8 +2668,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -2895,8 +2889,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -4712,8 +4705,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -4861,8 +4853,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -5049,11 +5040,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114688166895047558, guid: 888c0669a3b809744b4533534937f0de,
-        type: 2}
-      propertyPath: item
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 888c0669a3b809744b4533534937f0de, type: 2}
   m_IsPrefabParent: 0
@@ -5231,8 +5217,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -6171,8 +6156,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}
@@ -6412,8 +6396,7 @@ Prefab:
       propertyPath: m_Name
       value: HealthPickup (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 114936521793748380, guid: ac6ac43a06c08584186b6b3b71d89010,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: proportion
       value: 0.75
       objectReference: {fileID: 0}

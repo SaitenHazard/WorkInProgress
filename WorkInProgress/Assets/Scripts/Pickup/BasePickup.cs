@@ -67,6 +67,8 @@ public class BasePickup : MonoBehaviour
     public void UsePickup()
     {
         PlayerStats playerStats = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerStats>();
+        AttackablePlayer attackable = PlayerInstant.Instance.transform.gameObject.
+            GetComponentInChildren<AttackablePlayer>();
 
         if (item == enumInventory.ProjectilePickup && playerStats.IsProjetileActive() == false)
         {
@@ -75,6 +77,40 @@ public class BasePickup : MonoBehaviour
             ResetSelectedInventory();
             return;
         }
+
+        if (item == enumInventory.HealthPickup && attackable.GetHealth() < attackable.GetMaxHealth())
+        {
+            attackable.RestoreFullHealth();
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            return;
+        }
+
+        if (item == enumInventory.SpeedPickup && playerStats.IsSpeedUp() == false)
+        {
+            playerStats.SpeedUp();
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            return;
+        }
+
+        if (item == enumInventory.StrengthPickup && playerStats.IsDamageUp() == false)
+        {
+            playerStats.DamageUp();
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            return;
+        }
+
+        if (item == enumInventory.ShockPickup && playerStats.IsDamageUp() == false)
+        {
+            playerStats.ShockUp();
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            return;
+        }
+
+        DoInventoryCancelAnimation();
     }
 
     private void GetComponents()

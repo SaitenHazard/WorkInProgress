@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4038067490216122}
   - component: {fileID: 61368306969485730}
-  - component: {fileID: 114659123806516392}
+  - component: {fileID: 114658736109671260}
   m_Layer: 0
   m_Name: StrengthPickup
   m_TagString: Untagged
@@ -64,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1434825546135626}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.52, y: -2.44, z: 0}
+  m_LocalPosition: {x: 2.35, y: -2.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4024288048940662}
@@ -96,7 +96,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.15}
   m_EdgeRadius: 0
---- !u!114 &114659123806516392
+--- !u!114 &114658736109671260
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1434825546135626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 816b0264135d6cd4bb86a355616112eb, type: 3}
+  m_Script: {fileID: 11500000, guid: baed25729160710458c19e0a527f838d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item: 0

@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
 
     private bool projectileActive;
     private bool gameStateFrozen;
-    private bool paralyzeUp;
+    private bool shockActive;
 
     private float speed;
     private float yieldTime;
@@ -103,21 +103,21 @@ public class PlayerStats : MonoBehaviour
         projectileNumbers--;
     }
 
-    public void SetParalyzeUp()
+    public void ShockUp()
     {
-        paralyzeUp = true;
-        StartCoroutine(UndoParalyze());
+        shockActive = true;
+        StartCoroutine(RevertShock());
     }
 
     public bool IsParalyzeUp()
     {
-        return paralyzeUp;
+        return shockActive;
     }
 
-    private IEnumerator UndoParalyze()
+    private IEnumerator RevertShock()
     {
         yield return new WaitForSeconds(yieldTime);
-        paralyzeUp = false;
+        shockActive = false;
     }
 
     private IEnumerator RevertSpeedUp()
