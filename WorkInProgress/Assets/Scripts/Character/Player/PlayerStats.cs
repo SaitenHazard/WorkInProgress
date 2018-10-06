@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    private float yieldTime = 5;
     private int damage;
+    private int projectileNumbers;
 
-    private float speed;
     private bool projectileActive;
     private bool gameStateFrozen;
-    private int projectileNumbers;
+    private bool paralyzeUp;
+
+    private float speed;
+    private float yieldTime;
 
     private InteractableBase m_interactableBase;
 
@@ -23,6 +25,7 @@ public class PlayerStats : MonoBehaviour
     {
         speed = 1.5f;
         damage = 1;
+        yieldTime = 5;
     }
 
     public void SetInteractableBase(InteractableBase interactableBase)
@@ -98,6 +101,23 @@ public class PlayerStats : MonoBehaviour
     public void DeductProjectiletNumber()
     {
         projectileNumbers--;
+    }
+
+    public void SetParalyzeUp()
+    {
+        paralyzeUp = true;
+        StartCoroutine(UndoParalyze());
+    }
+
+    public bool IsParalyzeUp()
+    {
+        return paralyzeUp;
+    }
+
+    private IEnumerator UndoParalyze()
+    {
+        yield return new WaitForSeconds(yieldTime);
+        paralyzeUp = false;
     }
 
     private IEnumerator RevertSpeedUp()

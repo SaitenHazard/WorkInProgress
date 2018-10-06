@@ -8,12 +8,14 @@ public class Attackable : MonoBehaviour
     public float pushBackTime;
     public float pushBackSpeed;
 
-    private GameObject parentObject;
-
     protected CharacterMovementModel attackerMovementModel;
     protected GameObject ColliderObject;
     protected CharacterMovementModel m_movementModel;
+
     private AIBase aiBase;
+    private SpriteRenderer spriteRenderer;
+    private GameObject parentObject;
+    private Color color;
 
     private void Awake()
     {
@@ -21,6 +23,8 @@ public class Attackable : MonoBehaviour
         m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
         parentObject = transform.parent.gameObject;
         aiBase = transform.parent.GetComponentInChildren<AIBase>();
+        spriteRenderer = parentObject.GetComponentInChildren<SpriteRenderer>();
+        color = spriteRenderer.color;
     }
 
     public float GetHealth()
@@ -54,6 +58,11 @@ public class Attackable : MonoBehaviour
             attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
 
             DoHit(damage, attackerMovementModel.GetFacingDirection());
+
+            if(ColliderObject.GetComponentInParent<PlayerStats>().IsParalyzeUp() == true)
+            {
+                DoParalyze(2f);
+            }
         }
 
         if(ColliderObject.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
@@ -111,10 +120,24 @@ public class Attackable : MonoBehaviour
         StartCoroutine(characterFadeOut());
     }
 
+    public void DoParalyze(float paralyzeTime)
+    {
+        if (health <= 0)
+            return;
+
+        StartCoroutine(DoParalyzeView(paralyzeTime));
+        m_movementModel.SetTemporaryFrozen(paralyzeTime);
+    }
+
+    private IEnumerator DoParalyzeView(float paralyzeTime)
+    {
+        spriteRenderer.color = Color.yellow;
+        yield return new WaitForSeconds(paralyzeTime);
+        spriteRenderer.color = Color.white;
+    }
+
     private IEnumerator characterFadeOut()
     {
-        SpriteRenderer spriteRenderer = parentObject.GetComponentInChildren<SpriteRenderer>();
-        Color color = spriteRenderer.color;
         float opacity = 1f;
 
         yield return new WaitForSeconds(pushBackTime);
