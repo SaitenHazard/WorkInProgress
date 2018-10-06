@@ -45,7 +45,6 @@ public class AIBase : MonoBehaviour
 
     protected void Update()
     {
-        Debug.Log(enemyAction);
         UpdateDefendAni();
         UpdateAngle();
         SetDirectionTowardsTarget();

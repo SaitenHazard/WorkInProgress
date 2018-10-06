@@ -64,9 +64,17 @@ public class BasePickup : MonoBehaviour
         pickupAnimation.DoAnimation(sprite, 0.75f);
     }
 
-    virtual public void UsePickup()
+    public void UsePickup()
     {
+        PlayerStats playerStats = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerStats>();
 
+        if (item == enumInventory.ProjectilePickup && playerStats.IsProjetileActive() == false)
+        {
+            playerStats.SetProjectile();
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            return;
+        }
     }
 
     private void GetComponents()
