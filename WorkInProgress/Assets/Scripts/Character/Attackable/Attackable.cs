@@ -17,22 +17,22 @@ public class Attackable : MonoBehaviour
     private GameObject parentObject;
     private Color color;
     private SpeechBubble speechBubble;
-    private float shockTime;
+    private float paralyzeTime;
 
     private void Awake()
     {
-        maxHealth = health;
         m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
         parentObject = transform.parent.gameObject;
         aiBase = transform.parent.GetComponentInChildren<AIBase>();
         spriteRenderer = parentObject.GetComponentInChildren<SpriteRenderer>();
-        color = spriteRenderer.color;
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
     }
 
     private void Start()
     {
-        shockTime = 10f;
+        maxHealth = health;
+        color = spriteRenderer.color;
+        paralyzeTime = 10f;
     }
 
     public float GetHealth()
@@ -69,15 +69,12 @@ public class Attackable : MonoBehaviour
 
             if(ColliderObject.GetComponentInParent<PlayerStats>().IsParalyzeUp() == true)
             {
-                DoParalyze(shockTime);
+                DoParalyze(paralyzeTime);
             }
         }
 
         if(ColliderObject.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            if (health <= 0)
-                return;
-
             Destroy(ColliderObject.gameObject);
 
             float damage = ColliderObject.GetComponent<Projectile>().GetDamage();
@@ -86,7 +83,7 @@ public class Attackable : MonoBehaviour
 
             if (ColliderObject.GetComponentInParent<PlayerStats>().IsParalyzeUp() == true)
             {
-                DoParalyze(shockTime);
+                DoParalyze(paralyzeTime);
             }
         }
     }
@@ -100,10 +97,8 @@ public class Attackable : MonoBehaviour
 
         SubstractHealth(damage);
 
-        if (ColliderObject.GetComponentInParent<PlayerStats>().IsParalyzeUp() == true)
-        {
-            DoParalyze(10f);
-        }
+        if (health <= 0)
+            DoDestroy();
     }
 
     public void AddHealth()
@@ -138,10 +133,12 @@ public class Attackable : MonoBehaviour
         StartCoroutine(characterFadeOut());
     }
 
-    public void DoParalyze(float paralyzeTime)
+    private void DoParalyze(float paralyzeTime)
     {
         if (health <= 0)
             return;
+
+        Debug.Log("Do Paralyze: " + paralyzeTime);
 
         StartCoroutine(DoParalyzeView(paralyzeTime));
         m_movementModel.SetTemporaryFrozen(paralyzeTime);
@@ -149,8 +146,14 @@ public class Attackable : MonoBehaviour
 
     private IEnumerator DoParalyzeView(float paralyzeTime)
     {
-        speechBubble
+        speechBubble.ShowSpeechBubble(enumSpeechBubbles.Paralyze);
         yield return new WaitForSeconds(paralyzeTime);
+        UndoParalyzeView();
+    }
+
+    private void UndoParalyzeView()
+    {
+        speechBubble.HideSpeechBubble();
     }
 
     private IEnumerator characterFadeOut()

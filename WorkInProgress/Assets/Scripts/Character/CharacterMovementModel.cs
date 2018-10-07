@@ -45,13 +45,21 @@ public class CharacterMovementModel : MonoBehaviour
 
     public void SetTemporaryFrozen(float time)
     {
+        Debug.Log(gameObject.name + " SetTemporaryFrozen: " + time);
+
         StartCoroutine(TemporaryFrozenIenumerator(time));
     }
 
     private IEnumerator TemporaryFrozenIenumerator(float time)
     {
-        SetMovementFrozen(true);
+        Debug.Log(gameObject.name + " SetTemporaryFrozen: " + time); SetMovementFrozen(true);
+
         yield return new WaitForSeconds(time);
+        UndoFrozen();
+    }
+
+    private void UndoFrozen()
+    {
         SetMovementFrozen(false);
     }
 
@@ -150,7 +158,6 @@ public class CharacterMovementModel : MonoBehaviour
     public void SetMovementFrozen(bool frozen)
     {
         movementFrozen = frozen;
-        
     }
 
     public float GetPushBackSpeed()
