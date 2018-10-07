@@ -13,13 +13,20 @@ public class CharacterMovementModel : MonoBehaviour
     protected PlayerStats playerStats;
     protected bool movementFrozen = false;
 
-    private float recoilTime = 0.5f;
+    private float recoilTime;
     private float m_pushBackSpeed;
+    private float m_paralyzeTime;
 
     protected void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
         playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
+    }
+
+    private void Start()
+    {
+        recoilTime = 0.5f;
+        m_paralyzeTime = 0f;
     }
 
     protected void Update()
@@ -45,22 +52,19 @@ public class CharacterMovementModel : MonoBehaviour
 
     public void SetTemporaryFrozen(float time)
     {
-        Debug.Log(gameObject.name + " SetTemporaryFrozen: " + time);
-
         StartCoroutine(TemporaryFrozenIenumerator(time));
     }
 
     private IEnumerator TemporaryFrozenIenumerator(float time)
     {
-        Debug.Log(gameObject.name + " SetTemporaryFrozen: " + time); SetMovementFrozen(true);
-
+        SetMovementFrozen(true);
         yield return new WaitForSeconds(time);
-        UndoFrozen();
+        SetMovementFrozen(false);
     }
 
-    private void UndoFrozen()
+    public bool IsMovementFrozen()
     {
-        SetMovementFrozen(false);
+        return movementFrozen;
     }
 
     private void UpdateDirection()
@@ -158,6 +162,7 @@ public class CharacterMovementModel : MonoBehaviour
     public void SetMovementFrozen(bool frozen)
     {
         movementFrozen = frozen;
+        
     }
 
     public float GetPushBackSpeed()
@@ -172,8 +177,14 @@ public class CharacterMovementModel : MonoBehaviour
 
     public void GetHit(Vector2 attackDirection, float pushBackTime, float pushBackSpeed)
     {
+        GetHit(attackDirection, pushBackTime, pushBackSpeed, 0f);
+    }
+
+    public void GetHit(Vector2 attackDirection, float pushBackTime, float pushBackSpeed, float paralyzeTime)
+    {
         m_FacingDirection = attackDirection;
         m_pushBackSpeed = pushBackSpeed;
+        m_paralyzeTime = paralyzeTime;
 
         StartCoroutine(DoPushBack(pushBackTime));
     }
@@ -196,13 +207,19 @@ public class CharacterMovementModel : MonoBehaviour
         if (attackableEnemy == null)
             return;
 
-        if (attackableEnemy.GetHealth() != 0)
+        if (attackableEnemy.GetHealth() <= 0)
         {
-            SetTemporaryFrozen(recoilTime);
+            SetMovementFrozen(true);
             return;
         }
 
-        SetMovementFrozen(true);
+        SetTemporaryFrozen(recoilTime);
+
+        if (m_paralyzeTime != 0f)
+        {
+            SetTemporaryFrozen(m_paralyzeTime);
+            m_paralyzeTime = 0f;
+        }
     }
 
     private void ReverseFacingDirection()
