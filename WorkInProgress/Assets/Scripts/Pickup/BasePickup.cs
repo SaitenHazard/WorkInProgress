@@ -102,9 +102,9 @@ public class BasePickup : MonoBehaviour
             return;
         }
 
-        if (item == enumInventory.ShockPickup && playerStats.IsDamageUp() == false)
+        if (item == enumInventory.StunPickup && playerStats.IsStunUp() == false)
         {
-            playerStats.ShockUp();
+            playerStats.StunUp();
             DoNonInstantiateAnimation();
             ResetSelectedInventory();
             return;

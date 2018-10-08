@@ -15,7 +15,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     private float recoilTime;
     private float m_pushBackSpeed;
-    private float m_paralyzeTime;
+    private float m_stunTime;
 
     protected void Awake()
     {
@@ -26,7 +26,7 @@ public class CharacterMovementModel : MonoBehaviour
     private void Start()
     {
         recoilTime = 0.5f;
-        m_paralyzeTime = 0f;
+        m_stunTime = 0f;
     }
 
     protected void Update()
@@ -162,7 +162,6 @@ public class CharacterMovementModel : MonoBehaviour
     public void SetMovementFrozen(bool frozen)
     {
         movementFrozen = frozen;
-        
     }
 
     public float GetPushBackSpeed()
@@ -180,11 +179,11 @@ public class CharacterMovementModel : MonoBehaviour
         GetHit(attackDirection, pushBackTime, pushBackSpeed, 0f);
     }
 
-    public void GetHit(Vector2 attackDirection, float pushBackTime, float pushBackSpeed, float paralyzeTime)
+    public void GetHit(Vector2 attackDirection, float pushBackTime, float pushBackSpeed, float stunTime)
     {
         m_FacingDirection = attackDirection;
         m_pushBackSpeed = pushBackSpeed;
-        m_paralyzeTime = paralyzeTime;
+        m_stunTime = stunTime;
 
         StartCoroutine(DoPushBack(pushBackTime));
     }
@@ -213,13 +212,7 @@ public class CharacterMovementModel : MonoBehaviour
             return;
         }
 
-        SetTemporaryFrozen(recoilTime);
-
-        if (m_paralyzeTime != 0f)
-        {
-            SetTemporaryFrozen(m_paralyzeTime);
-            m_paralyzeTime = 0f;
-        }
+        SetTemporaryFrozen(recoilTime + m_stunTime);
     }
 
     private void ReverseFacingDirection()

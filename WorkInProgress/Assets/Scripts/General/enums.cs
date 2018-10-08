@@ -14,7 +14,7 @@ public enum enumInventory
     HealthPickup,
     SpeedPickup,
     ProjectilePickup,
-    ShockPickup,
+    StunPickup,
     NULL
 };
 

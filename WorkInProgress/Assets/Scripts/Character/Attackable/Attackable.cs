@@ -17,22 +17,24 @@ public class Attackable : MonoBehaviour
     private GameObject parentObject;
     private Color color;
     private SpeechBubble speechBubble;
-    private float shockTime;
+    private float stunTime;
+    private PlayerStats playerStats;
 
     private void Awake()
     {
-        maxHealth = health;
-        m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
         parentObject = transform.parent.gameObject;
+        m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
         aiBase = transform.parent.GetComponentInChildren<AIBase>();
         spriteRenderer = parentObject.GetComponentInChildren<SpriteRenderer>();
-        color = spriteRenderer.color;
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
+        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
     }
 
     private void Start()
     {
-        shockTime = 10f;
+        stunTime = 5f;
+        color = spriteRenderer.color;
+        maxHealth = health;
     }
 
     public float GetHealth()
@@ -61,16 +63,11 @@ public class Attackable : MonoBehaviour
 
         if (ColliderObject.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            int damage = (ColliderObject.GetComponentInParent<PlayerStats>()).GetDamage();
+            float damage = playerStats.GetDamage();
 
             attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
 
             DoHit(damage, attackerMovementModel.GetFacingDirection());
-
-            if(ColliderObject.GetComponentInParent<PlayerStats>().IsParalyzeUp() == true)
-            {
-                DoParalyze(shockTime);
-            }
         }
 
         if(ColliderObject.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
@@ -80,14 +77,9 @@ public class Attackable : MonoBehaviour
 
             Destroy(ColliderObject.gameObject);
 
-            float damage = ColliderObject.GetComponent<Projectile>().GetDamage();
+            float damage = playerStats.GetDamage();
 
             DoHit(damage, ColliderObject.GetComponent<Projectile>().GetMovementDirection());
-
-            if (ColliderObject.GetComponentInParent<PlayerStats>().IsParalyzeUp() == true)
-            {
-                DoParalyze(shockTime);
-            }
         }
     }
 
@@ -96,14 +88,21 @@ public class Attackable : MonoBehaviour
         if (health <= 0)
             return;
 
-        m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed);
-
         SubstractHealth(damage);
 
-        if (ColliderObject.GetComponentInParent<PlayerStats>().IsParalyzeUp() == true)
+        if (health <= 0)
         {
-            DoParalyze(10f);
+            DoDestroy();
         }
+
+        if (playerStats.IsStunUp() == true)
+        {
+            DoStunView(stunTime);
+            m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed, stunTime);
+            return;
+        }
+
+        m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed);
     }
 
     public void AddHealth()
@@ -138,24 +137,12 @@ public class Attackable : MonoBehaviour
         StartCoroutine(characterFadeOut());
     }
 
-    private void Update()
-    {
-        DoHideBubble();
-    }
-
-    private void DoHideBubble()
-    {
-        if(m_movementModel.IsMovementFrozen() == false)
-            speechBubble.HideSpeechBubble();
-    }
-
-    public void DoParalyze(float paralyzeTime)
+    public void DoStunView(float stunTime)
     {
         if (health <= 0)
             return;
 
-        speechBubble.ShowSpeechBubble(enumSpeechBubbles.Paralyzed);
-        m_movementModel.SetTemporaryFrozen(paralyzeTime);
+        speechBubble.ShowSpeechBubble(enumSpeechBubbles.Paralyze);
     }
 
     private IEnumerator characterFadeOut()
