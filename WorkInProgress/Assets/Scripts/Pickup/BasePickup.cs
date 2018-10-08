@@ -10,6 +10,8 @@ public class BasePickup : MonoBehaviour
     protected float proportion;
 
     public enumInventory item;
+    public GameObject playerSlime1;
+    public GameObject playerSlime2;
 
     private InventoryUI inventoryUI;
     private RectTransform slotTransform;
@@ -110,7 +112,20 @@ public class BasePickup : MonoBehaviour
             return;
         }
 
+        if (item == enumInventory.StunPickup)
+        {
+            createPlayerSlime();
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            return;
+        }
+
         DoInventoryCancelAnimation();
+    }
+
+    private void createPlayerSlime()
+    {
+
     }
 
     private void GetComponents()

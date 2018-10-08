@@ -15,6 +15,7 @@ public enum enumInventory
     SpeedPickup,
     ProjectilePickup,
     StunPickup,
+    SlimePickup,
     NULL
 };
 
