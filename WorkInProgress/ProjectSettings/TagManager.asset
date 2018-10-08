@@ -10,6 +10,7 @@ TagManager:
   - PatrolCollider
   - Hazard
   - PlayerProjectile
+  - PlayerHazard
   layers:
   - Default
   - TransparentFX

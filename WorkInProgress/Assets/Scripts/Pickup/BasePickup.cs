@@ -17,16 +17,21 @@ public class BasePickup : MonoBehaviour
     private RectTransform slotTransform;
     private PickupUseGeneralAnimation pickupUseGeneralAnimation;
     private RectTransform slotTrasform;
+    private PlayerInstant playerInstance;
 
     protected void Awake()
     {
         pickupAnimation = PlayerInstant.Instance.GetComponentInChildren<PickupAnimation>();
+        playerInstance = PlayerInstant.Instance;
     }
 
     private void Start()
     {
         gameObject.name = item.ToString();
         proportion = GetComponentInChildren<SpriteRenderer>().transform.localScale.x;
+
+        playerSlime1 = playerInstance.transform.Find("PlayerSlime1").gameObject;
+        playerSlime2 = playerInstance.transform.Find("PlayerSlime2").gameObject;
     }
 
     protected void ResetSelectedInventory()
@@ -112,7 +117,7 @@ public class BasePickup : MonoBehaviour
             return;
         }
 
-        if (item == enumInventory.StunPickup)
+        if (item == enumInventory.SlimePickup)
         {
             createPlayerSlime();
             DoNonInstantiateAnimation();
