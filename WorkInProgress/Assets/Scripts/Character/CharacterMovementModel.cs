@@ -190,6 +190,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     private IEnumerator DoPushBack(float pushBackTime)
     {
+        SetMovementFrozen(false);
         m_MovementDirection = m_FacingDirection;
 
         yield return new WaitForSeconds(pushBackTime);
@@ -213,6 +214,7 @@ public class CharacterMovementModel : MonoBehaviour
         }
 
         SetTemporaryFrozen(recoilTime + m_stunTime);
+        m_stunTime = 0f;
     }
 
     private void ReverseFacingDirection()

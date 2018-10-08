@@ -90,19 +90,22 @@ public class Attackable : MonoBehaviour
 
         SubstractHealth(damage);
 
+        if (playerStats.IsStunUp() == true)
+        {
+            Debug.Log("InStunUp == true");
+
+            StartCoroutine(DoStunView(stunTime));
+            m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed, stunTime);
+        }
+        else
+        {
+            m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed);
+        }
+
         if (health <= 0)
         {
             DoDestroy();
         }
-
-        if (playerStats.IsStunUp() == true)
-        {
-            DoStunView(stunTime);
-            m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed, stunTime);
-            return;
-        }
-
-        m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed);
     }
 
     public void AddHealth()
@@ -137,12 +140,13 @@ public class Attackable : MonoBehaviour
         StartCoroutine(characterFadeOut());
     }
 
-    public void DoStunView(float stunTime)
+    public IEnumerator DoStunView(float stunTime)
     {
-        if (health <= 0)
-            return;
+        Debug.Log("In DoStunView");
 
         speechBubble.ShowSpeechBubble(enumSpeechBubbles.Paralyze);
+        yield return new WaitForSeconds(stunTime);
+        speechBubble.HideSpeechBubble();
     }
 
     private IEnumerator characterFadeOut()
@@ -151,7 +155,7 @@ public class Attackable : MonoBehaviour
 
         yield return new WaitForSeconds(pushBackTime);
 
-        while (opacity > 0f)
+        while (opacity > 0.2f)
         {
             opacity -= 0.2f;
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
