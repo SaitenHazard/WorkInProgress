@@ -5,40 +5,9 @@ using UnityEngine;
 public class PlayerSlime : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private Vector2 m_facingDirection;
 
     public float damage = 1;
-
-    public void DoSlime()
-    {
-        playerStats.DeductProjectiletNumber();
-
-        Vector2 facingDirection = m_movementModel.GetFacingDirection();
-
-        GameObject cloneObject = null;
-
-        if (playerStats.IsDamageUp())
-            cloneObject = Instantiate(projectile2Object);
-        else
-            cloneObject = Instantiate(projectileObject);
-
-        cloneObject.transform.position = gameObject.transform.parent.position;
-
-        if (facingDirection == new Vector2(0, 1))
-            cloneObject.transform.position = new Vector2(transform.position.x, transform.position.y + 0.25f);
-        else if (facingDirection == new Vector2(0, -1))
-            cloneObject.transform.position = new Vector2(transform.position.x, transform.position.y - 0.25f);
-        else if (facingDirection == new Vector2(1, 0))
-            cloneObject.transform.position = new Vector2(transform.position.x + 0.25f, transform.position.y);
-        else
-            cloneObject.transform.position = new Vector2(transform.position.x - 0.25f, transform.position.y);
-
-        Projectile projectile = cloneObject.GetComponent<Projectile>();
-
-        projectile.SetDirectionTowardsPlayerFacing();
-        projectile.SetDamage(GetComponent<PlayerStats>().GetDamage());
-
-        cloneObject.SetActive(true);
-    }
 
     private void Awake()
     {

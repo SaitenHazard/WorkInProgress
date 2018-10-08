@@ -119,7 +119,11 @@ public class BasePickup : MonoBehaviour
 
         if (item == enumInventory.SlimePickup)
         {
-            createPlayerSlime();
+            if (playerStats.IsDamageUp() == true)
+                createPlayerSlime(playerSlime2);
+            else
+                createPlayerSlime(playerSlime1);
+
             DoNonInstantiateAnimation();
             ResetSelectedInventory();
             return;
@@ -128,9 +132,10 @@ public class BasePickup : MonoBehaviour
         DoInventoryCancelAnimation();
     }
 
-    private void createPlayerSlime()
+    private void createPlayerSlime(GameObject playerSlime)
     {
-
+        Instantiate(playerSlime, playerInstance.transform);
+        playerSlime.SetActive(true);
     }
 
     private void GetComponents()
