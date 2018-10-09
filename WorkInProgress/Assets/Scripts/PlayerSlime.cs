@@ -21,6 +21,12 @@ public class PlayerSlime : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(WaitBeforeFadeOut());
+    }
+
+    private IEnumerator WaitBeforeFadeOut()
+    {
+        yield return new WaitForSeconds(5f);
         StartCoroutine(SlimeFadeout());
     }
 

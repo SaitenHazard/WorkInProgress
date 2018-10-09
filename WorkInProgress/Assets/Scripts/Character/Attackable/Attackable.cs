@@ -75,11 +75,21 @@ public class Attackable : MonoBehaviour
             if (health <= 0)
                 return;
 
+            float damage = ColliderObject.GetComponent<Projectile>().GetDamage();
+
             Destroy(ColliderObject.gameObject);
 
-            float damage = playerStats.GetDamage();
-
             DoHit(damage, ColliderObject.GetComponent<Projectile>().GetMovementDirection());
+        }
+
+        if (ColliderObject.tag == "PlayerHazard" && m_movementModel.GetPushBackSpeed() == 0f)
+        {
+            if (health <= 0)
+                return;
+
+            float damage = ColliderObject.GetComponent<PlayerSlime>().GetDamage();
+            Vector2 movementDirection = transform.parent.GetComponent<CharacterMovementModel>().GetReverseFacingDirection();
+            DoHit(damage, movementDirection);
         }
     }
 
@@ -92,8 +102,6 @@ public class Attackable : MonoBehaviour
 
         if (playerStats.IsStunUp() == true)
         {
-            Debug.Log("InStunUp == true");
-
             StartCoroutine(DoStunView(stunTime));
             m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed, stunTime);
         }

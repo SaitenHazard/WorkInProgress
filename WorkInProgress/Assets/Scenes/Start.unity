@@ -837,6 +837,37 @@ Prefab:
       propertyPath: menuView
       value: 
       objectReference: {fileID: 720395091}
+    - target: {fileID: 1677982401058846, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385496089155570, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4333817439502580, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901243488201648, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61299609825976464, guid: a6437d0484091764a8228d93786774f2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114846124509685234, guid: a6437d0484091764a8228d93786774f2,
+        type: 2}
+      propertyPath: m_damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441699252716088, guid: a6437d0484091764a8228d93786774f2,
+        type: 2}
+      propertyPath: m_damage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6437d0484091764a8228d93786774f2, type: 2}
   m_IsPrefabParent: 0
@@ -2415,7 +2446,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

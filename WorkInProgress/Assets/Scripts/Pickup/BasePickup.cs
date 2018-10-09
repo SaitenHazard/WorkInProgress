@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class BasePickup : MonoBehaviour
 {
-    protected Sprite sprite;
-    protected PickupAnimation pickupAnimation;
-    protected PlayerInventory m_inventory;
-    protected float proportion;
-
     public enumInventory item;
-    public GameObject playerSlime1;
-    public GameObject playerSlime2;
 
+    private GameObject playerSlime1;
+    private GameObject playerSlime2;
     private InventoryUI inventoryUI;
     private RectTransform slotTransform;
     private PickupUseGeneralAnimation pickupUseGeneralAnimation;
     private RectTransform slotTrasform;
     private PlayerInstant playerInstance;
+    private Sprite sprite;
+    private PickupAnimation pickupAnimation;
+    private PlayerInventory m_inventory;
+    private float proportion;
 
     protected void Awake()
     {
@@ -29,17 +28,15 @@ public class BasePickup : MonoBehaviour
     {
         gameObject.name = item.ToString();
         proportion = GetComponentInChildren<SpriteRenderer>().transform.localScale.x;
-
-        playerSlime1 = playerInstance.transform.Find("PlayerSlime1").gameObject;
-        playerSlime2 = playerInstance.transform.Find("PlayerSlime2").gameObject;
     }
 
-    protected void ResetSelectedInventory()
+    private void ResetSelectedInventory()
     {
-        (PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerInventory>()).ResetSlected();
+        playerInstance = PlayerInstant.Instance;
+        playerInstance.transform.gameObject.GetComponent<PlayerInventory>().ResetSlected();
     }
 
-    protected void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.tag == "Player")
         {
@@ -58,13 +55,13 @@ public class BasePickup : MonoBehaviour
         }
     }
 
-    protected void DoPickupAnimation()
+    private void DoPickupAnimation()
     {
         sprite = GetComponentInChildren<SpriteRenderer>().sprite;
         pickupAnimation.DoAnimation(sprite, proportion);
     }
 
-    protected void DoCancelPickupAnimation()
+    private void DoCancelPickupAnimation()
     {
         GameObject Object = Resources.Load("CancelPickup") as GameObject;
         sprite = (Object.transform.GetComponentInChildren<SpriteRenderer>()).sprite;
@@ -74,8 +71,7 @@ public class BasePickup : MonoBehaviour
     public void UsePickup()
     {
         PlayerStats playerStats = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerStats>();
-        AttackablePlayer attackable = PlayerInstant.Instance.transform.gameObject.
-            GetComponentInChildren<AttackablePlayer>();
+        AttackablePlayer attackable = PlayerInstant.Instance.transform.gameObject.GetComponentInChildren<AttackablePlayer>();
 
         if (item == enumInventory.ProjectilePickup && playerStats.IsProjetileActive() == false)
         {
@@ -119,6 +115,13 @@ public class BasePickup : MonoBehaviour
 
         if (item == enumInventory.SlimePickup)
         {
+            playerInstance = PlayerInstant.Instance;
+            playerSlime1 = playerInstance.transform.Find("PlayerSlime1").gameObject;
+            playerSlime2 = playerInstance.transform.Find("PlayerSlime2").gameObject;
+
+            Debug.Log(playerSlime1);
+            Debug.Log(playerSlime2);
+
             if (playerStats.IsDamageUp() == true)
                 createPlayerSlime(playerSlime2);
             else
@@ -134,8 +137,11 @@ public class BasePickup : MonoBehaviour
 
     private void createPlayerSlime(GameObject playerSlime)
     {
-        Instantiate(playerSlime, playerInstance.transform);
-        playerSlime.SetActive(true);
+        Debug.Log(playerSlime);
+
+        GameObject cloneObject = Instantiate(playerSlime, playerInstance.transform);
+        cloneObject.transform.SetParent(null);
+        cloneObject.SetActive(true);
     }
 
     private void GetComponents()
@@ -145,7 +151,7 @@ public class BasePickup : MonoBehaviour
         slotTrasform = inventoryUI.GetSlotSelectedRectTransform();
     }
 
-    protected void DoNonInstantiateAnimation()
+    private void DoNonInstantiateAnimation()
     {
         GetComponents();
 
@@ -153,7 +159,7 @@ public class BasePickup : MonoBehaviour
         pickupUseGeneralAnimation.DoAnimation(sprite, 1f, slotTrasform);
     }
 
-    protected void DoInventoryCancelAnimation()
+    private void DoInventoryCancelAnimation()
     {
         GetComponents();
 

@@ -43,8 +43,6 @@ public class PlayerProjectile : MonoBehaviour
         Projectile projectile = cloneObject.GetComponent<Projectile>();
 
         projectile.SetDirectionTowardsPlayerFacing();
-        projectile.SetDamage(GetComponent<PlayerStats>().GetDamage());
-
         cloneObject.SetActive(true);
     }
 }
