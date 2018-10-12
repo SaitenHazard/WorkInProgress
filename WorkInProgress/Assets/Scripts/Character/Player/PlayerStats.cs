@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     private bool projectileActive;
     private bool gameStateFrozen;
     private bool stunActive;
+    private bool rangeActive;
 
     private float speed;
     private float yieldTime;
@@ -107,6 +108,18 @@ public class PlayerStats : MonoBehaviour
     {
         stunActive = true;
         StartCoroutine(RevertShock());
+    }
+
+    public void RangeUp()
+    {
+        rangeActive = true;
+        StartCoroutine(RevertRange());
+    }
+
+    private IEnumerator RevertRange()
+    {
+        yield return new WaitForSeconds(yieldTime);
+        rangeActive = false;
     }
 
     public bool IsStunUp()

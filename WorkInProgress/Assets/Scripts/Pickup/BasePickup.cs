@@ -119,9 +119,6 @@ public class BasePickup : MonoBehaviour
             playerSlime1 = playerInstance.transform.Find("PlayerSlime1").gameObject;
             playerSlime2 = playerInstance.transform.Find("PlayerSlime2").gameObject;
 
-            Debug.Log(playerSlime1);
-            Debug.Log(playerSlime2);
-
             if (playerStats.IsDamageUp() == true)
                 createPlayerSlime(playerSlime2);
             else
@@ -132,13 +129,19 @@ public class BasePickup : MonoBehaviour
             return;
         }
 
+        if (item == enumInventory.RangePickup)
+        {
+            playerStats.StunUp();
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            return;
+        }
+
         DoInventoryCancelAnimation();
     }
 
     private void createPlayerSlime(GameObject playerSlime)
     {
-        Debug.Log(playerSlime);
-
         GameObject cloneObject = Instantiate(playerSlime, playerInstance.transform);
         cloneObject.transform.SetParent(null);
         cloneObject.SetActive(true);
