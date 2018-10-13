@@ -24,7 +24,7 @@ public class PlayerMovementModel : CharacterMovementModel
 
         if (playerStats.IsProjetileActive() == true)
         {
-            playerProjectile.DoPorjectile();
+            playerProjectile.DoPorjectile(playerStats.IsRangeUp());
         }
     }
 }

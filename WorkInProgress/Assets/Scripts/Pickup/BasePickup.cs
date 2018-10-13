@@ -129,9 +129,9 @@ public class BasePickup : MonoBehaviour
             return;
         }
 
-        if (item == enumInventory.RangePickup)
+        if (item == enumInventory.RangePickup && playerStats.IsRangeUp() == false)
         {
-            playerStats.StunUp();
+            playerStats.RangeUp();
             DoNonInstantiateAnimation();
             ResetSelectedInventory();
             return;

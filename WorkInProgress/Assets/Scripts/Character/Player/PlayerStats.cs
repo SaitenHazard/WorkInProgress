@@ -17,6 +17,8 @@ public class PlayerStats : MonoBehaviour
 
     private InteractableBase m_interactableBase;
 
+    public GameObject punchVisuals;
+
     private void Awake()
     {
         m_interactableBase = null;
@@ -42,6 +44,19 @@ public class PlayerStats : MonoBehaviour
     private void Update()
     {
         CheckActiveUI();
+        CheckPowerUps();
+    }
+
+    private void CheckPowerUps()
+    {
+        if (IsRangeUp() == true)
+        {
+            punchVisuals.transform.localScale = new Vector3(2, 2, 1);
+        }
+        else
+        {
+            punchVisuals.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     public bool GetGameState()
@@ -114,6 +129,11 @@ public class PlayerStats : MonoBehaviour
     {
         rangeActive = true;
         StartCoroutine(RevertRange());
+    }
+
+    public bool IsRangeUp()
+    {
+        return rangeActive;
     }
 
     private IEnumerator RevertRange()

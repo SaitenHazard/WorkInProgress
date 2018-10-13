@@ -883,9 +883,37 @@ Prefab:
       propertyPath: m_TagString
       value: PlayerHazard
       objectReference: {fileID: 0}
+    - target: {fileID: 212080899255341142, guid: a6437d0484091764a8228d93786774f2,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612030937934286, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612030937934286, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942251244953464, guid: a6437d0484091764a8228d93786774f2,
+        type: 2}
+      propertyPath: punchVisuals
+      value: 
+      objectReference: {fileID: 429034883}
+    - target: {fileID: 114405542626826376, guid: a6437d0484091764a8228d93786774f2,
+        type: 2}
+      propertyPath: punchVisuals
+      value: 
+      objectReference: {fileID: 429034883}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6437d0484091764a8228d93786774f2, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &429034883 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1835783100498158, guid: a6437d0484091764a8228d93786774f2,
+    type: 2}
+  m_PrefabInternal: {fileID: 429034882}
 --- !u!1 &433311976
 GameObject:
   m_ObjectHideFlags: 0

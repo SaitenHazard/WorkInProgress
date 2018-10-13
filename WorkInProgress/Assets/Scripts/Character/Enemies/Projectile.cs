@@ -36,6 +36,30 @@ public class Projectile : MonoBehaviour
         direction = direction.normalized;
     }
 
+    public void SetDirectionTopRight()
+    {
+        direction = new Vector2(1, 1);
+        direction = direction.normalized;
+    }
+
+    public void SetDirectionTopLeft()
+    {
+        direction = new Vector2(-1, 1);
+        direction = direction.normalized;
+    }
+
+    public void SetDirectionBottomLeft()
+    {
+        direction = new Vector2(-1, -1);
+        direction = direction.normalized;
+    }
+
+    public void SetDirectionBottomRight()
+    {
+        direction = new Vector2(1, -1);
+        direction = direction.normalized;
+    }
+
     public Vector2 GetMovementDirection()
     {
         return direction;
