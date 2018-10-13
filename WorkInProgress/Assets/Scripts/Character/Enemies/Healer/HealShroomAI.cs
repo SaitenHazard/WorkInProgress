@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class HealShroomAI : AIBase
 {
+    private void Start()
+    {
+        base.Start();
+        Debug.Log(enemyColliders.Count);
+    }
+
     private void Update()
     {
         base.Update();
@@ -19,6 +25,7 @@ public class HealShroomAI : AIBase
         if (enemyColliders[enemyColliderIndex].gameObject == null)
         {
             enemyAction = enumEnemyActions.patrol;
+            return;
         }
 
         Attackable attackable = 
@@ -34,31 +41,39 @@ public class HealShroomAI : AIBase
     private void SearchForInjuredEnemy()
     {
         if (enemyColliders.Count == 0)
+        {
             return;
+        }
 
         if (enemyAction == enumEnemyActions.healAlly)
+        {
             return;
+        }
 
         enemyColliderIndex = 0;
 
         while (enemyColliderIndex < enemyColliders.Count)
         {
             Debug.Log("Index: " + enemyColliderIndex);
-            Debug.Log("ArrayLenght: " + enemyColliders.Count);
+            Debug.Log("Array: " + enemyColliders);
+            Debug.Log(enemyColliderIndex + " : " + enemyColliders.Count);
 
-            if (enemyColliders[enemyColliderIndex] == null)
-                return;
+            //Collider2D temp = enemyColliders[enemyColliderIndex];
 
-            Attackable attackable = enemyColliders[enemyColliderIndex].transform.
-                parent.GetComponentInChildren<Attackable>();
+            //if (enemyColliders[enemyColliderIndex] == null)
+            //    return;
 
-            if(attackable.GetHealth() < attackable.GetMaxHealth())
-            {
-                enemyAction = enumEnemyActions.healAlly;
-                break;
-            }
+            //Attackable attackable = enemyColliders[enemyColliderIndex].transform.
+            //    parent.GetComponentInChildren<Attackable>();
 
-            enemyColliderIndex++;
+            //if(attackable.GetHealth() < attackable.GetMaxHealth())
+            //{
+            //    Debug.Log("in");
+            //    enemyAction = enumEnemyActions.healAlly;
+            //    break;
+            //}
+
+            //enemyColliderIndex++;
         }
     }
 
@@ -66,6 +81,7 @@ public class HealShroomAI : AIBase
     {
         if (collider2D.gameObject.tag == "Enemy")
         {
+            return;
             Debug.Log(collider2D.transform.parent.name);
             enemyColliders.Add(collider2D);
         }
