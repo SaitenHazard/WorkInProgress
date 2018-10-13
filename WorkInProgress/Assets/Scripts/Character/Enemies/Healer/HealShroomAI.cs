@@ -7,56 +7,55 @@ public class HealShroomAI : AIBase
     private void Start()
     {
         base.Start();
-        Debug.Log(enemyColliders.Count);
     }
 
     private void Update()
     {
         base.Update();
-        RevertHealAlly();
+        //RevertHealAlly();
         SearchForInjuredEnemy();
     }
 
     private void RevertHealAlly()
     {
-        if (enemyColliders.Count == 0)
-            return;
+        //if (enemyColliders.Count == 0)
+        //    return;
 
-        if (enemyColliders[enemyColliderIndex].gameObject == null)
-        {
-            enemyAction = enumEnemyActions.patrol;
-            return;
-        }
+        //if (enemyColliders[enemyColliderIndex].gameObject == null)
+        //{
+        //    enemyAction = enumEnemyActions.patrol;
+        //    return;
+        //}
 
-        Attackable attackable = 
-            enemyColliders[enemyColliderIndex].transform.parent.
-            GetComponentInChildren<Attackable>();
+        //Attackable attackable = 
+        //    enemyColliders[enemyColliderIndex].transform.parent.
+        //    GetComponentInChildren<Attackable>();
 
-        if (attackable.GetHealth() == attackable.GetMaxHealth())
-        {
-            enemyAction = enumEnemyActions.patrol;
-        }
+        //if (attackable.GetHealth() == attackable.GetMaxHealth())
+        //{
+        //    enemyAction = enumEnemyActions.patrol;
+        //}
     }
 
     private void SearchForInjuredEnemy()
     {
-        if (enemyColliders.Count == 0)
+        if (enemyAction == enumEnemyActions.healAlly)
         {
             return;
         }
 
-        if (enemyAction == enumEnemyActions.healAlly)
+        if (enemyColliders.Count == 0)
         {
             return;
         }
 
         enemyColliderIndex = 0;
 
-        while (enemyColliderIndex < enemyColliders.Count)
-        {
-            Debug.Log("Index: " + enemyColliderIndex);
-            Debug.Log("Array: " + enemyColliders);
-            Debug.Log(enemyColliderIndex + " : " + enemyColliders.Count);
+        //while (enemyColliderIndex < enemyColliders.Count)
+        //{
+            //Debug.Log("Index: " + enemyColliderIndex);
+            //Debug.Log("Array: " + enemyColliders);
+            //Debug.Log(enemyColliderIndex + " : " + enemyColliders.Count);
 
             //Collider2D temp = enemyColliders[enemyColliderIndex];
 
@@ -74,16 +73,16 @@ public class HealShroomAI : AIBase
             //}
 
             //enemyColliderIndex++;
-        }
+        //}
     }
 
     override protected void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Enemy")
         {
-            return;
-            Debug.Log(collider2D.transform.parent.name);
+            Debug.Log("Enter");
             enemyColliders.Add(collider2D);
+            DisplayArray();
         }
 
         if (enemyAction == enumEnemyActions.healAlly)
@@ -113,7 +112,9 @@ public class HealShroomAI : AIBase
     {
         if (collider2D.gameObject.tag == "Enemy")
         {
+            Debug.Log("Exit");
             enemyColliders.Remove(collider2D);
+            DisplayArray();
         }
 
         if (enemyAction == enumEnemyActions.healAlly)
@@ -123,5 +124,22 @@ public class HealShroomAI : AIBase
         {
             enemyAction = enumEnemyActions.patrol;
         }
+    }
+
+    private int index = 1;
+
+    private void DisplayArray()
+    {
+        Debug.Log(index + " ArraySize : " + enemyColliders.Count);
+
+        if (enemyColliders.Count > 0)
+        {
+            for (int i = 0; i < enemyColliders.Count; i++)
+            {
+                Debug.Log(index + " Array : " + enemyColliders[i].transform.parent.name);
+            }
+        }
+
+        index++;
     }
 }

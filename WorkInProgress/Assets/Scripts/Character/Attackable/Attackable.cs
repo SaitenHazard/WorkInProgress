@@ -54,7 +54,7 @@ public class Attackable : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D (Collider2D hitCollider)
     {
-        if(aiBase.GetEnemyAction() == enumEnemyActions.defend)
+        if(aiBase != null && aiBase.GetEnemyAction() == enumEnemyActions.defend)
         {
             return;
         }

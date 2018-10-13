@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4800712184975408}
   - component: {fileID: 58564841973033158}
-  - component: {fileID: 58930585841650548}
   m_Layer: 0
   m_Name: CollisionBox
   m_TagString: Enemy
@@ -106,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4390289052928064}
   - component: {fileID: 58113237008632296}
-  - component: {fileID: 114373095885106958}
+  - component: {fileID: 114976429049209192}
   m_Layer: 0
   m_Name: SightBox
   m_TagString: Untagged
@@ -202,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1940448539327282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4883246057020652}
@@ -241,7 +240,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571733255154708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.278, z: 0}
+  m_LocalPosition: {x: 0, y: 0.205, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4359413857348754}
@@ -406,21 +405,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.03}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!58 &58930585841650548
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1367662491035370}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!61 &61812264078812498
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -513,19 +497,7 @@ MonoBehaviour:
   questionBubble: {fileID: 21300000, guid: 0a40449db80876f4a85f1553bd9568f6, type: 3}
   interactableBubble: {fileID: 0}
   empty: {fileID: 0}
---- !u!114 &114373095885106958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1544875395516976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cda1c557808069b4f82f13a7d79b2ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileObject: {fileID: 0}
-  patrol: {fileID: 0}
+  paralyze: {fileID: 21300000, guid: 7c643b955c06d1c44ac3a2573bd78cc4, type: 3}
 --- !u!114 &114564634648935066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -563,6 +535,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a508ceaa80ccff9429cedfc09d257e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_damage: 0
+--- !u!114 &114976429049209192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1544875395516976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09084dc506f0a64428e7135560aa3d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileObject: {fileID: 0}
+  patrol: {fileID: 0}
 --- !u!212 &212060823905664182
 SpriteRenderer:
   m_ObjectHideFlags: 1
