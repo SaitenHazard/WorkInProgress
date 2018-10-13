@@ -121,7 +121,7 @@ public class Attackable : MonoBehaviour
         AddHealth(1);
     }
 
-    public void AddHealth(int amount)
+    public void AddHealth(float amount)
     {
         health += amount;
 
@@ -138,7 +138,7 @@ public class Attackable : MonoBehaviour
         SubstractHealth(1);
     }
 
-    private void SubstractHealth(float amount)
+    public void SubstractHealth(float amount)
     {
         health -= amount;
     }

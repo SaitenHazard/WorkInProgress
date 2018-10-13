@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AIBase : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class AIBase : MonoBehaviour
     protected Vector2 movementDirection;
     protected Coroutine projectileCoroutine;
     protected enumEnemyActions enemyAction;
+    protected List<Collider2D> enemyColliders = new List<Collider2D>();
+    protected int enemyColliderIndex;
 
     private CharacterMovementModel p_movementModel;
     private Animator m_Animator;
@@ -45,7 +48,7 @@ public class AIBase : MonoBehaviour
 
     protected void Update()
     {
-        UpdateDefendAni();
+        UpdateUniqueAni();
         UpdateAngle();
         SetDirectionTowardsTarget();
         DoMovement();
@@ -56,9 +59,9 @@ public class AIBase : MonoBehaviour
         m_movementModel.SetDirection(movementDirection);
     }
 
-    private void UpdateDefendAni()
+    private void UpdateUniqueAni()
     {
-        m_Animator.SetBool("Defend", enemyAction == enumEnemyActions.defend);
+        m_Animator.SetBool("UniqueAction", enemyAction == enumEnemyActions.defend);
     }
 
     private void UpdateAngle()
@@ -72,6 +75,12 @@ public class AIBase : MonoBehaviour
         if (enemyAction == enumEnemyActions.chase)
         {
             target = PlayerInstant.Instance.GetComponent<Transform>();
+            angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
+        }
+
+        if (enemyAction == enumEnemyActions.healAlly)
+        {
+            target = enemyColliders[enemyColliderIndex].GetComponent<Transform>();
             angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
     }
@@ -169,9 +178,33 @@ public class AIBase : MonoBehaviour
             movementDirection = new Vector2(1, 0);
         }
 
+        if(enemyAction == enumEnemyActions.healAlly)
+        {
+            if (Vector2.Distance(transform.position, target.position) < 1)
+            {
+                DoHeal();
+            }
+        }
+
         if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend)
         {
             movementDirection = Vector2.zero;
         }
+    }
+
+    private IEnumerator DoHeal()
+    {
+        float yieldTime = 1f;
+
+        m_Animator.SetBool("UniqueAction", true);
+
+        yield return new WaitForSeconds(yieldTime);
+
+        Attackable allyAttackable = enemyColliders[enemyColliderIndex].GetComponent<Attackable>();
+        Attackable selfAttackable = transform.parent.GetComponentInChildren<Attackable>();
+
+        m_Animator.SetBool("UniqueAction", false);
+        allyAttackable.AddHealth(allyAttackable.GetMaxHealth());
+        selfAttackable.SubstractHealth(selfAttackable.GetMaxHealth()/3);
     }
 }

@@ -25,5 +25,6 @@ public enum enumEnemyActions
     chase,
     patrol,
     defend,
+    healAlly,
     NULL
 }
