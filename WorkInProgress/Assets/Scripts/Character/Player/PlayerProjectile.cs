@@ -106,24 +106,32 @@ public class PlayerProjectile : MonoBehaviour
         {
             cloneObject1.transform.position = new Vector2(transform.position.x + 0.25f, transform.position.y + 0.25f);
             cloneObject2.transform.position = new Vector2(transform.position.x - 0.25f, transform.position.y + 0.25f);
+            projectile1.SetDirectionTopRight();
+            projectile2.SetDirectionTopLeft();
         }
 
         else if (projectileFacingDirection == new Vector2(0, -1))
         {
             cloneObject1.transform.position = new Vector2(transform.position.x + 0.25f, transform.position.y - 0.25f);
             cloneObject2.transform.position = new Vector2(transform.position.x - 0.25f, transform.position.y - 0.25f);
+            projectile1.SetDirectionBottomRight();
+            projectile2.SetDirectionBottomLeft();
         }
 
         else if (projectileFacingDirection == new Vector2(1, 0))
         {
             cloneObject1.transform.position = new Vector2(transform.position.x + 0.25f, transform.position.y + 0.25f);
             cloneObject2.transform.position = new Vector2(transform.position.x + 0.25f, transform.position.y - 0.25f);
+            projectile1.SetDirectionTopRight();
+            projectile2.SetDirectionBottomRight();
         }
 
         else
         {
             cloneObject1.transform.position = new Vector2(transform.position.x - 0.25f, transform.position.y + 0.25f);
             cloneObject2.transform.position = new Vector2(transform.position.x - 0.25f, transform.position.y - 0.25f);
+            projectile1.SetDirectionTopLeft();
+            projectile2.SetDirectionBottomLeft();
         }
     }
 }

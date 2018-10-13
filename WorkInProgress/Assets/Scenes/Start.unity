@@ -189,6 +189,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 93726222}
+--- !u!1 &106110934 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1677982401058846, guid: a6437d0484091764a8228d93786774f2,
+    type: 2}
+  m_PrefabInternal: {fileID: 429034882}
 --- !u!1 &144713759
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,12 +877,12 @@ Prefab:
     - target: {fileID: 61299609825976464, guid: a6437d0484091764a8228d93786774f2,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 61299609825976464, guid: a6437d0484091764a8228d93786774f2,
         type: 2}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1385496089155570, guid: a6437d0484091764a8228d93786774f2, type: 2}
       propertyPath: m_TagString
@@ -906,6 +911,21 @@ Prefab:
       propertyPath: punchVisuals
       value: 
       objectReference: {fileID: 429034883}
+    - target: {fileID: 114405542626826376, guid: a6437d0484091764a8228d93786774f2,
+        type: 2}
+      propertyPath: playerSlime1
+      value: 
+      objectReference: {fileID: 106110934}
+    - target: {fileID: 114405542626826376, guid: a6437d0484091764a8228d93786774f2,
+        type: 2}
+      propertyPath: playerSlime2
+      value: 
+      objectReference: {fileID: 1099595235}
+    - target: {fileID: 61299609825976464, guid: a6437d0484091764a8228d93786774f2,
+        type: 2}
+      propertyPath: m_EdgeRadius
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6437d0484091764a8228d93786774f2, type: 2}
   m_IsPrefabParent: 0
@@ -2536,7 +2556,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!1 &1121092818
 GameObject:

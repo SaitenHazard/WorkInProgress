@@ -18,6 +18,8 @@ public class PlayerStats : MonoBehaviour
     private InteractableBase m_interactableBase;
 
     public GameObject punchVisuals;
+    public GameObject playerSlime1;
+    public GameObject playerSlime2;
 
     private void Awake()
     {
@@ -52,10 +54,14 @@ public class PlayerStats : MonoBehaviour
         if (IsRangeUp() == true)
         {
             punchVisuals.transform.localScale = new Vector3(2, 2, 1);
+            playerSlime1.transform.localScale = new Vector3(2, 2, 1);
+            playerSlime2.transform.localScale = new Vector3(2, 2, 1);
         }
         else
         {
             punchVisuals.transform.localScale = new Vector3(1, 1, 1);
+            playerSlime1.transform.localScale = new Vector3(1, 1, 1);
+            playerSlime2.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
