@@ -19,6 +19,7 @@ public class AIBase : MonoBehaviour
 
     private CharacterMovementModel p_movementModel;
     private Animator m_Animator;
+    private Attackable attackable;
 
     protected void Awake()
     {
@@ -26,6 +27,7 @@ public class AIBase : MonoBehaviour
         p_movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
         m_Animator = transform.parent.GetComponentInChildren<Animator>();
+        attackable = transform.parent.GetComponentInChildren<Attackable>();
     }
 
     protected void Start()
@@ -52,12 +54,6 @@ public class AIBase : MonoBehaviour
         UpdateAngle();
         SetDirectionTowardsTarget();
         DoMovement();
-
-        if (enemyAction == enumEnemyActions.NULL)
-        {
-            Debug.Log("in");
-            return;
-        }
     }
 
     private void DoMovement()
@@ -191,7 +187,7 @@ public class AIBase : MonoBehaviour
             }
         }
 
-        if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend)
+        if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend || attackable.GetHealth() == 0)
         {
             movementDirection = Vector2.zero;
         }
@@ -222,9 +218,6 @@ public class AIBase : MonoBehaviour
         allyAttackable.SetHealth(allyAttackable.GetMaxHealth());
         selfAttackable.SubstractHealth(selfAttackable.GetMaxHealth() / 3);
 
-        if (allyAttackable.GetHealth() <= 0)
-            enemyAction = enumEnemyActions.NULL;
-        else
-            enemyAction = enumEnemyActions.patrol;
+        enemyAction = enumEnemyActions.patrol;
     }
 }

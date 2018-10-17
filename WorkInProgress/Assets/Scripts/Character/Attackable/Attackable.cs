@@ -145,14 +145,11 @@ public class Attackable : MonoBehaviour
 
     private void DoDestroy()
     {
-        aiBase.SetEnemyAction(enumEnemyActions.NULL);
         StartCoroutine(characterFadeOut());
     }
 
     public IEnumerator DoStunView(float stunTime)
     {
-        Debug.Log("In DoStunView");
-
         speechBubble.ShowSpeechBubble(enumSpeechBubbles.Paralyze);
         yield return new WaitForSeconds(stunTime);
         speechBubble.HideSpeechBubble();

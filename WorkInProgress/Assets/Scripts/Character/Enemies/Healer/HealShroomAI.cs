@@ -26,9 +26,6 @@ public class HealShroomAI : AIBase
 
     override protected void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (enemyAction == enumEnemyActions.NULL)
-            return;
-
         if (enemyAction == enumEnemyActions.healAlly)
             return;
 
@@ -42,9 +39,6 @@ public class HealShroomAI : AIBase
 
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
-        if (enemyAction == enumEnemyActions.NULL)
-            return;
-
         if (enemyAction == enumEnemyActions.healAlly)
             return;
 
@@ -71,9 +65,6 @@ public class HealShroomAI : AIBase
 
     override protected void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (enemyAction == enumEnemyActions.NULL)
-            return;
-
         if (enemyAction == enumEnemyActions.healAlly)
             return;
 
