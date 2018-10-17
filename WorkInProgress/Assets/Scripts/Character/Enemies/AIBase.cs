@@ -178,11 +178,14 @@ public class AIBase : MonoBehaviour
             movementDirection = new Vector2(1, 0);
         }
 
-        if(enemyAction == enumEnemyActions.healAlly)
+        if (enemyAction == enumEnemyActions.healAlly)
         {
+            Debug.Log("Distance from enemy: " + Vector2.Distance(transform.position, target.position));
+
             if (Vector2.Distance(transform.position, target.position) < 1)
             {
-                DoHeal();
+                movementDirection = Vector2.zero;
+                StartCoroutine(DoHeal());
             }
         }
 
@@ -194,17 +197,22 @@ public class AIBase : MonoBehaviour
 
     private IEnumerator DoHeal()
     {
-        float yieldTime = 1f;
+        float yieldTime = 0.5f;
 
         m_Animator.SetBool("UniqueAction", true);
 
+        //Debug.Log("Before Yeild Return");
+
         yield return new WaitForSeconds(yieldTime);
 
-        Attackable allyAttackable = enemyColliders[enemyColliderIndex].GetComponent<Attackable>();
+        //Debug.Log("After Yeild Return");
+
+        Attackable allyAttackable = enemyColliders[enemyColliderIndex].transform.parent.GetComponentInChildren<Attackable>();
         Attackable selfAttackable = transform.parent.GetComponentInChildren<Attackable>();
 
         m_Animator.SetBool("UniqueAction", false);
         allyAttackable.AddHealth(allyAttackable.GetMaxHealth());
         selfAttackable.SubstractHealth(selfAttackable.GetMaxHealth()/3);
+        Debug.Log("1/3 max health" + selfAttackable.GetMaxHealth() / 3);
     }
 }
