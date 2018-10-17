@@ -26,5 +26,6 @@ public enum enumEnemyActions
     patrol,
     defend,
     healAlly,
+    dying,
     NULL
 }

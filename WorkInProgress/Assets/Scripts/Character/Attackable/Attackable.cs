@@ -109,11 +109,6 @@ public class Attackable : MonoBehaviour
         {
             m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed);
         }
-
-        if (health <= 0)
-        {
-            DoDestroy();
-        }
     }
 
     public void AddHealth()
@@ -141,10 +136,16 @@ public class Attackable : MonoBehaviour
     public void SubstractHealth(float amount)
     {
         health -= amount;
+
+        if (health <= 0)
+        {
+            DoDestroy();
+        }
     }
 
     private void DoDestroy()
     {
+        aiBase.SetEnemyAction(enumEnemyActions.NULL);
         StartCoroutine(characterFadeOut());
     }
 
@@ -170,7 +171,7 @@ public class Attackable : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        AIBase aiBase = gameObject.transform.parent.GetComponentInChildren<AIBase>();
+        aiBase = gameObject.transform.parent.GetComponentInChildren<AIBase>();
         GameObject patrolObject = aiBase.GetPatrolObject();
 
         if (aiBase != null)

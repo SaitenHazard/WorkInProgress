@@ -1515,6 +1515,11 @@ Prefab:
       propertyPath: patrol
       value: 
       objectReference: {fileID: 1320744336}
+    - target: {fileID: 114682807556647912, guid: d2056d45ebabd904e9cae0a01f58fc1f,
+        type: 2}
+      propertyPath: health
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2056d45ebabd904e9cae0a01f58fc1f, type: 2}
   m_IsPrefabParent: 0
@@ -2857,6 +2862,10 @@ Prefab:
       propertyPath: patrol
       value: 
       objectReference: {fileID: 1880354101}
+    - target: {fileID: 1554405943303088, guid: f4ebf87dd80b7fc449a8579dde113b0a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4ebf87dd80b7fc449a8579dde113b0a, type: 2}
   m_IsPrefabParent: 0

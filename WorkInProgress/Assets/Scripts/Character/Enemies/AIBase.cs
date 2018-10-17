@@ -9,12 +9,12 @@ public class AIBase : MonoBehaviour
 
     protected float angle;
     protected Transform target;
+    protected Transform injuredAlly;
     protected SpeechBubble speechBubble;
     protected CharacterMovementModel m_movementModel;
     protected Vector2 movementDirection;
     protected Coroutine projectileCoroutine;
     protected enumEnemyActions enemyAction;
-    protected List<Collider2D> enemyColliders = new List<Collider2D>();
     protected int enemyColliderIndex;
 
     private CharacterMovementModel p_movementModel;
@@ -52,6 +52,12 @@ public class AIBase : MonoBehaviour
         UpdateAngle();
         SetDirectionTowardsTarget();
         DoMovement();
+
+        if (enemyAction == enumEnemyActions.NULL)
+        {
+            Debug.Log("in");
+            return;
+        }
     }
 
     private void DoMovement()
@@ -61,7 +67,7 @@ public class AIBase : MonoBehaviour
 
     private void UpdateUniqueAni()
     {
-        m_Animator.SetBool("UniqueAction", enemyAction == enumEnemyActions.defend);
+        m_Animator.SetBool("Defend", enemyAction == enumEnemyActions.defend);
     }
 
     private void UpdateAngle()
@@ -80,7 +86,7 @@ public class AIBase : MonoBehaviour
 
         if (enemyAction == enumEnemyActions.healAlly)
         {
-            target = enemyColliders[enemyColliderIndex].GetComponent<Transform>();
+            target = injuredAlly;
             angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
     }
@@ -117,23 +123,17 @@ public class AIBase : MonoBehaviour
 
     virtual protected void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "Player")
-        {
-        }
+        
     }
 
     virtual protected void OnTriggerStay2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "Player")
-        {
-        }
+        
     }
 
     virtual protected void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "Player")
-        {
-        }
+       
     }
 
     protected void SetDirectionTowardsTarget()
@@ -180,12 +180,14 @@ public class AIBase : MonoBehaviour
 
         if (enemyAction == enumEnemyActions.healAlly)
         {
-            Debug.Log("Distance from enemy: " + Vector2.Distance(transform.position, target.position));
-
             if (Vector2.Distance(transform.position, target.position) < 1)
             {
                 movementDirection = Vector2.zero;
-                StartCoroutine(DoHeal());
+
+                if (ienumeratorDoHealCheck == false)
+                {
+                    StartCoroutine(DoHeal());
+                }
             }
         }
 
@@ -195,24 +197,34 @@ public class AIBase : MonoBehaviour
         }
     }
 
+    public void SetEnemyAction(enumEnemyActions m_Action)
+    {
+        enemyAction = m_Action;
+    }
+
+    private bool ienumeratorDoHealCheck = false;
+
     private IEnumerator DoHeal()
     {
         float yieldTime = 0.5f;
 
+        ienumeratorDoHealCheck = true;
         m_Animator.SetBool("UniqueAction", true);
-
-        //Debug.Log("Before Yeild Return");
 
         yield return new WaitForSeconds(yieldTime);
 
-        //Debug.Log("After Yeild Return");
+        ienumeratorDoHealCheck = false;
+        m_Animator.SetBool("UniqueAction", false);
 
-        Attackable allyAttackable = enemyColliders[enemyColliderIndex].transform.parent.GetComponentInChildren<Attackable>();
+        Attackable allyAttackable = injuredAlly.GetComponentInChildren<Attackable>();
         Attackable selfAttackable = transform.parent.GetComponentInChildren<Attackable>();
 
-        m_Animator.SetBool("UniqueAction", false);
-        allyAttackable.AddHealth(allyAttackable.GetMaxHealth());
-        selfAttackable.SubstractHealth(selfAttackable.GetMaxHealth()/3);
-        Debug.Log("1/3 max health" + selfAttackable.GetMaxHealth() / 3);
+        allyAttackable.SetHealth(allyAttackable.GetMaxHealth());
+        selfAttackable.SubstractHealth(selfAttackable.GetMaxHealth() / 3);
+
+        if (allyAttackable.GetHealth() <= 0)
+            enemyAction = enumEnemyActions.NULL;
+        else
+            enemyAction = enumEnemyActions.patrol;
     }
 }

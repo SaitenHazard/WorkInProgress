@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHPBar : MonoBehaviour
 {
-    public Attackable attackable;
+    private Attackable attackable;
 
     private float width;
     private float maxHP;

@@ -12,65 +12,22 @@ public class HealShroomAI : AIBase
     private void Update()
     {
         base.Update();
-        //RevertHealAlly();
-        SearchForInjuredEnemy();
+
+        RevertHealAlly();
     }
 
     private void RevertHealAlly()
     {
-        //if (enemyColliders.Count == 0)
-        //    return;
-
-        //if (enemyColliders[enemyColliderIndex].gameObject == null)
-        //{
-        //    enemyAction = enumEnemyActions.patrol;
-        //    return;
-        //}
-
-        //Attackable attackable = 
-        //    enemyColliders[enemyColliderIndex].transform.parent.
-        //    GetComponentInChildren<Attackable>();
-
-        //if (attackable.GetHealth() == attackable.GetMaxHealth())
-        //{
-        //    enemyAction = enumEnemyActions.patrol;
-        //}
-    }
-
-    private void SearchForInjuredEnemy()
-    {
-        if (enemyAction == enumEnemyActions.healAlly)
+        if(injuredAlly == null)
         {
-            return;
-        }
-
-        if (enemyColliders.Count == 0)
-        {
-            return;
-        }
-
-        enemyColliderIndex = 0;
-
-        while (enemyColliderIndex < enemyColliders.Count)
-        {
-            Attackable attackable = enemyColliders[enemyColliderIndex].transform.parent.GetComponentInChildren<Attackable>();
-
-            if(attackable.GetHealth() < attackable.GetMaxHealth())
-            {
-                enemyAction = enumEnemyActions.healAlly;
-                break;
-            }
-
-            enemyColliderIndex++;
+            enemyAction = enumEnemyActions.patrol;
         }
     }
 
     override protected void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "Enemy")
-        {
-            enemyColliders.Add(collider2D);
-        }
+        if (enemyAction == enumEnemyActions.NULL)
+            return;
 
         if (enemyAction == enumEnemyActions.healAlly)
             return;
@@ -85,6 +42,23 @@ public class HealShroomAI : AIBase
 
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
+        if (enemyAction == enumEnemyActions.NULL)
+            return;
+
+        if (enemyAction == enumEnemyActions.healAlly)
+            return;
+
+        if (collider2D.gameObject.tag == "Enemy")
+        {
+            Attackable attackable = collider2D.transform.parent.GetComponentInChildren<Attackable>();
+
+            if (attackable.GetHealth() < attackable.GetMaxHealth())
+            {
+                enemyAction = enumEnemyActions.healAlly;
+                injuredAlly = collider2D.transform.parent;
+            }
+        }
+
         if (collider2D.gameObject.tag == "Player")
         {
             if (enemyAction != enumEnemyActions.healAlly)
@@ -97,12 +71,8 @@ public class HealShroomAI : AIBase
 
     override protected void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Exit");
-            enemyColliders.Remove(collider2D);
-            //DisplayArray();
-        }
+        if (enemyAction == enumEnemyActions.NULL)
+            return;
 
         if (enemyAction == enumEnemyActions.healAlly)
             return;
@@ -111,22 +81,5 @@ public class HealShroomAI : AIBase
         {
             enemyAction = enumEnemyActions.patrol;
         }
-    }
-
-    private int index = 1;
-
-    private void DisplayArray()
-    {
-        Debug.Log(index + " ArraySize : " + enemyColliders.Count);
-
-        if (enemyColliders.Count > 0)
-        {
-            for (int i = 0; i < enemyColliders.Count; i++)
-            {
-                Debug.Log(index + " Array : " + enemyColliders[i].transform.parent.name);
-            }
-        }
-
-        index++;
     }
 }
