@@ -11,9 +11,11 @@ public class PlayerStats : MonoBehaviour
     private bool gameStateFrozen;
     private bool stunActive;
     private bool rangeActive;
-
+    private bool invincibleActive;
+    private bool invisibleActive;
     private float speed;
     private float yieldTime;
+    private SpriteRenderer playerSpriteRenderer;
 
     private InteractableBase m_interactableBase;
 
@@ -24,6 +26,7 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         m_interactableBase = null;
+        playerSpriteRenderer = PlayerInstant.Instance.GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
@@ -49,6 +52,40 @@ public class PlayerStats : MonoBehaviour
         CheckPowerUps();
     }
 
+    public bool IsInvisibleUp()
+    {
+        return invisibleActive;
+    }
+
+    public bool IsInvincibleUp()
+    {
+        return invincibleActive;
+    }
+
+    public void InvisibleUp()
+    {
+        invisibleActive = true;
+        StartCoroutine(RevertInvisible());
+    }
+
+    private IEnumerator RevertInvisible()
+    {
+        yield return new WaitForSeconds(yieldTime);
+        invisibleActive = false;
+    }
+
+    public void InvincibleUp()
+    {
+        invincibleActive = true;
+        StartCoroutine(RevertInvincible());
+    }
+
+    private IEnumerator RevertInvincible()
+    {
+        yield return new WaitForSeconds(yieldTime);
+        invincibleActive = false;
+    }
+
     private void CheckPowerUps()
     {
         if (IsRangeUp() == true)
@@ -62,6 +99,16 @@ public class PlayerStats : MonoBehaviour
             punchVisuals.transform.localScale = new Vector3(1, 1, 1);
             playerSlime1.transform.localScale = new Vector3(1, 1, 1);
             playerSlime2.transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        if(invisibleActive == true)
+        {
+            playerSpriteRenderer.color = new Color(1, 1, 1, 0.5f);
+        }
+        else
+        {
+            playerSpriteRenderer.color = new Color(1, 1, 1, 1f);
+
         }
     }
 

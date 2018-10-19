@@ -17,6 +17,8 @@ public enum enumInventory
     StunPickup,
     SlimePickup,
     RangePickup,
+    InvinciblePickup,
+    InvisiblePickup,
     NULL
 };
 

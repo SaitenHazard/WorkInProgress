@@ -137,6 +137,22 @@ public class BasePickup : MonoBehaviour
             return;
         }
 
+        if (item == enumInventory.InvisiblePickup && playerStats.IsInvisibleUp() == false)
+        {
+            playerStats.InvisibleUp();
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            return;
+        }
+
+        if (item == enumInventory.InvinciblePickup && playerStats.IsInvincibleUp() == false)
+        {
+            playerStats.InvincibleUp();
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            return;
+        }
+
         DoInventoryCancelAnimation();
     }
 
