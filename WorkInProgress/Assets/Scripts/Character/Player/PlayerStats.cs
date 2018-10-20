@@ -16,7 +16,6 @@ public class PlayerStats : MonoBehaviour
     private float speed;
     private float yieldTime;
     private SpriteRenderer playerSpriteRenderer;
-
     private InteractableBase m_interactableBase;
 
     public GameObject punchVisuals;

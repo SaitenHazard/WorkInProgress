@@ -11,13 +11,18 @@ public class KhambaAI : AIBase
         enemyAction = enumEnemyActions.NULL;
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collider2D)
+    override protected void OnTriggerStay2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Player")
         {
-            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+            if (playerStats.IsInvisibleUp() == true)
+                return;
+
+            if (enemyAction != enumEnemyActions.chase)
+                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+
             enemyAction = enumEnemyActions.chase;
-            StartCoroutine(ProjectileInstantiate());
+            target = PlayerInstant.Instance.GetComponent<Transform>();
         }
     }
 

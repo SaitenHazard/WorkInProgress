@@ -11,6 +11,7 @@ public class HealthBar : MonoBehaviour
     public Sprite spriteHealthBar;
     public Sprite spriteInvincibleBar;
 
+    private Image image;
     private RectTransform rectTransform;
     private float width;
     private float maxHP;
@@ -21,8 +22,11 @@ public class HealthBar : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         width = rectTransform.rect.width;
         maxHP = attackable.GetHealth();
+        image = GetComponent<Image>();
 
         playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
+
+        Debug.Log(transform.parent.name + " : " + image);
     }
 
     private void Update()
@@ -33,17 +37,13 @@ public class HealthBar : MonoBehaviour
 
     private void UpdateBarSprite()
     {
-        Image image = GetComponent<Image>();
-
-        Sprite sprite = image.sprite;
-
-        if(playerStats.IsInvinsibleUp() == true)
+        if(playerStats.IsInvincibleUp() == true)
         {
-            sprite = spriteInvincibleBar;
+            image.sprite = spriteInvincibleBar;
         }
         else
         {
-            sprite = spriteHealthBar;
+            image.sprite = spriteHealthBar;
         }
     }
 

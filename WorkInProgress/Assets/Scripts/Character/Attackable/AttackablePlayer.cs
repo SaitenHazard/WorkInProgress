@@ -10,7 +10,7 @@ public class AttackablePlayer : Attackable
 
         if (ColliderObject.tag == "EnemyProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            DoHit(1, ColliderObject.GetComponent<Projectile>().GetHitDirection());
+            DoDoHit(1, ColliderObject.GetComponent<Projectile>().GetHitDirection());
 
             ColliderObject.GetComponent<Projectile>().DestroyOnHit();
         }
@@ -26,12 +26,20 @@ public class AttackablePlayer : Attackable
             CharacterMovementModel attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
 
             attackerMovementModel.SetTemporaryFrozen(1);
-            DoHit(1, attackerMovementModel.GetFacingDirection());
+            DoDoHit(1, attackerMovementModel.GetFacingDirection());
         }
 
         if (ColliderObject.tag == "Hazard" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            DoHit(1, GetComponentInParent<CharacterMovementModel>().GetReverseFacingDirection());
+            DoDoHit(1, GetComponentInParent<CharacterMovementModel>().GetReverseFacingDirection());
         }
+    }
+
+    private void DoDoHit(float damage, Vector2 hitDirection)
+    {
+        if (playerStats.IsInvincibleUp() == true)
+            return;
+
+        DoHit(damage, hitDirection);
     }
 }

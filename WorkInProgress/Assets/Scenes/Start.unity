@@ -808,11 +808,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4903876204723144, guid: a6437d0484091764a8228d93786774f2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -224.34
+      value: -239.03
       objectReference: {fileID: 0}
     - target: {fileID: 4903876204723144, guid: a6437d0484091764a8228d93786774f2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -138.21
+      value: -139.84
       objectReference: {fileID: 0}
     - target: {fileID: 4903876204723144, guid: a6437d0484091764a8228d93786774f2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -925,6 +925,35 @@ Prefab:
         type: 2}
       propertyPath: m_EdgeRadius
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4333817439502580, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4296165193660030, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901243488201648, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569745029558316, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556263418167644, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898823732453124, guid: a6437d0484091764a8228d93786774f2, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 212160666530985640, guid: a6437d0484091764a8228d93786774f2,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6437d0484091764a8228d93786774f2, type: 2}
@@ -1059,6 +1088,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 188311473}
   attackable: {fileID: 758367181}
+  spriteHealthBar: {fileID: 21300000, guid: fbfb763a2508c014fa286232dea6a005, type: 3}
+  spriteInvincibleBar: {fileID: 21300000, guid: a8e9fcf386c0f3e40809b1d9b351f785,
+    type: 3}
 --- !u!114 &459479941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3217,7 +3249,6 @@ GameObject:
   - component: {fileID: 1546908891}
   - component: {fileID: 1546908894}
   - component: {fileID: 1546908893}
-  - component: {fileID: 1546908892}
   m_Layer: 5
   m_Name: BonusCoinBar
   m_TagString: Untagged
@@ -3244,20 +3275,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 12}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1546908892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114064782702968990, guid: 5b98f1f8edb04ce4eaf090789caaa035,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1546908890}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca49ce0298ce5ef4d80ba4d985ded715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 188311473}
-  attackable: {fileID: 758367181}
 --- !u!114 &1546908893
 MonoBehaviour:
   m_ObjectHideFlags: 0

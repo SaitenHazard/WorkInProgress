@@ -16,6 +16,7 @@ public class AIBase : MonoBehaviour
     protected Coroutine projectileCoroutine;
     protected enumEnemyActions enemyAction;
     protected int enemyColliderIndex;
+    protected PlayerStats playerStats;
 
     private CharacterMovementModel p_movementModel;
     private Animator m_Animator;
@@ -28,6 +29,7 @@ public class AIBase : MonoBehaviour
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
         m_Animator = transform.parent.GetComponentInChildren<Animator>();
         attackable = transform.parent.GetComponentInChildren<Attackable>();
+        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
     }
 
     protected void Start()
@@ -54,6 +56,15 @@ public class AIBase : MonoBehaviour
         UpdateAngle();
         SetDirectionTowardsTarget();
         DoMovement();
+        CheckPlayerStats();
+    }
+
+    private void CheckPlayerStats()
+    {
+        if(playerStats.IsInvisibleUp() == true && enemyAction == enumEnemyActions.chase)
+        {
+            enemyAction = enumEnemyActions.patrol;
+        }
     }
 
     private void DoMovement()

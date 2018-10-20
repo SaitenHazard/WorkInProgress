@@ -11,6 +11,7 @@ public class Attackable : MonoBehaviour
     protected CharacterMovementModel attackerMovementModel;
     protected GameObject ColliderObject;
     protected CharacterMovementModel m_movementModel;
+    protected PlayerStats playerStats;
 
     private AIBase aiBase;
     private SpriteRenderer spriteRenderer;
@@ -18,7 +19,6 @@ public class Attackable : MonoBehaviour
     private Color color;
     private SpeechBubble speechBubble;
     private float stunTime;
-    private PlayerStats playerStats;
 
     private void Awake()
     {
