@@ -21,6 +21,9 @@ public class AIBase : MonoBehaviour
     private CharacterMovementModel p_movementModel;
     private Animator m_Animator;
     private Attackable attackable;
+    private int pacingDirection;
+    private float pacingTime;
+    private float pacingWaitTime;
 
     protected void Awake()
     {
@@ -52,7 +55,7 @@ public class AIBase : MonoBehaviour
 
     protected void Update()
     {
-        UpdateUniqueAni();
+        UpdateActionEffects();
         UpdateAngle();
         SetDirectionTowardsTarget();
         DoMovement();
@@ -72,9 +75,12 @@ public class AIBase : MonoBehaviour
         m_movementModel.SetDirection(movementDirection);
     }
 
-    private void UpdateUniqueAni()
+    private void UpdateActionEffects()
     {
         m_Animator.SetBool("Defend", enemyAction == enumEnemyActions.defend);
+
+        if (enemyAction != enumEnemyActions.pacing)
+            pacingActive = false;
     }
 
     private void UpdateAngle()
@@ -143,6 +149,24 @@ public class AIBase : MonoBehaviour
        
     }
 
+    private bool pacingActive;
+
+    private IEnumerator SetPacing()
+    {
+        pacingDirection = Random.Range(1, 4);
+        pacingTime = Random.Range(1.0f, 3f);
+        pacingWaitTime = 2;
+        pacingActive = true;
+
+        yield return new WaitForSeconds(pacingTime);
+
+        pacingDirection = 0;
+
+        yield return new WaitForSeconds(pacingWaitTime);
+
+        pacingActive = false;
+    }
+
     protected void SetDirectionTowardsTarget()
     {
         if (angle >= 22.5 && angle <= 67.5)
@@ -183,6 +207,23 @@ public class AIBase : MonoBehaviour
         if (angle >= 157.5 && angle <= 180 || angle <= -157.5 && angle >= -180)
         {
             movementDirection = new Vector2(1, 0);
+        }
+
+        if (enemyAction == enumEnemyActions.pacing)
+        {
+            if (pacingActive == true)
+                StartCoroutine(SetPacing());
+
+            if (pacingDirection == 1)
+                movementDirection = new Vector2(1, 0);
+            else if (pacingDirection == 2)
+                movementDirection = new Vector2(0, -1);
+            else if (pacingDirection == 3)
+                movementDirection = new Vector2(-1, 0);
+            else if (pacingDirection == 4)
+                movementDirection = new Vector2(0, 1);
+            else
+                movementDirection = new Vector2(0, 0);
         }
 
         if (enemyAction == enumEnemyActions.healAlly)

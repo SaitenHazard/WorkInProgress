@@ -29,6 +29,6 @@ public enum enumEnemyActions
     defend,
     healAlly,
     dying,
-    randomWalking,
+    pacing,
     NULL
 }
