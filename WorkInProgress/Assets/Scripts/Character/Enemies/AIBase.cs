@@ -37,9 +37,11 @@ public class AIBase : MonoBehaviour
         playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
-        enemyAction = enumEnemyActions.patrol;
+        if (transform.parent.name == "SplitterL1")
+            enemyAction = enumEnemyActions.patrol;
+
         spawnCount = 0;
     }
 
@@ -88,6 +90,8 @@ public class AIBase : MonoBehaviour
 
     private void UpdateAngle()
     {
+        Debug.Log(enemyAction);
+
         if (enemyAction == enumEnemyActions.patrol)
         {
             target = patrol.GetTarget();
@@ -152,7 +156,7 @@ public class AIBase : MonoBehaviour
        
     }
 
-    private bool pacingActive;
+    private bool pacingActive = false;
 
     //private IEnumerable DoSpawn()
     //{

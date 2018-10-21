@@ -25,8 +25,6 @@ public class HealthBar : MonoBehaviour
         image = GetComponent<Image>();
 
         playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
-
-        Debug.Log(transform.parent.name + " : " + image);
     }
 
     private void Update()
