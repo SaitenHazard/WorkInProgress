@@ -6,6 +6,7 @@ public class AIBase : MonoBehaviour
 {
     public GameObject projectileObject;
     public Patrol patrol;
+    public GameObject spawnObject;
 
     protected float angle;
     protected Transform target;
@@ -24,6 +25,7 @@ public class AIBase : MonoBehaviour
     private int pacingDirection;
     private float pacingTime;
     private float pacingWaitTime;
+    private int spawnCount;
 
     protected void Awake()
     {
@@ -38,6 +40,7 @@ public class AIBase : MonoBehaviour
     protected void Start()
     {
         enemyAction = enumEnemyActions.patrol;
+        spawnCount = 0;
     }
 
     public GameObject GetPatrolObject()
@@ -151,6 +154,11 @@ public class AIBase : MonoBehaviour
 
     private bool pacingActive;
 
+    //private IEnumerable DoSpawn()
+    //{
+
+    //}
+
     private IEnumerator SetPacing()
     {
         pacingDirection = Random.Range(1, 4);
@@ -208,6 +216,9 @@ public class AIBase : MonoBehaviour
         {
             movementDirection = new Vector2(1, 0);
         }
+
+        if (enemyAction == enumEnemyActions.spawn)
+            movementDirection = new Vector2(-1, 0);
 
         if (enemyAction == enumEnemyActions.pacing)
         {
