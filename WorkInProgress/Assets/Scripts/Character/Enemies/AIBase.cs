@@ -35,6 +35,7 @@ public class AIBase : MonoBehaviour
         m_Animator = transform.parent.GetComponentInChildren<Animator>();
         attackable = transform.parent.GetComponentInChildren<Attackable>();
         playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
+        spawnObject = GetComponentInChildren<SpawnManager>().gameObject;
     }
 
     protected virtual void Start()
@@ -156,11 +157,6 @@ public class AIBase : MonoBehaviour
 
     private bool pacingActive = false;
 
-    //private IEnumerable DoSpawn()
-    //{
-
-    //}
-
     private IEnumerator SetPacing()
     {
         pacingDirection = Random.Range(1, 4);
@@ -254,7 +250,8 @@ public class AIBase : MonoBehaviour
             }
         }
 
-        if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend || attackable.GetHealth() == 0)
+        if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend 
+            || attackable.GetHealth() == 0 || enemyAction == enumEnemyActions.idle)
         {
             movementDirection = Vector2.zero;
         }
@@ -265,6 +262,27 @@ public class AIBase : MonoBehaviour
         enemyAction = m_Action;
     }
 
+    public void DeductSpawn()
+    {
+        spawnCount++;
+    }
+
+    private IEnumerator DoSpawn()
+    {
+        float yieldTime = 5f;
+
+        if(spawnCount < 0)
+        {
+            GameObject tempSpawnObject = Instantiate(spawnObject);
+            SpawnManager spawnManager = tempSpawnObject.GetComponent<SpawnManager>();
+
+            spawnManager.Initialize(this);
+            spawnCount++;
+        }
+
+        yield return new WaitForSeconds(yieldTime);
+    }
+
     private bool ienumeratorDoHealCheck = false;
 
     private IEnumerator DoHeal()
@@ -272,12 +290,12 @@ public class AIBase : MonoBehaviour
         float yieldTime = 0.5f;
 
         ienumeratorDoHealCheck = true;
-        m_Animator.SetBool("UniqueAction", true);
+        m_Animator.SetBool("Heal", true);
 
         yield return new WaitForSeconds(yieldTime);
 
         ienumeratorDoHealCheck = false;
-        m_Animator.SetBool("UniqueAction", false);
+        m_Animator.SetBool("Heal", false);
 
         Attackable allyAttackable = injuredAlly.GetComponentInChildren<Attackable>();
         Attackable selfAttackable = transform.parent.GetComponentInChildren<Attackable>();

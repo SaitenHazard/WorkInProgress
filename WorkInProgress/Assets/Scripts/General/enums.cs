@@ -30,5 +30,6 @@ public enum enumEnemyActions
     healAlly,
     pacing,
     spawn,
+    idle,
     NULL
 }

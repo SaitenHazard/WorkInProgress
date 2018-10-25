@@ -145,7 +145,22 @@ public class Attackable : MonoBehaviour
 
     private void DoDestroy()
     {
-        StartCoroutine(characterFadeOut());
+        aiBase = gameObject.transform.parent.GetComponentInChildren<AIBase>();
+
+        GameObject patrolObject = aiBase.GetPatrolObject();
+
+        if (aiBase != null)
+            Destroy(patrolObject);
+
+        SpawnManager spawnManager = GetComponentInParent<SpawnManager>();
+
+        if(spawnManager != null)
+        {
+            AIBase aiBase = spawnManager.GetSpanwerAI();
+            aiBase.DeductSpawn();
+        }
+
+        StartCoroutine(CharacterFadeOut());
     }
 
     public IEnumerator DoStunView(float stunTime)
@@ -155,7 +170,7 @@ public class Attackable : MonoBehaviour
         speechBubble.HideSpeechBubble();
     }
 
-    private IEnumerator characterFadeOut()
+    private IEnumerator CharacterFadeOut()
     {
         float opacity = 1f;
 
@@ -167,12 +182,6 @@ public class Attackable : MonoBehaviour
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
             yield return new WaitForSeconds(0.2f);
         }
-
-        aiBase = gameObject.transform.parent.GetComponentInChildren<AIBase>();
-        GameObject patrolObject = aiBase.GetPatrolObject();
-
-        if (aiBase != null)
-            Destroy(patrolObject);
 
         Destroy(gameObject.transform.parent.gameObject);
     }
