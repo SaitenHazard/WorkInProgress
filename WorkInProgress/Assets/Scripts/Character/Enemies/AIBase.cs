@@ -90,8 +90,6 @@ public class AIBase : MonoBehaviour
 
     private void UpdateAngle()
     {
-        Debug.Log(enemyAction);
-
         if (enemyAction == enumEnemyActions.patrol)
         {
             target = patrol.GetTarget();
@@ -166,7 +164,7 @@ public class AIBase : MonoBehaviour
     private IEnumerator SetPacing()
     {
         pacingDirection = Random.Range(1, 4);
-        pacingTime = Random.Range(1.0f, 3f);
+        pacingTime = Random.Range(0.2f, 1f);
         pacingWaitTime = 2;
         pacingActive = true;
 
@@ -226,7 +224,9 @@ public class AIBase : MonoBehaviour
 
         if (enemyAction == enumEnemyActions.pacing)
         {
-            if (pacingActive == true)
+            Debug.Log("InPacing");
+
+            if (pacingActive == false)
                 StartCoroutine(SetPacing());
 
             if (pacingDirection == 1)

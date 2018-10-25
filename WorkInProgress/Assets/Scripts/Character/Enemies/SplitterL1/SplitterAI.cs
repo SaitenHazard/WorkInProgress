@@ -8,9 +8,6 @@ public class SplitterAI : AIBase
     {
         base.Start();
         enemyAction = enumEnemyActions.pacing;
-
-        if(transform.parent.name == "SplitterL1")
-            Debug.Log("InheritStart");
     }
 
     override protected void OnTriggerStay2D(Collider2D collider2D)
