@@ -35,7 +35,11 @@ public class AIBase : MonoBehaviour
         m_Animator = transform.parent.GetComponentInChildren<Animator>();
         attackable = transform.parent.GetComponentInChildren<Attackable>();
         playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
-        spawnObject = GetComponentInChildren<SpawnManager>().gameObject;
+
+        SpawnManager spawnManager = transform.parent.GetComponentInChildren<SpawnManager>();
+
+        if(spawnManager != null)
+            spawnObject = spawnManager.gameObject;
     }
 
     protected virtual void Start()
@@ -81,9 +85,14 @@ public class AIBase : MonoBehaviour
         m_movementModel.SetDirection(movementDirection);
     }
 
+    private bool isDoSpawnActive = false;
+
     private void UpdateActionEffects()
     {
         m_Animator.SetBool("Defend", enemyAction == enumEnemyActions.defend);
+
+        if (enemyAction == enumEnemyActions.spawn && isDoSpawnActive == false)
+            StartCoroutine(DoSpawn());
 
         if (enemyAction != enumEnemyActions.pacing)
             pacingActive = false;
@@ -220,8 +229,6 @@ public class AIBase : MonoBehaviour
 
         if (enemyAction == enumEnemyActions.pacing)
         {
-            Debug.Log("InPacing");
-
             if (pacingActive == false)
                 StartCoroutine(SetPacing());
 
@@ -250,10 +257,12 @@ public class AIBase : MonoBehaviour
             }
         }
 
-        if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend 
-            || attackable.GetHealth() == 0 || enemyAction == enumEnemyActions.idle)
-        {
+        if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend || attackable.GetHealth() == 0)
             movementDirection = Vector2.zero;
+
+        if (enemyAction == enumEnemyActions.idle)
+        {
+            movementDirection = new Vector2(0, -1);
         }
     }
 
@@ -269,18 +278,24 @@ public class AIBase : MonoBehaviour
 
     private IEnumerator DoSpawn()
     {
-        float yieldTime = 5f;
+        Debug.Log("in");
 
-        if(spawnCount < 0)
+        float yieldTime = 5f;
+         
+        isDoSpawnActive = true;
+
+        if(spawnCount < 5)
         {
             GameObject tempSpawnObject = Instantiate(spawnObject);
             SpawnManager spawnManager = tempSpawnObject.GetComponent<SpawnManager>();
 
             spawnManager.Initialize(this);
             spawnCount++;
+
+            yield return new WaitForSeconds(yieldTime);
         }
 
-        yield return new WaitForSeconds(yieldTime);
+        isDoSpawnActive = false;
     }
 
     private bool ienumeratorDoHealCheck = false;

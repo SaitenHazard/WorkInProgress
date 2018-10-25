@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class SpawnerAI : AIBase
 {
+    private void Start()
+    {
+        base.Start();
+        enemyAction = enumEnemyActions.idle;
+    }
+
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Player")
@@ -15,7 +21,6 @@ public class SpawnerAI : AIBase
                 speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
 
             enemyAction = enumEnemyActions.spawn;
-            target = PlayerInstant.Instance.GetComponent<Transform>();
         }
     }
 

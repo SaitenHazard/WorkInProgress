@@ -17,6 +17,8 @@ public class SpawnManager : MonoBehaviour
 
     public void Initialize(AIBase spawnerAI)
     {
+        Debug.Log("Start");
+
         StartCoroutine(FadeIn());
         parentSpawnerAI = spawnerAI;
     }
@@ -43,7 +45,7 @@ public class SpawnManager : MonoBehaviour
     private void ActivateAllScriptsAndHealthBar()
     {
         GetComponentInChildren<Attackable>().enabled = true;
-        GetComponentInChildren<SplitterAI>().enabled = true;
+        GetComponentInChildren<AIBase>().enabled = true;
         HPGameObject.SetActive(true);
     }
 }

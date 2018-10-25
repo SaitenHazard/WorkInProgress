@@ -7,7 +7,6 @@ public class KhambaAI : AIBase
     private void Start()
     {
         base.Start();
-
         enemyAction = enumEnemyActions.NULL;
     }
 
