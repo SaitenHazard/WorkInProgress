@@ -91,6 +91,9 @@ public class AIBase : MonoBehaviour
     {
         m_Animator.SetBool("Defend", enemyAction == enumEnemyActions.defend);
 
+        if (enemyAction != enumEnemyActions.spawn)
+            isDoSpawnActive = false;
+
         if (enemyAction == enumEnemyActions.spawn && isDoSpawnActive == false)
             StartCoroutine(DoSpawn());
 
@@ -273,13 +276,11 @@ public class AIBase : MonoBehaviour
 
     public void DeductSpawn()
     {
-        spawnCount++;
+        spawnCount--;
     }
 
     private IEnumerator DoSpawn()
     {
-        Debug.Log("in");
-
         float yieldTime = 5f;
          
         isDoSpawnActive = true;
@@ -288,6 +289,8 @@ public class AIBase : MonoBehaviour
         {
             GameObject tempSpawnObject = Instantiate(spawnObject);
             SpawnManager spawnManager = tempSpawnObject.GetComponent<SpawnManager>();
+
+            tempSpawnObject.transform.position = spawnObject.transform.position;
 
             spawnManager.Initialize(this);
             spawnCount++;
