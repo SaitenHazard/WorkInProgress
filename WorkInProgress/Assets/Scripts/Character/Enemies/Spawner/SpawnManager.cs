@@ -17,9 +17,14 @@ public class SpawnManager : MonoBehaviour
 
     public void Initialize(AIBase spawnerAI)
     {
+        parentSpawnerAI = spawnerAI;
+        Initialize();
+    }
+
+    public void Initialize()
+    {
         gameObject.SetActive(true);
         StartCoroutine(FadeIn());
-        parentSpawnerAI = spawnerAI;
     }
 
     public AIBase GetSpanwerAI()

@@ -4,7 +4,6 @@ using System.Collections;
 public class Attackable : MonoBehaviour 
 {
     public float health;
-    public float maxHealth;
     public float pushBackTime;
     public float pushBackSpeed;
 
@@ -13,6 +12,7 @@ public class Attackable : MonoBehaviour
     protected CharacterMovementModel m_movementModel;
     protected PlayerStats playerStats;
 
+    private float maxHealth;
     private AIBase aiBase;
     private SpriteRenderer spriteRenderer;
     private GameObject parentObject;
@@ -20,7 +20,7 @@ public class Attackable : MonoBehaviour
     private SpeechBubble speechBubble;
     private float stunTime;
 
-    private void Awake()
+    virtual protected void Awake()
     {
         parentObject = transform.parent.gameObject;
         m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
@@ -143,7 +143,7 @@ public class Attackable : MonoBehaviour
         }
     }
 
-    private void DoDestroy()
+    virtual protected void DoDestroy()
     {
         aiBase = gameObject.transform.parent.GetComponentInChildren<AIBase>();
 
