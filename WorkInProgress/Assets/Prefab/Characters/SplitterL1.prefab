@@ -154,7 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4099358125299088}
   - component: {fileID: 58269119503002632}
-  - component: {fileID: 114357150269417136}
+  - component: {fileID: 114176163290372594}
   m_Layer: 0
   m_Name: SightBox
   m_TagString: Untagged
@@ -208,7 +208,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1144424051731044}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.36, y: 1.07, z: 0.22021484}
+  m_LocalPosition: {x: 6.81, y: -4.98, z: 0.22021484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4696915801298062}
@@ -407,6 +407,20 @@ MonoBehaviour:
   interactableBubble: {fileID: 0}
   empty: {fileID: 0}
   paralyze: {fileID: 21300000, guid: 7c643b955c06d1c44ac3a2573bd78cc4, type: 3}
+--- !u!114 &114176163290372594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1739551686691688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe1a572edb974843a70276d79a96a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileObject: {fileID: 0}
+  patrol: {fileID: 0}
+  spawnObject: {fileID: 0}
 --- !u!114 &114267120784732008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,20 +432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb3a106eae9a1d4693599d447a9b1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114357150269417136
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1739551686691688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cda1c557808069b4f82f13a7d79b2ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileObject: {fileID: 0}
-  patrol: {fileID: 0}
-  spawnObject: {fileID: 0}
 --- !u!114 &114489398302710926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -537,7 +537,7 @@ SpriteRenderer:
   m_SortingLayerID: -153231989
   m_SortingLayer: 2
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300002, guid: eee6be351c8388b4693614d12be097da, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 93b56c8efb2a39e49a25556dd0cb5519, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
