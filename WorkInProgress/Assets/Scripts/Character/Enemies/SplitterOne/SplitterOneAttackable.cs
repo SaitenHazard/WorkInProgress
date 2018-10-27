@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class SplitterOneAttackable : Attackable
 {
-    private GameObject spawnObject;
+    public GameObject spawnObject;
 
     override protected void Awake()
     {
         base.Awake();
-        spawnObject = transform.parent.GetComponentInChildren<SpawnManager>().gameObject;
     }
 
     protected override IEnumerator CharacterFadeOut()

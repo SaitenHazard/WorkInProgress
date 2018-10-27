@@ -157,7 +157,9 @@ public class Attackable : MonoBehaviour
         if(spawnManager != null)
         {
             AIBase aiBase = spawnManager.GetSpanwerAI();
-            aiBase.DeductSpawn();
+
+            if (aiBase != null)
+                aiBase.DeductSpawn();
         }
 
         StartCoroutine(CharacterFadeOut());
