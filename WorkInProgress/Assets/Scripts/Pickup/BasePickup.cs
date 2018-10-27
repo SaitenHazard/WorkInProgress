@@ -5,6 +5,7 @@ using UnityEngine;
 public class BasePickup : MonoBehaviour
 {
     public enumInventory item;
+    public GameObject Decoy;
 
     private GameObject playerSlime1;
     private GameObject playerSlime2;
@@ -120,9 +121,9 @@ public class BasePickup : MonoBehaviour
             playerSlime2 = playerInstance.transform.Find("PlayerSlime2").gameObject;
 
             if (playerStats.IsDamageUp() == true)
-                createPlayerSlime(playerSlime2);
+                CreatePlayerSlime(playerSlime2);
             else
-                createPlayerSlime(playerSlime1);
+                CreatePlayerSlime(playerSlime1);
 
             DoNonInstantiateAnimation();
             ResetSelectedInventory();
@@ -153,10 +154,21 @@ public class BasePickup : MonoBehaviour
             return;
         }
 
+        if (item == enumInventory.DecoyPickup)
+        {
+            playerSlime1 = playerInstance.transform.Find("Decoy").gameObject;
+            CreateDecoy();
+        }
+
         DoInventoryCancelAnimation();
     }
 
-    private void createPlayerSlime(GameObject playerSlime)
+    private void CreateDecoy()
+    {
+
+    }
+
+    private void CreatePlayerSlime(GameObject playerSlime)
     {
         GameObject cloneObject = Instantiate(playerSlime, playerInstance.transform);
         cloneObject.transform.SetParent(null);

@@ -19,6 +19,7 @@ public enum enumInventory
     RangePickup,
     InvinciblePickup,
     InvisiblePickup,
+    DecoyPickup,
     NULL
 };
 
