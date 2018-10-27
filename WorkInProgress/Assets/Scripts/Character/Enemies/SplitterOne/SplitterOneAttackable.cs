@@ -9,12 +9,25 @@ public class SplitterOneAttackable : Attackable
     override protected void Awake()
     {
         base.Awake();
-        spawnObject = GetComponentInChildren<SpawnManager>().gameObject;
+        spawnObject = transform.parent.GetComponentInChildren<SpawnManager>().gameObject;
     }
 
-    override protected void DoDestroy()
+    protected override IEnumerator CharacterFadeOut()
     {
-        base.DoDestroy();
+        float opacity = 1f;
+
+        yield return new WaitForSeconds(pushBackTime);
+
+        DoSpawns();
+
+        while (opacity > 0.2f)
+        {
+            opacity -= 0.2f;
+            spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     private void DoSpawns()
@@ -26,13 +39,13 @@ public class SplitterOneAttackable : Attackable
 
         if (facingDirection.x == 1 || facingDirection.x == -1)
         {
-            spawn1.transform.position = new Vector3(transform.position.x + 2.5f, transform.position.y, 0);
-            spawn2.transform.position = new Vector3(transform.position.x - 2.5f, transform.position.y, 0);
+            spawn1.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
+            spawn2.transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, 0);
         }
         else
         {
-            spawn1.transform.position = new Vector3(transform.position.x, transform.position.y + 2.5f, 0);
-            spawn2.transform.position = new Vector3(transform.position.x, transform.position.y - 2.5f, 0);
+            spawn1.transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y, 0);
+            spawn2.transform.position = new Vector3(transform.position.x - 0.5f, transform.position.y, 0);
         }
 
         spawn1.GetComponent<SpawnManager>().Initialize();

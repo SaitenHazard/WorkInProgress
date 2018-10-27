@@ -11,10 +11,10 @@ public class Attackable : MonoBehaviour
     protected GameObject ColliderObject;
     protected CharacterMovementModel m_movementModel;
     protected PlayerStats playerStats;
+    protected SpriteRenderer spriteRenderer;
 
     private float maxHealth;
     private AIBase aiBase;
-    private SpriteRenderer spriteRenderer;
     private GameObject parentObject;
     private Color color;
     private SpeechBubble speechBubble;
@@ -170,7 +170,7 @@ public class Attackable : MonoBehaviour
         speechBubble.HideSpeechBubble();
     }
 
-    private IEnumerator CharacterFadeOut()
+    protected virtual IEnumerator CharacterFadeOut()
     {
         float opacity = 1f;
 
