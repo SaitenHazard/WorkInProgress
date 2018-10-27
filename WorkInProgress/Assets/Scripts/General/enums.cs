@@ -32,5 +32,6 @@ public enum enumEnemyActions
     pacing,
     spawn,
     idle,
+    chaseDecoy,
     NULL
 }

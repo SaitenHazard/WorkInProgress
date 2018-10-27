@@ -165,7 +165,27 @@ public class BasePickup : MonoBehaviour
 
     private void CreateDecoy()
     {
+        GameObject tempDecoy = Instantiate(Decoy);
 
+        CharacterMovementModel m_movementModel = playerInstance.GetComponent<CharacterMovementModel>();
+        Vector2 facingDirection = m_movementModel.GetFacingDirection();
+
+        if (facingDirection.x == 1)
+        {
+            tempDecoy.transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y, 0);
+        }
+        else if (facingDirection.x == -1)
+        {
+            tempDecoy.transform.position = new Vector3(transform.position.x - 0.5f, transform.position.y, 0);
+        }
+        else if (facingDirection.y == 1)
+        {
+            tempDecoy.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
+        }
+        else
+        {
+            tempDecoy.transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, 0);
+        }
     }
 
     private void CreatePlayerSlime(GameObject playerSlime)
