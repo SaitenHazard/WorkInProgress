@@ -18,6 +18,7 @@ public class AIBase : MonoBehaviour
     protected Coroutine projectileCoroutine;
     protected int enemyColliderIndex;
     protected PlayerStats playerStats;
+    protected PlayerInstant playerInstance;
 
     private CharacterMovementModel p_movementModel;
     private Animator m_Animator;
@@ -44,7 +45,7 @@ public class AIBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        PlayerInstant playerInstance = PlayerInstant.Instance;
+        playerInstance = PlayerInstant.Instance;
 
         p_movementModel = playerInstance.GetComponent<CharacterMovementModel>();
         playerStats = playerInstance.GetComponent<PlayerStats>();
@@ -106,6 +107,19 @@ public class AIBase : MonoBehaviour
 
         if (enemyAction != enumEnemyActions.pacing)
             pacingActive = false;
+
+        if (enemyAction == enumEnemyActions.chase || enemyAction == enumEnemyActions.chaseDecoy)
+        {
+            if (projectileOn == true || projectileObject == null)
+                return;
+
+            projectileOn = true;
+            StartCoroutine(DoProjectile());
+        }
+        else
+        {
+            projectileOn = false;
+        }
     }
 
     private void UpdateAngle()
@@ -129,7 +143,9 @@ public class AIBase : MonoBehaviour
         }
     }
 
-    protected IEnumerator ProjectileInstantiate()
+    private bool projectileOn;
+
+    protected IEnumerator DoProjectile()
     {
         yield return new WaitForSeconds(2);
 
@@ -156,7 +172,7 @@ public class AIBase : MonoBehaviour
         cloneObject.GetComponent<Projectile>().SetDirectionTowardsPlayer();
         yield return new WaitForSeconds(3);
 
-        StartCoroutine(ProjectileInstantiate());
+        StartCoroutine(DoProjectile());
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D collider2D)

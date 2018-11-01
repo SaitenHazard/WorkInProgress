@@ -6,6 +6,17 @@ public class JellyAI : AIBase
 {
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
+        if (collider2D.gameObject.tag == "Decoy")
+        {
+            if (enemyAction != enumEnemyActions.chaseDecoy)
+                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+
+            enemyAction = enumEnemyActions.chaseDecoy;
+            target = collider2D.gameObject.transform;
+
+            return;
+        }
+
         if (collider2D.gameObject.tag == "Player")
         {
             if (playerStats.IsInvisibleUp() == true)

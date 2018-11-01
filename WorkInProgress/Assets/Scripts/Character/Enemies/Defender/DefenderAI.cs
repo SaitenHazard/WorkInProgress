@@ -19,6 +19,17 @@ public class DefenderAI : AIBase
 
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
+        if (collider2D.gameObject.tag == "Decoy")
+        {
+            if (enemyAction != enumEnemyActions.chaseDecoy)
+                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+
+            enemyAction = enumEnemyActions.chaseDecoy;
+            target = PlayerInstant.Instance.GetComponent<Transform>();
+
+            return;
+        }
+
         if (playerStats.IsInvisibleUp() == true)
             return;
 

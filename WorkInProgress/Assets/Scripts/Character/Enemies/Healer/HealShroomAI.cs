@@ -28,11 +28,13 @@ public class HealShroomAI : AIBase
     {
         if (collider2D.gameObject.tag == "Decoy")
         {
-            if (enemyAction != enumEnemyActions.chase)
+            if (enemyAction != enumEnemyActions.chaseDecoy)
                 speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
 
             enemyAction = enumEnemyActions.chaseDecoy;
             target = collider2D.gameObject.transform;
+
+            return;
         }
 
         if (enemyAction == enumEnemyActions.healAlly)
