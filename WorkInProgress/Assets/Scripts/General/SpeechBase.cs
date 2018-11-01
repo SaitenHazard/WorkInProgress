@@ -15,7 +15,8 @@ public class SpeechBase : MonoBehaviour
 
     private void Awake()
     {
-        speechTextUI = SpeechTextUI.Instance.GetComponent<SpeechTextUI>();
+        if (SpeechTextUI.Instance != null)
+            speechTextUI = SpeechTextUI.Instance.GetComponent<SpeechTextUI>();
     }
 
     public void Initialize()

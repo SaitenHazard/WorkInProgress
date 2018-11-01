@@ -380,7 +380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5271a65dd1c82554fabb7ceecb90fdb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackable: {fileID: 0}
 --- !u!114 &114094880599045806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -432,6 +431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileObject: {fileID: 0}
   patrol: {fileID: 0}
+  spawnObject: {fileID: 0}
+  enemyAction: 1
 --- !u!114 &114919046202133720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -444,7 +445,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  maxHealth: 0
   pushBackTime: 0.15
   pushBackSpeed: 2.5
 --- !u!114 &114991541854992974

@@ -41,12 +41,12 @@ GameObject:
   - component: {fileID: 114017210626402550}
   - component: {fileID: 50261629247740320}
   m_Layer: 0
-  m_Name: SplitterL1
+  m_Name: Minion
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1368013332174954
 GameObject:
   m_ObjectHideFlags: 1
@@ -187,6 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4101563167758438}
   - component: {fileID: 58337627299491572}
+  - component: {fileID: 114639568541235744}
   m_Layer: 0
   m_Name: SightBox
   m_TagString: Untagged
@@ -256,7 +257,6 @@ GameObject:
   - component: {fileID: 114782913360999782}
   - component: {fileID: 114518063851270394}
   - component: {fileID: 114802129698286422}
-  - component: {fileID: 114219013295899320}
   - component: {fileID: 50602429865765474}
   m_Layer: 0
   m_Name: Spawner
@@ -264,7 +264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1887197210565058
 GameObject:
   m_ObjectHideFlags: 1
@@ -777,20 +777,7 @@ MonoBehaviour:
   projectileObject: {fileID: 0}
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
---- !u!114 &114219013295899320
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1881855618751766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd5682c79c96ba34386247eea35057ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileObject: {fileID: 0}
-  patrol: {fileID: 0}
-  spawnObject: {fileID: 0}
+  enemyAction: 4
 --- !u!114 &114258152936661318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -835,7 +822,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  maxHealth: 0
   pushBackTime: 0.15
   pushBackSpeed: 2.5
 --- !u!114 &114298909692544302
@@ -861,7 +847,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  maxHealth: 0
   pushBackTime: 0.15
   pushBackSpeed: 2.5
 --- !u!114 &114518063851270394
@@ -875,7 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4aaa746693a742b271a76370ca6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
+  Speed: 0
 --- !u!114 &114592042385955470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -888,6 +873,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+--- !u!114 &114639568541235744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715288278010084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5682c79c96ba34386247eea35057ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileObject: {fileID: 0}
+  patrol: {fileID: 0}
+  spawnObject: {fileID: 1185993049369240}
+  enemyAction: 6
 --- !u!114 &114782913360999782
 MonoBehaviour:
   m_ObjectHideFlags: 1

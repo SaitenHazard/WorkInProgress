@@ -20,11 +20,12 @@ public class CharacterMovementModel : MonoBehaviour
     protected void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
-        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
     }
 
     private void Start()
     {
+        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
+
         recoilTime = 0.5f;
         m_stunTime = 0f;
     }

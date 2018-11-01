@@ -7,6 +7,7 @@ public class AIBase : MonoBehaviour
     public GameObject projectileObject;
     public Patrol patrol;
     public GameObject spawnObject;
+    public enumEnemyActions enemyAction;
 
     protected float angle;
     protected Transform target;
@@ -15,7 +16,6 @@ public class AIBase : MonoBehaviour
     protected CharacterMovementModel m_movementModel;
     protected Vector2 movementDirection;
     protected Coroutine projectileCoroutine;
-    protected enumEnemyActions enemyAction;
     protected int enemyColliderIndex;
     protected PlayerStats playerStats;
 
@@ -27,14 +27,14 @@ public class AIBase : MonoBehaviour
     private float pacingWaitTime;
     private int spawnCount;
 
+    private enumEnemyActions basicAction;
+
     protected void Awake()
     {
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
-        p_movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
         m_Animator = transform.parent.GetComponentInChildren<Animator>();
         attackable = transform.parent.GetComponentInChildren<Attackable>();
-        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
 
         SpawnManager spawnManager = transform.parent.GetComponentInChildren<SpawnManager>();
 
@@ -44,10 +44,14 @@ public class AIBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        if (transform.parent.name == "SplitterL1")
-            enemyAction = enumEnemyActions.patrol;
+        PlayerInstant playerInstance = PlayerInstant.Instance;
+
+        p_movementModel = playerInstance.GetComponent<CharacterMovementModel>();
+        playerStats = playerInstance.GetComponent<PlayerStats>();
 
         spawnCount = 0;
+
+        basicAction = enemyAction;
     }
 
     public GameObject GetPatrolObject()
@@ -90,6 +94,9 @@ public class AIBase : MonoBehaviour
     private void UpdateActionEffects()
     {
         m_Animator.SetBool("Defend", enemyAction == enumEnemyActions.defend);
+
+        if (enemyAction == enumEnemyActions.chaseDecoy && target == null)
+            enemyAction = basicAction;
 
         if (enemyAction != enumEnemyActions.spawn)
             isDoSpawnActive = false;

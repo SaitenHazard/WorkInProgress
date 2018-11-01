@@ -12,12 +12,13 @@ public abstract class InteractableBase : MonoBehaviour
 
     public void Awake()
     {
-        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
-
-        speechBubble = gameObject.transform.parent.
-            GetComponentInChildren<SpeechBubble>();
-
+        speechBubble = gameObject.transform.parent.GetComponentInChildren<SpeechBubble>();
         enumSpeechBubble = enumSpeechBubbles.Interactable;
+    }
+
+    public void Start()
+    {
+        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
     }
 
     virtual public void OnInteract()

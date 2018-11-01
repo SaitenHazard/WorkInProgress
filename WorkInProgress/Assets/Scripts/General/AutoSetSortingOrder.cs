@@ -12,6 +12,10 @@ public class AutoSetSortingOrder : MonoBehaviour {
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         m_transform = transform.parent.Find("MidPoint").transform;
+    }
+
+    private void Start()
+    {
         p_Trasnform = PlayerInstant.Instance.GetComponent<Transform>();
     }
 

@@ -25,11 +25,12 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         m_interactableBase = null;
-        playerSpriteRenderer = PlayerInstant.Instance.GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
     {
+        playerSpriteRenderer = PlayerInstant.Instance.GetComponentInChildren<SpriteRenderer>();
+
         speed = 1.5f;
         damage = 1;
         yieldTime = 5;
@@ -107,7 +108,6 @@ public class PlayerStats : MonoBehaviour
         else
         {
             playerSpriteRenderer.color = new Color(1, 1, 1, 1f);
-
         }
     }
 
@@ -118,6 +118,9 @@ public class PlayerStats : MonoBehaviour
 
     private void CheckActiveUI()
     {
+        if (SpeechTextUI.Instance == null)
+            return;
+
         if (MenuView.Instance.GetMenuActive() == true || SpeechTextUI.Instance.GetTextBoxActive())
             gameStateFrozen = true;
         else

@@ -19,14 +19,11 @@ public class BasePickup : MonoBehaviour
     private PlayerInventory m_inventory;
     private float proportion;
 
-    protected void Awake()
-    {
-        pickupAnimation = PlayerInstant.Instance.GetComponentInChildren<PickupAnimation>();
-        playerInstance = PlayerInstant.Instance;
-    }
-
     private void Start()
     {
+        playerInstance = PlayerInstant.Instance;
+        pickupAnimation = playerInstance.GetComponentInChildren<PickupAnimation>();
+
         gameObject.name = item.ToString();
         proportion = GetComponentInChildren<SpriteRenderer>().transform.localScale.x;
     }
@@ -156,8 +153,11 @@ public class BasePickup : MonoBehaviour
 
         if (item == enumInventory.DecoyPickup)
         {
-            playerSlime1 = playerInstance.transform.Find("Decoy").gameObject;
+            playerInstance = PlayerInstant.Instance;
+            Decoy = playerInstance.transform.Find("Decoy").gameObject;
+            ResetSelectedInventory();
             CreateDecoy();
+            return;
         }
 
         DoInventoryCancelAnimation();
@@ -167,24 +167,30 @@ public class BasePickup : MonoBehaviour
     {
         GameObject tempDecoy = Instantiate(Decoy);
 
+        tempDecoy.SetActive(true);
+
         CharacterMovementModel m_movementModel = playerInstance.GetComponent<CharacterMovementModel>();
         Vector2 facingDirection = m_movementModel.GetFacingDirection();
 
         if (facingDirection.x == 1)
         {
-            tempDecoy.transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y, 0);
+            tempDecoy.transform.position = new Vector3
+                (playerInstance.transform.position.x + 0.5f, playerInstance.transform.position.y, 0);
         }
         else if (facingDirection.x == -1)
         {
-            tempDecoy.transform.position = new Vector3(transform.position.x - 0.5f, transform.position.y, 0);
+            tempDecoy.transform.position = new Vector3
+                (playerInstance.transform.position.x - 0.5f, playerInstance.transform.position.y, 0);
         }
         else if (facingDirection.y == 1)
         {
-            tempDecoy.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
+            tempDecoy.transform.position = new Vector3
+                (playerInstance.transform.position.x, playerInstance.transform.position.y + 0.5f, 0);
         }
         else
         {
-            tempDecoy.transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, 0);
+            tempDecoy.transform.position = new Vector3
+                (playerInstance.transform.position.x, playerInstance.transform.position.y - 0.5f, 0);
         }
     }
 

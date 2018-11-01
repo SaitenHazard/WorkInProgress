@@ -27,11 +27,12 @@ public class Attackable : MonoBehaviour
         aiBase = transform.parent.GetComponentInChildren<AIBase>();
         spriteRenderer = parentObject.GetComponentInChildren<SpriteRenderer>();
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
-        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
     }
 
     private void Start()
     {
+        playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
+
         stunTime = 5f;
         color = spriteRenderer.color;
         maxHealth = health;

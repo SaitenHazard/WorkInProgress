@@ -29,7 +29,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1185690741850268
 GameObject:
   m_ObjectHideFlags: 1
@@ -421,6 +421,7 @@ MonoBehaviour:
   projectileObject: {fileID: 0}
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
+  enemyAction: 4
 --- !u!114 &114267120784732008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,7 +457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  maxHealth: 0
   pushBackTime: 0.15
   pushBackSpeed: 2.5
 --- !u!212 &212102193537965366
