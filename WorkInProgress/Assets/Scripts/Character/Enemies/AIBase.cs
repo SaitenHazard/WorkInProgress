@@ -11,7 +11,6 @@ public class AIBase : MonoBehaviour
 
     protected float angle;
     protected Transform target;
-    protected Transform injuredAlly;
     protected SpeechBubble speechBubble;
     protected CharacterMovementModel m_movementModel;
     protected Vector2 movementDirection;
@@ -29,6 +28,8 @@ public class AIBase : MonoBehaviour
     private int spawnCount;
 
     private enumEnemyActions basicAction;
+
+    //---------------------COMMON---------------------//
 
     protected void Awake()
     {
@@ -55,6 +56,17 @@ public class AIBase : MonoBehaviour
         basicAction = enemyAction;
     }
 
+    protected void Update()
+    {
+        UpdateActionEffects();
+        UpdateAngle();
+        DoMovement();
+        CheckPlayerStats();
+    }
+
+    //------------------------------------------------//
+    //---------------------PUBLIC---------------------//
+
     public GameObject GetPatrolObject()
     {
         if (patrol == null)
@@ -68,14 +80,115 @@ public class AIBase : MonoBehaviour
         return enemyAction;
     }
 
-    protected void Update()
+    public void SetEnemyAction(enumEnemyActions m_Action)
     {
-        UpdateActionEffects();
-        UpdateAngle();
-        SetDirectionTowardsTarget();
-        DoMovement();
-        CheckPlayerStats();
+        enemyAction = m_Action;
     }
+
+    public void DeductSpawn()
+    {
+        spawnCount--;
+    }
+
+    //------------------------------------------------//
+    //---------------------IENUMRATORS----------------//
+
+    private bool isDoSpawnActive = false;
+    private bool projectileOn = false;
+    private bool pacingActive = false;
+    private bool ienumeratorDoHealCheck = false;
+
+    private IEnumerator DoHeal()
+    {
+        float yieldTime = 0.5f;
+
+        ienumeratorDoHealCheck = true;
+        m_Animator.SetBool("Heal", true);
+
+        yield return new WaitForSeconds(yieldTime);
+
+        ienumeratorDoHealCheck = false;
+        m_Animator.SetBool("Heal", false);
+
+        Attackable allyAttackable = target.GetComponentInChildren<Attackable>();
+        Attackable selfAttackable = transform.parent.GetComponentInChildren<Attackable>();
+
+        allyAttackable.SetHealth(allyAttackable.GetMaxHealth());
+        selfAttackable.SubstractHealth(selfAttackable.GetMaxHealth() / 3);
+
+        enemyAction = enumEnemyActions.patrol;
+    }
+
+    private IEnumerator DoSpawn()
+    {
+        float yieldTime = 5f;
+
+        isDoSpawnActive = true;
+
+        if (spawnCount < 5)
+        {
+            GameObject tempSpawnObject = Instantiate(spawnObject);
+            SpawnManager spawnManager = tempSpawnObject.GetComponent<SpawnManager>();
+
+            tempSpawnObject.transform.position = spawnObject.transform.position;
+
+            spawnManager.Initialize(this);
+            spawnCount++;
+
+            yield return new WaitForSeconds(yieldTime);
+        }
+
+        isDoSpawnActive = false;
+    }
+
+    protected IEnumerator DoProjectile()
+    {
+        yield return new WaitForSeconds(2);
+
+        Vector2 facingDirection = m_movementModel.GetFacingDirection();
+
+        GameObject cloneObject = Instantiate(projectileObject);
+
+        cloneObject.transform.position = gameObject.transform.parent.position;
+
+        if (facingDirection == new Vector2(0, 1))
+            cloneObject.transform.position =
+                new Vector2(transform.position.x, transform.position.y + 0.25f);
+        else if (facingDirection == new Vector2(0, -1))
+            cloneObject.transform.position =
+                new Vector2(transform.position.x, transform.position.y - 0.25f);
+        else if (facingDirection == new Vector2(1, 0))
+            cloneObject.transform.position =
+                new Vector2(transform.position.x + 0.25f, transform.position.y);
+        else
+            cloneObject.transform.position =
+                new Vector2(transform.position.x - 0.25f, transform.position.y);
+
+        cloneObject.SetActive(true);
+        cloneObject.GetComponent<Projectile>().SetDirectionTowardsPlayer();
+        yield return new WaitForSeconds(3);
+
+        StartCoroutine(DoProjectile());
+    }
+
+    private IEnumerator SetPacing()
+    {
+        pacingDirection = Random.Range(1, 4);
+        pacingTime = Random.Range(0.2f, 1f);
+        pacingWaitTime = 2;
+        pacingActive = true;
+
+        yield return new WaitForSeconds(pacingTime);
+
+        pacingDirection = 0;
+
+        yield return new WaitForSeconds(pacingWaitTime);
+
+        pacingActive = false;
+    }
+
+    //------------------------------------------------//
+    //---------------------MONITORS-------------------//
 
     private void CheckPlayerStats()
     {
@@ -85,16 +198,12 @@ public class AIBase : MonoBehaviour
         }
     }
 
-    private void DoMovement()
-    {
-        m_movementModel.SetDirection(movementDirection);
-    }
-
-    private bool isDoSpawnActive = false;
-
     private void UpdateActionEffects()
     {
         m_Animator.SetBool("Defend", enemyAction == enumEnemyActions.defend);
+
+        if (enemyAction == enumEnemyActions.healAlly && target == null)
+            enemyAction = basicAction;
 
         if (enemyAction == enumEnemyActions.chaseDecoy && target == null)
             enemyAction = basicAction;
@@ -122,6 +231,9 @@ public class AIBase : MonoBehaviour
         }
     }
 
+    //------------------------------------------------//
+    //---------------------MOVEMENTS------------------//
+
     private void UpdateAngle()
     {
         if (enemyAction == enumEnemyActions.patrol)
@@ -130,82 +242,13 @@ public class AIBase : MonoBehaviour
             angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
 
-        if (enemyAction == enumEnemyActions.chase)
+        if (enemyAction == enumEnemyActions.chase || 
+            enemyAction == enumEnemyActions.healAlly || 
+            enemyAction == enumEnemyActions.chaseDecoy)
         {
             target = PlayerInstant.Instance.GetComponent<Transform>();
             angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
-
-        if (enemyAction == enumEnemyActions.healAlly)
-        {
-            target = injuredAlly;
-            angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
-        }
-    }
-
-    private bool projectileOn;
-
-    protected IEnumerator DoProjectile()
-    {
-        yield return new WaitForSeconds(2);
-
-        Vector2 facingDirection = m_movementModel.GetFacingDirection();
-
-        GameObject cloneObject = Instantiate(projectileObject);
-
-        cloneObject.transform.position = gameObject.transform.parent.position;
-
-        if (facingDirection == new Vector2(0, 1))
-            cloneObject.transform.position = 
-                new Vector2(transform.position.x, transform.position.y + 0.25f);
-        else if (facingDirection == new Vector2(0, -1))
-            cloneObject.transform.position =
-                new Vector2(transform.position.x, transform.position.y - 0.25f);
-        else if (facingDirection == new Vector2(1, 0))
-            cloneObject.transform.position =
-                new Vector2(transform.position.x + 0.25f, transform.position.y);
-        else
-            cloneObject.transform.position = 
-                new Vector2(transform.position.x - 0.25f, transform.position.y);
-
-        cloneObject.SetActive(true);
-        cloneObject.GetComponent<Projectile>().SetDirectionTowardsPlayer();
-        yield return new WaitForSeconds(3);
-
-        StartCoroutine(DoProjectile());
-    }
-
-    virtual protected void OnTriggerEnter2D(Collider2D collider2D)
-    {
-        
-    }
-
-    virtual protected void OnTriggerStay2D(Collider2D collider2D)
-    {
-        
-    }
-
-    virtual protected void OnTriggerExit2D(Collider2D collider2D)
-    {
-       
-    }
-
-    private bool pacingActive = false;
-
-    private IEnumerator SetPacing()
-    {
-        pacingDirection = Random.Range(1, 4);
-        pacingTime = Random.Range(0.2f, 1f);
-        pacingWaitTime = 2;
-        pacingActive = true;
-
-        yield return new WaitForSeconds(pacingTime);
-
-        pacingDirection = 0;
-
-        yield return new WaitForSeconds(pacingWaitTime);
-
-        pacingActive = false;
     }
 
     protected void SetDirectionTowardsTarget()
@@ -249,7 +292,10 @@ public class AIBase : MonoBehaviour
         {
             movementDirection = new Vector2(1, 0);
         }
+    }
 
+    protected void SetDirectionSpecial()
+    {
         if (enemyAction == enumEnemyActions.spawn)
             movementDirection = new Vector2(-1, 0);
 
@@ -283,6 +329,14 @@ public class AIBase : MonoBehaviour
             }
         }
 
+        if (enemyAction == enumEnemyActions.chaseDecoy)
+        {
+            if (Vector2.Distance(transform.position, target.position) < 1)
+            {
+                movementDirection = Vector2.zero;
+            }
+        }
+
         if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend || attackable.GetHealth() == 0)
             movementDirection = Vector2.zero;
 
@@ -292,58 +346,31 @@ public class AIBase : MonoBehaviour
         }
     }
 
-    public void SetEnemyAction(enumEnemyActions m_Action)
+    protected void DoMovement()
     {
-        enemyAction = m_Action;
+        SetDirectionTowardsTarget();
+        SetDirectionSpecial();
+
+        m_movementModel.SetDirection(movementDirection);
     }
 
-    public void DeductSpawn()
+    //------------------------------------------------//
+    //---------------------VIRTUALS------------------//
+
+    virtual protected void OnTriggerEnter2D(Collider2D collider2D)
     {
-        spawnCount--;
+        
     }
 
-    private IEnumerator DoSpawn()
+    virtual protected void OnTriggerStay2D(Collider2D collider2D)
     {
-        float yieldTime = 5f;
-         
-        isDoSpawnActive = true;
-
-        if(spawnCount < 5)
-        {
-            GameObject tempSpawnObject = Instantiate(spawnObject);
-            SpawnManager spawnManager = tempSpawnObject.GetComponent<SpawnManager>();
-
-            tempSpawnObject.transform.position = spawnObject.transform.position;
-
-            spawnManager.Initialize(this);
-            spawnCount++;
-
-            yield return new WaitForSeconds(yieldTime);
-        }
-
-        isDoSpawnActive = false;
+        
     }
 
-    private bool ienumeratorDoHealCheck = false;
-
-    private IEnumerator DoHeal()
+    virtual protected void OnTriggerExit2D(Collider2D collider2D)
     {
-        float yieldTime = 0.5f;
-
-        ienumeratorDoHealCheck = true;
-        m_Animator.SetBool("Heal", true);
-
-        yield return new WaitForSeconds(yieldTime);
-
-        ienumeratorDoHealCheck = false;
-        m_Animator.SetBool("Heal", false);
-
-        Attackable allyAttackable = injuredAlly.GetComponentInChildren<Attackable>();
-        Attackable selfAttackable = transform.parent.GetComponentInChildren<Attackable>();
-
-        allyAttackable.SetHealth(allyAttackable.GetMaxHealth());
-        selfAttackable.SubstractHealth(selfAttackable.GetMaxHealth() / 3);
-
-        enemyAction = enumEnemyActions.patrol;
+       
     }
+
+    //------------------------------------------------//
 }

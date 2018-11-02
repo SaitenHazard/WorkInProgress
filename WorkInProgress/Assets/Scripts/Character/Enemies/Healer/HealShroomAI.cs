@@ -4,26 +4,6 @@ using UnityEngine;
 
 public class HealShroomAI : AIBase
 {
-    private void Start()
-    {
-        base.Start();
-    }
-
-    private void Update()
-    {
-        base.Update();
-
-        RevertHealAlly();
-    }
-
-    private void RevertHealAlly()
-    {
-        if(injuredAlly == null)
-        {
-            enemyAction = enumEnemyActions.patrol;
-        }
-    }
-
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Decoy")
@@ -37,17 +17,20 @@ public class HealShroomAI : AIBase
             return;
         }
 
-        if (enemyAction == enumEnemyActions.healAlly)
-            return;
-
+      
         if (collider2D.gameObject.tag == "Enemy")
         {
+            if (enemyAction == enumEnemyActions.healAlly)
+                return;
+
             Attackable attackable = collider2D.transform.parent.GetComponentInChildren<Attackable>();
 
             if (attackable.GetHealth() < attackable.GetMaxHealth())
             {
+                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+
                 enemyAction = enumEnemyActions.healAlly;
-                injuredAlly = collider2D.transform.parent;
+                target = collider2D.transform.parent;
             }
         }
 
@@ -65,7 +48,6 @@ public class HealShroomAI : AIBase
             if (enemyAction != enumEnemyActions.healAlly)
             {
                 enemyAction = enumEnemyActions.chase;
-                target = PlayerInstant.Instance.GetComponent<Transform>();
             }
         }
     }
