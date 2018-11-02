@@ -8,16 +8,15 @@ public class HealShroomAI : AIBase
     {
         if (collider2D.gameObject.tag == "Decoy")
         {
-            if (enemyAction != enumEnemyActions.chaseDecoy)
-                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+            if (enemyAction == enumEnemyActions.chaseDecoy || enemyAction == enumEnemyActions.healAlly)
+                return;
+
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
 
             enemyAction = enumEnemyActions.chaseDecoy;
-            target = collider2D.gameObject.transform;
-
-            return;
+            target = collider2D.GetComponent<Transform>();
         }
 
-      
         if (collider2D.gameObject.tag == "Enemy")
         {
             if (enemyAction == enumEnemyActions.healAlly)
@@ -36,30 +35,30 @@ public class HealShroomAI : AIBase
 
         if (collider2D.gameObject.tag == "Player")
         {
+            playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
+
+            if (enemyAction == enumEnemyActions.chaseDecoy ||
+                enemyAction == enumEnemyActions.healAlly || enemyAction == enumEnemyActions.chase)
+                return;
+
             if (playerStats.IsInvisibleUp() == true)
                 return;
 
-            if (enemyAction != enumEnemyActions.chase)
-                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
 
-            if (playerStats.IsInvisibleUp() == true)
-                return;
-
-            if (enemyAction != enumEnemyActions.healAlly)
-            {
-                enemyAction = enumEnemyActions.chase;
-            }
+            enemyAction = basicActionWithPlayer;
+            target = PlayerInstant.Instance.transform;
         }
     }
 
     override protected void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (enemyAction == enumEnemyActions.healAlly)
+        if (enemyAction == enumEnemyActions.chaseDecoy)
             return;
 
         if (collider2D.gameObject.tag == "Player")
         {
-            enemyAction = enumEnemyActions.patrol;
+            enemyAction = basicAction;
         }
     }
 }

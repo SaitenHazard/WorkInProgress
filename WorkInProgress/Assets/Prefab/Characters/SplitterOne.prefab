@@ -111,7 +111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1212902979458202
 GameObject:
   m_ObjectHideFlags: 1
@@ -1137,7 +1137,8 @@ MonoBehaviour:
   projectileObject: {fileID: 0}
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
-  enemyAction: 4
+  basicActionWithPlayer: 0
+  basicAction: 4
 --- !u!114 &114118224550005272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1248,7 +1249,8 @@ MonoBehaviour:
   projectileObject: {fileID: 0}
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
-  enemyAction: 4
+  basicActionWithPlayer: 0
+  basicAction: 4
 --- !u!114 &114400799996249542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1327,7 +1329,8 @@ MonoBehaviour:
   projectileObject: {fileID: 0}
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
-  enemyAction: 1
+  basicActionWithPlayer: 0
+  basicAction: 4
 --- !u!114 &114758357352290702
 MonoBehaviour:
   m_ObjectHideFlags: 1

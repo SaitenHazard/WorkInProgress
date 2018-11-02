@@ -4,44 +4,45 @@ using UnityEngine;
 
 public class SpawnerAI : AIBase
 {
-    private void Start()
-    {
-        base.Start();
-        enemyAction = enumEnemyActions.idle;
-    }
-
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Decoy")
         {
-            if (playerStats.IsInvisibleUp() == true)
+            if (enemyAction == enumEnemyActions.chaseDecoy)
                 return;
 
-            if (enemyAction != enumEnemyActions.spawn)
-                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
 
-            enemyAction = enumEnemyActions.spawn;
-
-            return;
+            enemyAction = enumEnemyActions.chaseDecoy;
+            target = collider2D.GetComponent<Transform>();
         }
 
         if (collider2D.gameObject.tag == "Player")
         {
+            playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
+
             if (playerStats.IsInvisibleUp() == true)
                 return;
 
-            if (enemyAction != enumEnemyActions.spawn)
-                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+            if (enemyAction == enumEnemyActions.chaseDecoy ||
+                enemyAction == enumEnemyActions.chase)
+                return;
 
-            enemyAction = enumEnemyActions.spawn;
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+
+            enemyAction = basicActionWithPlayer;
+            target = PlayerInstant.Instance.transform;
         }
     }
 
     override protected void OnTriggerExit2D(Collider2D collider2D)
     {
+        if (enemyAction == enumEnemyActions.chaseDecoy)
+            return;
+
         if (collider2D.gameObject.tag == "Player")
         {
-            enemyAction = enumEnemyActions.idle;
+            enemyAction = basicAction;
         }
     }
 }

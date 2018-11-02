@@ -7,7 +7,8 @@ public class AIBase : MonoBehaviour
     public GameObject projectileObject;
     public Patrol patrol;
     public GameObject spawnObject;
-    public enumEnemyActions enemyAction;
+    public enumEnemyActions basicActionWithPlayer;
+    public enumEnemyActions basicAction;
 
     protected float angle;
     protected Transform target;
@@ -18,6 +19,7 @@ public class AIBase : MonoBehaviour
     protected int enemyColliderIndex;
     protected PlayerStats playerStats;
     protected PlayerInstant playerInstance;
+    protected enumEnemyActions enemyAction;
 
     private CharacterMovementModel p_movementModel;
     private Animator m_Animator;
@@ -26,8 +28,6 @@ public class AIBase : MonoBehaviour
     private float pacingTime;
     private float pacingWaitTime;
     private int spawnCount;
-
-    private enumEnemyActions basicAction;
 
     //---------------------COMMON---------------------//
 
@@ -53,7 +53,7 @@ public class AIBase : MonoBehaviour
 
         spawnCount = 0;
 
-        basicAction = enemyAction;
+        enemyAction = basicAction;
     }
 
     protected void Update()
@@ -116,7 +116,7 @@ public class AIBase : MonoBehaviour
         allyAttackable.SetHealth(allyAttackable.GetMaxHealth());
         selfAttackable.SubstractHealth(selfAttackable.GetMaxHealth() / 3);
 
-        enemyAction = enumEnemyActions.patrol;
+        enemyAction = basicAction;
     }
 
     private IEnumerator DoSpawn()
@@ -188,7 +188,7 @@ public class AIBase : MonoBehaviour
     }
 
     //------------------------------------------------//
-    //---------------------MONITORS-------------------//
+    //---------------------CHECKS---------------------//
 
     private void CheckPlayerStats()
     {
@@ -234,6 +234,14 @@ public class AIBase : MonoBehaviour
     //------------------------------------------------//
     //---------------------MOVEMENTS------------------//
 
+    protected void DoMovement()
+    {
+        SetDirectionTowardsTarget();
+        SetDirectionSpecial();
+
+        m_movementModel.SetDirection(movementDirection);
+    }
+
     private void UpdateAngle()
     {
         if (enemyAction == enumEnemyActions.patrol)
@@ -242,11 +250,9 @@ public class AIBase : MonoBehaviour
             angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
 
-        if (enemyAction == enumEnemyActions.chase || 
-            enemyAction == enumEnemyActions.healAlly || 
+        if (enemyAction == enumEnemyActions.chase || enemyAction == enumEnemyActions.healAlly || 
             enemyAction == enumEnemyActions.chaseDecoy)
         {
-            target = PlayerInstant.Instance.GetComponent<Transform>();
             angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
     }
@@ -331,9 +337,9 @@ public class AIBase : MonoBehaviour
 
         if (enemyAction == enumEnemyActions.chaseDecoy)
         {
-            if (Vector2.Distance(transform.position, target.position) < 1)
+            if (Vector2.Distance(transform.position, target.position) < 0.7f)
             {
-                movementDirection = Vector2.zero;
+               movementDirection = Vector2.zero;
             }
         }
 
@@ -344,14 +350,6 @@ public class AIBase : MonoBehaviour
         {
             movementDirection = new Vector2(0, -1);
         }
-    }
-
-    protected void DoMovement()
-    {
-        SetDirectionTowardsTarget();
-        SetDirectionSpecial();
-
-        m_movementModel.SetDirection(movementDirection);
     }
 
     //------------------------------------------------//

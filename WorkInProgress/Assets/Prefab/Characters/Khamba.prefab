@@ -148,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1789588566823844
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +486,8 @@ MonoBehaviour:
   projectileObject: {fileID: 1542113046972888}
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
-  enemyAction: 1
+  basicActionWithPlayer: 0
+  basicAction: 6
 --- !u!114 &114174235981995592
 MonoBehaviour:
   m_ObjectHideFlags: 1

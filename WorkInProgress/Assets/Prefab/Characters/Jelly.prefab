@@ -458,7 +458,8 @@ MonoBehaviour:
   projectileObject: {fileID: 0}
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
-  enemyAction: 1
+  basicActionWithPlayer: 0
+  basicAction: 1
 --- !u!212 &212537376756371700
 SpriteRenderer:
   m_ObjectHideFlags: 1

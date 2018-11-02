@@ -24,22 +24,25 @@ public class MinionAI : AIBase
             if (playerStats.IsInvisibleUp() == true)
                 return;
 
-            if (enemyAction == enumEnemyActions.chaseDecoy)
+            if (enemyAction == enumEnemyActions.chaseDecoy || 
+                enemyAction == enumEnemyActions.chase)
                 return;
 
-            if (enemyAction != enumEnemyActions.chase)
-                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
 
-            enemyAction = enumEnemyActions.chase;
+            enemyAction = basicActionWithPlayer;
             target = PlayerInstant.Instance.transform;
         }
     }
 
     override protected void OnTriggerExit2D(Collider2D collider2D)
     {
+        if (enemyAction == enumEnemyActions.chaseDecoy)
+            return;
+
         if (collider2D.gameObject.tag == "Player")
         {
-            enemyAction = enumEnemyActions.pacing;
+            enemyAction = basicAction;
         }
     }
 }

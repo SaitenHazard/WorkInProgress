@@ -421,7 +421,8 @@ MonoBehaviour:
   projectileObject: {fileID: 0}
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
-  enemyAction: 4
+  basicActionWithPlayer: 0
+  basicAction: 4
 --- !u!114 &114267120784732008
 MonoBehaviour:
   m_ObjectHideFlags: 1

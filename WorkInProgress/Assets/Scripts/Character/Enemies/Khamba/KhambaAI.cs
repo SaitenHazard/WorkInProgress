@@ -4,44 +4,45 @@ using UnityEngine;
 
 public class KhambaAI : AIBase
 {
-    private void Start()
-    {
-        base.Start();
-        enemyAction = enumEnemyActions.NULL;
-    }
-
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.tag == "Decoy")
         {
-            if (enemyAction != enumEnemyActions.chaseDecoy)
-                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+            if (enemyAction == enumEnemyActions.chaseDecoy)
+                return;
+
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
 
             enemyAction = enumEnemyActions.chaseDecoy;
-            target = collider2D.gameObject.transform;
-
-            return;
+            target = collider2D.GetComponent<Transform>();
         }
 
         if (collider2D.gameObject.tag == "Player")
         {
+            playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
+
             if (playerStats.IsInvisibleUp() == true)
                 return;
 
-            if (enemyAction != enumEnemyActions.chase)
-                speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+            if (enemyAction == enumEnemyActions.chaseDecoy ||
+                enemyAction == enumEnemyActions.chase)
+                return;
 
-            enemyAction = enumEnemyActions.chase;
-            target = PlayerInstant.Instance.GetComponent<Transform>();
+            speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
+
+            enemyAction = basicActionWithPlayer;
+            target = PlayerInstant.Instance.transform;
         }
     }
 
-    protected override void OnTriggerExit2D(Collider2D collider2D)
+    override protected void OnTriggerExit2D(Collider2D collider2D)
     {
+        if (enemyAction == enumEnemyActions.chaseDecoy)
+            return;
+
         if (collider2D.gameObject.tag == "Player")
         {
-            enemyAction = enumEnemyActions.NULL;
-            StopAllCoroutines();
+            enemyAction = basicAction;
         }
     }
 }
