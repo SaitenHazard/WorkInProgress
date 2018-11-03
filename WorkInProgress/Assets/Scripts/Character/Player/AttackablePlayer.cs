@@ -33,6 +33,38 @@ public class AttackablePlayer : Attackable
         {
             DoDoHit(1, GetComponentInParent<CharacterMovementModel>().GetReverseFacingDirection());
         }
+
+        if (ColliderObject.tag == "BombRing" && m_movementModel.GetPushBackSpeed() == 0f)
+        {
+            float angle = Mathf.Atan2 
+                (ColliderObject.transform.position.y - gameObject.transform.position.y, 
+                ColliderObject.transform.position.x - gameObject.transform.position.y) 
+                * 180 / Mathf.PI * -1;
+
+            Vector2 hitDirection = Vector2.zero;
+
+            if (angle >= 45 && angle <= 135)
+            {
+                hitDirection = new Vector2(0, 1);
+            }
+
+            if (angle <= -45 && angle >= -135)
+            {
+                hitDirection = new Vector2(0, -1);
+            }
+
+            if (angle >= 0 && angle < 45 || angle < 0 && angle > -45)
+            {
+                hitDirection = new Vector2(-1, 0);
+            }
+
+            if (angle > 135 && angle <= 180 || angle < -135 && angle >= -180)
+            {
+                hitDirection = new Vector2(1, 0);
+            }
+
+            DoDoHit(1, hitDirection);
+        }
     }
 
     private void DoDoHit(float damage, Vector2 hitDirection)

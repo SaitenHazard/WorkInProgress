@@ -59,7 +59,6 @@ public class AIBase : MonoBehaviour
     protected void Update()
     {
         UpdateActionEffects();
-        UpdateAngle();
         DoMovement();
         CheckPlayerStats();
     }
@@ -236,6 +235,7 @@ public class AIBase : MonoBehaviour
 
     protected void DoMovement()
     {
+        UpdateAngle();
         SetDirectionTowardsTarget();
         SetDirectionSpecial();
 

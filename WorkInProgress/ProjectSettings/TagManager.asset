@@ -12,6 +12,7 @@ TagManager:
   - PlayerProjectile
   - PlayerHazard
   - Decoy
+  - BombRing
   layers:
   - Default
   - TransparentFX
