@@ -4,14 +4,14 @@ using System.Collections;
 public class Attackable : MonoBehaviour 
 {
     public float health;
-    public float pushBackTime;
-    public float pushBackSpeed;
+    
 
     protected CharacterMovementModel attackerMovementModel;
     protected GameObject ColliderObject;
     protected CharacterMovementModel m_movementModel;
     protected PlayerStats playerStats;
     protected SpriteRenderer spriteRenderer;
+    protected float pushBackTime = 0.15f;
 
     private float maxHealth;
     private AIBase aiBase;
@@ -19,6 +19,7 @@ public class Attackable : MonoBehaviour
     private Color color;
     private SpeechBubble speechBubble;
     private float stunTime;
+    private float pushBackSpeed = 2.5f;
 
     virtual protected void Awake()
     {

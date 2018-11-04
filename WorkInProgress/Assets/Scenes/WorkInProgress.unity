@@ -1069,6 +1069,30 @@ Prefab:
       propertyPath: m_TagString
       value: BombRing
       objectReference: {fileID: 0}
+    - target: {fileID: 1246759903223566, guid: 1fd737f32cc43b84baf2f3e4f6c5e7b1, type: 2}
+      propertyPath: m_Name
+      value: BombRing
+      objectReference: {fileID: 0}
+    - target: {fileID: 114999177538607396, guid: 1fd737f32cc43b84baf2f3e4f6c5e7b1,
+        type: 2}
+      propertyPath: health
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114999177538607396, guid: 1fd737f32cc43b84baf2f3e4f6c5e7b1,
+        type: 2}
+      propertyPath: bombRing
+      value: 
+      objectReference: {fileID: 1435188419}
+    - target: {fileID: 114999177538607396, guid: 1fd737f32cc43b84baf2f3e4f6c5e7b1,
+        type: 2}
+      propertyPath: pushBackTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114999177538607396, guid: 1fd737f32cc43b84baf2f3e4f6c5e7b1,
+        type: 2}
+      propertyPath: pushBackSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1fd737f32cc43b84baf2f3e4f6c5e7b1, type: 2}
   m_IsPrefabParent: 0
@@ -3463,6 +3487,11 @@ Prefab:
     - target: {fileID: 4773571567829834, guid: a41dfba62ade84047823e5b5c309bd08, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114518063851270394, guid: a41dfba62ade84047823e5b5c309bd08,
+        type: 2}
+      propertyPath: Speed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a41dfba62ade84047823e5b5c309bd08, type: 2}
