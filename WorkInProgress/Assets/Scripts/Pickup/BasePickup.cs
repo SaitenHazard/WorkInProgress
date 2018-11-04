@@ -5,10 +5,8 @@ using UnityEngine;
 public class BasePickup : MonoBehaviour
 {
     public enumInventory item;
-    public GameObject Decoy;
 
-    private GameObject playerSlime1;
-    private GameObject playerSlime2;
+    private GameObject tempInstantiateObject;
     private InventoryUI inventoryUI;
     private RectTransform slotTransform;
     private PickupUseGeneralAnimation pickupUseGeneralAnimation;
@@ -26,6 +24,8 @@ public class BasePickup : MonoBehaviour
 
         gameObject.name = item.ToString();
         proportion = GetComponentInChildren<SpriteRenderer>().transform.localScale.x;
+
+        Debug.Log(item);
     }
 
     private void ResetSelectedInventory()
@@ -68,6 +68,8 @@ public class BasePickup : MonoBehaviour
 
     public void UsePickup()
     {
+        Debug.Log(item);
+
         PlayerStats playerStats = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerStats>();
         AttackablePlayer attackable = PlayerInstant.Instance.transform.gameObject.GetComponentInChildren<AttackablePlayer>();
 
@@ -103,24 +105,14 @@ public class BasePickup : MonoBehaviour
             return;
         }
 
-        if (item == enumInventory.StunPickup && playerStats.IsStunUp() == false)
-        {
-            playerStats.StunUp();
-            DoNonInstantiateAnimation();
-            ResetSelectedInventory();
-            return;
-        }
-
         if (item == enumInventory.SlimePickup)
         {
             playerInstance = PlayerInstant.Instance;
-            playerSlime1 = playerInstance.transform.Find("PlayerSlime1").gameObject;
-            playerSlime2 = playerInstance.transform.Find("PlayerSlime2").gameObject;
 
             if (playerStats.IsDamageUp() == true)
-                CreatePlayerSlime(playerSlime2);
+                tempInstantiateObject = playerInstance.transform.Find("PlayerSlime2").gameObject;
             else
-                CreatePlayerSlime(playerSlime1);
+                tempInstantiateObject = playerInstance.transform.Find("PlayerSlime1").gameObject;
 
             DoNonInstantiateAnimation();
             ResetSelectedInventory();
@@ -154,18 +146,35 @@ public class BasePickup : MonoBehaviour
         if (item == enumInventory.DecoyPickup)
         {
             playerInstance = PlayerInstant.Instance;
-            Decoy = playerInstance.transform.Find("Decoy").gameObject;
+            tempInstantiateObject = playerInstance.transform.Find("Decoy").gameObject;
+            Debug.Log("OUT");
+            Debug.Log(tempInstantiateObject);
+
+            DoNonInstantiateAnimation();
             ResetSelectedInventory();
-            CreateDecoy();
+            CreateInstantiatePikcup();
+            return;
+        }
+
+        if (item == enumInventory.BombPickup)
+        {
+            playerInstance = PlayerInstant.Instance;
+            tempInstantiateObject = playerInstance.transform.Find("Bomb").gameObject;
+            Debug.Log("IN");
+            Debug.Log(tempInstantiateObject);
+
+            DoNonInstantiateAnimation();
+            ResetSelectedInventory();
+            CreateInstantiatePikcup();
             return;
         }
 
         DoInventoryCancelAnimation();
     }
 
-    private void CreateDecoy()
+    private void CreateInstantiatePikcup()
     {
-        GameObject tempDecoy = Instantiate(Decoy);
+        GameObject tempDecoy = Instantiate(tempInstantiateObject);
 
         tempDecoy.SetActive(true);
 
@@ -196,8 +205,7 @@ public class BasePickup : MonoBehaviour
 
     private void CreatePlayerSlime(GameObject playerSlime)
     {
-        GameObject cloneObject = Instantiate(playerSlime, playerInstance.transform);
-        cloneObject.transform.SetParent(null);
+        GameObject cloneObject = Instantiate(playerSlime);
         cloneObject.SetActive(true);
     }
 

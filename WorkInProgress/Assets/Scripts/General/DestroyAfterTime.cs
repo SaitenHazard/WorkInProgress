@@ -6,7 +6,7 @@ public class DestroyAfterTime : MonoBehaviour
 {
     public float destoryAfter;
 
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
 
     private void Awake()
     {

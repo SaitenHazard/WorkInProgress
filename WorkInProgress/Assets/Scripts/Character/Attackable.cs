@@ -93,6 +93,16 @@ public class Attackable : MonoBehaviour
             Vector2 movementDirection = transform.parent.GetComponent<CharacterMovementModel>().GetReverseFacingDirection();
             DoHit(damage, movementDirection);
         }
+
+        if (ColliderObject.tag == "PlayerBombRing" && m_movementModel.GetPushBackSpeed() == 0f)
+        {
+            if (health <= 0)
+                return;
+
+            float damage = ColliderObject.GetComponent<PlayerSlime>().GetDamage();
+            Vector2 movementDirection = transform.parent.GetComponent<CharacterMovementModel>().GetReverseFacingDirection();
+            DoHit(damage, movementDirection);
+        }
     }
 
     protected void DoHit(float damage, Vector2 hitDirection)
