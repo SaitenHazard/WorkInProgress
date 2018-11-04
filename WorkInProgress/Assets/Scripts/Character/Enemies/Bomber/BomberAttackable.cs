@@ -15,11 +15,11 @@ public class BomberAttackable : Attackable
 
     override protected IEnumerator CharacterFadeOut()
     {
-        bombRing.GetComponent<CircleCollider2D>().enabled = true;
 
         float opacity = 1f;
 
         yield return new WaitForSeconds(pushBackTime);
+
 
         while (opacity > 0.2f)
         {
@@ -27,6 +27,10 @@ public class BomberAttackable : Attackable
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
             yield return new WaitForSeconds(0.2f);
         }
+
+        bombRing.GetComponent<CircleCollider2D>().enabled = true;
+
+        yield return new WaitForSeconds(0.1f);
 
         Destroy(gameObject.transform.parent.gameObject);
     }
