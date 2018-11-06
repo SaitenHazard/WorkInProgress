@@ -7,7 +7,6 @@ public class Attackable : MonoBehaviour
     
 
     protected CharacterMovementModel attackerMovementModel;
-    protected GameObject ColliderObject;
     protected CharacterMovementModel m_movementModel;
     protected PlayerStats playerStats;
     protected SpriteRenderer spriteRenderer;
@@ -54,54 +53,52 @@ public class Attackable : MonoBehaviour
         health = maxHealth;
     }
 
-    protected virtual void OnTriggerEnter2D (Collider2D hitCollider)
+    protected virtual void OnTriggerEnter2D (Collider2D collider2D)
     {
         if(aiBase != null && aiBase.GetEnemyAction() == enumEnemyActions.defend)
         {
             return;
         }
 
-        ColliderObject = hitCollider.gameObject;
-
-        if (ColliderObject.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
+        if (collider2D.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             float damage = playerStats.GetDamage();
 
-            attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
+            attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
 
             DoHit(damage, attackerMovementModel.GetFacingDirection());
         }
 
-        if(ColliderObject.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
+        if(collider2D.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             if (health <= 0)
                 return;
 
-            float damage = ColliderObject.GetComponent<Projectile>().GetDamage();
+            float damage = collider2D.GetComponent<Projectile>().GetDamage();
 
-            Destroy(ColliderObject.gameObject);
+            Destroy(collider2D.gameObject);
 
-            DoHit(damage, ColliderObject.GetComponent<Projectile>().GetMovementDirection());
+            DoHit(damage, collider2D.GetComponent<Projectile>().GetMovementDirection());
         }
 
-        if (ColliderObject.tag == "PlayerHazard" && m_movementModel.GetPushBackSpeed() == 0f)
+        if (collider2D.tag == "PlayerHazard" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             if (health <= 0)
                 return;
 
-            float damage = ColliderObject.GetComponent<PlayerSlime>().GetDamage();
+            float damage = collider2D.GetComponent<PlayerSlime>().GetDamage();
             Vector2 movementDirection = transform.parent.GetComponent<CharacterMovementModel>().GetReverseFacingDirection();
             DoHit(damage, movementDirection);
         }
 
-        if (ColliderObject.tag == "PlayerBombRing" && m_movementModel.GetPushBackSpeed() == 0f)
+        if (collider2D.tag == "PlayerBombRing" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             if (health <= 0)
                 return;
 
-            float damage = ColliderObject.GetComponent<PlayerSlime>().GetDamage();
-            Vector2 movementDirection = transform.parent.GetComponent<CharacterMovementModel>().GetReverseFacingDirection();
-            DoHit(damage, movementDirection);
+            Vector2 hitDirection = collider2D.GetComponentInParent<PlayerBomb>().GetHitDirection(transform);
+
+            DoHit(1, hitDirection);
         }
     }
 

@@ -24,8 +24,6 @@ public class BasePickup : MonoBehaviour
 
         gameObject.name = item.ToString();
         proportion = GetComponentInChildren<SpriteRenderer>().transform.localScale.x;
-
-        Debug.Log(item);
     }
 
     private void ResetSelectedInventory()
@@ -68,8 +66,6 @@ public class BasePickup : MonoBehaviour
 
     public void UsePickup()
     {
-        Debug.Log(item);
-
         PlayerStats playerStats = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerStats>();
         AttackablePlayer attackable = PlayerInstant.Instance.transform.gameObject.GetComponentInChildren<AttackablePlayer>();
 
@@ -147,8 +143,6 @@ public class BasePickup : MonoBehaviour
         {
             playerInstance = PlayerInstant.Instance;
             tempInstantiateObject = playerInstance.transform.Find("Decoy").gameObject;
-            Debug.Log("OUT");
-            Debug.Log(tempInstantiateObject);
 
             DoNonInstantiateAnimation();
             ResetSelectedInventory();
@@ -160,8 +154,6 @@ public class BasePickup : MonoBehaviour
         {
             playerInstance = PlayerInstant.Instance;
             tempInstantiateObject = playerInstance.transform.Find("Bomb").gameObject;
-            Debug.Log("IN");
-            Debug.Log(tempInstantiateObject);
 
             DoNonInstantiateAnimation();
             ResetSelectedInventory();

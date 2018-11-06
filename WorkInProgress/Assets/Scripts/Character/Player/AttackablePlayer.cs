@@ -4,67 +4,78 @@ using UnityEngine;
 
 public class AttackablePlayer : Attackable
 {
-    override protected void OnTriggerEnter2D(Collider2D hitCollider)
+    override protected void OnTriggerEnter2D(Collider2D collider2D)
     {
-        ColliderObject = hitCollider.gameObject;
-
-        if (ColliderObject.tag == "EnemyProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
+        if (collider2D.tag == "EnemyProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            DoDoHit(1, ColliderObject.GetComponent<Projectile>().GetHitDirection());
+            DoDoHit(1, collider2D.GetComponent<Projectile>().GetHitDirection());
 
-            ColliderObject.GetComponent<Projectile>().DestroyOnHit();
+            collider2D.GetComponent<Projectile>().DestroyOnHit();
         }
 
-        if (ColliderObject.tag == "Enemy" && m_movementModel.GetPushBackSpeed() == 0f)
+        if (collider2D.tag == "Enemy" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            Attackable attackerAttackable = ColliderObject.transform.parent.gameObject.
+            Attackable attackerAttackable = collider2D.transform.parent.gameObject.
                             GetComponentInChildren<Attackable>();
 
             if (attackerAttackable.GetHealth() <= 0)
                 return;
 
-            CharacterMovementModel attackerMovementModel = ColliderObject.GetComponentInParent<CharacterMovementModel>();
+            CharacterMovementModel attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
 
             attackerMovementModel.SetTemporaryFrozen(1);
             DoDoHit(1, attackerMovementModel.GetFacingDirection());
         }
 
-        if (ColliderObject.tag == "Hazard" && m_movementModel.GetPushBackSpeed() == 0f)
+        if (collider2D.tag == "Hazard" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             DoDoHit(1, GetComponentInParent<CharacterMovementModel>().GetReverseFacingDirection());
         }
 
-        if (ColliderObject.tag == "BombRing" && m_movementModel.GetPushBackSpeed() == 0f)
+        if (collider2D.tag == "BombRing" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            float angle = Mathf.Atan2 
-                (ColliderObject.transform.position.y - gameObject.transform.position.y, 
-                ColliderObject.transform.position.x - gameObject.transform.position.y) 
+            DoBombHit(collider2D);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collider2D)
+    {
+        if (collider2D.tag == "BombRing" && m_movementModel.GetPushBackSpeed() == 0f)
+        {
+            DoBombHit(collider2D);
+        }
+    }
+
+    private void DoBombHit(Collider2D collider2D)
+    {
+        float angle = Mathf.Atan2
+                (collider2D.transform.position.y - gameObject.transform.position.y,
+                collider2D.transform.position.x - gameObject.transform.position.y)
                 * 180 / Mathf.PI * -1;
 
-            Vector2 hitDirection = Vector2.zero;
+        Vector2 hitDirection = Vector2.zero;
 
-            if (angle >= 45 && angle <= 135)
-            {
-                hitDirection = new Vector2(0, 1);
-            }
-
-            if (angle <= -45 && angle >= -135)
-            {
-                hitDirection = new Vector2(0, -1);
-            }
-
-            if (angle >= 0 && angle < 45 || angle < 0 && angle > -45)
-            {
-                hitDirection = new Vector2(-1, 0);
-            }
-
-            if (angle > 135 && angle <= 180 || angle < -135 && angle >= -180)
-            {
-                hitDirection = new Vector2(1, 0);
-            }
-
-            DoDoHit(1, hitDirection);
+        if (angle >= 45 && angle <= 135)
+        {
+            hitDirection = new Vector2(0, 1);
         }
+
+        if (angle <= -45 && angle >= -135)
+        {
+            hitDirection = new Vector2(0, -1);
+        }
+
+        if (angle >= 0 && angle < 45 || angle < 0 && angle > -45)
+        {
+            hitDirection = new Vector2(-1, 0);
+        }
+
+        if (angle > 135 && angle <= 180 || angle < -135 && angle >= -180)
+        {
+            hitDirection = new Vector2(1, 0);
+        }
+
+        DoDoHit(1, hitDirection);
     }
 
     private void DoDoHit(float damage, Vector2 hitDirection)
