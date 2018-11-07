@@ -9,8 +9,6 @@ public class HealthBar : MonoBehaviour
     public Attackable attackable;
 
     public Sprite spriteHealthBar;
-    public Sprite spriteInvincibleBar;
-
     private Image image;
     private RectTransform rectTransform;
     private float width;
@@ -30,19 +28,6 @@ public class HealthBar : MonoBehaviour
     private void Update()
     {
         UpdateHealthBar();
-        UpdateBarSprite();
-    }
-
-    private void UpdateBarSprite()
-    {
-        if(playerStats.IsInvincibleUp() == true)
-        {
-            image.sprite = spriteInvincibleBar;
-        }
-        else
-        {
-            image.sprite = spriteHealthBar;
-        }
     }
 
     private void UpdateHealthBar()
