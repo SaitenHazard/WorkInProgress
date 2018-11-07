@@ -2886,11 +2886,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4903876204723144, guid: a6437d0484091764a8228d93786774f2,
     type: 2}
   m_PrefabInternal: {fileID: 598747124}
---- !u!20 &598747126 stripped
-Camera:
-  m_PrefabParentObject: {fileID: 20972914329395188, guid: a6437d0484091764a8228d93786774f2,
-    type: 2}
-  m_PrefabInternal: {fileID: 598747124}
 --- !u!114 &598747127 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114206765931043108, guid: a6437d0484091764a8228d93786774f2,
@@ -7479,7 +7474,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 598747126}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
