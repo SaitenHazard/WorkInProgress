@@ -108,7 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: 9
-  Decoy: {fileID: 0}
 --- !u!212 &212290285036182006
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -143,7 +142,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f77f337a88e202e4390737967f7f81ea, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 4a0d80355cac6254aa532b5569eccfd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
