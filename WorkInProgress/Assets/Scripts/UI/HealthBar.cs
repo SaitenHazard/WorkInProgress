@@ -8,7 +8,6 @@ public class HealthBar : MonoBehaviour
     public GameObject Player;
     public Attackable attackable;
 
-    public Sprite spriteHealthBar;
     private Image image;
     private RectTransform rectTransform;
     private float width;
