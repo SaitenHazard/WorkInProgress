@@ -15,7 +15,7 @@ public class GenerateSlime : MonoBehaviour
     private IEnumerator Generate()
     {
         GameObject cloneObject = Instantiate(slime.gameObject);
-        cloneObject.transform.position = transform.position;
+        cloneObject.transform.position = new Vector3 (transform.position.x, transform.position.y - 0.094f, transform.position.z);
         cloneObject.GetComponent<SpriteRenderer>().enabled = true;
         cloneObject.GetComponent<Slime>().enabled = true;
         cloneObject.GetComponent<Collider2D>().enabled = true;

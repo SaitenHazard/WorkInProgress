@@ -187,7 +187,7 @@ public class Attackable : MonoBehaviour
 
         yield return new WaitForSeconds(pushBackTime);
 
-        while (opacity > 0.2f)
+        while (opacity > 0.4f)
         {
             opacity -= 0.2f;
             spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
