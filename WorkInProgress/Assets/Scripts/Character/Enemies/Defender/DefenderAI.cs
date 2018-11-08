@@ -19,7 +19,10 @@ public class DefenderAI : AIBase
 
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "Decoy")
+        if (enemyAction == enumEnemyActions.defend)
+            return;
+
+            if (collider2D.gameObject.tag == "Decoy")
         {
             if (enemyAction == enumEnemyActions.chaseDecoy)
                 return;
