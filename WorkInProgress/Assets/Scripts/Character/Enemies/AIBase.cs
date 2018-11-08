@@ -121,11 +121,14 @@ public class AIBase : MonoBehaviour
     private IEnumerator DoSpawn()
     {
         float yieldTime = 5f;
+        float aniTime = 3f;
 
         isDoSpawnActive = true;
 
         if (spawnCount < 5)
         {
+            m_Animator.SetBool("Defend", true);
+
             GameObject tempSpawnObject = Instantiate(spawnObject);
             SpawnManager spawnManager = tempSpawnObject.GetComponent<SpawnManager>();
 
@@ -134,7 +137,11 @@ public class AIBase : MonoBehaviour
             spawnManager.Initialize(this);
             spawnCount++;
 
-            yield return new WaitForSeconds(yieldTime);
+            yield return new WaitForSeconds(aniTime);
+
+            m_Animator.SetBool("Defend", false);
+
+            yield return new WaitForSeconds(yieldTime - aniTime);
         }
 
         isDoSpawnActive = false;

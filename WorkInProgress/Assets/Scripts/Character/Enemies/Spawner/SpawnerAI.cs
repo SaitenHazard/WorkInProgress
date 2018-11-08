@@ -8,12 +8,12 @@ public class SpawnerAI : AIBase
     {
         if (collider2D.gameObject.tag == "Decoy")
         {
-            if (enemyAction == enumEnemyActions.chaseDecoy)
+            if (enemyAction == basicActionWithPlayer)
                 return;
 
             speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
 
-            enemyAction = enumEnemyActions.chaseDecoy;
+            enemyAction = enumEnemyActions.spawn;
             target = collider2D.GetComponent<Transform>();
         }
 
@@ -24,8 +24,7 @@ public class SpawnerAI : AIBase
             if (playerStats.IsInvisibleUp() == true)
                 return;
 
-            if (enemyAction == enumEnemyActions.chaseDecoy ||
-                enemyAction == enumEnemyActions.chase)
+            if (enemyAction == basicActionWithPlayer)
                 return;
 
             speechBubble.PopSpeechBubble(enumSpeechBubbles.Exclamation);
