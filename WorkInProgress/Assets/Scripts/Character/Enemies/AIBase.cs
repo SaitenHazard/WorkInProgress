@@ -127,7 +127,6 @@ public class AIBase : MonoBehaviour
 
         if (spawnCount < 5)
         {
-            m_Animator.SetBool("Defend", true);
 
             GameObject tempSpawnObject = Instantiate(spawnObject);
             SpawnManager spawnManager = tempSpawnObject.GetComponent<SpawnManager>();
@@ -137,9 +136,11 @@ public class AIBase : MonoBehaviour
             spawnManager.Initialize(this);
             spawnCount++;
 
+            m_Animator.SetBool("Spawn", true);
+
             yield return new WaitForSeconds(aniTime);
 
-            m_Animator.SetBool("Defend", false);
+            m_Animator.SetBool("Spawn", false);
 
             yield return new WaitForSeconds(yieldTime - aniTime);
         }
