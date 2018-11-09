@@ -10,10 +10,10 @@ public class Attackable : MonoBehaviour
     protected CharacterMovementModel m_movementModel;
     protected PlayerStats playerStats;
     protected SpriteRenderer spriteRenderer;
-    protected float pushBackTime = 0.15f;
+    protected float pushBackTime = 0.25f;
+    protected AIBase aiBase;
 
     private float maxHealth;
-    private AIBase aiBase;
     private GameObject parentObject;
     private Color color;
     private SpeechBubble speechBubble;
@@ -29,12 +29,13 @@ public class Attackable : MonoBehaviour
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
     }
 
-    private void Start()
+    virtual protected void Start()
     {
         playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
 
         stunTime = 5f;
         color = spriteRenderer.color;
+        health = 3f;
         maxHealth = health;
     }
 
@@ -46,6 +47,11 @@ public class Attackable : MonoBehaviour
     public float GetMaxHealth()
     {
         return maxHealth;
+    }
+
+    public void SetMaxHealth(float m_health)
+    {
+        maxHealth = m_health;
     }
 
     public void RestoreFullHealth()

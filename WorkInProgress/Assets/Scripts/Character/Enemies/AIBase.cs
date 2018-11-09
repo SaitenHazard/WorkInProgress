@@ -210,9 +210,9 @@ public class AIBase : MonoBehaviour
 
     private void CheckPlayerStats()
     {
-        if(playerStats.IsInvisibleUp() == true && enemyAction == enumEnemyActions.chase)
+        if(playerStats.IsInvisibleUp() == true && enemyAction == basicActionWithPlayer)
         {
-            enemyAction = enumEnemyActions.patrol;
+            enemyAction = basicAction;
         }
     }
 

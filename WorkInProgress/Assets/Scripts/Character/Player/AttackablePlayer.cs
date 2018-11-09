@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class AttackablePlayer : Attackable
 {
+    override protected void Start()
+    {
+        base.Start();
+        health = 10;
+        SetMaxHealth(10);
+    }
+
     override protected void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.tag == "EnemyProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
