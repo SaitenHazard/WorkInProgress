@@ -121,7 +121,7 @@ public class AIBase : MonoBehaviour
     private IEnumerator DoSpawn()
     {
         float yieldTime = 5f;
-        float aniTime = 3f;
+        float aniTime = 1f;
 
         isDoSpawnActive = true;
 
