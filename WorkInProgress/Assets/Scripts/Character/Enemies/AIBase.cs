@@ -54,6 +54,8 @@ public class AIBase : MonoBehaviour
         spawnCount = 0;
 
         enemyAction = basicAction;
+
+        GetComponent<CircleCollider2D>().radius = 3f;
     }
 
     protected void Update()
@@ -150,7 +152,16 @@ public class AIBase : MonoBehaviour
 
     protected IEnumerator DoProjectile()
     {
-        yield return new WaitForSeconds(2);
+        float waitBeforeShoot = 3;
+        float waitForAni = 1;
+
+        yield return new WaitForSeconds(waitBeforeShoot - waitForAni);
+
+        m_Animator.SetBool("Shoot", true);
+
+        yield return new WaitForSeconds(waitForAni);
+
+        m_Animator.SetBool("Shoot", false);
 
         Vector2 facingDirection = m_movementModel.GetFacingDirection();
 
