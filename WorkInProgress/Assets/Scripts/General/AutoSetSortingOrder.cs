@@ -20,6 +20,6 @@ public class AutoSetSortingOrder : MonoBehaviour {
     {
         float floa = transform.position.y * -1;
 
-        spriteRenderer.sortingOrder = (int)(transform.position.y * 100000f * -1f);
+        spriteRenderer.sortingOrder = (int)(transform.position.y * -1 * 1000);
     }
 }
