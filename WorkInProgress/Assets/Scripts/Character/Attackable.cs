@@ -171,7 +171,10 @@ public class Attackable : MonoBehaviour
                 aiBase.DeductSpawn();
         }
 
-        StartCoroutine(CharacterFadeOut());
+        Instantiate(Resources.Load("EnemyDestroy") , transform);
+
+        spriteRenderer.color = new Color(1f, 1f, 1f, 0f);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     public IEnumerator DoStunView(float stunTime)
@@ -194,6 +197,5 @@ public class Attackable : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        Destroy(gameObject.transform.parent.gameObject);
     }
 }
