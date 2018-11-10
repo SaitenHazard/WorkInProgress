@@ -10,7 +10,7 @@ public class Attackable : MonoBehaviour
     protected CharacterMovementModel m_movementModel;
     protected PlayerStats playerStats;
     protected SpriteRenderer spriteRenderer;
-    protected float pushBackTime = 0.25f;
+    protected float pushBackTime = 0.3f;
     protected AIBase aiBase;
 
     private float maxHealth;
