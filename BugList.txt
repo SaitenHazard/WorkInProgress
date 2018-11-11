@@ -1,1 +1,2 @@
 Player Sprite Up Idle
+Player HP Sprite origin point
