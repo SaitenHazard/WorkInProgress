@@ -10,6 +10,7 @@ public class InventoryUI : MonoBehaviour {
     public GameObject selectedSlot;
 
     private enumInventory[] inventory;
+    private int selectedSlotID;
 
     private void Awake()
     {
@@ -20,7 +21,66 @@ public class InventoryUI : MonoBehaviour {
     protected void Update ()
     {
         UpdateSlot();
+        UpdateSelected();
+    }
+
+    private void UpdateSelected()
+    {
+        selectedSlotID = m_Inventory.getSelectedID();
+
         UpdateSlotSelected();
+        UpdateQuickInventoryText();
+    }
+
+    private void UpdateQuickInventoryText()
+    {
+        Text text = GetComponentInChildren<Text>();
+
+        if (selectedSlotID == -1)
+        {
+            selectedSlot.SetActive(false);
+            text.text = "";
+        }
+
+        if (m_Inventory.GetSelectedItem() == enumInventory.HealthPickup)
+        {
+            text.text = "Claw of Health";
+        }
+
+        if (m_Inventory.GetSelectedItem() == enumInventory.DecoyPickup)
+        {
+            text.text = "Duplication Clay";
+        }
+
+        if (m_Inventory.GetSelectedItem() == enumInventory.InvisiblePickup)
+        {
+            text.text = "Claw of Invisibility";
+        }
+
+        if (m_Inventory.GetSelectedItem() == enumInventory.ProjectilePickup)
+        {
+            text.text = "Claw of Projectile";
+        }
+
+        if (m_Inventory.GetSelectedItem() == enumInventory.RangePickup)
+        {
+            text.text = "Range Potion";
+        }
+
+        if (m_Inventory.GetSelectedItem() == enumInventory.SpeedPickup)
+        {
+            text.text = "Speed Potion";
+        }
+
+        if (m_Inventory.GetSelectedItem() == enumInventory.StrengthPickup)
+        {
+            text.text = "Strenght Potion";
+        }
+
+        if (m_Inventory.GetSelectedItem() == enumInventory.SlimePickup)
+        {
+            text.text = "Slime";
+        }
     }
 
     private void UpdateSlot()
@@ -60,8 +120,6 @@ public class InventoryUI : MonoBehaviour {
 
     private void UpdateSlotSelected()
     {
-        int selectedSlotID = m_Inventory.getSelectedID();
-
         if(selectedSlotID == -1)
         {
             selectedSlot.SetActive(false);

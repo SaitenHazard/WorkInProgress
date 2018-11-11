@@ -45,6 +45,9 @@ public class PlayerInventory : MonoBehaviour
 
     public void SetInventoryArray(enumInventory [] l_inventoryArray)
     {
+        if (selectedSlotID == -1)
+            return;
+
         inventoryArray = l_inventoryArray;
     }
 
@@ -107,6 +110,9 @@ public class PlayerInventory : MonoBehaviour
 
     public enumInventory GetSelectedItem()
     {
+        if (selectedSlotID == -1)
+            return enumInventory.NULL;
+
         return inventoryArray[selectedSlotID];
     }
 
