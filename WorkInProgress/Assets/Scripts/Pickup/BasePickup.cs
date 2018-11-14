@@ -72,8 +72,6 @@ public class BasePickup : MonoBehaviour
 
     public void UsePickup()
     {
-        Debug.Log("in");
-
         PlayerStats playerStats = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerStats>();
         AttackablePlayer attackable = PlayerInstant.Instance.transform.gameObject.GetComponentInChildren<AttackablePlayer>();
 
@@ -113,11 +111,8 @@ public class BasePickup : MonoBehaviour
         {
             playerInstance = PlayerInstant.Instance;
 
-            if (playerStats.IsDamageUp() == true)
-                tempInstantiateObject = playerInstance.transform.Find("PlayerSlime2").gameObject;
-            else
-                tempInstantiateObject = playerInstance.transform.Find("PlayerSlime1").gameObject;
-
+            tempInstantiateObject = playerInstance.transform.Find("PlayerSlime1").gameObject;
+            CreatePlayerSlime(tempInstantiateObject);
             DoNonInstantiateAnimation();
             ResetSelectedInventory();
             return;
@@ -206,6 +201,7 @@ public class BasePickup : MonoBehaviour
     private void CreatePlayerSlime(GameObject playerSlime)
     {
         GameObject cloneObject = Instantiate(playerSlime);
+        cloneObject.transform.position = PlayerInstant.Instance.transform.position;
         cloneObject.SetActive(true);
     }
 

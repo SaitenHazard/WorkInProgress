@@ -18,8 +18,6 @@ public class AutoSetSortingOrder : MonoBehaviour {
 
     private void SetOrder()
     {
-        float floa = transform.position.y * -1;
-
         spriteRenderer.sortingOrder = (int)(transform.position.y * -1 * 1000);
     }
 }

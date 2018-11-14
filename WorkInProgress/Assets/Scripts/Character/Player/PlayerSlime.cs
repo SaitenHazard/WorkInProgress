@@ -41,6 +41,6 @@ public class PlayerSlime : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        Destroy(gameObject.transform.parent.gameObject);
+        Destroy(gameObject.transform.parent);
     }
 }

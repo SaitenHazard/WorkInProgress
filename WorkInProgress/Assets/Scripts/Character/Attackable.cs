@@ -5,7 +5,6 @@ public class Attackable : MonoBehaviour
 {
     public float health;
     
-
     protected CharacterMovementModel attackerMovementModel;
     protected CharacterMovementModel m_movementModel;
     protected PlayerStats playerStats;
@@ -35,7 +34,6 @@ public class Attackable : MonoBehaviour
 
         stunTime = 5f;
         color = spriteRenderer.color;
-        health = 3f;
         maxHealth = health;
     }
 
