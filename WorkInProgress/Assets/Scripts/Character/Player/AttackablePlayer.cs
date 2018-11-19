@@ -25,8 +25,11 @@ public class AttackablePlayer : Attackable
             Attackable attackerAttackable = collider2D.transform.parent.gameObject.
                             GetComponentInChildren<Attackable>();
 
-            if (attackerAttackable.GetHealth() <= 0)
-                return;
+            if(attackerAttackable != null)
+            {
+                if (attackerAttackable.GetHealth() <= 0)
+                    return;
+            }
 
             CharacterMovementModel attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
 

@@ -362,12 +362,18 @@ public class AIBase : MonoBehaviour
             }
         }
 
-        if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend || attackable.GetHealth() == 0)
+        if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend)
             movementDirection = Vector2.zero;
 
         if (enemyAction == enumEnemyActions.idle)
         {
             movementDirection = new Vector2(0, -1);
+        }
+
+        if (attackable != null)
+        {
+            if (attackable.GetHealth() == 0)
+                movementDirection = Vector2.zero;
         }
     }
 
