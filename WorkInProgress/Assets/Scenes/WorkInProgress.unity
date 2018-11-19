@@ -2875,7 +2875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84a9c045394359409e15ce0dbc0784e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AIBase: {fileID: 606905423}
+  AIBase: {fileID: 0}
+  ncpAIBase: {fileID: 606905423}
 --- !u!1 &606905421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,10 +2920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a3edc5d5cacf142a901c81a215d75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileObject: {fileID: 0}
   patrol: {fileID: 587056325}
-  spawnObject: {fileID: 0}
-  basicActionWithPlayer: 1
   basicAction: 1
 --- !u!58 &606905424
 CircleCollider2D:
@@ -18857,9 +18855,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1188821099}
   - component: {fileID: 1188821100}
+  - component: {fileID: 1188821101}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Enemy
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18888,12 +18887,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.03}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &1188821101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1188821098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bdbf2f7520bc3d4ba734abd2a259da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taglist:
+  - Player
 --- !u!1001 &1193080903
 Prefab:
   m_ObjectHideFlags: 0
@@ -21039,7 +21051,7 @@ GameObject:
   - component: {fileID: 1966602206}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,10 +11,14 @@ public class Patrol : MonoBehaviour
     private int targetIndex;
 
     public AIBase AIBase;
+    public NPCAIBase ncpAIBase;
 
     private void Awake()
     {
-        m_transform = AIBase.GetComponentInParent<Transform>();
+        if (AIBase != null)
+            m_transform = AIBase.GetComponentInParent<Transform>();
+        else
+            m_transform = ncpAIBase.GetComponentInParent<Transform>();
 
         childTransforms = GetComponentsInChildren<Transform>();
         numberOfPoints = childTransforms.Length;
