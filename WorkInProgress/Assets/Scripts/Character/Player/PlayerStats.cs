@@ -47,7 +47,6 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        CheckActiveUI();
         CheckPowerUps();
     }
 
@@ -109,17 +108,6 @@ public class PlayerStats : MonoBehaviour
     public bool GetGameState()
     {
         return gameStateFrozen;
-    }
-
-    private void CheckActiveUI()
-    {
-        if (SpeechTextUI.Instance == null)
-            return;
-
-        if (MenuView.Instance.GetMenuActive() == true || SpeechTextUI.Instance.GetTextBoxActive())
-            gameStateFrozen = true;
-        else
-            gameStateFrozen = false;
     }
 
     public float GetSpeed()

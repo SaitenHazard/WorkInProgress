@@ -5,20 +5,21 @@ using System.Collections.Generic;
 public class NPCAIBase : MonoBehaviour
 {
     public Patrol patrol;
-    public enumEnemyActions basicAction;
+    public enumNPCActions basicAction;
 
     protected float angle;
     protected Transform target;
     protected SpeechBubble speechBubble;
     protected CharacterMovementModel m_movementModel;
     protected Vector2 movementDirection;
-    protected enumEnemyActions enemyAction;
+    public enumNPCActions npcAction;
 
     private CharacterMovementModel p_movementModel;
     private int pacingDirection;
     private float pacingTime;
     private float pacingWaitTime;
     private int spawnCount;
+    private float m_speed;
 
     //---------------------COMMON---------------------//
 
@@ -26,7 +27,7 @@ public class NPCAIBase : MonoBehaviour
     {
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
-
+        m_speed = m_movementModel.GetSpeed();
         SpawnManager spawnManager = transform.parent.GetComponentInChildren<SpawnManager>();
     }
 
@@ -34,9 +35,7 @@ public class NPCAIBase : MonoBehaviour
     {
         spawnCount = 0;
 
-        enemyAction = basicAction;
-
-        GetComponent<CircleCollider2D>().radius = 3f;
+        npcAction = basicAction;
     }
 
     protected void Update()
@@ -47,6 +46,11 @@ public class NPCAIBase : MonoBehaviour
     //------------------------------------------------//
     //---------------------PUBLIC---------------------//
 
+    public void SetTarget(Transform transform)
+    {
+        target = transform;
+    }
+
     public GameObject GetPatrolObject()
     {
         if (patrol == null)
@@ -55,14 +59,14 @@ public class NPCAIBase : MonoBehaviour
         return patrol.gameObject;
     }
 
-    public enumEnemyActions GetEnemyAction()
+    public enumNPCActions GetEnemyAction()
     {
-        return enemyAction;
+        return npcAction;
     }
 
-    public void SetEnemyAction(enumEnemyActions m_Action)
+    public void SetEnemyAction(enumNPCActions m_Action)
     {
-        enemyAction = m_Action;
+        npcAction = m_Action;
     }
 
 
@@ -101,15 +105,9 @@ public class NPCAIBase : MonoBehaviour
 
     private void UpdateAngle()
     {
-        if (enemyAction == enumEnemyActions.patrol)
+        if (npcAction == enumNPCActions.patrol)
         {
             target = patrol.GetTarget();
-            angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
-        }
-
-        if (enemyAction == enumEnemyActions.chase || enemyAction == enumEnemyActions.healAlly || 
-            enemyAction == enumEnemyActions.chaseDecoy)
-        {
             angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }
     }
@@ -159,10 +157,7 @@ public class NPCAIBase : MonoBehaviour
 
     protected void SetDirectionSpecial()
     {
-        if (enemyAction == enumEnemyActions.spawn)
-            movementDirection = new Vector2(-1, 0);
-
-        if (enemyAction == enumEnemyActions.pacing)
+        if (npcAction == enumNPCActions.pacing)
         {
             if (pacingActive == false)
                 StartCoroutine(SetPacing());
@@ -179,12 +174,29 @@ public class NPCAIBase : MonoBehaviour
                 movementDirection = new Vector2(0, 0);
         }
 
-        if (enemyAction == enumEnemyActions.NULL || enemyAction == enumEnemyActions.defend)
+        if (npcAction == enumNPCActions.NULL)
             movementDirection = Vector2.zero;
 
-        if (enemyAction == enumEnemyActions.idle)
+        if (npcAction == enumNPCActions.idle)
         {
             movementDirection = new Vector2(0, -1);
+        }
+
+        if (npcAction == enumNPCActions.face)
+        {
+            if(m_movementModel.GetSpeed() != 0)
+            {
+                m_movementModel.SetSpeed(0f);
+                movementDirection = PlayerInstant.Instance.GetComponent<CharacterMovementModel>().GetReverseFacingDirection();
+            }
+            else
+            {
+                movementDirection = Vector2.zero;
+            }
+        }
+        else
+        {
+            m_movementModel.SetSpeed(m_speed);
         }
     }
 }

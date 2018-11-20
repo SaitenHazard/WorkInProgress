@@ -4,7 +4,7 @@ using System.Runtime.Remoting.Messaging;
 
 public class CharacterMovementModel : MonoBehaviour
 {
-    public float Speed;
+    public float speed;
 
     protected Vector2 m_MovementDirection;
     protected Vector2 m_FacingDirection;
@@ -120,14 +120,14 @@ public class CharacterMovementModel : MonoBehaviour
             m_MovementDirection.Normalize();
         }
 
-        float speed = Speed;
+        float m_speed = speed;
 
         if (m_pushBackSpeed != 0f)
         {
-            speed = m_pushBackSpeed;
+            m_speed = m_pushBackSpeed;
         }
 
-        m_Body.velocity = m_MovementDirection * speed;
+        m_Body.velocity = m_MovementDirection * m_speed;
     }
 
     public void SetDirection(Vector2 direction)
@@ -222,6 +222,16 @@ public class CharacterMovementModel : MonoBehaviour
     {
         m_FacingDirection = GetReverseFacingDirection();
         UpdateDirection();
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
+    }
+
+    public void SetSpeed(float m_speed)
+    {
+        speed = m_speed;
     }
 
     public Vector2 GetReverseFacingDirection()

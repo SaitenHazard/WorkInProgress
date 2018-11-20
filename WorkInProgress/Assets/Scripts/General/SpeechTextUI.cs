@@ -42,9 +42,8 @@ public class SpeechTextUI : MonoBehaviour
         return images[0].IsActive();
     }
 
-    public void SetString(string speach, string speaker)
+    public void SetString(string speech)
     {
-        texts[0].text = speach;
-        texts[1].text = speaker;
+        texts[0].text = speech;
     }
 }

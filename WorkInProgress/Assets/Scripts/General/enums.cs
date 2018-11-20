@@ -35,3 +35,12 @@ public enum enumEnemyActions
     chaseDecoy,
     NULL
 }
+
+public enum enumNPCActions
+{
+    face,
+    patrol,
+    pacing,
+    idle,
+    NULL
+}

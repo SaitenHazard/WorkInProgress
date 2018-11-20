@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class InteractableBase : MonoBehaviour
 {
-    public Vector2 mustFaceDirection;
-
     private SpeechBubble speechBubble;
     private enumSpeechBubbles enumSpeechBubble;
     private PlayerStats playerStats;
@@ -30,21 +28,8 @@ public abstract class InteractableBase : MonoBehaviour
     {
         if(collider2D.gameObject.tag == "Player")
         {
-            Vector2 facingDirection = 
-                PlayerInstant.Instance.GetComponent<CharacterMovementModel>().
-                GetFacingDirection();
-
-            if(facingDirection == mustFaceDirection)
-            {
-                speechBubble.ShowSpeechBubble(enumSpeechBubble);
-                playerStats.SetInteractableBase(this);
-            }
-
-            else
-            {
-                playerStats.SetInteractableBase(null);
-                speechBubble.HideSpeechBubble();
-            }
+            speechBubble.ShowSpeechBubble(enumSpeechBubble);
+            playerStats.SetInteractableBase(this);
         }
     }
 

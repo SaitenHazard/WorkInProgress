@@ -7,17 +7,9 @@ public class SpeechBase : MonoBehaviour
     public string[] speech;
     public string[] speaker;
     public Vector2[] faceDirection;
-    public GameObject[] Object;
     public enumSpeechBubbles[] speechBubbleEnum;
 
     private int index;
-    private SpeechTextUI speechTextUI;
-
-    private void Awake()
-    {
-        if (SpeechTextUI.Instance != null)
-            speechTextUI = SpeechTextUI.Instance.GetComponent<SpeechTextUI>();
-    }
 
     public void Initialize()
     {
@@ -29,35 +21,42 @@ public class SpeechBase : MonoBehaviour
         index++;
 
         if (index == 0)
-            SpeechTextUI.Instance.ActivateSpeechBox(true);
+        {
+            SetInteractionStates(true);
+        }
 
         if (index == speech.Length)
         {
-            SpeechTextUI.Instance.ActivateSpeechBox(false);
+            SetInteractionStates(false);
             return;
         }
 
-        speechTextUI.SetString(speech[index], speaker[index]);
+        SpeechTextUI.Instance.SetString(speech[index]);
+    }
 
-        if(Object[index] == null)
+    private void SetInteractionStates(bool activate)
+    {
+        CharacterMovementModel m_movementModel = GetComponentInParent<CharacterMovementModel>();
+        CharacterMovementModel p_movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
+        NPCAIBase npcAIBase = gameObject.transform.parent.GetComponentInChildren<NPCAIBase>();
+
+        SpeechTextUI.Instance.ActivateSpeechBox(activate);
+
+        if (activate == true)
         {
-            return;
+            if (npcAIBase != null)
+            {
+                npcAIBase.SetEnemyAction(enumNPCActions.face);
+            }
+        }
+        else
+        {
+            if (npcAIBase != null)
+            {
+                npcAIBase.SetEnemyAction(enumNPCActions.patrol);
+            }
         }
 
-        if (Object[index].name == "PlayerStandIn")
-            Object[index] = PlayerInstant.Instance.gameObject;
-
-
-        if (speechBubbleEnum[index] != enumSpeechBubbles.NULL)
-        {
-            SpeechBubble n_speechBubble = Object[index].GetComponentInChildren<SpeechBubble>();
-            n_speechBubble.PopSpeechBubble(speechBubbleEnum[index]);
-        }
-
-        if (faceDirection[index] != new Vector2(0, 0))
-        {
-            CharacterMovementModel n_CharacterMovementModel = Object[index].GetComponent<CharacterMovementModel>();
-            n_CharacterMovementModel.SetDirection(faceDirection[index]);
-        }
+        p_movementModel.SetMovementFrozen(activate);
     }
 }
