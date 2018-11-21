@@ -918,15 +918,9 @@ MonoBehaviour:
   - Hi!
   - Look Right!
   - PopBubble
-  speaker:
-  - Signboard
-  - Signboard
-  - Signboard
-  faceDirection:
-  - {x: 0, y: 0}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  speechBubbleEnum: 040000000400000003000000
+  optionsIndexes: 
+  options1: []
+  options2: []
 --- !u!1001 &241103195
 Prefab:
   m_ObjectHideFlags: 0
@@ -1592,11 +1586,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speech:
   - GAME SAVED!
-  speaker:
-  - SYSTEM
-  faceDirection:
-  - {x: 0, y: 0}
-  speechBubbleEnum: 04000000
+  optionsIndexes: 
+  options1: []
+  options2: []
 --- !u!1 &459741376
 GameObject:
   m_ObjectHideFlags: 0
@@ -20032,18 +20024,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speech:
-  - Hi!
-  - Look Right!
-  - PopBubble
-  speaker:
-  - Signboard
-  - Signboard
-  - Signboard
-  faceDirection:
-  - {x: 0, y: 0}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  speechBubbleEnum: 040000000400000003000000
+  - Testing Dialogue
+  - Testing Options
+  - Testing Quests
+  optionsIndexes: 000202
+  options1:
+  - 
+  - Yes
+  - Accept
+  options2:
+  - 
+  - No
+  - Reject
 --- !u!114 &1361656760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20259,15 +20251,9 @@ MonoBehaviour:
   - Hi!
   - Look Right!
   - PopBubble
-  speaker:
-  - Signboard
-  - Signboard
-  - Signboard
-  faceDirection:
-  - {x: 0, y: 0}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  speechBubbleEnum: 040000000400000003000000
+  optionsIndexes: 
+  options1: []
+  options2: []
 --- !u!114 &1385672499
 MonoBehaviour:
   m_ObjectHideFlags: 0

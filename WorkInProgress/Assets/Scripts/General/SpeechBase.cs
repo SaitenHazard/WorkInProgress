@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpeechBase : MonoBehaviour
 {
     public string[] speech;
-    public string[] speaker;
-    public Vector2[] faceDirection;
-    public enumSpeechBubbles[] speechBubbleEnum;
+    public bool[] optionsIndexes;
+    public string[] options1;
+    public string[] options2;
 
     private int index;
 
@@ -23,6 +23,12 @@ public class SpeechBase : MonoBehaviour
         if (index == 0)
         {
             SetInteractionStates(true);
+        }
+
+        if (optionsIndexes[index] == true && index < speech.Length)
+        {
+            DialogueTextUI.Instance.ActivateDialogueOptionsBox
+                (true, options1[index], options2[index]);
         }
 
         if (index == speech.Length)

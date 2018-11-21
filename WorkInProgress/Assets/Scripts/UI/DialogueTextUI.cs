@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DialogueTextUI : MonoBehaviour
 {
     public static DialogueTextUI Instance;
+    public Transform optionSelect;
 
     private Text[] dTexts;
     private Image[] dImages;
@@ -43,7 +44,20 @@ public class DialogueTextUI : MonoBehaviour
         ActivateDialogueOptionsBox(false);
     }
 
-    public void ActivateDialogueOptionsBox(bool active)
+    private void Update()
+    {
+        optionSelect = dOTexts[optionIndex].transform;
+    }
+
+    public void IncrementOptionIndex()
+    {
+        if (optionIndex == 1)
+            optionIndex = 0;
+        else
+            optionIndex = 1;
+    }
+
+    public void ActivateDialogueOptionsBox(bool active, string option1, string option2)
     {
         for (int i = 0; i < dOTexts.Length; i++)
             dOTexts[i].enabled = active;
@@ -51,9 +65,16 @@ public class DialogueTextUI : MonoBehaviour
 
         for (int i = 0; i < dOImages.Length; i++)
             dOImages[i].enabled = active;
-        
+
+        dOTexts[0].text = option1;
+        dOTexts[1].text = option2;
 
         playTimeUI.Activate(!active);
+    }
+
+    public void ActivateDialogueOptionsBox(bool active)
+    {
+        ActivateDialogueOptionsBox(active, null, null);
     }
 
     public void ActivateDialogueBox(bool active)

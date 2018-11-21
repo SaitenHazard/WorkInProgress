@@ -24,8 +24,8 @@ public class PlayerControl : CharacterBaseControl
     {
         UpdateMenuScreen();
         UpdateMenus();
-        UpdateDirection();
         UpdateAction();
+        UpdateDirection();
         UpdateInventory();
     }
 
@@ -140,6 +140,16 @@ public class PlayerControl : CharacterBaseControl
 
     private void UpdateDirection()
     {
+        if (DialogueTextUI.Instance.GetTextBoxActive() == true)
+        {
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+            {
+                DialogueTextUI.Instance.IncrementOptionIndex();
+            }
+
+            return;
+        }
+
         if (menuView.GetMenuActive() == true)
             return;
 
