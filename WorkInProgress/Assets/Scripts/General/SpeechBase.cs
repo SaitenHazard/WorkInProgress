@@ -31,7 +31,7 @@ public class SpeechBase : MonoBehaviour
             return;
         }
 
-        SpeechTextUI.Instance.SetString(speech[index]);
+        DialogueTextUI.Instance.SetString(speech[index]);
     }
 
     private void SetInteractionStates(bool activate)
@@ -40,7 +40,7 @@ public class SpeechBase : MonoBehaviour
         CharacterMovementModel p_movementModel = PlayerInstant.Instance.GetComponent<CharacterMovementModel>();
         NPCAIBase npcAIBase = gameObject.transform.parent.GetComponentInChildren<NPCAIBase>();
 
-        SpeechTextUI.Instance.ActivateSpeechBox(activate);
+        DialogueTextUI.Instance.ActivateDialogueBox(activate);
 
         if (activate == true)
         {

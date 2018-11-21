@@ -1,0 +1,79 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class DialogueTextUI : MonoBehaviour
+{
+    public static DialogueTextUI Instance;
+
+    private Text[] dTexts;
+    private Image[] dImages;
+
+    private Text[] dOTexts;
+    private Image[] dOImages;
+
+    private PlayTimeUI playTimeUI;
+
+    private int optionIndex;
+
+    private void Awake()
+    {
+        Instance = this;
+        playTimeUI = PlayTimeUI.instance;
+
+        Transform transformDialogue = transform.Find("Dialogue");
+        Transform transformDialogueOptions = transform.Find("DialogueOptions");
+
+        dTexts = transformDialogue.GetComponentsInChildren<Text>();
+        dImages = transformDialogue.GetComponentsInChildren<Image>();
+
+        dOTexts = transformDialogueOptions.GetComponentsInChildren<Text>();
+        dOImages = transformDialogueOptions.GetComponentsInChildren<Image>();
+    }
+
+    public void SetOptionIndex(int index)
+    {
+        optionIndex = index;
+    }
+
+    private void Start()
+    {
+        ActivateDialogueBox(false);
+        ActivateDialogueOptionsBox(false);
+    }
+
+    public void ActivateDialogueOptionsBox(bool active)
+    {
+        for (int i = 0; i < dOTexts.Length; i++)
+            dOTexts[i].enabled = active;
+        
+
+        for (int i = 0; i < dOImages.Length; i++)
+            dOImages[i].enabled = active;
+        
+
+        playTimeUI.Activate(!active);
+    }
+
+    public void ActivateDialogueBox(bool active)
+    {
+        for (int i = 0; i < dTexts.Length; i++)
+            dTexts[i].enabled = active;
+
+        for (int i = 0; i < dImages.Length; i++)
+            dImages[i].enabled = active;
+
+        playTimeUI.Activate(!active);
+    }
+
+    public bool GetTextBoxActive()
+    {
+        return dImages[0].IsActive();
+    }
+
+    public void SetString(string speech)
+    {
+        dTexts[0].text = speech;
+    }
+}
