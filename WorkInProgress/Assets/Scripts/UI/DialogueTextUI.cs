@@ -46,7 +46,7 @@ public class DialogueTextUI : MonoBehaviour
 
     private void Update()
     {
-        optionSelect.position = new Vector2(dOImages[optionIndex].transform.position.x - 0.4f, dOImages[optionIndex].transform.position.y);
+        optionSelect.position = new Vector2(dOTexts[optionIndex].transform.position.x - 0.5f, dOTexts[optionIndex].transform.position.y);
     }
 
     public void IncrementOptionIndex()
