@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 5f9826127163f2247b6cdd9f6d8e0205
+timeCreated: 1542879766
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Happy Monkey
+  fontNames:
+  - Happy Monkey
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

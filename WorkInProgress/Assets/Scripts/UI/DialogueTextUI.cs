@@ -46,7 +46,7 @@ public class DialogueTextUI : MonoBehaviour
 
     private void Update()
     {
-        optionSelect = dOTexts[optionIndex].transform;
+        optionSelect.position = new Vector2(dOImages[optionIndex].transform.position.x - 0.4f, dOImages[optionIndex].transform.position.y);
     }
 
     public void IncrementOptionIndex()
@@ -55,10 +55,14 @@ public class DialogueTextUI : MonoBehaviour
             optionIndex = 0;
         else
             optionIndex = 1;
+
+        Debug.Log(optionIndex);
     }
 
     public void ActivateDialogueOptionsBox(bool active, string option1, string option2)
     {
+        optionIndex = 1;
+
         for (int i = 0; i < dOTexts.Length; i++)
             dOTexts[i].enabled = active;
         
@@ -68,8 +72,6 @@ public class DialogueTextUI : MonoBehaviour
 
         dOTexts[0].text = option1;
         dOTexts[1].text = option2;
-
-        playTimeUI.Activate(!active);
     }
 
     public void ActivateDialogueOptionsBox(bool active)

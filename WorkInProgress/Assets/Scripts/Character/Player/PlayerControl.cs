@@ -125,7 +125,7 @@ public class PlayerControl : CharacterBaseControl
             {
                 if (DialogueTextUI.Instance.GetTextBoxActive() == true)
                 {
-                    interactableBase.GetComponent<SpeechBase>().DoSpeech();
+                    interactableBase.GetComponent<DialogueBase>().DoSpeech();
 
                     return;
                 }
@@ -142,7 +142,7 @@ public class PlayerControl : CharacterBaseControl
     {
         if (DialogueTextUI.Instance.GetTextBoxActive() == true)
         {
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 DialogueTextUI.Instance.IncrementOptionIndex();
             }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class InteractableSave : InteractableBase
 {
-    SpeechBase speechBase;
+    DialogueBase speechBase;
 
     private void Awake()
     {
-        speechBase = GetComponent<SpeechBase>();
+        speechBase = GetComponent<DialogueBase>();
         base.Awake();
     }
 
