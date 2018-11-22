@@ -121,16 +121,12 @@ public class PlayerControl : CharacterBaseControl
 
             InteractableBase interactableBase = playerStats.GetInteractableBase();
 
-            if(DialogueTextUI.Instance != null)
+            if (DialogueTextUI.Instance.GetDialogueBoxActive() == true)
             {
-                if (DialogueTextUI.Instance.GetTextBoxActive() == true)
-                {
-                    interactableBase.GetComponent<DialogueBase>().DoSpeech();
-
-                    return;
-                }
+                interactableBase.GetComponent<DialogueBase>().DoSpeech();
+                return;
             }
-
+            
             if (interactableBase != null)
                 interactableBase.OnInteract();
             else
@@ -140,7 +136,7 @@ public class PlayerControl : CharacterBaseControl
 
     private void UpdateDirection()
     {
-        if (DialogueTextUI.Instance.GetTextBoxActive() == true)
+        if (DialogueTextUI.Instance.GetDialogueBoxActive() == true)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {

@@ -367,10 +367,10 @@ MonoBehaviour:
     height: 475
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c632000026320000
-    m_LastClickedID: 12838
-    m_ExpandedIDs: 9cfbffff9efbffff00000000a4300000fe310000143200009e320000fc32000006330000823300003e34000046340000
+    scrollPos: {x: 0, y: 86}
+    m_SelectedIDs: 2e300000
+    m_LastClickedID: 12334
+    m_ExpandedIDs: 9cfbffff9efbffff00000000a4300000e4310000fe310000fc3200003e340000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -770,7 +770,7 @@ MonoBehaviour:
     width: 275
     height: 746
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_ScrollPosition: {x: 0, y: 120}
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 206

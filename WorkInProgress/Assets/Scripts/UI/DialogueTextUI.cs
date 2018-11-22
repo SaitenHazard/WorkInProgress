@@ -90,9 +90,14 @@ public class DialogueTextUI : MonoBehaviour
         playTimeUI.Activate(!active);
     }
 
-    public bool GetTextBoxActive()
+    public bool GetDialogueBoxActive()
     {
         return dImages[0].IsActive();
+    }
+
+    public bool GetDialogueOptionBoxActive()
+    {
+        return dOImages[0].IsActive();
     }
 
     public void SetString(string speech)
