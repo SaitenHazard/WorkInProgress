@@ -1,3 +1,4 @@
 Player Sprite Up Idle
 Player HP Sprite origin point
 NPCDog Walk Left Sprite
+Text color: White from pallette

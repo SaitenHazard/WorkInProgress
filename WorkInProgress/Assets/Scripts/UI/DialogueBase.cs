@@ -9,14 +9,14 @@ public class DialogueBase : MonoBehaviour
     public string[] options1;
     public string[] options2;
 
-    private int index;
+    protected int index;
 
     public void Initialize()
     {
         index = -1;
     }
 
-    public void DoSpeech()
+    virtual public void DoSpeech()
     {
         index++;
 

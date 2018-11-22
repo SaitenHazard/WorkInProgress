@@ -33,6 +33,11 @@ public class DialogueTextUI : MonoBehaviour
         dOImages = transformDialogueOptions.GetComponentsInChildren<Image>();
     }
 
+    public int GetOptionIndex()
+    {
+        return optionIndex;
+    }
+
     public void SetOptionIndex(int index)
     {
         optionIndex = index;
@@ -46,7 +51,7 @@ public class DialogueTextUI : MonoBehaviour
 
     private void Update()
     {
-        optionSelect.position = new Vector2(dOTexts[optionIndex].transform.position.x - 0.5f, dOTexts[optionIndex].transform.position.y);
+        optionSelect.position = new Vector2(dOTexts[optionIndex].transform.position.x - 0.45f, dOTexts[optionIndex].transform.position.y + 0.02f);
     }
 
     public void IncrementOptionIndex()
@@ -55,8 +60,6 @@ public class DialogueTextUI : MonoBehaviour
             optionIndex = 0;
         else
             optionIndex = 1;
-
-        Debug.Log(optionIndex);
     }
 
     public void ActivateDialogueOptionsBox(bool active, string option1, string option2)

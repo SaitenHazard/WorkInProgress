@@ -26,7 +26,7 @@ public abstract class InteractableBase : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider2D)
     {
-        if(collider2D.gameObject.tag == "Player")
+        if(collider2D.gameObject.tag == "PlayerInteraction")
         {
             speechBubble.ShowSpeechBubble(enumSpeechBubble);
             playerStats.SetInteractableBase(this);
@@ -35,7 +35,7 @@ public abstract class InteractableBase : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (collider2D.gameObject.tag == "Player")
+        if (collider2D.gameObject.tag == "PlayerInteraction")
         {
             playerStats.SetInteractableBase(null);
             speechBubble.HideSpeechBubble();

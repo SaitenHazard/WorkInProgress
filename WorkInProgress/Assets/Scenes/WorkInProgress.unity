@@ -19409,7 +19409,7 @@ GameObject:
   - component: {fileID: 1361656758}
   - component: {fileID: 1361656761}
   - component: {fileID: 1361656760}
-  - component: {fileID: 1361656759}
+  - component: {fileID: 1361656762}
   m_Layer: 0
   m_Name: InteractableBox
   m_TagString: Untagged
@@ -19431,30 +19431,6 @@ Transform:
   m_Father: {fileID: 709253785}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1361656759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1361656757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a9ad9828d17628469e7bc156b69bb87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speech:
-  - TESTING DIALOGUE
-  - TESTING OPTION
-  - TESTING QUEST
-  optionsIndexes: 000201
-  options1:
-  - 
-  - YES
-  - ACCEPT
-  options2:
-  - 
-  - NO
-  - REJECT
 --- !u!114 &1361656760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19493,6 +19469,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
+--- !u!114 &1361656762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1361656757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce67a8da554bde44f92a797e9e7c5820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speech:
+  - Testing dialogue
+  - Testing option
+  - Testing Quest
+  optionsIndexes: 000101
+  options1:
+  - 
+  - Yes
+  - Accept
+  options2:
+  - 
+  - No
+  - Reject
 --- !u!1 &1372568442
 GameObject:
   m_ObjectHideFlags: 0
