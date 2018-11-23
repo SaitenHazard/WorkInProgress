@@ -845,7 +845,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.7725491, g: 0.40784317, b: 0.46274513, a: 0}
+  m_BackGroundColor: {r: 0.121568635, g: 0.6, b: 0.5137255, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -3067,6 +3067,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 955041886}
+  - component: {fileID: 955041887}
   m_Layer: 0
   m_Name: CollisionBox
   m_TagString: Untagged
@@ -3088,6 +3089,21 @@ Transform:
   m_Father: {fileID: 188311474}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &955041887
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 955041885}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.22
 --- !u!1 &970484746
 GameObject:
   m_ObjectHideFlags: 0
@@ -4909,12 +4925,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1724416241}
-  - component: {fileID: 1724416243}
   - component: {fileID: 1724416242}
   - component: {fileID: 758367181}
   m_Layer: 0
   m_Name: HitBox
-  m_TagString: Player
+  m_TagString: PlayerHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4959,21 +4974,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.28, y: 0.16055149}
   m_EdgeRadius: 0
---- !u!58 &1724416243
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1724416240}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.22
 --- !u!1 &1746645308
 GameObject:
   m_ObjectHideFlags: 0

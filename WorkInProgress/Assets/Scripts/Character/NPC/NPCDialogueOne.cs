@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class NPCDialogueOne : DialogueBase
 {
+    private GameObject questGameObject;
+    private QuestBase questBase;
+
+    private void Awake()
+    {
+        GameObject questGameObject = GameObject.Find("Quest1");
+        QuestBase questBase = questGameObject.GetComponent<QuestBase>();
+    }
+
     public override void DoSpeech()
     {
         if(index != -1)
@@ -18,9 +27,9 @@ public class NPCDialogueOne : DialogueBase
 
                         if (optionIndex == 0)
                         {
-                            GameObject questGameObject = GameObject.Find("Quest1");
-                            questGameObject.GetComponent<QuestBase>().Activate();
-                            Destroy(this);
+                            questBase.Activate();
+                            startingIndex = 2;
+                            finishingIndex = 4;
                         }
                     }
                 }
@@ -28,5 +37,14 @@ public class NPCDialogueOne : DialogueBase
         }
 
         base.DoSpeech();
+
+        if(questGameObject != null)
+        speech[3] = GameObject.Find("Quest1").GetComponent<Quest1>().GetEnemiesLeft().ToString();
+        speech[3] += " enemies still left.";
+    }
+
+    private void SetDiloagueWhenActive()
+    {
+
     }
 }

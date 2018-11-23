@@ -17,7 +17,7 @@ public class SpawnerAI : AIBase
             target = collider2D.GetComponent<Transform>();
         }
 
-        if (collider2D.gameObject.tag == "Player")
+        if (collider2D.gameObject.tag == "PlayerHitBox")
         {
             playerStats = PlayerInstant.Instance.GetComponent<PlayerStats>();
 
@@ -39,7 +39,7 @@ public class SpawnerAI : AIBase
         if (enemyAction == enumEnemyActions.chaseDecoy)
             return;
 
-        if (collider2D.gameObject.tag == "Player")
+        if (collider2D.gameObject.tag == "PlayerHitBox")
         {
             enemyAction = basicAction;
         }

@@ -10,10 +10,18 @@ public class DialogueBase : MonoBehaviour
     public string[] options2;
 
     protected int index;
+    protected int startingIndex;
+    protected int finishingIndex;
+
+    public void Start()
+    {
+        startingIndex = -1;
+        finishingIndex = 4;
+    }
 
     public void Initialize()
     {
-        index = -1;
+        index = startingIndex;
     }
 
     virtual public void DoSpeech()
@@ -42,7 +50,7 @@ public class DialogueBase : MonoBehaviour
         }
 
 
-        if (index == speech.Length)
+        if (index == finishingIndex)
         {
             SetInteractionStates(false);
             return;

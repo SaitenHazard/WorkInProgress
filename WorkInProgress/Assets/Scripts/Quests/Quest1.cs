@@ -9,16 +9,18 @@ public class Quest1 : QuestBase
 
     public override void Activate()
     {
-        GameObject [] gameObjects = transform.
+        Transform[] childTransforms = GetComponentsInChildren<Transform>();
 
-        for (int i = 0; i < gameObjects.Length; i++)
+        for (int i = 0; i < childTransforms.Length; i++)
         {
-            gameObject.SetActive(true);
+            childTransforms[i].gameObject.SetActive(true);
         }
 
         AIBase [] aiScripts = GetComponentsInChildren<AIBase>();
 
         maxNumberOfEnemies = aiScripts.Length;
+
+        active = true;
     }
 
     private void Update()
