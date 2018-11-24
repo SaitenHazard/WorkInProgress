@@ -16,7 +16,7 @@ public class DialogueBase : MonoBehaviour
     public void Start()
     {
         startingIndex = -1;
-        finishingIndex = 4;
+        finishingIndex = 3;
     }
 
     public void Initialize()

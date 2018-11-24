@@ -19532,8 +19532,7 @@ MonoBehaviour:
   - Testing dialogue
   - Testing option
   - Testing quest
-  - 
-  optionsIndexes: 00010100
+  optionsIndexes: 000101
   options1:
   - 
   - Yes
