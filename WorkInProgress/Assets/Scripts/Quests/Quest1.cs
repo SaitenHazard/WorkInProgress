@@ -25,11 +25,17 @@ public class Quest1 : QuestBase
 
     private void Update()
     {
-        AIBase[] aiScripts = GetComponentsInChildren<AIBase>();
-        numberOfEnemiesLeft = aiScripts.Length;
+        if(complete == false)
+        {
+            AIBase[] aiScripts = GetComponentsInChildren<AIBase>();
+            numberOfEnemiesLeft = aiScripts.Length;
+
+            if (IsActive() && GetEnemiesLeft() == 0)
+                complete = true;
+        }
     }
 
-    public int GetEnemiesLeft()
+    public override int GetEnemiesLeft()
     {
         return numberOfEnemiesLeft;
     }

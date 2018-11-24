@@ -13,22 +13,24 @@ public class DialogueBase : MonoBehaviour
     protected int startingIndex;
     protected int finishingIndex;
 
-    public void Start()
+    virtual public void Initialize()
     {
-        startingIndex = -1;
-        finishingIndex = 3;
-    }
 
-    public void Initialize()
-    {
-        index = startingIndex;
     }
 
     virtual public void DoSpeech()
     {
+        Debug.Log("index = " + index);
+        Debug.Log("start = " + startingIndex);
+        Debug.Log("finish = " + finishingIndex);
+
         index++;
 
-        if (index == 0)
+        Debug.Log("index = " + index);
+        Debug.Log("start = " + startingIndex);
+        Debug.Log("finish = " + finishingIndex);
+
+        if (index == startingIndex + 1)
         {
             SetInteractionStates(true);
         }
@@ -48,7 +50,6 @@ public class DialogueBase : MonoBehaviour
         {
             DialogueTextUI.Instance.ActivateDialogueOptionsBox(false);
         }
-
 
         if (index == finishingIndex)
         {
