@@ -30,7 +30,7 @@ public class DialogueBase : MonoBehaviour
         Debug.Log("start = " + startingIndex);
         Debug.Log("finish = " + finishingIndex);
 
-        if (index == startingIndex + 1)
+        if (index == startingIndex)
         {
             SetInteractionStates(true);
         }
