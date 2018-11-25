@@ -34,7 +34,7 @@ public class BasePickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Player")
+        if (collider.tag == "PlayerHitBox")
         {
             m_inventory = PlayerInstant.Instance.transform.gameObject.GetComponent<PlayerInventory>();
 

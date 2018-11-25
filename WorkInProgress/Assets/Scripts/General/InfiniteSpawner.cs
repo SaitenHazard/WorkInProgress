@@ -14,16 +14,15 @@ public class InfiniteSpawner : MonoBehaviour
 
     private IEnumerator Spawn()
     {
-        int enemyIndex = Random.Range(0, enemies.Length - 1);
-        Debug.Log(enemyIndex);
+        int enemyIndex = Random.Range(0, enemies.Length);
+
+        if (gameObject.name == "InfinitePowerSpawner")
+            Debug.Log(enemyIndex);
 
         GameObject instantiateObejct 
             = Instantiate(enemies[enemyIndex], this.transform);
 
         instantiateObejct.transform.position = this.transform.position;
-
-        Debug.Log(instantiateObejct.transform);
-        Debug.Log(instantiateObejct.transform.parent.name);
 
         yield return new WaitForSeconds(spawnTime);
 
