@@ -1,71 +1,47 @@
-World Building
--Adventure time, anything is possible
--Packed with references
+Pickups
+-----
+Health *
+Speed 
+Projectile *
+Strenght
+Slime *
+Range 
+Decoy *
 
-Terrain
--Candy
--Cloud
--Ruins
--
+Invisible
+Invinsible
+Bomb
 
-Enemy
--Basic/Jelly: Petrol -> Chase -> Colllider
--Basic + Generate Hazard: Petrol -> Chase -> Collider - Generate Slime
--Projectile + Khamba: Stand -> Shoot
+Enemies
+-----
+familiers:
+Defender
+Healer
+Shooter
 
-Inventory Item List
--Life full
--Damage Up
--Speed Up
--Projectile
--Bombs
--Mines
--Range Up
--Temp Extra HP Bar
--Invinsible
--New Teleport Station
--Save Game
--Invinsibility
--Invisibility
--Radius
--Ally
--Instant Recharge
--False Target
--Protective Wall
--Paralysis Bonus
--Poison Bonus
+jelly:
+Jam
+Jelly
+Spawner
+Splitter
 
-Armor
--Extra HP Bar
--More coin drops
--Extra MP Bar
--
-
-#different types of items can be combined eg: Damage Up + projectile = better projectile
-
-Menu
--Options
--Quicksave
--Inventory
--Quit
-
-Special Item List
--Kamehameha
--Time Slow
--Damage Up, Speed Up, Invinsible
-
-Armor
--Incrase Coin Drops
--Increase Non Coin Drops
--Double health Bar
+Bomb
 
 Races
--Merchants / Piggy Banks - Wondering Race
+----
+Cat & Dog - lives in SweetLand
+Wizards
 
-Save Slot
--3
--1 per playthough
+Terrain
+----
+Candyland
+Cloudtops
 
-Save Slot Display
--Date & Time
--Save Name
+KeyLocations
+----
+CD Village
+Syrup geyser - provides CD village with syrup river, livelihood
+
+Quest lines
+----
+Normal
