@@ -15,11 +15,11 @@ public class BomberAttackable : Attackable
 
     override protected IEnumerator CharacterFadeOut()
     {
+        Debug.Log("in");
 
         float opacity = 1f;
 
         yield return new WaitForSeconds(pushBackTime);
-
 
         while (opacity > 0.2f)
         {
@@ -29,6 +29,8 @@ public class BomberAttackable : Attackable
         }
 
         bombRing.GetComponent<CircleCollider2D>().enabled = true;
+
+        Debug.Log("in");
 
         yield return new WaitForSeconds(0.2f);
 

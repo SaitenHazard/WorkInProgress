@@ -16,9 +16,6 @@ public class InfiniteSpawner : MonoBehaviour
     {
         int enemyIndex = Random.Range(0, enemies.Length);
 
-        if (gameObject.name == "InfinitePowerSpawner")
-            Debug.Log(enemyIndex);
-
         GameObject instantiateObejct 
             = Instantiate(enemies[enemyIndex], this.transform);
 

@@ -33,6 +33,7 @@ public enum enumEnemyActions
     spawn,
     idle,
     chaseDecoy,
+    detonate,
     NULL
 }
 
