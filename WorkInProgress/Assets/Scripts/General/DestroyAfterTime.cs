@@ -1,11 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyAfterTime : MonoBehaviour
 {
-    public float destoryAfter;
-
+    public float destroyAfter;
     protected SpriteRenderer spriteRenderer;
 
     private void Awake()
@@ -16,7 +14,7 @@ public class DestroyAfterTime : MonoBehaviour
 
     protected virtual IEnumerator ObjectFadeOut()
     {
-        yield return new WaitForSeconds(destoryAfter);
+        yield return new WaitForSeconds(destroyAfter);
 
         float opacity = 1f;
 

@@ -4,36 +4,12 @@ using UnityEngine;
 
 public class BomberAttackable : Attackable
 {
-    public GameObject bombRing;
+    public GameObject Bomb;
 
     override protected void DoDestroy()
     {
+        Bomb.SetActive(true);
+        Bomb.transform.SetParent(null);
         base.DoDestroy();
-
-        bombRing.GetComponent<SpriteRenderer>().enabled = true;
-    }
-
-    override protected IEnumerator CharacterFadeOut()
-    {
-        Debug.Log("in");
-
-        float opacity = 1f;
-
-        yield return new WaitForSeconds(pushBackTime);
-
-        while (opacity > 0.2f)
-        {
-            opacity -= 0.2f;
-            spriteRenderer.color = new Color(1f, 1f, 1f, opacity);
-            yield return new WaitForSeconds(0.2f);
-        }
-
-        bombRing.GetComponent<CircleCollider2D>().enabled = true;
-
-        Debug.Log("in");
-
-        yield return new WaitForSeconds(0.2f);
-
-        Destroy(gameObject.transform.parent.gameObject);
     }
 }

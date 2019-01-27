@@ -8,7 +8,7 @@ public class PlayerBomb : DestroyAfterTime
 
     protected override IEnumerator ObjectFadeOut()
     {
-        yield return new WaitForSeconds(destoryAfter);
+        yield return new WaitForSeconds(destroyAfter);
 
         float opacity = 1f;
 
