@@ -13,14 +13,14 @@ public class AttackableShielderA : Attackable
 
         if (collider2D.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
         {
+            attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
+
             if (attackerMovementModel.GetFacingDirection() == new Vector3 (1,0) || attackerMovementModel.GetFacingDirection() == new Vector3(-1, 0))
             {
                 return;
             }
 
             float damage = playerStats.GetDamage();
-
-            attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
 
             DoHit(damage, attackerMovementModel.GetFacingDirection());
         }
