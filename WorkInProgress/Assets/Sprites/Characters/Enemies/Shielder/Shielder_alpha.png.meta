@@ -1,0 +1,645 @@
+fileFormatVersion: 2
+guid: accf3752a5720764d83be8a20bee3cde
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Shielder_alpha_0
+    21300002: Shielder_alpha_1
+    21300004: Shielder_alpha_2
+    21300006: Shielder_alpha_3
+    21300008: Shielder_alpha_4
+    21300010: Shielder_alpha_5
+    21300012: Shielder_alpha_6
+    21300014: Shielder_alpha_7
+    21300016: Shielder_alpha_8
+    21300018: Shielder_alpha_9
+    21300020: Shielder_alpha_10
+    21300022: Shielder_alpha_11
+    21300024: Shielder_alpha_12
+    21300026: Shielder_alpha_13
+    21300028: Shielder_alpha_14
+    21300030: Shielder_alpha_15
+    21300032: Shielder_alpha_16
+    21300034: Shielder_alpha_17
+    21300036: Shielder_alpha_18
+    21300038: Shielder_alpha_19
+    21300040: Shielder_alpha_20
+    21300042: Shielder_alpha_21
+    21300044: Shielder_alpha_22
+    21300046: Shielder_alpha_23
+    21300048: Shielder_alpha_24
+    21300050: Shielder_alpha_25
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Shielder_alpha_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0e801c0749518d47bd203d44e3e761f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c22748f419f6c43a52f74589a03b94
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d62b3d6a9840f04fb6da5f1d7fa31dd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45304199209803b40811b0eb0dde7a36
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c86c554bfd4e924e9788959ea397d8f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 192.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a819fa6e098e2924e8adef711985a716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8af04c4cde706c43b2e5701dd8f38d6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fb2835c5f2b11c4f8b094eb777bea77
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d3bba2b72fd74f428b02ba1f068b664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55db797c2ccd35e46b798cd51a00ff06
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f9e711779a67143acbeba2afa851cf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3bb6c3c230f6c742b6bb81f34df1d02
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_12
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 128.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4878751b8c7123742ac1ca5c296d295b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_13
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c45705b94d097774b862348207bc4d38
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8e77bcc1a3e8a04b9b04fe709209c35
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_15
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7b5e37b5e11de1469dc3915d5b0feae
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acdb668c66d21dd4ba68eb496191a6a4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_17
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f1108a73b407b4288599299a2fcc55
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_18
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6377adab025986c4aad16f91d20d99b1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_19
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb2bade029f5d0145a392024007b9477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3001235ba6af111409fcc34547554309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_21
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cdda1d3e9c1ca14a90d656916aa25bb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a1432067c6133d43bcfbc03f0421fe2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_23
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 205621638a3d1b041a039b8192c12beb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_24
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09d69e81b9671f840876de456cb06cf8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shielder_alpha_25
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0.75
+        width: 64
+        height: 64.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8400005acad9694a9ed268d5e0d0271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e41a3cd13fba25c469ae63136702a783
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

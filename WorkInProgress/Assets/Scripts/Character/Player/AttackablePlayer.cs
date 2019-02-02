@@ -48,20 +48,16 @@ public class AttackablePlayer : Attackable
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collider2D)
-    {
-        if (collider2D.tag == "BombRing" && m_movementModel.GetPushBackSpeed() == 0f)
-        {
-            DoBombHit(collider2D);
-        }
-    }
-
     private void DoBombHit(Collider2D collider2D)
     {
         float angle = Mathf.Atan2
                 (collider2D.transform.position.y - gameObject.transform.position.y,
-                collider2D.transform.position.x - gameObject.transform.position.y)
+                collider2D.transform.position.x - gameObject.transform.position.x)
                 * 180 / Mathf.PI * -1;
+
+        //angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
+
+        Debug.Log(angle);
 
         Vector2 hitDirection = Vector2.zero;
 

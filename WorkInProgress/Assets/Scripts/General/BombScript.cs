@@ -19,10 +19,8 @@ public class BombScript : MonoBehaviour
 
         bombRingCollider.enabled = true;
 
-        Debug.Log(bombRingCollider);
+        yield return new WaitForSeconds(0.01f);
 
-        yield return new WaitForSeconds(1f);
-
-        //GetComponent<DoDestroyAnim>().DoDestroy();
+        GetComponent<DoDestroyAnim>().DoDestroy();
     }
 }
