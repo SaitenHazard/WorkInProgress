@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Character\Enemies\PatrolCollider.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Projectile.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Shielder\AttackableShielderA.cs" />
+     <Compile Include="Assets\Scripts\Character\Enemies\Shielder\AttackableShielderB.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Shooter\ShooterAI.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Spawner\SpawnerAI.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Spawner\SpawnManager.cs" />

@@ -4,3 +4,4 @@ NPCDog Walk Left Sprite
 
 Text color: White from pallette
 enemy collsioncolllider
+Bomber sprite shake
