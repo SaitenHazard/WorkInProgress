@@ -15,8 +15,9 @@ public class AttackableShielderB : Attackable
         {
             attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
 
-            if (attackerMovementModel.GetFacingDirection() == new Vector3 (0,1) || attackerMovementModel.GetFacingDirection() == new Vector3(0, -1))
+            if (attackerMovementModel.GetFacingDirection() == new Vector3(0, 1) || attackerMovementModel.GetFacingDirection() == new Vector3(0, -1))
             {
+                m_movementModel.DoPushBack(attackerMovementModel.GetFacingDirection(), pushBackTime, pushBackSpeed);
                 return;
             }
 
@@ -27,9 +28,11 @@ public class AttackableShielderB : Attackable
 
         if (collider2D.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            if (collider2D.GetComponent<Projectile>().GetMovementDirection() == new Vector2(0, 1) || 
-                collider2D.GetComponent<Projectile>().GetMovementDirection() == new Vector2(0, -1))
+            Vector2 hitDirection = collider2D.GetComponent<Projectile>().GetMovementDirection();
+
+            if (hitDirection == new Vector2(0, 1) || hitDirection == new Vector2(0, -1))
             {
+                m_movementModel.DoPushBack(hitDirection, pushBackTime, pushBackSpeed);
                 return;
             }
 
@@ -40,7 +43,7 @@ public class AttackableShielderB : Attackable
 
             Destroy(collider2D.gameObject);
 
-            DoHit(damage, collider2D.GetComponent<Projectile>().GetMovementDirection());
+            DoHit(damage, hitDirection);
         }
 
         if (collider2D.tag == "PlayerHazard" && m_movementModel.GetPushBackSpeed() == 0f)
@@ -49,6 +52,7 @@ public class AttackableShielderB : Attackable
 
             if (movementDirection == new Vector2(0, 1) || movementDirection == new Vector2(0, -1))
             {
+                m_movementModel.DoPushBack(movementDirection, pushBackTime, pushBackSpeed);
                 return;
             }
 
@@ -63,8 +67,9 @@ public class AttackableShielderB : Attackable
         {
             Vector2 hitDirection = collider2D.GetComponentInParent<PlayerBomb>().GetHitDirection(transform);
 
-            if (hitDirection == new Vector2(0, -1) || hitDirection == new Vector2(0, -1))
+            if (hitDirection == new Vector2(0, 1) || hitDirection == new Vector2(0, -1))
             {
+                m_movementModel.DoPushBack(hitDirection, pushBackTime, pushBackSpeed);
                 return;
             }
 

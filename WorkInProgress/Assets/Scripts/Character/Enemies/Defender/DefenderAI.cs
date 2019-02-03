@@ -22,7 +22,7 @@ public class DefenderAI : AIBase
         if (enemyAction == enumEnemyActions.defend)
             return;
 
-            if (collider2D.gameObject.tag == "Decoy")
+        if (collider2D.gameObject.tag == "Decoy")
         {
             if (enemyAction == enumEnemyActions.chaseDecoy)
                 return;

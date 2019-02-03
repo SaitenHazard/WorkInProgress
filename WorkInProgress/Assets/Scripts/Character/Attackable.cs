@@ -11,13 +11,13 @@ public class Attackable : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected float pushBackTime = 0.3f;
     protected AIBase aiBase;
+    protected float pushBackSpeed = 2.5f;
 
     private float maxHealth;
     private GameObject parentObject;
     private Color color;
     private SpeechBubble speechBubble;
     private float stunTime;
-    private float pushBackSpeed = 2.5f;
 
     virtual protected void Awake()
     {
@@ -112,16 +112,7 @@ public class Attackable : MonoBehaviour
             return;
 
         SubstractHealth(damage);
-
-        if (playerStats.IsStunUp() == true)
-        {
-            StartCoroutine(DoStunView(stunTime));
-            m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed, stunTime);
-        }
-        else
-        {
-            m_movementModel.GetHit(hitDirection, pushBackTime, pushBackSpeed);
-        }
+        m_movementModel.DoPushBack(hitDirection, pushBackTime, pushBackSpeed);
     }
 
     public void AddHealth()

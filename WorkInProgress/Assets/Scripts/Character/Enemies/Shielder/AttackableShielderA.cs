@@ -17,6 +17,7 @@ public class AttackableShielderA : Attackable
 
             if (attackerMovementModel.GetFacingDirection() == new Vector3 (1,0) || attackerMovementModel.GetFacingDirection() == new Vector3(-1, 0))
             {
+                m_movementModel.DoPushBack(attackerMovementModel.GetFacingDirection(), pushBackTime, pushBackSpeed);
                 return;
             }
 
@@ -27,9 +28,11 @@ public class AttackableShielderA : Attackable
 
         if (collider2D.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            if (collider2D.GetComponent<Projectile>().GetMovementDirection() == new Vector2(1, 0) || 
-                collider2D.GetComponent<Projectile>().GetMovementDirection() == new Vector2(-1, 0))
+            Vector2 hitDirection = collider2D.GetComponent<Projectile>().GetMovementDirection();
+
+            if (hitDirection == new Vector2(1, 0) || hitDirection == new Vector2(-1, 0))
             {
+                m_movementModel.DoPushBack(hitDirection, pushBackTime, pushBackSpeed);
                 return;
             }
 
@@ -40,7 +43,7 @@ public class AttackableShielderA : Attackable
 
             Destroy(collider2D.gameObject);
 
-            DoHit(damage, collider2D.GetComponent<Projectile>().GetMovementDirection());
+            DoHit(damage, hitDirection);
         }
 
         if (collider2D.tag == "PlayerHazard" && m_movementModel.GetPushBackSpeed() == 0f)
@@ -49,6 +52,7 @@ public class AttackableShielderA : Attackable
 
             if (movementDirection == new Vector2(1, 0) || movementDirection == new Vector2(-1, 0))
             {
+                m_movementModel.DoPushBack(movementDirection, pushBackTime, pushBackSpeed);
                 return;
             }
 
@@ -65,6 +69,7 @@ public class AttackableShielderA : Attackable
 
             if (hitDirection == new Vector2(1, 0) || hitDirection == new Vector2(-1, 0))
             {
+                m_movementModel.DoPushBack(hitDirection, pushBackTime, pushBackSpeed);
                 return;
             }
 

@@ -175,9 +175,9 @@ public class CharacterMovementModel : MonoBehaviour
 
     }
 
-    public void GetHit(Vector2 attackDirection, float pushBackTime, float pushBackSpeed)
+    public void DoPushBack(Vector2 pushBackDirection, float pushBackTime, float pushBackSpeed)
     {
-        GetHit(attackDirection, pushBackTime, pushBackSpeed, 0f);
+        GetHit(pushBackDirection, pushBackTime, pushBackSpeed, 0f);
     }
 
     public void GetHit(Vector2 attackDirection, float pushBackTime, float pushBackSpeed, float stunTime)
