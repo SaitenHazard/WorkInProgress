@@ -55,10 +55,6 @@ public class AttackablePlayer : Attackable
                 collider2D.transform.position.x - gameObject.transform.position.x)
                 * 180 / Mathf.PI * -1;
 
-        //angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
-
-        Debug.Log(angle);
-
         Vector2 hitDirection = Vector2.zero;
 
         if (angle >= 45 && angle <= 135)
