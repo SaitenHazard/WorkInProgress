@@ -239,6 +239,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 763306240}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &102176976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6636709327539766566, guid: ee8b797bef01a0a4c95318620054fda6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1061080466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &102176979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102176976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c079890b7d8e0546b8c8117d602920d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
 --- !u!1 &158009943
 GameObject:
   m_ObjectHideFlags: 0
@@ -98365,7 +98384,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 361084773, guid: ee8b797bef01a0a4c95318620054fda6, type: 3}
       propertyPath: m_Name
-      value: Evolver
+      value: EvolverA
       objectReference: {fileID: 0}
     - target: {fileID: 1061080467, guid: ee8b797bef01a0a4c95318620054fda6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -98411,7 +98430,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1061080465, guid: ee8b797bef01a0a4c95318620054fda6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641969015664553937, guid: ee8b797bef01a0a4c95318620054fda6,
+        type: 3}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2650540529149445079, guid: ee8b797bef01a0a4c95318620054fda6,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148269783395960284, guid: ee8b797bef01a0a4c95318620054fda6,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 02cfba1f5c1469f44bb96d284f994a76, type: 2}
+    - target: {fileID: 3912442218860091683, guid: ee8b797bef01a0a4c95318620054fda6,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912442218860091683, guid: ee8b797bef01a0a4c95318620054fda6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3554161558944392211, guid: ee8b797bef01a0a4c95318620054fda6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ee8b797bef01a0a4c95318620054fda6, type: 3}
 --- !u!4 &1061080467 stripped
 Transform:

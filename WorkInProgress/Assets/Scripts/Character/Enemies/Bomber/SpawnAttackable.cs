@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BomberAttackable : Attackable
+public class SpawnAttackable : Attackable
 {
-    public GameObject Bomb;
+    public GameObject SpawnObject;
 
     override protected void DoDestroy()
     {
-        Bomb.SetActive(true);
-        Bomb.transform.SetParent(null);
+        SpawnObject.SetActive(true);
+        SpawnObject.transform.SetParent(null);
         base.DoDestroy();
     }
 }

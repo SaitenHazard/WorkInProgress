@@ -61,7 +61,7 @@
      <Compile Include="Assets\Scripts\Character\CharacterStats.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\AIBase.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Bomber\BomberAI.cs" />
-     <Compile Include="Assets\Scripts\Character\Enemies\Bomber\BomberAttackable.cs" />
+     <Compile Include="Assets\Scripts\Character\Enemies\Bomber\SpawnAttackable.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Defender\DefenderAI.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\EnemyHPBar.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Healer\HealerAI.cs" />
