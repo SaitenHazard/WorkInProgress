@@ -107,6 +107,8 @@ public class NPCAIBase : MonoBehaviour
     {
         if (npcAction == enumNPCActions.patrol)
         {
+            if (target == null)
+                Debug.Log("Here: " + transform.parent.name);
             target = patrol.GetTarget();
             angle = Mathf.Atan2(transform.position.y - target.position.y, transform.position.x - target.position.x) * 180 / Mathf.PI * -1;
         }

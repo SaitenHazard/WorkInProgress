@@ -82,7 +82,6 @@
      <Compile Include="Assets\Scripts\Character\NPC\NPCAIBase.cs" />
      <Compile Include="Assets\Scripts\Character\NPC\NPCDialogueOne.cs" />
      <Compile Include="Assets\Scripts\Character\NPC\NPCDialogueTwo.cs" />
-     <Compile Include="Assets\Scripts\Character\NPC\NPCMovementModel.cs" />
      <Compile Include="Assets\Scripts\Character\Player\AttackablePlayer.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerAnimationListener.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerAnimationView.cs" />

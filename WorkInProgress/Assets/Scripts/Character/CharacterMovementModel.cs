@@ -20,11 +20,6 @@ public class CharacterMovementModel : MonoBehaviour
     {
         m_Body = GetComponent<Rigidbody2D>();
 
-        if(GetComponent<CharacterStats>() == null)
-        {
-            Debug.Log(this);
-        }
-
         speed = GetComponent<CharacterStats>().GetSpeed();
     }
 

@@ -14,6 +14,10 @@ public class EnemyHPBar : MonoBehaviour
         attackable = transform.parent.parent.GetComponentInChildren<Attackable>();
 
         width = transform.localScale.x;
+    }
+
+    private void Start()
+    {
         maxHP = attackable.GetHealth();
     }
 
