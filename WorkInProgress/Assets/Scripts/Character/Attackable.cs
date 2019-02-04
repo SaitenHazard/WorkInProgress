@@ -34,6 +34,7 @@ public class Attackable : MonoBehaviour
 
         stunTime = 5f;
         color = spriteRenderer.color;
+        health = GetComponentInParent<CharacterStats>().GetSpeed();
         maxHealth = health;
     }
 

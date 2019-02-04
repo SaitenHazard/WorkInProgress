@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    private void Start()
+    public int damage;
+    public float speed;
+    public int health;
+
+    public int GetDamage()
     {
+        return damage;
     }
 
-    public void DoParalyzeView(float paralyzeTime)
+    public float GetSpeed()
     {
-        StartCoroutine(ReverseParalyze(paralyzeTime));
+        return speed;
     }
 
-    private IEnumerator ReverseParalyze(float paralyzeTime)
+    public int GetHealth()
     {
-        yield return new WaitForSeconds(paralyzeTime);
+        return health;
     }
 }

@@ -166,7 +166,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.3}
+  m_Size: {x: 0.25, y: 0.35}
   m_EdgeRadius: 0
 --- !u!1 &3923494929379076176
 GameObject:
@@ -498,7 +498,7 @@ SpriteRenderer:
   m_SortingLayerID: -153231989
   m_SortingLayer: 2
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300002, guid: accf3752a5720764d83be8a20bee3cde, type: 3}
+  m_Sprite: {fileID: 21300008, guid: accf3752a5720764d83be8a20bee3cde, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -519,7 +519,7 @@ Animator:
   m_GameObject: {fileID: 6326835473803291052}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b08c931e61bb10419ebf37949c7e543, type: 2}
+  m_Controller: {fileID: 9100000, guid: 14a2445a69fade243a6678fde490107b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -618,6 +618,7 @@ GameObject:
   - component: {fileID: 6305718219130249138}
   - component: {fileID: 7946230772400417950}
   - component: {fileID: 1781382860694272236}
+  - component: {fileID: 4542928286548891180}
   m_Layer: 0
   m_Name: ShielderB
   m_TagString: Enemy
@@ -632,7 +633,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8263603170482769892}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 37.38, y: -4.72, z: 0.22021484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -669,7 +670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4aaa746693a742b271a76370ca6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
 --- !u!114 &7946230772400417950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,3 +703,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4542928286548891180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263603170482769892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76b923119c850245ad6a9d99b9fe689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  speed: 1
+  health: 4

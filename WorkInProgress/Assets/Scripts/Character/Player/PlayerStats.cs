@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : CharacterStats
 {
-    private int damage;
     private int projectileNumbers;
-
     private bool projectileActive;
     private bool gameStateFrozen;
     private bool stunActive;
     private bool rangeActive;
     private bool invincibleActive;
     private bool invisibleActive;
-    private float speed;
     private float yieldTime;
     private SpriteRenderer playerSpriteRenderer;
     private InteractableBase m_interactableBase;
@@ -108,16 +105,6 @@ public class PlayerStats : MonoBehaviour
     public bool GetGameState()
     {
         return gameStateFrozen;
-    }
-
-    public float GetSpeed()
-    {
-        return speed;
-    }
-
-    public int GetDamage()
-    {
-        return damage;
     }
 
     public void DamageUp()

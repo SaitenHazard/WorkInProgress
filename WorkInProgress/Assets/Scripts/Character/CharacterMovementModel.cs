@@ -4,14 +4,13 @@ using System.Runtime.Remoting.Messaging;
 
 public class CharacterMovementModel : MonoBehaviour
 {
-    public float speed;
-
     protected Vector2 m_MovementDirection;
     protected Vector2 m_FacingDirection;
     protected Vector2 m_ReceivedDirection;
     protected Rigidbody2D m_Body;
     protected PlayerStats playerStats;
     protected bool movementFrozen = false;
+    protected float speed;
 
     private float recoilTime;
     private float m_pushBackSpeed;
@@ -20,6 +19,13 @@ public class CharacterMovementModel : MonoBehaviour
     protected void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
+
+        if(GetComponent<CharacterStats>() == null)
+        {
+            Debug.Log(this);
+        }
+
+        speed = GetComponent<CharacterStats>().GetSpeed();
     }
 
     private void Start()
