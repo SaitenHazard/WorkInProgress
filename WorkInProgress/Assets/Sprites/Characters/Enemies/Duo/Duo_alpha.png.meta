@@ -1,7 +1,24 @@
 fileFormatVersion: 2
-guid: 3b74e0a0ca972484a8314e2bb5e6a8ae
+guid: afce72fe2bfa2f04e9228b34bfddb505
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Duo_alpha_0
+    21300002: Duo_alpha_1
+    21300004: Duo_alpha_2
+    21300006: Duo_alpha_3
+    21300008: Duo_alpha_4
+    21300010: Duo_alpha_5
+    21300012: Duo_alpha_6
+    21300014: Duo_alpha_7
+    21300016: Duo_alpha_8
+    21300018: Duo_alpha_9
+    21300020: Duo_alpha_10
+    21300022: Duo_alpha_11
+    21300024: Duo_alpha_12
+    21300026: Duo_alpha_13
+    21300028: Duo_alpha_14
+    21300030: Duo_alpha_15
+    21300032: Duo_alpha_16
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -31,7 +48,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,12 +57,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,7 +80,18 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -71,11 +99,351 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Duo_alpha_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55b7c39e57e6f246a17f2b339bb6e0a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d874aed8bd66648a7c023d7d33a4c4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82e4883dfce2d474a90330d179329999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f602bc601d291c42b94b5d5440b1914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf331d75bc32c1f409b786634735b696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07ae4811b7010b74cbbc176c90e2083c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f544531c9891e944b3b231c09073aec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32f96dcb77be2b44898fd08b940923cb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bba7eaf451ffd248b332df322973f5d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b72955e328bf35541b25a1d7ebb97c5e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8baa5bf2b90c654eb54dd864a4363f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b910578aeefd0c446a46e4b729a1353b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259b563397900564693a42f52292439a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aaba277e08124342add0fe246ac3b1d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0afa299282a8d634b8b7d1a7707413f8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_15
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 985d0f5a0dd33fb40b8ab38b543b408b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duo_alpha_16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32.2
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06453c579b26f024c8b83881afa802a4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4f94897591fe4fc4387f0b5e25cdb641
+    spriteID: 415a5c95a6f2fad4aab5fb1a456ce166
     vertices: []
     indices: 
     edges: []
