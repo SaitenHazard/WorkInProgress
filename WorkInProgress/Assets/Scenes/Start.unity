@@ -570,6 +570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e419476a8b8028b42958c283f881b12a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  speed: 0
+  health: 0
   punchVisuals: {fileID: 598762844}
   playerSlime1: {fileID: 488741899}
 --- !u!114 &188311479
@@ -651,7 +654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbaae4f977b4d8449df6fa7b73d2338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
 --- !u!114 &188311485
 MonoBehaviour:
   m_ObjectHideFlags: 0
