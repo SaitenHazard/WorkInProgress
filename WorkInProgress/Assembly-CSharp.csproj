@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Character\CharacterMovementView.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterStats.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\AIBase.cs" />
+     <Compile Include="Assets\Scripts\Character\Enemies\Bipolar\BipolarAI.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Bomber\BomberAI.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Bomber\SpawnAttackable.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Defender\DefenderAI.cs" />
