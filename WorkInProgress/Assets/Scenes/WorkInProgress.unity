@@ -98771,6 +98771,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bipolar
       objectReference: {fileID: 0}
+    - target: {fileID: 1181561908903852003, guid: 35b6a07bfca1f8245be7c13d12503af9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1493462557, guid: 35b6a07bfca1f8245be7c13d12503af9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 52.69
@@ -98814,6 +98819,16 @@ PrefabInstance:
     - target: {fileID: 1493462557, guid: 35b6a07bfca1f8245be7c13d12503af9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037610970226218812, guid: 35b6a07bfca1f8245be7c13d12503af9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034122827240403823, guid: 35b6a07bfca1f8245be7c13d12503af9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35b6a07bfca1f8245be7c13d12503af9, type: 3}

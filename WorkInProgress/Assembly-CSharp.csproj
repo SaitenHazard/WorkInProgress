@@ -58,7 +58,6 @@
      <Compile Include="Assets\Scripts\Character\CharacterBaseControl.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterMovementModel.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterMovementView.cs" />
-     <Compile Include="Assets\Scripts\Character\CharacterStats.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\AIBase.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Bipolar\BipolarAI.cs" />
      <Compile Include="Assets\Scripts\Character\Enemies\Bomber\BomberAI.cs" />

@@ -10,17 +10,16 @@ public class CharacterMovementModel : MonoBehaviour
     protected Rigidbody2D m_Body;
     protected PlayerStats playerStats;
     protected bool movementFrozen = false;
-    protected float speed;
 
     private float recoilTime;
     private float m_pushBackSpeed;
     private float m_stunTime;
 
+    public float speed;
+
     protected void Awake()
     {
         m_Body = GetComponent<Rigidbody2D>();
-
-        speed = GetComponent<CharacterStats>().GetSpeed();
     }
 
     private void Start()

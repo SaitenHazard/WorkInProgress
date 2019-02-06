@@ -4,6 +4,7 @@ using System.Collections;
 public class Attackable : MonoBehaviour 
 {
     public float health;
+    public int damage;
     
     protected CharacterMovementModel attackerMovementModel;
     protected CharacterMovementModel m_movementModel;
@@ -26,8 +27,6 @@ public class Attackable : MonoBehaviour
         aiBase = transform.parent.GetComponentInChildren<AIBase>();
         spriteRenderer = parentObject.GetComponentInChildren<SpriteRenderer>();
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
-
-        health = GetComponentInParent<CharacterStats>().GetHealth();
         maxHealth = health;
     }
 
@@ -49,6 +48,16 @@ public class Attackable : MonoBehaviour
         return maxHealth;
     }
 
+    public int GetDamage()
+    {
+        return damage;
+    }
+
+    public void SetDamage(int m_damage)
+    {
+        damage = m_damage;
+    }
+
     public void SetMaxHealth(float m_health)
     {
         maxHealth = m_health;
@@ -68,7 +77,7 @@ public class Attackable : MonoBehaviour
 
         if (collider2D.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            float damage = playerStats.GetDamage();
+            float damage = collider2D.transform.parent.GetComponentInChildren<Attackable>().GetDamage();
 
             attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
 

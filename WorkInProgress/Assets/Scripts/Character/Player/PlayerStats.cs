@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : CharacterStats
+public class PlayerStats : MonoBehaviour
 {
     private int projectileNumbers;
     private bool projectileActive;
@@ -14,6 +14,8 @@ public class PlayerStats : CharacterStats
     private float yieldTime;
     private SpriteRenderer playerSpriteRenderer;
     private InteractableBase m_interactableBase;
+    private float speed = 1.5f;
+    private int damage = 1;
 
     public GameObject punchVisuals;
     public GameObject playerSlime1;
@@ -21,6 +23,16 @@ public class PlayerStats : CharacterStats
     private void Awake()
     {
         m_interactableBase = null;
+    }
+
+    public int GetDamage()
+    {
+        return damage;
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
     }
 
     private void Start()

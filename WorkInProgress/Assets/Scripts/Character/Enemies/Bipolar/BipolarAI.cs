@@ -7,9 +7,12 @@ public class BipolarAI : AIBase
     private GameObject visualsB;
     private int polarForTime;
     private int polarAfterTime;
+    private int damage;
+    private float speed;
+    private Attackable m_attackable;
 
-    public float speed;
-    public float damage;
+    public float speedPolar;
+    public int damagePolar;
 
     private void Awake()
     {
@@ -25,6 +28,9 @@ public class BipolarAI : AIBase
 
         polarForTime = Random.Range(3, 6);
         polarAfterTime = Random.Range(5, 9);
+
+        damage = m_attackable.GetDamage();
+        speed = m_movementModel.GetSpeed();
     
         StartCoroutine(ClockPolarAfterTime());
     }
@@ -77,6 +83,7 @@ public class BipolarAI : AIBase
     private IEnumerator ClockPolarAfterTime()
     {
         polarForTime = Random.Range(3, 6);
+        SetPolar(false);
         yield return new WaitForSeconds(polarAfterTime);
         StartCoroutine(ClockPolarForTime());
     }
@@ -84,7 +91,25 @@ public class BipolarAI : AIBase
     private IEnumerator ClockPolarForTime()
     {
         polarAfterTime = Random.Range(3, 6);
+        SetPolar(true);
         yield return new WaitForSeconds(polarForTime);
         StartCoroutine(ClockPolarAfterTime());
+    }
+
+    private void SetPolar(bool polar)
+    {
+        visualsA.SetActive(!polar);
+        visualsB.SetActive(polar);
+
+        if (polar == true)
+        {
+            m_movementModel.SetSpeed(speedPolar);
+            m_attackable.SetDamage(damagePolar);
+        }
+        else
+        {
+            m_movementModel.SetSpeed(speed);
+            m_attackable.SetDamage(damage);
+        }
     }
 }
