@@ -919,6 +919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomber
       objectReference: {fileID: 0}
+    - target: {fileID: 1646123192756962, guid: 1fd737f32cc43b84baf2f3e4f6c5e7b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4678808284241758, guid: 1fd737f32cc43b84baf2f3e4f6c5e7b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.39
@@ -97516,6 +97520,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShielderA
       objectReference: {fileID: 0}
+    - target: {fileID: 7771819177468073512, guid: 28b63db872f01d9458db234077e67aeb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2082967270, guid: 28b63db872f01d9458db234077e67aeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.38
@@ -97656,6 +97665,10 @@ PrefabInstance:
     - target: {fileID: 361084773, guid: ee8b797bef01a0a4c95318620054fda6, type: 3}
       propertyPath: m_Name
       value: EvolverA
+      objectReference: {fileID: 0}
+    - target: {fileID: 361084773, guid: ee8b797bef01a0a4c95318620054fda6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1061080467, guid: ee8b797bef01a0a4c95318620054fda6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -98823,14 +98836,50 @@ PrefabInstance:
     - target: {fileID: 3037610970226218812, guid: 35b6a07bfca1f8245be7c13d12503af9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1034122827240403823, guid: 35b6a07bfca1f8245be7c13d12503af9,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6095754495889648309, guid: 35b6a07bfca1f8245be7c13d12503af9,
+        type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691489933786166455, guid: 35b6a07bfca1f8245be7c13d12503af9,
+        type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691489933786166455, guid: 35b6a07bfca1f8245be7c13d12503af9,
+        type: 3}
+      propertyPath: health
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324505788, guid: 35b6a07bfca1f8245be7c13d12503af9, type: 3}
+      propertyPath: basicAction
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324505788, guid: 35b6a07bfca1f8245be7c13d12503af9, type: 3}
+      propertyPath: damagePolar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324505788, guid: 35b6a07bfca1f8245be7c13d12503af9, type: 3}
+      propertyPath: speedPolar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324505788, guid: 35b6a07bfca1f8245be7c13d12503af9, type: 3}
+      propertyPath: visualsA
+      value: 
+      objectReference: {fileID: 9100000, guid: d02cfa21380202b469df364029d316ca, type: 2}
+    - target: {fileID: 1324505788, guid: 35b6a07bfca1f8245be7c13d12503af9, type: 3}
+      propertyPath: visualsB
+      value: 
+      objectReference: {fileID: 9100000, guid: 57c35d49b81a10c459dd2d2e67aede5a, type: 2}
+    m_RemovedComponents:
+    - {fileID: 7248855643595390569, guid: 35b6a07bfca1f8245be7c13d12503af9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 35b6a07bfca1f8245be7c13d12503af9, type: 3}
 --- !u!4 &1493462557 stripped
 Transform:
@@ -100309,6 +100358,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShielderB
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263603170482769892, guid: 8e0ca76c5e6f43c4782c232fc95b2238,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 136409257392844411, guid: 8e0ca76c5e6f43c4782c232fc95b2238,
         type: 3}

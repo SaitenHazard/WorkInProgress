@@ -3,23 +3,22 @@ using UnityEngine;
 
 public class BipolarAI : AIBase
 {
-    private GameObject visualsA;
-    private GameObject visualsB;
     private int polarForTime;
     private int polarAfterTime;
     private int damage;
     private float speed;
-    private Attackable m_attackable;
+    private Animator animator;
 
     public float speedPolar;
     public int damagePolar;
+    public RuntimeAnimatorController visualsA;
+    public RuntimeAnimatorController visualsB;
 
     private void Awake()
     {
+        base.Awake();
         Transform []temp = transform.parent.GetComponentsInChildren<Transform>();
-
-        visualsA = temp[1].gameObject;
-        visualsB = temp[2].gameObject;
+        animator = transform.parent.GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -98,18 +97,18 @@ public class BipolarAI : AIBase
 
     private void SetPolar(bool polar)
     {
-        visualsA.SetActive(!polar);
-        visualsB.SetActive(polar);
-
         if (polar == true)
         {
             m_movementModel.SetSpeed(speedPolar);
             m_attackable.SetDamage(damagePolar);
+            
+            animator.runtimeAnimatorController = visualsB;
         }
         else
         {
             m_movementModel.SetSpeed(speed);
             m_attackable.SetDamage(damage);
+            animator.runtimeAnimatorController = visualsA;
         }
     }
 }

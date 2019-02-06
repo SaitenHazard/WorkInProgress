@@ -77,7 +77,7 @@ public class Attackable : MonoBehaviour
 
         if (collider2D.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            float damage = collider2D.transform.parent.GetComponentInChildren<Attackable>().GetDamage();
+            int damage = collider2D.transform.parent.parent.GetComponent<PlayerStats>().GetDamage();
 
             attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
 
@@ -89,11 +89,9 @@ public class Attackable : MonoBehaviour
             if (health <= 0)
                 return;
 
-            float damage = collider2D.GetComponent<Projectile>().GetDamage();
-
             Destroy(collider2D.gameObject);
 
-            DoHit(damage, collider2D.GetComponent<Projectile>().GetMovementDirection());
+            DoHit(1, collider2D.GetComponent<Projectile>().GetMovementDirection());
         }
 
         if (collider2D.tag == "PlayerHazard" && m_movementModel.GetPushBackSpeed() == 0f)
@@ -101,9 +99,8 @@ public class Attackable : MonoBehaviour
             if (health <= 0)
                 return;
 
-            float damage = collider2D.GetComponent<PlayerSlime>().GetDamage();
             Vector2 movementDirection = transform.parent.GetComponent<CharacterMovementModel>().GetReverseFacingDirection();
-            DoHit(damage, movementDirection);
+            DoHit(1, movementDirection);
         }
 
         if (collider2D.tag == "PlayerBombRing" && m_movementModel.GetPushBackSpeed() == 0f)

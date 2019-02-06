@@ -20,10 +20,10 @@ public class AIBase : MonoBehaviour
     protected PlayerStats playerStats;
     protected PlayerInstant playerInstance;
     protected enumEnemyActions enemyAction;
+    protected Attackable m_attackable;
 
     private CharacterMovementModel p_movementModel;
     private Animator m_Animator;
-    private Attackable attackable;
     private int pacingDirection;
     private float pacingTime;
     private float pacingWaitTime;
@@ -36,7 +36,7 @@ public class AIBase : MonoBehaviour
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
         m_movementModel = GetComponentInParent<CharacterMovementModel>();
         m_Animator = transform.parent.GetComponentInChildren<Animator>();
-        attackable = transform.parent.GetComponentInChildren<Attackable>();
+        m_attackable = transform.parent.GetComponentInChildren<Attackable>();
 
         SpawnManager spawnManager = transform.parent.GetComponentInChildren<SpawnManager>();
 
@@ -370,9 +370,9 @@ public class AIBase : MonoBehaviour
             movementDirection = new Vector2(0, -1);
         }
 
-        if (attackable != null)
+        if (m_attackable != null)
         {
-            if (attackable.GetHealth() == 0)
+            if (m_attackable.GetHealth() == 0)
                 movementDirection = Vector2.zero;
         }
     }
