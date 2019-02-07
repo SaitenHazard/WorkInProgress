@@ -4,8 +4,24 @@ using UnityEngine;
 
 public class JellyAI : AIBase
 {
+    private void Awake()
+    {
+        base.Awake();
+        Transform[] temp = transform.parent.GetComponentsInChildren<Transform>();
+    }
+
+    private void Start()
+    {
+        base.Start();
+
+
+    }
+
     override protected void OnTriggerStay2D(Collider2D collider2D)
     {
+        if (enemyAction == enumEnemyActions.defend)
+            return;
+
         if (collider2D.gameObject.tag == "Decoy")
         {
             if (enemyAction == enumEnemyActions.chaseDecoy)
@@ -33,6 +49,8 @@ public class JellyAI : AIBase
             enemyAction = basicActionWithPlayer;
             target = PlayerInstant.Instance.transform;
         }
+
+        Debug.Log(gameObject.transform.parent.name + ":" + enemyAction);
     }
 
     override protected void OnTriggerExit2D(Collider2D collider2D)
