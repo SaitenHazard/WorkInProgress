@@ -4698,6 +4698,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.59
       objectReference: {fileID: 0}
+    - target: {fileID: 9151129681614156358, guid: 0ed6cd750851f9c4aac26e23067ff3d4,
+        type: 3}
+      propertyPath: m_Name
+      value: DuoB
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496126832767675665, guid: 0ed6cd750851f9c4aac26e23067ff3d4,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4d134554033bd3d44a8d74a2f8537cc5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ed6cd750851f9c4aac26e23067ff3d4, type: 3}
 --- !u!4 &574607500 stripped
