@@ -161,7 +161,7 @@ BlendTree:
   m_Name: HitBlend
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: a034802b04b5bd841a4207c82f1bf8e5, type: 2}
+    m_Motion: {fileID: 7400000, guid: d9a9b3596f204c84a81d58f72bcf4fec, type: 2}
     m_Threshold: 0
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1

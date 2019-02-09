@@ -13,26 +13,26 @@ public class AttackableDuoB : Attackable
 
         if (collider2D.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-           attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
-           m_movementModel.DoPushBack(attackerMovementModel.GetFacingDirection(), pushBackTime, pushBackSpeed);
+            attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
+            DoPushBack(attackerMovementModel.GetFacingDirection());
         }
 
         if (collider2D.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             Vector2 hitDirection = collider2D.GetComponent<Projectile>().GetMovementDirection();
-            m_movementModel.DoPushBack(hitDirection, pushBackTime, pushBackSpeed);            
+            DoPushBack(hitDirection);
         }
 
         if (collider2D.tag == "PlayerHazard" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             Vector2 movementDirection = transform.parent.GetComponent<CharacterMovementModel>().GetReverseFacingDirection();
-            m_movementModel.DoPushBack(movementDirection, pushBackTime, pushBackSpeed);
+            DoPushBack(movementDirection);
         }
 
         if (collider2D.tag == "PlayerBombRing" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             Vector2 hitDirection = collider2D.GetComponentInParent<PlayerBomb>().GetHitDirection(transform);
-            m_movementModel.DoPushBack(hitDirection, pushBackTime, pushBackSpeed);
+            DoPushBack(hitDirection);
         }
     }
 }

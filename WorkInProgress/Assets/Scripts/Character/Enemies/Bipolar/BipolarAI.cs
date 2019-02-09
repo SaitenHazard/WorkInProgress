@@ -101,7 +101,6 @@ public class BipolarAI : AIBase
         {
             m_movementModel.SetSpeed(speedPolar);
             m_attackable.SetDamage(damagePolar);
-            
             animator.runtimeAnimatorController = visualsB;
         }
         else

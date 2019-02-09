@@ -17,7 +17,7 @@ public class AttackableShielderB : Attackable
 
             if (attackerMovementModel.GetFacingDirection() == new Vector3(0, 1) || attackerMovementModel.GetFacingDirection() == new Vector3(0, -1))
             {
-                m_movementModel.DoPushBack(attackerMovementModel.GetFacingDirection(), pushBackTime, pushBackSpeed);
+                DoPushBack(attackerMovementModel.GetFacingDirection());
                 return;
             }
 
@@ -32,7 +32,7 @@ public class AttackableShielderB : Attackable
 
             if (hitDirection == new Vector2(0, 1) || hitDirection == new Vector2(0, -1))
             {
-                m_movementModel.DoPushBack(hitDirection, pushBackTime, pushBackSpeed);
+                DoPushBack(hitDirection);
                 return;
             }
 
@@ -52,7 +52,7 @@ public class AttackableShielderB : Attackable
 
             if (movementDirection == new Vector2(0, 1) || movementDirection == new Vector2(0, -1))
             {
-                m_movementModel.DoPushBack(movementDirection, pushBackTime, pushBackSpeed);
+                DoPushBack(movementDirection);
                 return;
             }
 

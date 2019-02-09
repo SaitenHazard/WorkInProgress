@@ -31,6 +31,11 @@ public class PlayerControl : CharacterBaseControl
 
     private void OnAttackPressed()
     {
+        if (m_movementModel.IsMovementFrozen() == true)
+            return;
+
+        Debug.Log(m_movementModel.IsMovementFrozen());
+
         m_movementView.DoAttack();
         m_movementModel.DoAttack();
     }

@@ -82,6 +82,8 @@ public class Attackable : MonoBehaviour
             attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
 
             DoHit(damage, attackerMovementModel.GetFacingDirection());
+
+            
         }
 
         if(collider2D.tag == "PlayerProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
@@ -112,6 +114,11 @@ public class Attackable : MonoBehaviour
 
             DoHit(1, hitDirection);
         }
+    }
+
+    protected void DoPushBack(Vector2 hitDirection)
+    {
+        m_movementModel.DoPushBack(attackerMovementModel.GetFacingDirection(), pushBackTime, pushBackSpeed);
     }
 
     protected void DoHit(float damage, Vector2 hitDirection)

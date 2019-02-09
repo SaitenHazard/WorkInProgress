@@ -7,12 +7,15 @@ public class AttackablePlayer : Attackable
     override protected void Start()
     {
         base.Start();
-        health = 10;
-        SetMaxHealth(10);
     }
 
     override protected void OnTriggerEnter2D(Collider2D collider2D)
     {
+        if(m_movementModel.IsMovementFrozen())
+        {
+            return;
+        }
+
         if (collider2D.tag == "EnemyProjectile" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             DoDoHit(1, collider2D.GetComponent<Projectile>().GetHitDirection());

@@ -49,8 +49,6 @@ public class JellyAI : AIBase
             enemyAction = basicActionWithPlayer;
             target = PlayerInstant.Instance.transform;
         }
-
-        Debug.Log(gameObject.transform.parent.name + ":" + enemyAction);
     }
 
     override protected void OnTriggerExit2D(Collider2D collider2D)
