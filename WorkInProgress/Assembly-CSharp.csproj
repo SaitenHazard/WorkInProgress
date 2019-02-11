@@ -106,6 +106,7 @@
      <Compile Include="Assets\Scripts\General\enums.cs" />
      <Compile Include="Assets\Scripts\General\Fade.cs" />
      <Compile Include="Assets\Scripts\General\InfiniteSpawner.cs" />
+     <Compile Include="Assets\Scripts\General\PowerUpDrops.cs" />
      <Compile Include="Assets\Scripts\General\SaveLoadSystem.cs" />
      <Compile Include="Assets\Scripts\General\test.cs" />
      <Compile Include="Assets\Scripts\General\WarpManager.cs" />
