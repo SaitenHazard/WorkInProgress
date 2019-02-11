@@ -20,7 +20,5 @@ public class BombScript : MonoBehaviour
         bombRingCollider.enabled = true;
 
         yield return new WaitForSeconds(0.01f);
-
-        GetComponent<DoDestroyAnim>().DoDestroy();
     }
 }

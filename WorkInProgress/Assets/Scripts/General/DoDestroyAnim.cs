@@ -11,7 +11,7 @@ public class DoDestroyAnim : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
-    public void DoDestroy()
+    public void OnDestroy()
     {
         GameObject temp = Instantiate(Resources.Load("EnemyDestroy")) as GameObject;
 

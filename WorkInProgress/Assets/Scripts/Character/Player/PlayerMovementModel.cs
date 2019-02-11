@@ -20,6 +20,9 @@ public class PlayerMovementModel : CharacterMovementModel
 
     override public void DoAttack()
     {
+        if (GetPushBackSpeed() != 0)
+            return;
+
         SetMovementFrozen(true);
 
         if (playerStats.IsProjetileActive() == true)
