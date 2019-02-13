@@ -52,10 +52,10 @@ public class InventoryUI : MonoBehaviour {
             text.text = "Duplication Clay";
         }
 
-        if (m_Inventory.GetSelectedItem() == enumInventory.InvisiblePickup)
-        {
-            text.text = "Claw of Invisibility";
-        }
+        //if (m_Inventory.GetSelectedItem() == enumInventory.InvisiblePickup)
+        //{
+        //    text.text = "Claw of Invisibility";
+        //}
 
         if (m_Inventory.GetSelectedItem() == enumInventory.ProjectilePickup)
         {

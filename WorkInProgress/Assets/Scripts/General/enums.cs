@@ -14,11 +14,8 @@ public enum enumInventory
     HealthPickup,
     SpeedPickup,
     ProjectilePickup,
-    BombPickup,
     SlimePickup,
     RangePickup,
-    InvinciblePickup,
-    InvisiblePickup,
     DecoyPickup,
     NULL
 };

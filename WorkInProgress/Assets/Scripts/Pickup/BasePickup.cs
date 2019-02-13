@@ -126,21 +126,21 @@ public class BasePickup : MonoBehaviour
             return;
         }
 
-        if (item == enumInventory.InvisiblePickup && playerStats.IsInvisibleUp() == false)
-        {
-            playerStats.InvisibleUp();
-            DoNonInstantiateAnimation();
-            ResetSelectedInventory();
-            return;
-        }
+        //if (item == enumInventory.InvisiblePickup && playerStats.IsInvisibleUp() == false)
+        //{
+        //    playerStats.InvisibleUp();
+        //    DoNonInstantiateAnimation();
+        //    ResetSelectedInventory();
+        //    return;
+        //}
 
-        if (item == enumInventory.InvinciblePickup && playerStats.IsInvincibleUp() == false)
-        {
-            playerStats.InvincibleUp();
-            DoNonInstantiateAnimation();
-            ResetSelectedInventory();
-            return;
-        }
+        //if (item == enumInventory.InvinciblePickup && playerStats.IsInvincibleUp() == false)
+        //{
+        //    playerStats.InvincibleUp();
+        //    DoNonInstantiateAnimation();
+        //    ResetSelectedInventory();
+        //    return;
+        //}
 
         if (item == enumInventory.DecoyPickup)
         {
@@ -153,16 +153,16 @@ public class BasePickup : MonoBehaviour
             return;
         }
 
-        if (item == enumInventory.BombPickup)
-        {
-            playerInstance = PlayerInstant.Instance;
-            tempInstantiateObject = playerInstance.transform.Find("Bomb").gameObject;
+        //if (item == enumInventory.BombPickup)
+        //{
+        //    playerInstance = PlayerInstant.Instance;
+        //    tempInstantiateObject = playerInstance.transform.Find("Bomb").gameObject;
 
-            DoNonInstantiateAnimation();
-            ResetSelectedInventory();
-            CreateInstantiatePikcup();
-            return;
-        }
+        //    DoNonInstantiateAnimation();
+        //    ResetSelectedInventory();
+        //    CreateInstantiatePikcup();
+        //    return;
+        //}
 
         DoInventoryCancelAnimation();
     }
