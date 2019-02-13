@@ -16,9 +16,7 @@ public class Drops : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log(this);
-
-        GameObject loadObject = Resources.Load(drop.ToString()) as GameObject;
+        GameObject loadObject = Resources.Load("Drops/" + drop.ToString()) as GameObject;
 
         GameObject cloneObject = Instantiate(loadObject);
 
