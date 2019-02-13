@@ -536,8 +536,8 @@ GameObject:
   - component: {fileID: 114609021809885496}
   - component: {fileID: 114991541854992974}
   - component: {fileID: 114718213789742462}
-  - component: {fileID: 8868555798999170671}
   - component: {fileID: 50185042664154660}
+  - component: {fileID: 3092087181766809642}
   m_Layer: 0
   m_Name: Defender
   m_TagString: Enemy
@@ -589,6 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4aaa746693a742b271a76370ca6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114718213789742462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,21 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a450fc96b898b6d49bf988cde8f4241e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8868555798999170671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1554405943303088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76b923119c850245ad6a9d99b9fe689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  speed: 1
-  health: 4
 --- !u!50 &50185042664154660
 Rigidbody2D:
   serializedVersion: 4
@@ -637,6 +623,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3092087181766809642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554405943303088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ae33213dcdca9429b5e613f3f916fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1799193763074836
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  damage: 0
 --- !u!58 &1294446970
 CircleCollider2D:
   m_ObjectHideFlags: 0
