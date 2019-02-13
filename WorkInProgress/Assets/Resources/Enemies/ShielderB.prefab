@@ -335,7 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f7bbf486638da4b86005d460d349e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
+  damage: 1
 --- !u!1 &5305382564654386710
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +619,7 @@ GameObject:
   - component: {fileID: 6305718219130249138}
   - component: {fileID: 7946230772400417950}
   - component: {fileID: 1781382860694272236}
-  - component: {fileID: 4542928286548891180}
+  - component: {fileID: 2904986330980863542}
   m_Layer: 0
   m_Name: ShielderB
   m_TagString: Enemy
@@ -670,6 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4aaa746693a742b271a76370ca6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &7946230772400417950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,7 +705,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4542928286548891180
+--- !u!114 &2904986330980863542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -712,9 +714,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8263603170482769892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76b923119c850245ad6a9d99b9fe689, type: 3}
+  m_Script: {fileID: 11500000, guid: 91ae33213dcdca9429b5e613f3f916fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  speed: 1
-  health: 4

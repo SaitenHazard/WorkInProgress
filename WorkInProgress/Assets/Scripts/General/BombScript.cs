@@ -5,6 +5,7 @@ using UnityEngine;
 public class BombScript : MonoBehaviour
 {
     public float explodeAfter;
+    public int damage;
 
     private void Start()
     {
@@ -20,5 +21,10 @@ public class BombScript : MonoBehaviour
         bombRingCollider.enabled = true;
 
         yield return new WaitForSeconds(0.01f);
+    }
+
+    public int GetDamage()
+    {
+        return damage;
     }
 }

@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4aaa746693a742b271a76370ca6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114090324001780462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  damage: 1
 --- !u!58 &58226039619310868
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -919,7 +921,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c079890b7d8e0546b8c8117d602920d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
+  damage: 1
 --- !u!1 &1715288278010084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1093,7 @@ GameObject:
   - component: {fileID: 114518063851270394}
   - component: {fileID: 114802129698286422}
   - component: {fileID: 50602429865765474}
-  - component: {fileID: 763306242}
+  - component: {fileID: 2238183626249335839}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Enemy
@@ -1143,6 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4aaa746693a742b271a76370ca6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114802129698286422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,7 +1180,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &763306242
+--- !u!114 &2238183626249335839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1185,12 +1189,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1881855618751766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76b923119c850245ad6a9d99b9fe689, type: 3}
+  m_Script: {fileID: 11500000, guid: 91ae33213dcdca9429b5e613f3f916fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  speed: 1
-  health: 4
 --- !u!1 &1887197210565058
 GameObject:
   m_ObjectHideFlags: 0

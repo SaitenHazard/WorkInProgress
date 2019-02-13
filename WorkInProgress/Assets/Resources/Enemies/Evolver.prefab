@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 361084776}
   - component: {fileID: 361084775}
   - component: {fileID: 361084774}
-  - component: {fileID: 1061080469}
   m_Layer: 0
   m_Name: Evolver
   m_TagString: Enemy
@@ -66,6 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4aaa746693a742b271a76370ca6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!114 &361084775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,21 +99,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1061080469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361084773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76b923119c850245ad6a9d99b9fe689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  speed: 1
-  health: 4
 --- !u!1 &527704337
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be079c13cf23794a802fa74c6b1846f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 5
+  damage: 1
   SpawnObject: {fileID: 7914409628562365404}
 --- !u!58 &2059730467
 CircleCollider2D:
@@ -699,8 +685,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c079890b7d8e0546b8c8117d602920d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
---- !u!114 &1061080471
+  health: 5
+  damage: 1
+--- !u!114 &3108507444124272921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -709,12 +696,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7914409628562365404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76b923119c850245ad6a9d99b9fe689, type: 3}
+  m_Script: {fileID: 11500000, guid: 91ae33213dcdca9429b5e613f3f916fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  speed: 1
-  health: 4
 --- !u!1001 &1431562539
 PrefabInstance:
   m_ObjectHideFlags: 0

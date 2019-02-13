@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 114166640574385806}
   - component: {fileID: 114096360600660256}
   - component: {fileID: 50409098138989318}
-  - component: {fileID: 1801416766}
+  - component: {fileID: 2059434568498085205}
   m_Layer: 0
   m_Name: HealShroom
   m_TagString: Enemy
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f4aaa746693a742b271a76370ca6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114096360600660256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +291,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1801416766
+--- !u!114 &2059434568498085205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,12 +300,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1209332751312280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76b923119c850245ad6a9d99b9fe689, type: 3}
+  m_Script: {fileID: 11500000, guid: 91ae33213dcdca9429b5e613f3f916fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  speed: 1
-  health: 4
 --- !u!1 &1367662491035370
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c079890b7d8e0546b8c8117d602920d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
+  damage: 1
 --- !u!58 &58007301348340812
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -47,11 +47,11 @@ public class AttackablePlayer : Attackable
 
         if (collider2D.tag == "BombRing" && m_movementModel.GetPushBackSpeed() == 0f)
         {
-            DoBombHit(collider2D);
+            DoBombHit(collider2D, collider2D.gameObject.GetComponentInParent<BombExplosion>().GetDamage());
         }
     }
 
-    private void DoBombHit(Collider2D collider2D)
+    private void DoBombHit(Collider2D collider2D, int damage)
     {
         float angle = Mathf.Atan2
                 (collider2D.transform.position.y - gameObject.transform.position.y,
@@ -80,7 +80,7 @@ public class AttackablePlayer : Attackable
             hitDirection = new Vector2(1, 0);
         }
 
-        DoDoHit(1, hitDirection);
+        DoDoHit(damage, hitDirection);
     }
 
     private void DoDoHit(float damage, Vector2 hitDirection)

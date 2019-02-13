@@ -115,7 +115,7 @@ public class AIBase : MonoBehaviour
         Attackable selfAttackable = transform.parent.GetComponentInChildren<Attackable>();
 
         allyAttackable.SetHealth(allyAttackable.GetMaxHealth());
-        selfAttackable.SubstractHealth(selfAttackable.GetMaxHealth() / 3);
+        selfAttackable.SubstractHealth(selfAttackable.GetMaxHealth() / 5);
 
         enemyAction = basicAction;
     }
