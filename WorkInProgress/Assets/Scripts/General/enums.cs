@@ -8,6 +8,24 @@
     NULL
 };
 
+public enum enumEnemies
+{
+    Jam,
+    Jelly,
+    Spawner,
+    Shooter,
+    Duo,
+    EvolverA,
+    Defender,
+    SplitterOne,
+    Bipolar,
+    Healer,
+    Bomber,
+    ShielderA,
+    ShielderB,
+    NULL
+}
+
 public enum enumInventory
 {
     StrengthPickup,

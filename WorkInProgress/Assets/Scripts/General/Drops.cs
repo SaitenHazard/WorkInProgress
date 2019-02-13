@@ -5,21 +5,29 @@ using UnityEngine;
 public class Drops : MonoBehaviour
 {
     private int numberOfDrops;
-    private enumInventory drop;
+    private enumEnemies drop;
 
-	void Start ()
+    private void Start()
     {
-        numberOfDrops = (int)enumInventory.NULL;
-        int randomNum = Random.Range(0, numberOfDrops);
-        drop = (enumInventory)randomNum;
+        PickEnemy();
+        StartCoroutine(Spawn());
     }
 
-    private void OnDestroy()
+    private void PickEnemy()
     {
-        GameObject loadObject = Resources.Load("Drops/" + drop.ToString()) as GameObject;
+        numberOfDrops = (int)enumEnemies.NULL;
+        int randomNum = Random.Range(0, numberOfDrops);
+        drop = (enumEnemies)randomNum;
+    }
+
+    private IEnumerator Spawn()
+    {
+        GameObject loadObject = Resources.Load("Drops/" + drop) as GameObject;
 
         GameObject cloneObject = Instantiate(loadObject);
 
         cloneObject.transform.position = this.transform.position;
+
+        yield return new WaitForSeconds(160f);
     }
 }
