@@ -17,12 +17,20 @@ public class RandomEnemySpawner : MonoBehaviour
     {
         numberOfEnemies = (int)enumEnemies.NULL;
         int randomNum = Random.Range(0, numberOfEnemies);
+
+        randomNum = 0;
+
         enemy = (enumEnemies)randomNum;
+
+        //Debug.Log(randomNum);
+        //Debug.Log(enemy);
     }
 
     private IEnumerator Spawn()
     {
-        GameObject loadObject = Resources.Load("Enemies/" + enemy) as GameObject;
+        //Debug.Log(Resources.Load<GameObject>("Enemies/" + enemy));
+
+        GameObject loadObject = Resources.Load<GameObject>("Enemies/" + enemy);
 
         GameObject cloneObject = Instantiate(loadObject);
 

@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 50944481730488574}
   - component: {fileID: 3769296024164962500}
   m_Layer: 0
-  m_Name: Khamba
+  m_Name: Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

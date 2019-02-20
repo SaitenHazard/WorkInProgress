@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 50409098138989318}
   - component: {fileID: 2059434568498085205}
   m_Layer: 0
-  m_Name: HealShroom
+  m_Name: Healer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

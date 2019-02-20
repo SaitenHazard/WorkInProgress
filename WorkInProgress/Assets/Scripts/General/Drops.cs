@@ -5,7 +5,7 @@ using UnityEngine;
 public class Drops : MonoBehaviour
 {
     private int numberOfDrops;
-    private enumEnemies drop;
+    private enumInventory drop;
 
     private void Start()
     {
@@ -15,14 +15,22 @@ public class Drops : MonoBehaviour
 
     private void PickEnemy()
     {
-        numberOfDrops = (int)enumEnemies.NULL;
+        numberOfDrops = (int)enumInventory.NULL;
         int randomNum = Random.Range(0, numberOfDrops);
-        drop = (enumEnemies)randomNum;
+
+        randomNum = 0;
+
+        drop = (enumInventory)randomNum;
+
+        Debug.Log(randomNum);
+        Debug.Log(drop);
     }
 
     private IEnumerator Spawn()
     {
-        GameObject loadObject = Resources.Load("Drops/" + drop) as GameObject;
+        Debug.Log(Resources.Load<GameObject>("Drops/" + drop));
+
+        GameObject loadObject = Resources.Load<GameObject>("Drops/" + drop);
 
         GameObject cloneObject = Instantiate(loadObject);
 

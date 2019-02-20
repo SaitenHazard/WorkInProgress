@@ -167,7 +167,7 @@ SpriteRenderer:
   m_SortingLayerID: -153231989
   m_SortingLayer: 2
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 57367021864637840b2119fedae69110, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3b2ab206ababf8a4b9fdd59a88ace39a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -221,7 +221,6 @@ GameObject:
   - component: {fileID: 114698047018853190}
   - component: {fileID: 1966602206}
   - component: {fileID: 114132014602334926}
-  - component: {fileID: 1488870536929347899}
   - component: {fileID: 50853889480544678}
   - component: {fileID: 5319280629647242280}
   m_Layer: 0
@@ -288,18 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a450fc96b898b6d49bf988cde8f4241e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1488870536929347899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1763049945981194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b81ccd9e8050b5438b16f91fb41c4ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &50853889480544678
 Rigidbody2D:
   serializedVersion: 4
@@ -328,7 +315,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763049945981194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ae33213dcdca9429b5e613f3f916fd, type: 3}
   m_Name: 
@@ -709,4 +696,4 @@ MonoBehaviour:
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
   basicActionWithPlayer: 0
-  basicAction: 1
+  basicAction: 4

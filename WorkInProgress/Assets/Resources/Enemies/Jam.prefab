@@ -651,7 +651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4562817563012284
 Transform:
   m_ObjectHideFlags: 0
@@ -819,4 +819,4 @@ MonoBehaviour:
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
   basicActionWithPlayer: 0
-  basicAction: 1
+  basicAction: 4
