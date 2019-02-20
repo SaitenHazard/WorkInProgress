@@ -111,7 +111,8 @@ public class InventoryUI : MonoBehaviour {
     private void SetItemSlot(int index, GameObject itemSlotObject)
     {
         Image itemSlotImage = itemSlotObject.GetComponent<Image>();
-        GameObject itemObject = Resources.Load(GetItemFromSlot(index).ToString()) as GameObject;
+        GameObject itemObject = Resources.Load<GameObject>("Drops/"+ GetItemFromSlot(index).ToString());
+
         SpriteRenderer spriteRenderer = itemObject.GetComponentInChildren<SpriteRenderer>();
 
         itemSlotObject.SetActive(true);

@@ -181,7 +181,7 @@ public class Attackable : MonoBehaviour
                 aiBase.DeductSpawn();
         }
 
-        GameObject temp = Instantiate(Resources.Load("EnemyDestroy")) as GameObject;
+        GameObject temp = Instantiate(Resources.Load("General/EnemyDestroy")) as GameObject;
 
         temp.transform.position = transform.position;
 

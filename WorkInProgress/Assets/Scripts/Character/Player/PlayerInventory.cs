@@ -64,8 +64,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void UsePickup()
     {
-        GameObject pickupObject = Resources.Load(inventoryArray[selectedSlotID].
-            ToString()) as GameObject;
+        GameObject pickupObject =  Resources.Load<GameObject>("Drops/" + inventoryArray[selectedSlotID].ToString());
 
         BasePickup basePickup = pickupObject.GetComponent<BasePickup>();
 

@@ -187,13 +187,14 @@ GameObject:
   - component: {fileID: 6095754495889648309}
   - component: {fileID: 1523888079697700597}
   - component: {fileID: 8829573946424869331}
+  - component: {fileID: 975297026692110370}
   m_Layer: 0
   m_Name: Bipolar
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1493462557
 Transform:
   m_ObjectHideFlags: 0
@@ -272,6 +273,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &975297026692110370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181561908903852003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ae33213dcdca9429b5e613f3f916fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2591879027491566817
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,6 @@ public class Drops : MonoBehaviour
     private void Start()
     {
         PickEnemy();
-        StartCoroutine(Spawn());
     }
 
     private void PickEnemy()
@@ -22,20 +21,16 @@ public class Drops : MonoBehaviour
 
         drop = (enumInventory)randomNum;
 
-        Debug.Log(randomNum);
-        Debug.Log(drop);
+        //Debug.Log(randomNum);
+        //Debug.Log(drop);
     }
 
-    private IEnumerator Spawn()
+    private void OnDestroy()
     {
-        Debug.Log(Resources.Load<GameObject>("Drops/" + drop));
-
         GameObject loadObject = Resources.Load<GameObject>("Drops/" + drop);
 
         GameObject cloneObject = Instantiate(loadObject);
 
         cloneObject.transform.position = this.transform.position;
-
-        yield return new WaitForSeconds(160f);
-    }
+    } 
 }
