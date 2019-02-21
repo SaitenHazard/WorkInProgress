@@ -106,7 +106,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1688734588}
   - component: {fileID: 1688734589}
-  - component: {fileID: 1688734590}
   - component: {fileID: 1688734591}
   - component: {fileID: 1688734592}
   m_Layer: 0
@@ -179,22 +178,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1688734590
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688734587}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.06}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &1688734591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,7 +733,7 @@ GameObject:
   - component: {fileID: 816022582192340348}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: EnemyCollisionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -783,7 +766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taglist:
   - PlayerCollisionBox
-  - Enemy
+  - EnemyCollisionBox
 --- !u!58 &816022582192340348
 CircleCollider2D:
   m_ObjectHideFlags: 0

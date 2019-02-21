@@ -985,7 +985,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183634772384106262}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.096, z: 0}
+  m_LocalPosition: {x: -0.008, y: -0.096, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 183634771930884337}
@@ -1006,7 +1006,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.19
+  m_Radius: 0.22
 --- !u!114 &290016776814870285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,7 +1085,7 @@ MonoBehaviour:
   patrol: {fileID: 0}
   spawnObject: {fileID: 0}
   basicActionWithPlayer: 0
-  basicAction: 6
+  basicAction: 4
 --- !u!1 &576551529726774097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,7 +1099,7 @@ GameObject:
   - component: {fileID: 3180193438314571716}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: EnemyCollisionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taglist:
   - PlayerCollisionBox
-  - Enemy
+  - EnemyCollisionBox
 --- !u!58 &3180193438314571716
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1221,7 +1221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3098984063310817038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.113, z: 0}
+  m_LocalPosition: {x: -0.008, y: -0.113, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 183634771930884337}
@@ -1242,7 +1242,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.09
 --- !u!1 &8309018284996901280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 5110569472960609706}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: EnemyCollisionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taglist:
   - PlayerCollisionBox
-  - Enemy
+  - EnemyCollisionBox
 --- !u!58 &5110569472960609706
 CircleCollider2D:
   m_ObjectHideFlags: 0

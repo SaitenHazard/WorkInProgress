@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 6809587682283312882}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: EnemyCollisionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taglist:
   - PlayerCollisionBox
-  - Enemy
+  - EnemyCollisionBox
 --- !u!58 &3078996715253180223
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -13,8 +13,6 @@ public class JellyAI : AIBase
     private void Start()
     {
         base.Start();
-
-
     }
 
     override protected void OnTriggerStay2D(Collider2D collider2D)

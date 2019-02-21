@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 7850393779749497087}
   m_Layer: 0
   m_Name: CollisionBox
-  m_TagString: Untagged
+  m_TagString: EnemyCollisionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taglist:
   - PlayerCollisionBox
-  - Enemy
+  - EnemyCollisionBox
 --- !u!58 &7850393779749497087
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -827,10 +827,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4321442953166424481, guid: 5a9880aa9509ed14b9de2032ed9f673d,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnemyCollisionBox
+      objectReference: {fileID: 0}
     - target: {fileID: 998298217598157705, guid: 5a9880aa9509ed14b9de2032ed9f673d,
         type: 3}
       propertyPath: health
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436193204777567397, guid: 5a9880aa9509ed14b9de2032ed9f673d,
+        type: 3}
+      propertyPath: taglist.Array.data[1]
+      value: EnemyCollisionBox
       objectReference: {fileID: 0}
     - target: {fileID: 4335372009198526704, guid: 5a9880aa9509ed14b9de2032ed9f673d,
         type: 3}

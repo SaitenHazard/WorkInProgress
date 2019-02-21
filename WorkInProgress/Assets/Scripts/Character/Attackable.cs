@@ -24,6 +24,9 @@ public class Attackable : MonoBehaviour
     {
         parentObject = transform.parent.gameObject;
         m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
+
+        Debug.Log(m_movementModel);
+
         aiBase = transform.parent.GetComponentInChildren<AIBase>();
         spriteRenderer = parentObject.GetComponentInChildren<SpriteRenderer>();
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
@@ -78,7 +81,6 @@ public class Attackable : MonoBehaviour
         if (collider2D.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
         {
             int damage = playerStats.GetComponentInChildren<Attackable>().GetDamage();
-                //collider2D.transform.parent.GetComponentInChildren<Attackable>().GetDamage();
 
             attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();
 
@@ -101,6 +103,7 @@ public class Attackable : MonoBehaviour
                 return;
 
             Vector2 movementDirection = transform.parent.GetComponent<CharacterMovementModel>().GetReverseFacingDirection();
+            Debug.Log(movementDirection);
             DoHit(1, movementDirection);
         }
 

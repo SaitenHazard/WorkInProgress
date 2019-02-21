@@ -5264,13 +5264,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 188311473, guid: 1cdc80724236a204291baf3fa4158ea7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 188311474, guid: 1cdc80724236a204291baf3fa4158ea7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -145.32
+      value: -145.2
       objectReference: {fileID: 0}
     - target: {fileID: 188311474, guid: 1cdc80724236a204291baf3fa4158ea7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -130.01
+      value: -129.41
       objectReference: {fileID: 0}
     - target: {fileID: 188311474, guid: 1cdc80724236a204291baf3fa4158ea7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5316,5 +5320,25 @@ PrefabInstance:
       propertyPath: menuView
       value: 
       objectReference: {fileID: 720395091}
+    - target: {fileID: 488741899, guid: 1cdc80724236a204291baf3fa4158ea7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952061523, guid: 1cdc80724236a204291baf3fa4158ea7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 488741902, guid: 1cdc80724236a204291baf3fa4158ea7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165423002, guid: 1cdc80724236a204291baf3fa4158ea7, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -195762615
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165423002, guid: 1cdc80724236a204291baf3fa4158ea7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cdc80724236a204291baf3fa4158ea7, type: 3}
