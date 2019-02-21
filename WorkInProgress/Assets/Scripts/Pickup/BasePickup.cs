@@ -63,7 +63,7 @@ public class BasePickup : MonoBehaviour
     {
         pickupAnimation = playerInstance.GetComponentInChildren<PickupAnimation>();
 
-        GameObject Object = Resources.Load("CancelPickup") as GameObject;
+        GameObject Object = Resources.Load<GameObject>("CancelPickup");
 
         sprite = (Object.transform.GetComponentInChildren<SpriteRenderer>()).sprite;
 

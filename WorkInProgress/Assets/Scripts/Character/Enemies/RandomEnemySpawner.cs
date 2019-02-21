@@ -18,7 +18,7 @@ public class RandomEnemySpawner : MonoBehaviour
         numberOfEnemies = (int)enumEnemies.NULL;
         int randomNum = Random.Range(0, numberOfEnemies);
 
-        randomNum = 5;
+        randomNum = 6;
 
         enemy = (enumEnemies)randomNum;
 

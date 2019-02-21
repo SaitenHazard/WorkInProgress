@@ -17,12 +17,9 @@ public class Drops : MonoBehaviour
         numberOfDrops = (int)enumInventory.NULL;
         int randomNum = Random.Range(0, numberOfDrops);
 
-        randomNum = 5;
+        randomNum = 6;
 
         drop = (enumInventory)randomNum;
-
-        //Debug.Log(randomNum);
-        //Debug.Log(drop);
     }
 
     private void OnDestroy()
@@ -31,6 +28,6 @@ public class Drops : MonoBehaviour
 
         GameObject cloneObject = Instantiate(loadObject);
 
-        cloneObject.transform.position = this.transform.position;
+        cloneObject.transform.position = gameObject.transform.position;
     } 
 }

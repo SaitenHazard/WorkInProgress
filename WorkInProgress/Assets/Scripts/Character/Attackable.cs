@@ -24,9 +24,6 @@ public class Attackable : MonoBehaviour
     {
         parentObject = transform.parent.gameObject;
         m_movementModel = gameObject.GetComponentInParent<CharacterMovementModel>();
-
-        Debug.Log(m_movementModel);
-
         aiBase = transform.parent.GetComponentInChildren<AIBase>();
         spriteRenderer = parentObject.GetComponentInChildren<SpriteRenderer>();
         speechBubble = transform.parent.GetComponentInChildren<SpeechBubble>();
