@@ -14,7 +14,6 @@ public class PlayerMovementModel : CharacterMovementModel
 
     private void Update()
     {
-        speed = playerStats.GetSpeed();
         base.Update();
     }
 

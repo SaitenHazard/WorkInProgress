@@ -21,7 +21,7 @@ public class AttackableShielderA : Attackable
                 return;
             }
 
-            float damage = playerStats.GetDamage();
+            float damage = collider2D.transform.parent.GetComponentInChildren<Attackable>().GetDamage();
 
             DoHit(damage, attackerMovementModel.GetFacingDirection());
         }

@@ -112996,6 +112996,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 505339732}
     m_Modifications:
+    - target: {fileID: 1175804698010830, guid: ac6ac43a06c08584186b6b3b71d89010, type: 3}
+      propertyPath: m_Name
+      value: Pickups
+      objectReference: {fileID: 0}
     - target: {fileID: 4768923617305324, guid: ac6ac43a06c08584186b6b3b71d89010, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.92

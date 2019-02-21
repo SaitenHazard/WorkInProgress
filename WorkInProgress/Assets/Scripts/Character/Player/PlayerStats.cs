@@ -14,8 +14,8 @@ public class PlayerStats : MonoBehaviour
     private float yieldTime;
     private SpriteRenderer playerSpriteRenderer;
     private InteractableBase m_interactableBase;
-    private float speed = 1.5f;
-    private int damage = 1;
+    private Attackable m_attackable;
+    private CharacterMovementModel m_movementModel;
 
     public GameObject punchVisuals;
     public GameObject playerSlime1;
@@ -23,24 +23,13 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         m_interactableBase = null;
-    }
-
-    public int GetDamage()
-    {
-        return damage;
-    }
-
-    public float GetSpeed()
-    {
-        return speed;
+        m_attackable = GetComponentInChildren<Attackable>();
+        m_movementModel = GetComponent<CharacterMovementModel>();
     }
 
     private void Start()
     {
         playerSpriteRenderer = PlayerInstant.Instance.GetComponentInChildren<SpriteRenderer>();
-
-        speed = 1.5f;
-        damage = 1;
         yieldTime = 5;
     }
 
@@ -121,24 +110,24 @@ public class PlayerStats : MonoBehaviour
 
     public void DamageUp()
     {
-        damage++;
+        m_attackable.SetDamage(2);
         StartCoroutine(RevertDamageUp());
     }
 
     public void SpeedUp()
     {
-        speed = 2.5f;
+        m_movementModel.SetSpeed(2.5f);
         StartCoroutine(RevertSpeedUp());
     }
 
     public bool IsDamageUp()
     {
-        return damage == 2;
+        return m_attackable.GetDamage() == 2;
     }
 
     public bool IsSpeedUp()
     {
-        return speed == 2;
+        return m_movementModel.GetSpeed() == 2.5f;
     }
 
     public bool IsProjetileActive()
@@ -193,12 +182,12 @@ public class PlayerStats : MonoBehaviour
     private IEnumerator RevertSpeedUp()
     {
         yield return new WaitForSeconds(yieldTime);
-        speed = 1.5f;
+        m_movementModel.SetSpeed(1.5f);
     }
 
     private IEnumerator RevertDamageUp()
     {
         yield return new WaitForSeconds(yieldTime);
-        damage--;
+        m_attackable.SetDamage(1);
     }
 }

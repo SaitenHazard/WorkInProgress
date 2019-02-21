@@ -16,8 +16,7 @@ public class PlayerInventory : MonoBehaviour
  
     public void InitializeInventory()
     {
-        for (int i = 0; i < maxInventorySize; i++)
-            inventoryArray[i] = enumInventory.NULL;
+        for (int i = 0; i < maxInventorySize; i++) inventoryArray[i] = enumInventory.NULL;
     }
 
     public void AddItem(enumInventory item)
@@ -26,8 +25,7 @@ public class PlayerInventory : MonoBehaviour
         inventoryArray[firstEmptySlot] = item;
         inventorySize++;
 
-        if(inventorySize == 1)
-            InitializeSelected();
+        if(inventorySize == 1) InitializeSelected();
     }
 
     public void UseSelected()

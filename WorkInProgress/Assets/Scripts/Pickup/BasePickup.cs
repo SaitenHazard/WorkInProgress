@@ -224,7 +224,7 @@ public class BasePickup : MonoBehaviour
     {
         GetComponents();
 
-        GameObject Object = Resources.Load("CancelPickup") as GameObject;
+        GameObject Object = Resources.Load("General/CancelPickup") as GameObject;
         sprite = (Object.transform.GetComponentInChildren<SpriteRenderer>()).sprite;
         pickupUseGeneralAnimation.DoAnimation(sprite, 1f, slotTrasform);
     }
