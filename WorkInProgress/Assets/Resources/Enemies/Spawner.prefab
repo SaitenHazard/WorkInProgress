@@ -30,7 +30,7 @@ Transform:
   - {fileID: 4225167264932998}
   - {fileID: 4576166139440734}
   m_Father: {fileID: 4773571567829834}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1038719117748270
 GameObject:
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 4150169026755280}
   - component: {fileID: 61490703693863954}
   m_Layer: 0
-  m_Name: CollisionBox
+  m_Name: AttackBox
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,6 +531,7 @@ Transform:
   - {fileID: 4101563167758438}
   - {fileID: 4150169026755280}
   - {fileID: 4456034904144812}
+  - {fileID: 7574441586778633035}
   - {fileID: 4194078670766842}
   - {fileID: 6729069399844977718}
   m_Father: {fileID: 0}
@@ -718,6 +719,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e401eb3fda9fd5c4d96749bfe9d71698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5947111681934082715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7574441586778633035}
+  - component: {fileID: 7417309588329713817}
+  - component: {fileID: 2806992649329620943}
+  m_Layer: 0
+  m_Name: CollisionBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7574441586778633035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947111681934082715}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4773571567829834}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7417309588329713817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947111681934082715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bdbf2f7520bc3d4ba734abd2a259da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taglist:
+  - PlayerCollisionBox
+  - Enemy
+--- !u!58 &2806992649329620943
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947111681934082715}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.14}
+  serializedVersion: 2
+  m_Radius: 0.38
 --- !u!1001 &6731926314304187194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -763,7 +827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4204151361853196, guid: c3e0d474aebac114083ae2fada997d14, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4204151361853196, guid: c3e0d474aebac114083ae2fada997d14, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
