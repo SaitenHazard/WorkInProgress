@@ -762,6 +762,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EvolverB
       objectReference: {fileID: 0}
+    - target: {fileID: 6921763725752598662, guid: 5a9880aa9509ed14b9de2032ed9f673d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 998298218254161611, guid: 5a9880aa9509ed14b9de2032ed9f673d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -817,15 +822,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 998298217598157705, guid: 5a9880aa9509ed14b9de2032ed9f673d,
-        type: 3}
-      propertyPath: health
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6437668260633556045, guid: 5a9880aa9509ed14b9de2032ed9f673d,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 998298217598157705, guid: 5a9880aa9509ed14b9de2032ed9f673d,
+        type: 3}
+      propertyPath: health
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4335372009198526704, guid: 5a9880aa9509ed14b9de2032ed9f673d,
         type: 3}

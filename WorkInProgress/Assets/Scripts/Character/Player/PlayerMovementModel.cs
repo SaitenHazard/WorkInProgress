@@ -19,7 +19,7 @@ public class PlayerMovementModel : CharacterMovementModel
 
     override public void DoAttack()
     {
-        if (GetPushBackSpeed() != 0)
+        if (IsInPushBack() == false)
             return;
 
         SetMovementFrozen(true);

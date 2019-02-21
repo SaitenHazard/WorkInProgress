@@ -17,7 +17,7 @@ public class Drops : MonoBehaviour
         numberOfDrops = (int)enumInventory.NULL;
         int randomNum = Random.Range(0, numberOfDrops);
 
-        randomNum = 2;
+        randomNum = 4;
 
         drop = (enumInventory)randomNum;
 

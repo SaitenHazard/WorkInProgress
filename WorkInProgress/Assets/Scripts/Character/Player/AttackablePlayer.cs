@@ -11,7 +11,7 @@ public class AttackablePlayer : Attackable
 
     override protected void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if(m_movementModel.IsMovementFrozen())
+        if(m_movementModel.IsInPushBack())
         {
             return;
         }

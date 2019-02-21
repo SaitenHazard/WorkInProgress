@@ -133,7 +133,7 @@ public class AIBase : MonoBehaviour
             GameObject tempSpawnObject = Instantiate(spawnObject);
             SpawnManager spawnManager = tempSpawnObject.GetComponent<SpawnManager>();
 
-            tempSpawnObject.transform.position = this.transform.position;
+            tempSpawnObject.transform.position = new Vector2(transform.position.x, transform.position.y - 0.4f);
 
             spawnManager.Initialize(this);
             spawnCount++;

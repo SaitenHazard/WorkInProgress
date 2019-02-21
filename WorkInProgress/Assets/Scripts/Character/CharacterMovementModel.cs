@@ -170,6 +170,11 @@ public class CharacterMovementModel : MonoBehaviour
         return m_pushBackSpeed;
     }
 
+    public bool IsInPushBack()
+    {
+        return m_pushBackSpeed != 0;
+    }
+
     virtual public void DoAttack()
     {
 
