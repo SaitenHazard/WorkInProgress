@@ -77,6 +77,9 @@ public class Attackable : MonoBehaviour
 
         if (collider2D.tag == "Punch" && m_movementModel.GetPushBackSpeed() == 0f)
         {
+            if (GetComponentInChildren<Attackable>() == null)
+                Debug.Log(transform.parent.name);
+
             int damage = playerStats.GetComponentInChildren<Attackable>().GetDamage();
 
             attackerMovementModel = collider2D.GetComponentInParent<CharacterMovementModel>();

@@ -228,7 +228,7 @@ Transform:
   - {fileID: 4396549328404410}
   - {fileID: 4675387581791072}
   - {fileID: 4473210825134396}
-  - {fileID: 7091068740008254189}
+  - {fileID: 4349146533158734156}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -281,7 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e075acbb00a99be4099d61f0b1db280f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPGameObject: {fileID: 1615039749426684}
 --- !u!50 &50683583225723154
 Rigidbody2D:
   serializedVersion: 4
@@ -712,7 +711,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.03}
   serializedVersion: 2
   m_Radius: 0.17
---- !u!1 &7194415404429303883
+--- !u!1 &5006402064101047172
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -720,9 +719,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7091068740008254189}
-  - component: {fileID: 3498733568473716934}
-  - component: {fileID: 2204922955710681714}
+  - component: {fileID: 4349146533158734156}
+  - component: {fileID: 4530840214585790760}
+  - component: {fileID: 1360153648074408368}
   m_Layer: 0
   m_Name: CollisionBox
   m_TagString: EnemyCollisionBox
@@ -730,27 +729,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7091068740008254189
+--- !u!4 &4349146533158734156
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7194415404429303883}
+  m_GameObject: {fileID: 5006402064101047172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.599999, y: 9.43, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4204151361853196}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3498733568473716934
+--- !u!114 &4530840214585790760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7194415404429303883}
+  m_GameObject: {fileID: 5006402064101047172}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bdbf2f7520bc3d4ba734abd2a259da8, type: 3}
@@ -759,19 +758,19 @@ MonoBehaviour:
   taglist:
   - PlayerCollisionBox
   - EnemyCollisionBox
---- !u!58 &2204922955710681714
+--- !u!58 &1360153648074408368
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7194415404429303883}
+  m_GameObject: {fileID: 5006402064101047172}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.14}
+  m_Offset: {x: 0, y: -0.15}
   serializedVersion: 2
-  m_Radius: 0.38
+  m_Radius: 0.14

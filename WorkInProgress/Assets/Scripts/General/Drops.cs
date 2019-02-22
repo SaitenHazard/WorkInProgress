@@ -17,17 +17,13 @@ public class Drops : MonoBehaviour
         numberOfDrops = (int)enumInventory.NULL;
         int randomNum = Random.Range(0, numberOfDrops);
 
-        randomNum = 6;
-
         drop = (enumInventory)randomNum;
     }
 
     private void OnDestroy()
     {
         GameObject loadObject = Resources.Load<GameObject>("Drops/" + drop);
-
         GameObject cloneObject = Instantiate(loadObject);
-
         cloneObject.transform.position = gameObject.transform.position;
     } 
 }

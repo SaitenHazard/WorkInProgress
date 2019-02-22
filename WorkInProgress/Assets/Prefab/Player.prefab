@@ -1449,7 +1449,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2042741445}
   - component: {fileID: 2042741447}
-  - component: {fileID: 2042741446}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: Decoy
@@ -1497,20 +1496,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.28, y: 0.16055149}
   m_EdgeRadius: 0
---- !u!114 &2042741446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042741444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa756a43e22781c468b4f40254a7fab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  damage: 0
 --- !u!1 &2044160108
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject HPGameObject;
-
     private SpriteRenderer spriteRenderer;
 
     private AIBase parentSpawnerAI;
@@ -50,6 +48,5 @@ public class SpawnManager : MonoBehaviour
     {
         GetComponentInChildren<Attackable>().enabled = true;
         GetComponentInChildren<AIBase>().enabled = true;
-        HPGameObject.SetActive(true);
     }
 }
